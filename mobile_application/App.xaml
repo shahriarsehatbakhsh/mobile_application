@@ -63,6 +63,25 @@
             <Setter Property="Margin" Value="20,15,10,0" />
             <Setter Property="FontFamily" Value="FAS" />
         </Style>
-        
+
+        <Style Class="tite_medium" TargetType="Label">
+            <Setter Property="FontFamily" Value="bTitrB" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+
+        <Style Class="select_button" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="TextColor" Value="ForestGreen" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontFamily" Value="lalezar" />
+            <Setter Property="FontSize" Value="Medium" />
+        </Style>
+
     </Application.Resources>
 </Application>

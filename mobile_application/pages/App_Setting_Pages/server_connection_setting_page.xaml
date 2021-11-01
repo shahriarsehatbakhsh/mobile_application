@@ -79,7 +79,7 @@
                             </StackLayout>
                         </StackLayout>
 
-                        <StackLayout Grid.Row="6" Orientation="Horizontal" HorizontalOptions="End">
+                        <StackLayout Grid.Row="6" Orientation="Horizontal" HorizontalOptions="Start">
                             <Label x:Name="lblConnectionState" />
                         </StackLayout>
 

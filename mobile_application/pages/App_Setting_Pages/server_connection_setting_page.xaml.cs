@@ -10,8 +10,6 @@ using System.Data.SqlClient;
 using mobile_application.Services;
 using mobile_application.Models;
 using mobile_application.Models.Connection;
-using Android.Content;
-using Android.Widget;
 
 namespace mobile_application.pages.App_Setting_Pages
 {
@@ -83,11 +81,7 @@ namespace mobile_application.pages.App_Setting_Pages
             _ = ConnectionSyntax.Insert(Client.con_server, Client.con_username, Client.con_password, Client.con_database, is_admin);
 
 
-            Context context = App.Context;
-            
-            var toast = Toast.MakeText(context, "ثبت با موفقیت انجام شد", ToastLength.Long);
-            toast.Show();
-            //Toast.MakeText( , "xx", ToastLength.Long).Show();
+            ToastNotification.TostMessage(" ثبت موفقیت آمیز بود");
         }
 
         private void btnTextConnection_Clicked(object sender, EventArgs e)
@@ -97,12 +91,12 @@ namespace mobile_application.pages.App_Setting_Pages
             if (r)
             {
                 this.lblConnectionState.TextColor = Color.Green;
-                this.lblConnectionState.Text = "Connection test successfull .";
+                this.lblConnectionState.Text = "آزمایش ارتباط با موفقیت انجام شد.";
             }
             else
             {
                 this.lblConnectionState.TextColor = Color.Red;
-                this.lblConnectionState.Text = "Connection is close .";
+                this.lblConnectionState.Text = "برقراری ارتباط با سرور با مشکل مواجه شد.";
             }
         }
 

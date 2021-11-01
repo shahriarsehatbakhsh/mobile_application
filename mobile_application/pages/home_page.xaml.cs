@@ -65,10 +65,15 @@ namespace mobile_application.pages
 
         public ICommand MyCommand { private set; get; }
 
-        private void  connection_setting_page_click()
+        private void connection_setting_page_click()
         {
-            App.Current.MainPage = new  mobile_application.pages.App_Setting_Pages.server_connection_setting_page();
+            App.Current.MainPage = new mobile_application.pages.App_Setting_Pages.server_connection_setting_page();
         }
-        
+
+        private void btnMenu01_Clicked(object sender, EventArgs e)
+        {
+            //await Navigation.PushAsync(new mobile_application.pages.Order_Pages.A_add_new_order(), true);
+            App.Current.MainPage = new mobile_application.pages.Order_Pages.A_add_new_order();
+        }
     }
 }

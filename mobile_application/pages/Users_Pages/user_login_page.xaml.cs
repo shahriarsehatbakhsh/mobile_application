@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 using System.Diagnostics;
 using mobile_application.Services;
 using mobile_application.modules;
+using mobile_application.Models;
 
 namespace mobile_application.pages.Users_Pages
 {
@@ -19,28 +20,34 @@ namespace mobile_application.pages.Users_Pages
 
         private void btnLogin_Clicked(object sender, EventArgs e)
         {
-            //this.IsBusy = true;
+            this.IsBusy = true;
 
 
-            //string username = txtUsername.Text;
-            //string password = txtPassword.Text;
-            // _ = IDataBase.users_Get_ID(username,password);
-            //System.Threading.Thread.Sleep(2000);
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
 
-
-
-            //this.IsBusy = false;
-            //if (IPublic.user_ID == 0)
-            //{
-            //    DisplayAlert("Error", "username or password is incorrect !!!", "again");
-            //    this.txtUsername.Text = this.txtPassword.Text = "";
-            //}
-            //else
-            //    App.Current.MainPage = new AppShell();
+            var r = UsersSyntax.Get_Id(username, password);
+            System.Threading.Thread.Sleep(2000);
 
 
 
-            App.Current.MainPage = new AppShell();
+            this.IsBusy = false;
+            if (r == 0)
+            {
+                DisplayAlert("Error", "username or password is incorrect !!!", "again");
+                this.txtUsername.Text = this.txtPassword.Text = "";
+                this.Focus();
+                return;
+            }
+            else
+            {
+                IPublic.user_ID = r;
+                App.Current.MainPage = new AppShell();
+                return;
+            }                
+
+
+            //App.Current.MainPage = new AppShell();
             //App.Current.MainPage = new NavigationPage(new home_page());
         }
 

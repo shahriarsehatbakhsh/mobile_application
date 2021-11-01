@@ -28,7 +28,7 @@ namespace mobile_application.pages.Users_Pages
 
                 _ = UsersSyntax.Insert(username, password, is_admin);
 
-                DisplayAlert("کاربری جدید", "با موفقیت ایجاد شد", "تایید");
+                ToastNotification.TostMessage("ثبت موفقیت آمیز بود");
             }
             else
             {

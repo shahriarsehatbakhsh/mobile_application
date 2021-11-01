@@ -62,6 +62,7 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.2196" />
   </ItemGroup>
 
   <ItemGroup>
@@ -134,10 +135,6 @@
     <EmbeddedResource Update="pages\Users_Pages\user_login_page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\icons\" />
   </ItemGroup>
 
   <ItemGroup>

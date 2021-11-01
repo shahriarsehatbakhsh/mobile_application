@@ -22,9 +22,18 @@ namespace mobile_application.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+
+            //installing my plugin .
+            //Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init();
+            //------------------------------------------------------
+
             global::Xamarin.Forms.Forms.Init();
-            
-            
+
+            //install my plugin .
+            global::Xamarin.Forms.FormsMaterial.Init();
+            //-----------------------------------------
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
