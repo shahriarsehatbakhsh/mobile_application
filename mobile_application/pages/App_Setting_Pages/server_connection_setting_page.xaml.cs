@@ -10,6 +10,8 @@ using System.Data.SqlClient;
 using mobile_application.Services;
 using mobile_application.Models;
 using mobile_application.Models.Connection;
+using Android.Content;
+using Android.Widget;
 
 namespace mobile_application.pages.App_Setting_Pages
 {
@@ -22,10 +24,10 @@ namespace mobile_application.pages.App_Setting_Pages
 
             try
             {
-                //this.txtIP.Text = Client.con_server;
-                //this.txtUsername.Text = Client.con_username;
-                //this.txtPassword.Text = Client.con_password;
-                //this.txtDBName.Text = Client.con_database;
+                this.txtIP.Text = Client.con_server;
+                this.txtUsername.Text = Client.con_username;
+                this.txtPassword.Text = Client.con_password;
+                this.txtDBName.Text = Client.con_database;
             }
             catch (Exception)
             {
@@ -79,7 +81,13 @@ namespace mobile_application.pages.App_Setting_Pages
 
             Client.Set_Connection_String(this.txtIP.Text, this.txtUsername.Text, this.txtPassword.Text, this.txtDBName.Text);
             _ = ConnectionSyntax.Insert(Client.con_server, Client.con_username, Client.con_password, Client.con_database, is_admin);
-            DisplayAlert("ثبت", "ثبت با موفقیت انجام شد", "تایید");
+
+
+            Context context = App.Context;
+            
+            var toast = Toast.MakeText(context, "ثبت با موفقیت انجام شد", ToastLength.Long);
+            toast.Show();
+            //Toast.MakeText( , "xx", ToastLength.Long).Show();
         }
 
         private void btnTextConnection_Clicked(object sender, EventArgs e)
@@ -96,6 +104,11 @@ namespace mobile_application.pages.App_Setting_Pages
                 this.lblConnectionState.TextColor = Color.Red;
                 this.lblConnectionState.Text = "Connection is close .";
             }
+        }
+
+        private void btnMainPage_Clicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new AppShell();
         }
     }
 }

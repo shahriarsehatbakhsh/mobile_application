@@ -55,7 +55,8 @@ namespace mobile_application.Models
         {
             try
             {
-                return DB_Context.db.ExecuteScalar<int>("SELECT TOP 1 FROM tb_ConnectionSetting WHERE is_default=1");
+                DB_Context.Init();
+                return DB_Context.db.ExecuteScalar<int>("SELECT * FROM tb_Connection WHERE is_default=1 LIMIT 1");
             }
             catch (Exception)
             {

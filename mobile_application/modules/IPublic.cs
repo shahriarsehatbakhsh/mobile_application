@@ -10,7 +10,7 @@ namespace mobile_application.modules
         /// <summary>
         /// data base file path .
         /// </summary>
-        public static string db_path => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "paya.DB");
+        public static string db_path => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "mobile_application.DB");
         //Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"db.SQlite");
         //Path.Combine(Xamarin.Essentials.FileSystem.AppDataDirectory, "db.SQlite");
 

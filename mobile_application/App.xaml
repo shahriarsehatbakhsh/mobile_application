@@ -24,6 +24,11 @@
             <!--<Setter Property="CornerRadius" Value="10" />-->
         </Style>
 
+        <Style Class="Sbtn" TargetType="Button">
+            <Setter Property="Text" Value="..." />
+            <Setter Property="WidthRequest" Value="50" />
+        </Style>
+
         <Style Class="lbl" TargetType="Label">
             <Setter Property="FontFamily" Value="bYekanb" />
             <Setter Property="FontSize" Value="Medium" />

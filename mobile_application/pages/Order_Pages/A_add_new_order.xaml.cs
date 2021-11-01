@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using mobile_application.pages.Popup_Pages;
 
 namespace mobile_application.pages.Order_Pages
 {
@@ -25,6 +26,11 @@ namespace mobile_application.pages.Order_Pages
         private void btnNext_Clicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new B_add_new_object_and_menu();
+        }
+
+        private void btnSelectCustomer_Clicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new customers_list_popup_page();
         }
     }
 }

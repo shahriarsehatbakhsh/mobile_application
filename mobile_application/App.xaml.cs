@@ -1,4 +1,6 @@
 
+
+using Android.Content;
 using Xamarin.Forms;
 
 namespace mobile_application
@@ -6,6 +8,7 @@ namespace mobile_application
     public partial class App : Application
     {
         public static object GlobalNavigation { get; internal set; }
+        public static Context Context { get; internal set; }
 
         public App()
         {

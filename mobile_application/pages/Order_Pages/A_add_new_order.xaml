@@ -44,7 +44,14 @@
                                 <Frame StyleClass="ftxt" >
                                     <StackLayout Orientation="Horizontal" >
                                         <Entry HorizontalOptions="FillAndExpand" Placeholder="مشتری" StyleClass="txt" />
-                                        <Label Text="هایپرمی شعبه پاژ" />
+                                        <Button x:Name="btnSelectCustomer" Clicked="btnSelectCustomer_Clicked" StyleClass="Sbtn" />
+                                    </StackLayout>
+                                </Frame>
+
+                                <Frame StyleClass="ftxt" >
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Entry HorizontalOptions="FillAndExpand" Placeholder="فروشنده" StyleClass="txt" />
+                                        <Button x:Name="btn" StyleClass="Sbtn" />
                                     </StackLayout>
                                 </Frame>
 
