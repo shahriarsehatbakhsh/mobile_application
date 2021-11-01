@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.pages.Users_Pages.user_login_page">
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Resources/Styles/main-style.css" />
+    </ContentPage.Resources>
+
+    <StackLayout Padding="0" BackgroundColor="LightGray" Margin="0" >
+        <Grid>
+            <StackLayout Padding="0" Margin="0">
+                <Frame HasShadow="True" HeightRequest="150" Padding="0" HorizontalOptions="FillAndExpand">
+                    <Image Source="@drawable/login_header.jpg" Aspect="AspectFill" Margin="0" />
+                </Frame>
+            </StackLayout>
+            <StackLayout Margin="15,130,15,0">
+                <Frame BackgroundColor="White" HasShadow="True" HeightRequest="400" HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                            <Label Text="پنل کاربری" TextColor="Black" FontSize="Medium" FontAttributes="Bold"   />
+                        </StackLayout>
+
+                        <StackLayout Margin="0,25,0,0">
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,20,0,0" CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Entry x:Name="txtUsername" HorizontalTextAlignment="Start" TextColor="#f4b400" HorizontalOptions="FillAndExpand" Margin="10,0,10,0" Placeholder="نام کاربری"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,10,0,0" CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Entry x:Name="txtPassword" HorizontalTextAlignment="End" IsPassword="True" TextColor="#f4b400" HorizontalOptions="FillAndExpand" Margin="10,0,10,0" Placeholder="گذرواژه"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox IsChecked="False" Color="#f4b400" />
+                            <Label Text="ذخیره نام کاربری و گذرواژه" HorizontalTextAlignment="End" VerticalTextAlignment="Start"  HorizontalOptions="EndAndExpand" FontFamily="bYekanb" FontSize="Medium" />
+                        </StackLayout>
+
+                        
+                        <Button x:Name="btnLogin" Clicked="btnLogin_Clicked" Text="ورود به برنامه"  StyleClass="button" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label IsVisible="false" Text="still not connect" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            <Label IsVisible="false" Text="sing up" HorizontalTextAlignment="Center" TextColor="#f4b400" HorizontalOptions="Center" FontAttributes="Bold" VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </Grid>
+
+    </StackLayout>
+</ContentPage>

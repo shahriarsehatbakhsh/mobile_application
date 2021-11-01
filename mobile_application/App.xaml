@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.App">
+
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#455399</Color>
+            <Color x:Key="BorderColor">black</Color>
+
+            <x:String x:Key="ExitIcon">&#xf52b;</x:String>
+            <x:String x:Key="CoffeeIcon">&#xf0f4;</x:String>
+            <x:String x:Key="ObjectIcon">&#xf291;</x:String>
+            
+        </ResourceDictionary>
+
+        <Style Class="btn1" TargetType="Button">
+            <!--<Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />-->
+            <!--<Setter Property="TextColor" Value="White" />-->
+            <Setter Property="FontFamily" Value="bYekanb" />
+            <Setter Property="FontSize" Value="Small" />
+            <!--<Setter Property="CornerRadius" Value="10" />-->
+        </Style>
+
+        <Style Class="lbl" TargetType="Label">
+            <Setter Property="FontFamily" Value="bYekanb" />
+            <Setter Property="FontSize" Value="Medium" />
+        </Style>
+        
+        <Style Class="button" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontFamily" Value="bYekanb" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+        
+        <Style Class="txt" TargetType="Entry">
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="Margin" Value="10,0,10,0" />
+            <Setter Property="FontFamily" Value="bNazanin" />
+        </Style>
+        
+        <Style Class="ftxt" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="BorderColor" Value="DarkGray" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0,20,0,0" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+
+        <Style Class="LabelIcon" TargetType="Label">
+            <Setter Property="Margin" Value="20,15,10,0" />
+            <Setter Property="FontFamily" Value="FAS" />
+        </Style>
+        
+    </Application.Resources>
+</Application>

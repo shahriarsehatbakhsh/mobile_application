@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.master_page"
+             Title="title">
+
+
+    <Grid BackgroundColor="#f3f5f9" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid BackgroundColor="#455399" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Margin="0,-40,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label TextColor="White" FontSize="40" HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="acc" FontAttributes="Bold" />
+                                <Span Text="PAYA" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="سیستم فروش" TextColor="White" FontSize="15" HorizontalTextAlignment="Center" />
+            </StackLayout>
+        </Grid>
+
+        <Frame HasShadow="True" Grid.Row="1" HeightRequest="80" Margin="0,-40,0,0" HorizontalOptions="CenterAndExpand" CornerRadius="10">
+            <Grid HorizontalOptions="FillAndExpand">
+
+                <BoxView  WidthRequest="300" BackgroundColor="White" HorizontalOptions="CenterAndExpand" />
+                <Label Text="تنظیمات سرور" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" TextColor="#455399" FontSize="30" FontFamily="bTerafficB" />
+
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Row="2" Margin="25,10,25,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <ScrollView>
+                <StackLayout>
+                    <Grid VerticalOptions="CenterAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Grid.Row="0">
+                            <Entry Placeholder="" />
+                        </StackLayout>
+
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+
+        </Frame>
+
+    </Grid>
+
+
+</ContentPage>

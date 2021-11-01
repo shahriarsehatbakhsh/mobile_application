@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.pages.connection_setting_page">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Label Text="اطلاعات ارتباط با سرور"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout>
+                <Entry x:Name="txtServerName" Placeholder="آدرس سرور" />
+                <Entry x:Name="txtUsername" Placeholder="نام کاربری سرور" />
+                <Entry x:Name="txtPassword" Placeholder="گذرواژه سرور" />
+                <Entry x:Name="txtDatabaseName" Placeholder="نام بانک اطلاعاتی" />
+                <Button x:Name="btnSave" Text="ثبت اطلاعات" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

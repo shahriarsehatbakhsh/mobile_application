@@ -1,0 +1,14 @@
+﻿^textbox
+{
+    background-color:azure;
+}
+
+^Entry {
+    direction:rtl;
+}
+
+^Label {
+    direction: rtl;
+    font-size: 30;
+    font-family: '';
+}

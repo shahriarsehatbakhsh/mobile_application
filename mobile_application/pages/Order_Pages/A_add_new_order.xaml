@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:order_page="clr-namespace:mobile_application.pages.Order_Pages"
+            x:Class="mobile_application.pages.Order_Pages.A_add_new_order">
+
+    <ContentPage.Content Title="سربرگ سفارش">
+        
+        <ScrollView>
+            <Grid BackgroundColor="#f3f5f9" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid BackgroundColor="#455399" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Margin="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="سربرگ سفارش جدید" TextColor="White" FontSize="Medium" HorizontalTextAlignment="Center" FontFamily="bTitrB" />
+                    </StackLayout>
+                </Grid>
+                <Frame Grid.Row="1" Margin="0,10,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" FlowDirection="RightToLeft">
+                        <Frame StyleClass="ftxt">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" >
+                                    <Entry Placeholder="شعبه" StyleClass="txt" />
+                                    <Button WidthRequest="50" />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label Text="شعبه مرکزی مشهد" BackgroundColor="LightGray" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Padding="5">
+                            <StackLayout Orientation="Vertical" Padding="0">
+
+                                <Frame StyleClass="ftxt" >
+                                    <StackLayout Orientation="Horizontal">
+                                        <Entry HorizontalOptions="FillAndExpand" Placeholder="تاریخ" StyleClass="txt" />
+                                        <DatePicker Date="2021/07/30" HorizontalOptions="CenterAndExpand" />
+                                    </StackLayout>
+                                </Frame>
+
+                                <Frame StyleClass="ftxt" >
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Entry HorizontalOptions="FillAndExpand" Placeholder="مشتری" StyleClass="txt" />
+                                        <Label Text="هایپرمی شعبه پاژ" />
+                                    </StackLayout>
+                                </Frame>
+
+                                <Frame StyleClass="ftxt" >
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Entry HorizontalOptions="FillAndExpand" Placeholder="سوپروایزر :" StyleClass="txt" />
+                                        <Label Text="هایپرمی شعبه پاژ" />
+                                    </StackLayout>
+                                </Frame>
+
+                                <Frame StyleClass="ftxt">
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Picker x:Name="picker" Title="نحوه پرداخت را انتخاب کنید" >
+                                        </Picker>
+                                    </StackLayout>
+                                </Frame>
+
+                                <Frame StyleClass="ftxt">
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Entry Placeholder="مدت روز اعتبار" StyleClass="txt" />
+                                    </StackLayout>
+                                </Frame>
+
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="مصوبه :" FontFamily="bTerafficB" FontSize="Title" />
+                                    <Entry HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                        <Frame>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="مانده مشتری:" FontFamily="bTerafficB" FontSize="Title" />
+                                    <Entry Placeholder="" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="وضعیت مشتری:" FontFamily="bTerafficB" FontSize="Title" />
+                                    <Entry Placeholder="" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                        <Frame>
+                            <StackLayout Orientation="Horizontal">
+                                <Button x:Name="btnMain" StyleClass="button" Text="صفحه اصلی" HorizontalOptions="FillAndExpand" Clicked="btnMain_Clicked" />
+                                <Button x:Name="btnNext" StyleClass="button" Text="مرحله بعد" HorizontalOptions="FillAndExpand" Clicked="btnNext_Clicked" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </ScrollView>
+        
+    </ContentPage.Content>
+
+</ContentPage>

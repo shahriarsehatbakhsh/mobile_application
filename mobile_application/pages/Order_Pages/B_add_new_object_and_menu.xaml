@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:order_page="clr-namespace:mobile_application.pages.Order_Pages"
+            x:Class="mobile_application.pages.Order_Pages.B_add_new_object_and_menu">
+  <!--Pages can be added as references or inline-->
+
+    <ContentPage Title="اضافه کردن کالای جدید">
+        <StackLayout BackgroundColor="LightGray">
+            <ScrollView>
+                <Grid BackgroundColor="#f3f5f9" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid BackgroundColor="#455399" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout Margin="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Label Text="(( انتخاب کالا ))" TextColor="White" FontSize="Medium" HorizontalTextAlignment="Center" FontFamily="bTitrB" />
+                        </StackLayout>
+                    </Grid>
+                    
+                    <Frame Grid.Row="1" Margin="0,10,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical" FlowDirection="RightToLeft">
+                            <Frame StyleClass="ftxt" BorderColor="Red">
+                                <StackLayout>
+                                    <Button x:Name="btnSearch" Text="جست و جو" />
+                                </StackLayout>
+                            </Frame>
+                            
+                            <Frame Padding="5">
+                                <StackLayout Orientation="Vertical" Padding="0">
+
+                                    <Frame StyleClass="ftxt" >
+                                        <StackLayout Orientation="Horizontal">
+                                            <Entry HorizontalOptions="FillAndExpand" Placeholder="کد کالا" StyleClass="txt" />
+                                            <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" />
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <Frame StyleClass="ftxt" >
+                                        <StackLayout Orientation="Horizontal" >
+                                            <Entry HorizontalOptions="FillAndExpand" Placeholder="نام کالا" StyleClass="txt" />
+                                            <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" />
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <Frame StyleClass="ftxt" >
+                                        <StackLayout Orientation="Horizontal" >
+                                            <Entry HorizontalOptions="FillAndExpand" Placeholder="مقدار" StyleClass="txt" />
+                                            <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" />
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <Frame StyleClass="ftxt">
+                                        <StackLayout Orientation="Horizontal" >
+                                            <Entry HorizontalOptions="FillAndExpand" Placeholder="مقدار بسته" StyleClass="txt" />
+                                            <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" />
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <Frame StyleClass="ftxt">
+                                        <StackLayout Orientation="Horizontal" >
+                                            <Entry HorizontalOptions="FillAndExpand" Placeholder="نرخ" StyleClass="txt" />
+                                            <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" />
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <Frame StyleClass="ftxt">
+                                        <StackLayout Orientation="Horizontal" >
+                                            <Entry HorizontalOptions="FillAndExpand" Placeholder="مبلغ" StyleClass="txt" />
+                                            <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" />
+                                        </StackLayout>
+                                    </Frame>
+                                    
+                                </StackLayout>
+                            </Frame>
+                            
+                            <Frame>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Label Text="مانده مشتری:" FontFamily="bTerafficB" FontSize="Title" />
+                                        <Entry Placeholder="" HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Label Text="وضعیت مشتری:" FontFamily="bTerafficB" FontSize="Title" />
+                                        <Entry Placeholder="" HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            
+                            <Frame>
+                                <StackLayout Orientation="Horizontal">
+                                    <Button x:Name="btnAddObject" StyleClass="button" Text="اضافه به لیست سفارش" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage>
+
+    <NavigationPage Title="لیست کالاهای سفارش">
+        <x:Arguments>
+            <ContentPage>
+                <order_page:C_order_objects_list/>
+            </ContentPage>
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="ثبت نهایی سفارش">
+        <x:Arguments>
+            <ContentPage>
+                <order_page:D_order_detail_and_save/>
+            </ContentPage>
+        </x:Arguments>
+    </NavigationPage>
+
+</TabbedPage>
