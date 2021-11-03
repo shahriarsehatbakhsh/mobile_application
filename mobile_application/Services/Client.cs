@@ -29,7 +29,7 @@ namespace mobile_application.Services
         public static string con_password = "";
 
         
-        private static string connection_string = "";
+        public static string connection_string = "";
 
 
         public static void Set_Connection_String(string datasource, string username, string password, string db)
@@ -60,7 +60,6 @@ namespace mobile_application.Services
             connection_string = "Data Source=" + con_server + ";Initial Catalog=" + con_database + ";Persist Security Info=True;User ID=" + con_username + ";Password=" + con_password + "";
             con.ConnectionString = connection_string;
         }
-
 
         /// <summary>
         /// if connection is close then connection=open else connection=close .

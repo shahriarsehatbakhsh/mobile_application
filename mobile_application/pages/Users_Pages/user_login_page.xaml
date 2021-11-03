@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mobile_application.pages.Users_Pages.user_login_page">
+             x:Class="mobile_application.pages.Users_Pages.user_login_page" FlowDirection="RightToLeft">
     <ContentPage.Resources>
         <StyleSheet Source="../../Resources/Styles/main-style.css" />
     </ContentPage.Resources>
@@ -17,32 +17,32 @@
                 <Frame BackgroundColor="White" HasShadow="True" HeightRequest="400" HorizontalOptions="FillAndExpand">
                     <StackLayout>
                         <StackLayout HorizontalOptions="CenterAndExpand">
-                            <Label Text="پنل کاربری" TextColor="Black" FontSize="Medium" FontAttributes="Bold"   />
+                            <Label Text="ورود به سیستم" FontFamily="bYekanb" TextColor="Black"   />
                         </StackLayout>
 
                         <StackLayout Margin="0,25,0,0">
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,20,0,0" CornerRadius="10" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    <Entry x:Name="txtUsername" HorizontalTextAlignment="Start" TextColor="#f4b400" HorizontalOptions="FillAndExpand" Margin="10,0,10,0" Placeholder="نام کاربری"/>
+                                    <Entry x:Name="txtUsername" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" Margin="10,0,10,0" Placeholder="نام کاربری"/>
                                 </StackLayout>
                             </Frame>
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,10,0,0" CornerRadius="10" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    <Entry x:Name="txtPassword" HorizontalTextAlignment="End" IsPassword="True" TextColor="#f4b400" HorizontalOptions="FillAndExpand" Margin="10,0,10,0" Placeholder="گذرواژه"/>
+                                    <Entry x:Name="txtPassword" HorizontalTextAlignment="End" IsPassword="True" HorizontalOptions="FillAndExpand" Margin="10,0,10,0" Placeholder="گذرواژه"/>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal">
-                            <CheckBox IsChecked="False" Color="#f4b400" />
-                            <Label Text="ذخیره نام کاربری و گذرواژه" HorizontalTextAlignment="End" VerticalTextAlignment="Start"  HorizontalOptions="EndAndExpand" FontFamily="bYekanb" FontSize="Medium" />
+                            <CheckBox x:Name="chkSavePassword" IsChecked="False" Color="{StaticResource Primary}" CheckedChanged="chkSavePassword_CheckedChanged" />
+                            <Label Text="ذخیره نام کاربری و گذرواژه" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"  HorizontalOptions="StartAndExpand" FontFamily="bYekanb" FontSize="Medium" />
                         </StackLayout>
 
                         
                         <Button x:Name="btnLogin" Clicked="btnLogin_Clicked" Text="ورود به برنامه"  StyleClass="button" />
                         <StackLayout Orientation="Horizontal">
                             <Label IsVisible="false" Text="still not connect" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                            <Label IsVisible="false" Text="sing up" HorizontalTextAlignment="Center" TextColor="#f4b400" HorizontalOptions="Center" FontAttributes="Bold" VerticalTextAlignment="Center" />
+                            <Label x:Name="lblLoginFaild" IsVisible="false" Text="نام کاربری یا گذرواژه وارد شده اشتباه میباشد" HorizontalTextAlignment="Start" TextColor="Red" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium" FontFamily="bYekanb" VerticalTextAlignment="Center" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>

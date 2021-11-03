@@ -18,7 +18,7 @@ namespace mobile_application.pages
         public home_page()
         {
             InitializeComponent();
-            BindingContext = new main_menu_list();
+            this.BindingContext = new main_menu_list();
 
             MyCommand = new Command(connection_setting_page_click);
         }

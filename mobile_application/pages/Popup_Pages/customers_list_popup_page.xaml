@@ -5,7 +5,7 @@
                  xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
                  x:Class="mobile_application.pages.Popup_Pages.customers_list_popup_page" Title="لیست مشتری" FlowDirection="RightToLeft"
                  Visual="Material">
-    
+
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Center" PositionOut="Center"
@@ -14,16 +14,30 @@
             EasingIn="SinOut" EasingOut="SinIn" 
             HasBackgroundAnimation="True" />
     </pages:PopupPage.Animation>
-    
+
     <ContentPage.Content>
         <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center" >
             <StackLayout Padding="5">
                 <Label Text="انتخاب مشتری" StyleClass="tite_medium" />
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                </Grid>
+
+                <StackLayout>
+                    <!--<=============================================================================================================>-->
+                    <ListView x:Name="lst" >
+                        <ListView.Header>
+                            <Label Text="ListView.Header" />
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Sharh}" BackgroundColor="Yellow" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <!--<=============================================================================================================>-->
+                </StackLayout>
                 <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
                     <Button Text="انتخاب" StyleClass="select_button" x:Name="btnSelectItem" />
                     <Button Text="بستن" StyleClass="select_button" x:Name="btnCloseMe" Clicked="btnCloseMe_Clicked"  />
