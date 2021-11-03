@@ -77,7 +77,9 @@ namespace mobile_application.pages.App_Setting_Pages
                 is_admin = 0;
             }
 
+
             Client.Set_Connection_String(this.txtIP.Text, this.txtUsername.Text, this.txtPassword.Text, this.txtDBName.Text);
+            _ = ConnectionSyntax.Delete();
             _ = ConnectionSyntax.Insert(Client.con_server, Client.con_username, Client.con_password, Client.con_database, is_admin);
 
 
@@ -100,9 +102,9 @@ namespace mobile_application.pages.App_Setting_Pages
             }
         }
 
-        private void btnMainPage_Clicked(object sender, EventArgs e)
+        private async void btnMainPage_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new AppShell();
+            await Navigation.PopAsync();
         }
     }
 }

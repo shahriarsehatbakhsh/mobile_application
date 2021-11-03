@@ -1,4 +1,5 @@
-﻿namespace mobile_application.Services.Models
+﻿
+namespace mobile_application.Services.Models
 {
     public class vw_customers_list_get_code_shobe
     {

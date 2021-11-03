@@ -1,55 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mobile_application.pages.Users_Pages.user_create_new">
-    <ContentPage.Content>
-        <Grid>
-            <StackLayout>
-                <StackLayout Grid.Row="0">
-
-                </StackLayout>
-                <StackLayout Grid.Row="1">
-                    <Frame CornerRadius="20" BackgroundColor="#FF6B00"  HeightRequest="40" >
-                        <StackLayout>
-                            <Label Text="Title" FontAttributes="Bold" FontSize="30" TextColor="White"
-                                VerticalOptions="CenterAndExpand" 
-                                HorizontalOptions="CenterAndExpand" />
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-
-
-                <StackLayout Grid.Row="2">
-                    <Frame HasShadow="True" >
-                        <StackLayout>
-                            <!--<this is main content >-->
-
-                            <Entry x:Name="txtUsername" Placeholder="نام کاربری جدید" />
-                            <Entry x:Name="txtPassword" Placeholder="گذرواژه ورود به برنامه" />
-                            <Entry x:Name="txtPasswordConfirm" Placeholder="تکرار گذرواژه" />
-                            <StackLayout Orientation="Horizontal">
-                                <CheckBox x:Name="chkAdmin" IsChecked="False" Color="#f4b400" />
-                                <Label Text="کاربر به عنوان مدیر" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  HorizontalOptions="Start" />
-                            </StackLayout>
-                            
-
-                            <!--<this is main content >-->
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-
-
-                <StackLayout Grid.Row="3" VerticalOptions="EndAndExpand">
-                    <Frame>
-                        <StackLayout>
-                            <Grid>
-                                <Button Grid.Column="0" x:Name="btnSave" Text="ثبت اطلاعات" BackgroundColor="#2C2C2C" CornerRadius="10" TextColor="White" FontSize="15" FontFamily="bNazaninB" Clicked="btnSaveUser_Clicked" />
-                                <Button Grid.Column="1" x:Name="btnMain" Text="ورود به سیستم"  BackgroundColor="#2C2C2C" CornerRadius="10" TextColor="White" FontSize="15" FontFamily="bNazaninB" Clicked="btnMain_Clicked" />
-                            </Grid>
-                        </StackLayout>
-                    </Frame>
+             x:Class="mobile_application.pages.Users_Pages.user_create_new" BackgroundColor="#EEEEEE">
+    
+        <ContentPage.Content>
+            <StackLayout Padding="30,80,30,0">
+                <Label Text="User Settings" TextColor="#533F95" FontSize="25" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
+                <StackLayout Spacing="15" VerticalOptions="CenterAndExpand">
+                    <Entry x:Name="txtUsername" Placeholder="نام کاربری جدید" Text="{Binding UserName}" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                    <Entry x:Name="txtPassword" Placeholder="گذرواژه ورود به برنامه" Keyboard="Numeric" Text="{Binding MobileNumber}" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                    <Entry x:Name="txtPasswordConfirm" Placeholder="تکرار گذرواژه" Keyboard="Email" Text="{Binding Email}" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                    <CheckBox x:Name="chkAdmin" IsChecked="False" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                    <Button x:Name="btnSave" Text="ثبت اطلاعات" TextColor="White" BackgroundColor="#533F95" FontAttributes="Bold" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HorizontalOptions="FillAndExpand" FontFamily="bNazaninB" Clicked="btnSaveUser_Clicked" />
                 </StackLayout>
             </StackLayout>
-        </Grid>
-    </ContentPage.Content>
+        </ContentPage.Content>
+        
 </ContentPage>

@@ -41,8 +41,8 @@
                                     </StackLayout>
                                 </Frame>
 
-                                <Frame StyleClass="ftxt" >
-                                    <StackLayout Orientation="Horizontal" >
+                                <Frame StyleClass="ftxt">
+                                    <StackLayout Orientation="Horizontal"  >
                                         <Entry HorizontalOptions="FillAndExpand" Placeholder="مشتری" StyleClass="txt" />
                                         <Button x:Name="btnSelectCustomer" Clicked="btnSelectCustomer_Clicked" StyleClass="Sbtn" />
                                     </StackLayout>

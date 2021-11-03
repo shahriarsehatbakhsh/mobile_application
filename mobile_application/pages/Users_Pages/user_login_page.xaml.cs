@@ -75,7 +75,9 @@ namespace mobile_application.pages.Users_Pages
 
 
                 IPublic.user_ID = r;
-                App.Current.MainPage = new AppShell();
+                //App.Current.MainPage = new AppShell();
+                Navigation.PopAsync();
+                Navigation.PopAsync();
                 return;
             }                
 

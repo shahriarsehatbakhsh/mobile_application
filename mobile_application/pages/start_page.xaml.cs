@@ -18,7 +18,6 @@ namespace mobile_application.pages
         public start_page()
         {
             InitializeComponent();
-            //Client.Init();
 
             var r = ConnectionSyntax.Count();
             if (r == 0)
@@ -32,7 +31,7 @@ namespace mobile_application.pages
             }
         }
 
-        private void btnStart_Clicked(object sender, EventArgs e)
+        private async void btnStart_Clicked(object sender, EventArgs e)
         {
             //this.IsBusy = true;
             //System.Threading.Thread.Sleep(2000);
@@ -41,9 +40,12 @@ namespace mobile_application.pages
             var count = UsersSyntax.Count();
 
             if (count == 0)
-                App.Current.MainPage = new user_create_new();
+                //App.Current.MainPage = new user_create_new();
+                await Navigation.PushAsync(new user_create_new(),true);
+            
             else
-                App.Current.MainPage = new user_login_page();
+                //App.Current.MainPage = new user_login_page();
+                await Navigation.PushAsync(new user_login_page(),true);
 
             //string a = string.Format("Found '{0}' stock items.", count);
             //App.Current.MainPage = new NavigationPage(new user_login_page());

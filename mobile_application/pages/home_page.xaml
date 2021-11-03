@@ -4,9 +4,10 @@
              x:Class="mobile_application.pages.home_page" FlowDirection="RightToLeft">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="profile" IconImageSource="@drawable/ChangePasswordIcon.png"  />
-        <ToolbarItem x:Name="sql" IconImageSource="@drawable/ConnectionSettingIcon.jpg" Command="{Binding MyCommand}" />
-        <ToolbarItem x:Name="exit" IconImageSource="@drawable/ExitIcon.png" />
+        <ToolbarItem x:Name="create_profile" IconImageSource="@drawable/ChangePasswordIcon.png" Clicked="create_profile_Clicked" />
+        <ToolbarItem x:Name="profile" IconImageSource="@drawable/ChangePasswordIcon.png" Clicked="profile_Clicked" />
+        <ToolbarItem x:Name="mnusql" IconImageSource="@drawable/ConnectionSettingIcon.jpg" Clicked="mnusql_Clicked"  />
+        <ToolbarItem x:Name="exit" IconImageSource="@drawable/ExitIcon.png" Command="{Binding mnusqlCommand}" />
     </ContentPage.ToolbarItems>
 
 

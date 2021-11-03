@@ -51,6 +51,21 @@ namespace mobile_application.Models
             }
         }
 
+        public static bool Delete()
+        {
+            try
+            {
+                DB_Context.Init();
+                DB_Context.db.DeleteAll<tb_Connection>();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public static int Get_Active_Database_Connection_Id()
         {
             try

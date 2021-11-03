@@ -13,7 +13,11 @@ namespace mobile_application
         public App()
         {
             InitializeComponent();
-            MainPage = new mobile_application.pages.start_page();
+            //MainPage = new NavigationPage(new mobile_application.pages.home_page());
+
+            var rootPage = new NavigationPage(new mobile_application.pages.home_page());
+            GlobalNavigation = rootPage.Navigation;
+            MainPage = rootPage;
         }
 
         protected override void OnStart()

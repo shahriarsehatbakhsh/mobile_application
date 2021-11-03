@@ -8,7 +8,7 @@ GO
 -- =============================================
 -- دریافت لیست مشتری با پارامتر کد شعبه
 -- =============================================
-CREATE PROCEDURE customers_list_get_code_shobe
+CREATE PROCEDURE sp_customers_list_get_code_shobe
 	@code_shobe int
 AS
 BEGIN

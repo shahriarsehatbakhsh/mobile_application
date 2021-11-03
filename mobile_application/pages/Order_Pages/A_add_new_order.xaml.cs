@@ -22,17 +22,17 @@ namespace mobile_application.pages.Order_Pages
 
         private void btnMain_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new AppShell();
+            Navigation.PopAsync(true);
         }
 
         private void btnNext_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new B_add_new_object_and_menu();
+            Navigation.PushAsync(new B_add_new_object_and_menu(), true);
         }
 
         private void btnSelectCustomer_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new customers_list_popup_page();
+            Navigation.PushAsync(new customers_search_list_popup_page(), true);
         }
     }
 }

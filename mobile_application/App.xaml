@@ -48,10 +48,11 @@
             <Setter Property="HorizontalOptions" Value="FillAndExpand" />
             <Setter Property="Margin" Value="10,0,10,0" />
             <Setter Property="FontFamily" Value="bNazanin" />
+            <Setter Property="BackgroundColor" Value="White" />
         </Style>
         
         <Style Class="ftxt" TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="BorderColor" Value="DarkGray" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="Margin" Value="0,20,0,0" />

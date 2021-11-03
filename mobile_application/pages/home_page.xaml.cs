@@ -18,9 +18,19 @@ namespace mobile_application.pages
         public home_page()
         {
             InitializeComponent();
+
+            if (IPublic.user_ID == 0)
+            {
+                Navigation.PushAsync(new mobile_application.pages.start_page());
+                return;
+            }
+
             this.BindingContext = new main_menu_list();
 
-            MyCommand = new Command(connection_setting_page_click);
+            mnusqlCommand = new Command(connection_setting_page_click);
+
+            Navigation.RemovePage(new start_page());
+            Navigation.RemovePage(new Users_Pages.user_login_page());
         }
 
         private void btnOpenForm_Clicked(object sender, EventArgs e)
@@ -63,17 +73,32 @@ namespace mobile_application.pages
         }
 
 
-        public ICommand MyCommand { private set; get; }
+        public ICommand mnusqlCommand { private set; get; }
 
-        private void connection_setting_page_click()
+        private async void connection_setting_page_click()
         {
-            App.Current.MainPage = new mobile_application.pages.App_Setting_Pages.server_connection_setting_page();
+            await Navigation.PushAsync(new mobile_application.pages.App_Setting_Pages.server_connection_setting_page());
         }
 
-        private void btnMenu01_Clicked(object sender, EventArgs e)
+        private async void btnMenu01_Clicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new mobile_application.pages.Order_Pages.A_add_new_order(), true);
-            App.Current.MainPage = new mobile_application.pages.Order_Pages.A_add_new_order();
+            //App.Current.MainPage = new mobile_application.pages.Order_Pages.A_add_new_order();
+            await Navigation.PushAsync(new mobile_application.pages.Order_Pages.A_add_new_order());
+        }
+
+        private async void mnusql_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new mobile_application.pages.App_Setting_Pages.server_connection_setting_page());
+        }
+
+        private async void profile_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new mobile_application.pages.Users_Pages.user_change_password_page());
+        }
+
+        private async void create_profile_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new mobile_application.pages.Users_Pages.user_create_new());
         }
     }
 }

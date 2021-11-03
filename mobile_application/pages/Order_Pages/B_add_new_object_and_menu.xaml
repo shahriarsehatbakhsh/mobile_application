@@ -24,7 +24,7 @@
                         <StackLayout Orientation="Vertical" FlowDirection="RightToLeft">
                             <Frame StyleClass="ftxt" BorderColor="Red">
                                 <StackLayout>
-                                    <Button x:Name="btnSearch" Text="جست و جو" />
+                                    <Button x:Name="btnSearchObject" Clicked="btnSearchObject_Clicked"  Text="جست و جو" />
                                 </StackLayout>
                             </Frame>
                             
@@ -33,14 +33,14 @@
 
                                     <Frame StyleClass="ftxt" >
                                         <StackLayout Orientation="Horizontal">
-                                            <Entry HorizontalOptions="FillAndExpand" Placeholder="کد کالا" StyleClass="txt" />
+                                            <Entry x:Name="txtObjCode" HorizontalOptions="FillAndExpand" Placeholder="کد کالا" StyleClass="txt" />
                                             <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" />
                                         </StackLayout>
                                     </Frame>
 
                                     <Frame StyleClass="ftxt" >
                                         <StackLayout Orientation="Horizontal" >
-                                            <Entry HorizontalOptions="FillAndExpand" Placeholder="نام کالا" StyleClass="txt" />
+                                            <Entry x:Name="txtObjName" HorizontalOptions="FillAndExpand" Placeholder="نام کالا" StyleClass="txt" />
                                             <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" />
                                         </StackLayout>
                                     </Frame>

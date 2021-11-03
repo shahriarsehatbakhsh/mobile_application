@@ -37,9 +37,5 @@ namespace mobile_application.pages.Users_Pages
             }
         }
 
-        private void btnMain_Clicked(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new user_login_page();
-        }
     }
 }
