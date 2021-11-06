@@ -33,8 +33,8 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" HorizontalOptions="Start" />
-                                        <Label Text="{Binding Sharh}" StyleClass="LabelIcon" HorizontalOptions="StartAndExpand" />
-                                        <Label Text="{Binding Code}" StyleClass="LabelIcon" HorizontalOptions="End" />
+                                        <Label x:Name="txtSharh" Text="{Binding Sharh}" StyleClass="LabelIcon" HorizontalOptions="StartAndExpand" />
+                                        <Label x:Name="txtCode" Text="{Binding Code}" StyleClass="LabelIcon" HorizontalOptions="End" />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

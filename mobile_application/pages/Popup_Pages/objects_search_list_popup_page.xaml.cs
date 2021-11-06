@@ -10,7 +10,6 @@ using mobile_application.Services;
 using mobile_application.Services.Models;
 using System.Diagnostics;
 using mobile_application.pages.Order_Pages;
-using mobile_application.Helper;
 
 namespace mobile_application.pages.Popup_Pages
 {
@@ -32,21 +31,33 @@ namespace mobile_application.pages.Popup_Pages
         }
 
 
-        public mobile_application.Helper.Item Item { get; set; }
+        public delegate void SearchDelegate(object sender, List<vw_objects_list_get_object_name> e);
+        public event SearchDelegate Search;
         private async void btnSelectItem_Clicked(object sender, EventArgs e)
         {
-            var item = this.lstObjectsList.SelectedItem;
+            var select_item = this.lstObjectsList.SelectedItem;
 
-            _navigationResut = item;
-            await Navigation.PopModalAsync();
+            List<vw_objects_list_get_object_name> item = new List<vw_objects_list_get_object_name>();
+            item.Add
+                (
+                    new vw_objects_list_get_object_name
+                    {
+                        Code = 1,
+                        Sharh = "کالای انتخاب شده"
+                    }
+                );
             
+            Search(sender, item);
+
+            await Navigation.PopAsync();
         }
+
+
 
         private void txtSearchObject_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
-                
                 string objName = this.txtSearchObject.Text;
                 List<vw_objects_list_get_object_name> Items = sp.Objects_List_Get_Object_Names(objName);
                 this.lstObjectsList.ItemsSource = Items;

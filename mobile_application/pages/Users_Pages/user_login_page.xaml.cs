@@ -38,7 +38,7 @@ namespace mobile_application.pages.Users_Pages
         }
 
 
-        private void btnLogin_Clicked(object sender, EventArgs e)
+        private  void btnLogin_Clicked(object sender, EventArgs e)
         {
             this.IsBusy = true;
 
@@ -52,11 +52,12 @@ namespace mobile_application.pages.Users_Pages
 
 
             System.Threading.Thread.Sleep(3000);
-            this.IsBusy = false;
+            
             if (r == 0)
             {
-                DisplayAlert("Error", "username or password is incorrect !!!", "again");
+                 DisplayAlert("Error", "username or password is incorrect !!!", "again");
                 this.Focus();
+                this.IsBusy = false;
                 return;
             }
             else
@@ -76,8 +77,9 @@ namespace mobile_application.pages.Users_Pages
 
                 IPublic.user_ID = r;
                 //App.Current.MainPage = new AppShell();
-                Navigation.PopAsync();
-                Navigation.PopAsync();
+                 Navigation.PopAsync();
+                 Navigation.PopAsync();
+                this.IsBusy = false;
                 return;
             }                
 

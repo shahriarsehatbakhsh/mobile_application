@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.pages.Customers.customers_list_page">
+    <Grid BackgroundColor="#f3f5f9" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="#455399" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Margin="0,-40,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label TextColor="White" FontSize="40" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text=".net" />
+                                <Span Text="conf" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="foucing on the list" TextColor="White" FontSize="15" HorizontalTextAlignment="Center" />
+            </StackLayout>
+        </Grid>
+        <Frame HasShadow="True"  Grid.Row="1" HeightRequest="80" Margin="0,-40,0,0" VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <CollectionView SelectionMode="None" ItemsSource="{Binding application_main_menu_items}">
+
+                    <CollectionView.Header>
+                        <Label Text="لیست منوی برنامه" TextColor="Black" FontSize="18" FontAttributes="Bold" FontFamily="bTeraffic" />
+                    </CollectionView.Header>
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="2" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Margin="5" BackgroundColor="#f2f2f2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView BackgroundColor="{Binding Color}" WidthRequest="3" HorizontalOptions="Start" 
+                                         VerticalOptions="FillAndExpand" />
+
+
+                                    <StackLayout Padding="0" Grid.Column="0">
+                                        <Frame Margin="10" VerticalOptions="CenterAndExpand" BackgroundColor="White" Padding="0" HeightRequest="90" WidthRequest="110">
+                                            <Image Source="@drawable/login_header.jpg" Aspect="AspectFill"/>
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout Margin="10" Grid.Column="1">
+                                        <Label Text="{Binding title}" TextColor="White" FontSize="15" FontAttributes="Bold" />
+                                        <Label Text="{Binding Description}" TextColor="White" FontSize="Small" />
+                                        <Button x:Name="btnOpenForm" 
+                                            Text="{Binding title}"
+                                            BackgroundColor="Gray" 
+                                            FontSize="Small" 
+                                            FontFamily="bTeraffic"
+                                            HeightRequest="40"/>
+                                    </StackLayout>
+                                </Grid>
+
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

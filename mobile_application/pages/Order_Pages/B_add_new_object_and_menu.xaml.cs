@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.pages.Popup_Pages;
+using mobile_application.Services.Models;
 
 namespace mobile_application.pages.Order_Pages
 {
@@ -19,35 +20,21 @@ namespace mobile_application.pages.Order_Pages
         }
 
 
-
-        ItemsViewModel viewModel;
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-        {
-            var item = args.SelectedItem as Item;
-            if (item == null)
-                return;
-
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-
-            // Manually deselect item.
-            ItemsListView.SelectedItem = null;
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
-        }
-
-
-
-
+        objects_search_list_popup_page frm = new objects_search_list_popup_page();
         private async void btnSearchObject_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new objects_search_list_popup_page(), true);
+
+            frm = new objects_search_list_popup_page();
+            frm.Search += Frm_Search;
+
+            await Navigation.PushAsync(frm, true);
         }
 
-       
+        private void Frm_Search(object sender, List<vw_objects_list_get_object_name> e)
+        {
+            this.txtObjCode.Text = e[0].Code.ToString();
+            this.txtObjName.Text = e[0].Sharh.ToString();
+        }
+
     }
 }

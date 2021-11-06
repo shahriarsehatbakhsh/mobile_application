@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace mobile_application.pages.List_Pages
+namespace mobile_application.pages.Customers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class objects_list : ContentView
+    public partial class customers_list_page : ContentPage
     {
-        public objects_list()
+        public customers_list_page()
         {
             InitializeComponent();
         }

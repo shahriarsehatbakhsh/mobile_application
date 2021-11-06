@@ -100,5 +100,20 @@ namespace mobile_application.pages
         {
             await Navigation.PushAsync(new mobile_application.pages.Users_Pages.user_create_new());
         }
+
+        private async void btnMenu02_Clicked(object sender, EventArgs e)
+        {
+            
+        }
+
+        private async void btnMenu03_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new mobile_application.pages.Customers.customers_list_page());
+        }
+
+        private async void btnMenu04_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new mobile_application.pages.Objects.objects_list_page());
+        }
     }
 }

@@ -20,19 +20,19 @@ namespace mobile_application.pages.Order_Pages
             InitializeComponent();
         }
 
-        private void btnMain_Clicked(object sender, EventArgs e)
+        private async void btnMain_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopAsync(true);
+            await Navigation.PopAsync(true);
         }
 
-        private void btnNext_Clicked(object sender, EventArgs e)
+        private async void btnNext_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new B_add_new_object_and_menu(), true);
+            await Navigation.PushAsync(new B_add_new_object_and_menu(), true);
         }
 
-        private void btnSelectCustomer_Clicked(object sender, EventArgs e)
+        private async void btnSelectCustomer_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new customers_search_list_popup_page(), true);
+            await Navigation.PushAsync(new customers_search_list_popup_page(), true);
         }
     }
 }
