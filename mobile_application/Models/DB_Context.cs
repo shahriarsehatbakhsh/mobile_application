@@ -22,7 +22,7 @@ namespace mobile_application.Models
                 return;
 
 
-            var DatabasePath = IPublic.db_path;
+            var DatabasePath = mobile_application.Helper.Static_Loading.db_path;
             bool ex = File.Exists(DatabasePath);
 
 

@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using mobile_application.modules;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using mobile_application.Helper;
+
 
 
 namespace mobile_application.pages
@@ -19,13 +21,13 @@ namespace mobile_application.pages
         {
             InitializeComponent();
 
-            if (IPublic.user_ID == 0)
+            if (Static_Loading.current_user == null)
             {
                 Navigation.PushAsync(new mobile_application.pages.start_page());
                 return;
             }
 
-            this.BindingContext = new main_menu_list();
+            //this.BindingContext = new main_menu_list();
 
             mnusqlCommand = new Command(connection_setting_page_click);
 

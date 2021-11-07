@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using mobile_application.Models.Users;
+using mobile_application.Helper;
 
 namespace mobile_application.Models
 {
@@ -28,7 +29,7 @@ namespace mobile_application.Models
                     is_admin = Is_Admin
                 };
 
-                _ = DB_Context.db.Insert(new_user);
+                Static_Loading.user_id = DB_Context.db.Insert(new_user);
                 return true;
             }
             catch (Exception)
@@ -113,12 +114,12 @@ namespace mobile_application.Models
             }
         }
 
-        public static List<tb_Users> Get(int id)
+        public static tb_Users Get(int id)
         {
             try
             {
                 DB_Context.Init();
-                return DB_Context.db.Table<tb_Users>().Where(o => o.Id == id).ToList();
+                return DB_Context.db.Table<tb_Users>().Where(o => o.Id == id).FirstOrDefault();
             }
             catch (Exception)
             {

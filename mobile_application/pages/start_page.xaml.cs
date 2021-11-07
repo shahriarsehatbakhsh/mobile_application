@@ -27,7 +27,7 @@ namespace mobile_application.pages
             else
             {
                 var a = ConnectionSyntax.Get_Active_Database_Connection_Id();
-                Client.Set_Connection_String(r);
+                Client.Set_Connection_String(a);
             }
         }
 

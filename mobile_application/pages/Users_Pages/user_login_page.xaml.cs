@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Diagnostics;
 using mobile_application.Services;
-using mobile_application.modules;
+using mobile_application.Helper;
 using mobile_application.Models;
 using System.IO;
 using Xamarin.Essentials;
@@ -46,14 +46,16 @@ namespace mobile_application.pages.Users_Pages
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
+
             var r = UsersSyntax.Get_Id(username, password);
+            Static_Loading.current_user = UsersSyntax.Get(r);
 
-
+            
 
 
             System.Threading.Thread.Sleep(3000);
             
-            if (r == 0)
+            if (r == 0 || Static_Loading.current_user == null)
             {
                 await DisplayAlert("Error", "username or password is incorrect !!!", "again");
                 this.Focus();
@@ -75,7 +77,7 @@ namespace mobile_application.pages.Users_Pages
                 }
 
 
-                IPublic.user_ID = r;
+                mobile_application.Helper.Static_Loading.user_id = r;
                 //App.Current.MainPage = new AppShell();
                  Navigation.PopAsync();
                  Navigation.PopAsync();

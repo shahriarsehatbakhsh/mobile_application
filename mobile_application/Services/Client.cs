@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 using mobile_application.Models;
-using mobile_application.modules;
+using mobile_application.Helper;
 
 namespace mobile_application.Services
 {
@@ -23,19 +23,20 @@ namespace mobile_application.Services
         }
 
 
+        public static string con_name = "";
         public static string con_server = "";
-        public static string con_database = "";
-        public static string con_username = "";
+        public static string con_login = "";
         public static string con_password = "";
+        public static string con_database = "";
 
-        
+
         public static string connection_string = "";
 
 
         public static void Set_Connection_String(string datasource, string username, string password, string db)
         {
             con_server = datasource;
-            con_username = username;
+            con_login = username;
             con_password = password;
             con_database = db;
 
@@ -44,11 +45,11 @@ namespace mobile_application.Services
 
         public static void Set_Connection_String(int connection_id)
         {
-            var r = ConnectionSyntax.Get_Active_Database_Connection_Id();
-            var connection = ConnectionSyntax.Get(r);
+            var connection = ConnectionSyntax.Get(connection_id);
 
-            con_server = connection[0].server_name;
-            con_username = connection[0].login;
+            con_name = connection[0].name;
+            con_server = connection[0].server;
+            con_login = connection[0].login;
             con_password = connection[0].password;
             con_database = connection[0].database;
 
@@ -57,7 +58,7 @@ namespace mobile_application.Services
 
         public static void Set_Connection_String()
         {
-            connection_string = "Data Source=" + con_server + ";Initial Catalog=" + con_database + ";Persist Security Info=True;User ID=" + con_username + ";Password=" + con_password + "";
+            connection_string = "Data Source=" + con_server + ";Initial Catalog=" + con_database + ";Persist Security Info=True;User ID=" + con_login + ";Password=" + con_password + "";
             con.Close();
             con.ConnectionString = connection_string;
         }
@@ -90,7 +91,7 @@ namespace mobile_application.Services
             catch (System.Exception ex)
             {
 
-                IPublic.error_message = ex.Message;
+                Static_Loading.error_message = ex.Message;
                 return false;
             }
         }

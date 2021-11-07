@@ -12,15 +12,16 @@ namespace mobile_application.Models
 
         #endregion
 
-        public static bool Insert(string server, string username, string password, string database, int is_default)
+        public static bool Insert(string name,string server, string login, string password, string database, int is_default)
         {
             try
             {
                 DB_Context.Init();
                 var new_connection = new tb_Connection
                 {
-                    server_name = server,
-                    login = username,
+                    name = name,
+                    server = server,
+                    login = login,
                     password = password,
                     database = database,
                     is_default = is_default
@@ -66,6 +67,20 @@ namespace mobile_application.Models
             }
         }
 
+        public static List<tb_Connection> Gets()
+        {
+            try
+            {
+                DB_Context.Init();
+                return DB_Context.db.Table<tb_Connection>().ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public static int Get_Active_Database_Connection_Id()
         {
             try
@@ -80,7 +95,39 @@ namespace mobile_application.Models
             }
         }
 
-       
+
+        public static bool Set_DeActive_All()
+        {
+            try
+            {
+                DB_Context.Init();
+                DB_Context.db.Execute("UPDATE tb_Connection SET is_default=0");
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        public static bool Set_Active_Connection(int id)
+        {
+            try
+            {
+                DB_Context.Init();
+                DB_Context.db.Execute("UPDATE tb_Connection SET is_default=1 WHERE id=" + id);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
         //public static int Get_User_Id(string username, string password)
         //{
         //    DB_Context.Init();
@@ -90,7 +137,7 @@ namespace mobile_application.Models
         //    return result;
         //}
 
-       
+
         public static List<tb_Connection> Get(int id)
         {
             try

@@ -22,10 +22,11 @@ namespace mobile_application.pages.App_Setting_Pages
 
             try
             {
-                this.txtIP.Text = Client.con_server;
-                this.txtUsername.Text = Client.con_username;
+                this.txtName.Text = Client.con_name;
+                this.txtServer.Text = Client.con_server;
+                this.txtLogin.Text = Client.con_login;
                 this.txtPassword.Text = Client.con_password;
-                this.txtDBName.Text = Client.con_database;
+                this.txtDatabase.Text = Client.con_database;
             }
             catch (Exception)
             {
@@ -36,24 +37,31 @@ namespace mobile_application.pages.App_Setting_Pages
 
         private void btnSave_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.txtIP.Text))
+            if (string.IsNullOrEmpty(this.txtName.Text))
+            {
+                DisplayAlert("ثبت", "نام سرور را وارد کنید", "خطا");
+                this.txtName.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.txtServer.Text))
             {
                 DisplayAlert("ثبت", "آدرس آی پی سرور را وارد کنید", "خطا");
-                this.txtIP.Focus();
+                this.txtServer.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.txtDBName.Text))
+            if (string.IsNullOrEmpty(this.txtDatabase.Text))
             {
                 DisplayAlert("ثبت", "نام دوره با بانک را وارد کنید", "خطا");
-                this.txtDBName.Focus();
+                this.txtDatabase.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.txtUsername.Text))
+            if (string.IsNullOrEmpty(this.txtLogin.Text))
             {
                 DisplayAlert("ثبت", "نام کاربری را وارد کنید", "خطا");
-                this.txtUsername.Focus();
+                this.txtLogin.Focus();
                 return;
             }
 
@@ -78,17 +86,17 @@ namespace mobile_application.pages.App_Setting_Pages
             }
 
 
-            Client.Set_Connection_String(this.txtIP.Text, this.txtUsername.Text, this.txtPassword.Text, this.txtDBName.Text);
-            _ = ConnectionSyntax.Delete();
-            _ = ConnectionSyntax.Insert(Client.con_server, Client.con_username, Client.con_password, Client.con_database, is_admin);
+            Client.Set_Connection_String(this.txtServer.Text, this.txtLogin.Text, this.txtPassword.Text, this.txtDatabase.Text);
+            //_ = ConnectionSyntax.Delete();
+            _ = ConnectionSyntax.Insert(this.txtName.Text,this.txtServer.Text, Client.con_login, Client.con_password, Client.con_database, is_admin);
 
 
-            ToastNotification.TostMessage(" ثبت موفقیت آمیز بود");
+            ToastNotification.TostMessage(mobile_application.Helper.Static_Loading.done_message);
         }
 
         private void btnTextConnection_Clicked(object sender, EventArgs e)
         {
-            Client.Set_Connection_String(this.txtIP.Text, this.txtUsername.Text, this.txtPassword.Text, this.txtDBName.Text);
+            Client.Set_Connection_String(this.txtServer.Text, this.txtLogin.Text, this.txtPassword.Text, this.txtDatabase.Text);
             var r = Client.Server_Connection();
             if (r)
             {
@@ -105,6 +113,11 @@ namespace mobile_application.pages.App_Setting_Pages
         private async void btnMainPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private async void btnServerList_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new mobile_application.pages.App_Setting_Pages.server_connection_list_page());
         }
     }
 }
