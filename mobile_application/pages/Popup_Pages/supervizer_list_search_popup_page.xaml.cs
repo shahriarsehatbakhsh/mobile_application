@@ -12,16 +12,15 @@ using mobile_application.Services;
 namespace mobile_application.pages.Popup_Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class shobe_search_list_popup_page : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class supervizer_list_search_popup_page : Rg.Plugins.Popup.Pages.PopupPage
     {
-        List<vw_shobe_list> _Items;
-        public shobe_search_list_popup_page(List<vw_shobe_list> Items)
+        public supervizer_list_search_popup_page()
         {
             InitializeComponent();
             this.CloseWhenBackgroundIsClicked = true;
 
-            _Items = Items;
-            this.lstShobeList.ItemsSource = _Items;
+            List<vw_supervizer_list> Items = sp.Supervizer_List(1, 2);
+            this.lstSupervizerList.ItemsSource = Items;
         }
 
         private async void btnCloseMe_Clicked(object sender, EventArgs e)
@@ -29,15 +28,15 @@ namespace mobile_application.pages.Popup_Pages
             await Navigation.PopAsync();
         }
 
-        public delegate void SearchDelegate(object sender, List<vw_shobe_list> e);
+        public delegate void SearchDelegate(object sender, List<vw_supervizer_list> e);
         public event SearchDelegate Search;
         private async void btnSelectItem_Clicked(object sender, EventArgs e)
         {
-            var select_item = (vw_shobe_list)lstShobeList.SelectedItem;
-            List<vw_shobe_list> item = new List<vw_shobe_list>();
+            var select_item = (vw_supervizer_list)this.lstSupervizerList.SelectedItem;
+            List<vw_supervizer_list> item = new List<vw_supervizer_list>();
             item.Add
                 (
-                    new vw_shobe_list
+                    new vw_supervizer_list
                     {
                         Code = select_item.Code,
                         Sharh = select_item.Sharh
@@ -45,11 +44,6 @@ namespace mobile_application.pages.Popup_Pages
                 );
             Search(sender, item);
             await Navigation.PopAsync();
-        }
-
-        private void lstShobeList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            
         }
     }
 }

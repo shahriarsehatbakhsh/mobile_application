@@ -151,5 +151,43 @@ namespace mobile_application.Services
             }
             return customers;
         }
+
+
+        public static List<vw_supervizer_list> Supervizer_List(int shobe_code, int code_karbar)
+        {
+            string constring = Client.connection_string;
+            List<vw_supervizer_list> customers = new List<vw_supervizer_list>();
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                using (SqlCommand cmd = new SqlCommand("exec sp_supervizer_list @code_karbar,@code_shobe", con))
+                {
+                    cmd.Parameters.Add("@code_karbar", SqlDbType.Int);
+                    cmd.Parameters["@code_karbar"].Value = code_karbar;
+
+                    cmd.Parameters.Add("@code_shobe", SqlDbType.Int);
+                    cmd.Parameters["@code_shobe"].Value = shobe_code;
+
+                    cmd.CommandType = CommandType.Text;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            customers.Add(new vw_supervizer_list
+                            {
+                                Code = Convert.ToInt32(sdr["code"]),
+                                Sharh = sdr["Sharh"].ToString(),
+                                Job = sdr["Job"].ToString(),
+                                Address = sdr["Address"].ToString(),
+                                Tel = sdr["Tel"].ToString(),
+                                Branch = Convert.ToInt16(sdr["Branch"])
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return customers;
+        }
     }
 }

@@ -18,28 +18,21 @@
     <ContentPage.Content>
         <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center" >
             <StackLayout Padding="5">
-                <Label Text="انتخاب شعبه" StyleClass="tite_medium" />
-
-                <StackLayout>
-                    <!--<=============================================================================================================>-->
-                    <ListView x:Name="lstList" >
-                        <ListView.Header>
-                            <Label Text="ListView.Header" />
-                        </ListView.Header>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Sharh}" BackgroundColor="Yellow" />
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                    <!--<=============================================================================================================>-->
-                </StackLayout>
+                <ListView x:Name="lstShobeList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label FontFamily="FAS" VerticalTextAlignment="Center" Text="{StaticResource ObjectIcon}" HorizontalOptions="End" />
+                                    <Label Text="{Binding Sharh}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" FontFamily="bTitrB" FontSize="Medium" />
+                                    <Label Text="{Binding Code}" VerticalTextAlignment="Center" HorizontalOptions="End" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
                 <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
-                    <Button Text="انتخاب" StyleClass="select_button" x:Name="btnSelectItem" />
+                    <Button Text="انتخاب" StyleClass="select_button" x:Name="btnSelectItem" Clicked="btnSelectItem_Clicked"  />
                     <Button Text="بستن" StyleClass="select_button" x:Name="btnCloseMe" Clicked="btnCloseMe_Clicked"  />
                 </StackLayout>
             </StackLayout>

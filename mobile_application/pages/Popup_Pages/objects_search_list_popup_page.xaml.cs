@@ -25,9 +25,9 @@ namespace mobile_application.pages.Popup_Pages
             this.lstObjectsList.ItemsSource = Items;
         }
 
-        private void btnCloseMe_Clicked(object sender, EventArgs e)
+        private async void btnCloseMe_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PopAsync();
         }
 
 
@@ -35,20 +35,17 @@ namespace mobile_application.pages.Popup_Pages
         public event SearchDelegate Search;
         private async void btnSelectItem_Clicked(object sender, EventArgs e)
         {
-            var select_item = this.lstObjectsList.SelectedItem;
-
+            var select_item = (vw_objects_list_get_object_name)this.lstObjectsList.SelectedItem;
             List<vw_objects_list_get_object_name> item = new List<vw_objects_list_get_object_name>();
             item.Add
                 (
                     new vw_objects_list_get_object_name
                     {
-                        Code = 1,
-                        Sharh = "کالای انتخاب شده"
+                        Code = select_item.Code,
+                        Sharh = select_item.Sharh
                     }
                 );
-            
             Search(sender, item);
-
             await Navigation.PopAsync();
         }
 

@@ -8,7 +8,7 @@
     <ContentPage.Resources>
         
         <Style Class="label" TargetType="Label">
-            <Setter Property="Margin" Value="0,10,10,0" />
+            <Setter Property="Margin" Value="0,15,10,0" />
             <Setter Property="FontFamily" Value="CalibriB" />
             <Setter Property="FontSize" Value="20" />
         </Style>
@@ -36,7 +36,26 @@
             <Setter Property="BackgroundColor" Value="Transparent" />
         </Style>
 
+        <Style Class="txt" TargetType="Entry">
+            <Setter Property="FontFamily" Value="bTitrB" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+        <Style Class="btn" TargetType="Button">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="#533F95" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="BorderColor" Value="White" />
+            <Setter Property="BorderWidth" Value="0.5" />
+            <Setter Property="BorderRadius" Value="10" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="FontFamily" Value="bTerafficB" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+                 
     </ContentPage.Resources>
+    
     <ContentPage.Content Title="سربرگ سفارش">
         
         
@@ -49,7 +68,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Grid HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="60" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100" />
@@ -58,8 +77,8 @@
                                     <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="شعبه:" StyleClass="label" />
-                                <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
-                                <Label Grid.Column="2" Text="عنوان شعبه انتخاب شده" StyleClass="labelData" />
+                                <Entry x:Name="txtShobeCode" Grid.Column="1" Focused="txtShobeCode_Focused" StyleClass="txt" />
+                                <Label x:Name="txtShobeName" Grid.Column="2" Text="عنوان شعبه انتخاب شده" StyleClass="labelData" />
                                 <Button Grid.Column="3" x:Name="btnSelectShobe" Clicked="btnSelectShobe_Clicked" StyleClass="SelectButton" />
                             </Grid>
                             
@@ -70,7 +89,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="60" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100" />
@@ -89,7 +108,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Grid HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="60" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100" />
@@ -98,8 +117,8 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="مشتری:" StyleClass="label" />
-                                <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
-                                <Label Grid.Column="2" Text="عنوان مشتری انتخاب شده" StyleClass="labelData" />
+                                <Entry x:Name="txtCustomerCode" Grid.Column="1" StyleClass="txt" />
+                                <Label x:Name="txtCustomerName" Grid.Column="2" Text="عنوان مشتری انتخاب شده" StyleClass="labelData" />
                                 <Button Grid.Column="3" x:Name="btnSelectCustomer" Clicked="btnSelectCustomer_Clicked" StyleClass="SelectButton" />
                             </Grid>
                         </StackLayout>
@@ -109,7 +128,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Grid HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="60" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100" />
@@ -118,8 +137,8 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="فروشنده:" StyleClass="label" />
-                                <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
-                                <Label Grid.Column="2" Text="عنوان فروشنده انتخاب شده" StyleClass="labelData" />
+                                <Entry x:Name="txtSellerCode" Grid.Column="1" StyleClass="txt" />
+                                <Label x:Name="txtSellerName" Grid.Column="2" Text="عنوان فروشنده انتخاب شده" StyleClass="labelData" />
                                 <Button Grid.Column="3" x:Name="btnSelectSeller" Clicked="btnSelectSeller_Clicked" StyleClass="SelectButton" />
                             </Grid>
                         </StackLayout>
@@ -129,7 +148,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Grid HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="60" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100" />
@@ -138,9 +157,9 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="سوپروایزر:" StyleClass="label" />
-                                <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
-                                <Label Grid.Column="2" Text="عنوان سوپروایزر انتخاب شده" StyleClass="labelData" />
-                                <Button Grid.Column="3" x:Name="btnSelectSoupervizer" Clicked="btnSelectCustomer_Clicked" StyleClass="SelectButton" />
+                                <Entry x:Name="txtSupervizerCode" Grid.Column="1" StyleClass="txt" />
+                                <Label x:Name="txtSupervizerName" Grid.Column="2" Text="عنوان سوپروایزر انتخاب شده" StyleClass="labelData" />
+                                <Button Grid.Column="3" x:Name="btnSelectSoupervizer" Clicked="btnSelectSoupervizer_Clicked" StyleClass="SelectButton" />
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -149,7 +168,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Grid HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="60" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100" />
@@ -175,7 +194,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Grid HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="60" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100" />
@@ -184,7 +203,7 @@
                                     <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Margin="0,10,10,0" Text="مدت اعتبار:" FontFamily="CalibriB" FontSize="20" />
-                                <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
+                                <Entry Grid.Column="1" StyleClass="txt" />
                                 <Label Grid.Column="2" Text="عنوان مدت اعتبار انتخاب شده" StyleClass="labelData" />
                                 <Label Grid.Column="3" StyleClass="LabelIcon" Text="{StaticResource ObjectIcon}" />
                             </Grid>
@@ -195,7 +214,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Grid HorizontalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="60" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100" />
@@ -204,7 +223,7 @@
                                     <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Margin="0,10,10,0" Text="مصوبه:" FontFamily="CalibriB" FontSize="20" />
-                                <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
+                                <Entry Grid.Column="1" StyleClass="txt" />
                                 <Label Grid.Column="2" Text="عنوان مصوبه انتخاب شده" StyleClass="labelData" />
                                 <Label Grid.Column="3" StyleClass="LabelIcon" Text="{StaticResource ObjectIcon}" />
                             </Grid>
@@ -212,8 +231,8 @@
                     </Frame>
                     
                     <StackLayout Orientation="Horizontal" HeightRequest="50">
-                        <Button x:Name="btnNewOrder" Text="جدید" TextColor="White" BackgroundColor="#533F95" FontAttributes="Bold" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HorizontalOptions="FillAndExpand"  FontFamily="bTerafficB" FontSize="20" />
-                        <Button x:Name="btnNextObject" Text="انتخاب کالا" TextColor="White" BackgroundColor="#533F95" FontAttributes="Bold" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HorizontalOptions="FillAndExpand"  FontFamily="bTerafficB" FontSize="20" />
+                        <Button x:Name="btnNewOrder" Text="جدید" StyleClass="btn" Clicked="btnNewOrder_Clicked" />
+                        <Button x:Name="btnNextObject" Text="انتخاب کالا"  StyleClass="btn" Clicked="btnNextObject_Clicked"  />
                     </StackLayout>  
                     
                 </StackLayout>
