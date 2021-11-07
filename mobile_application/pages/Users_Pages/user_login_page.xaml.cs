@@ -38,7 +38,7 @@ namespace mobile_application.pages.Users_Pages
         }
 
 
-        private  void btnLogin_Clicked(object sender, EventArgs e)
+        private async void btnLogin_Clicked(object sender, EventArgs e)
         {
             this.IsBusy = true;
 
@@ -55,7 +55,7 @@ namespace mobile_application.pages.Users_Pages
             
             if (r == 0)
             {
-                 DisplayAlert("Error", "username or password is incorrect !!!", "again");
+                await DisplayAlert("Error", "username or password is incorrect !!!", "again");
                 this.Focus();
                 this.IsBusy = false;
                 return;

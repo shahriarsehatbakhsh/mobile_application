@@ -34,5 +34,15 @@ namespace mobile_application.pages.Order_Pages
         {
             await Navigation.PushAsync(new customers_search_list_popup_page(), true);
         }
+
+        private async void btnSelectSeller_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new seller_list_search_popup_page(), true);
+        }
+
+        private async void btnSelectShobe_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new shobe_search_list_popup_page(), true);
+        }
     }
 }

@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                 x:Class="mobile_application.pages.Popup_Pages.objects_search_list_popup_page"
+                 x:Class="mobile_application.pages.Popup_Pages.shobe_search_list_popup_page"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" Title="" FlowDirection="RightToLeft" >
-    
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 Title="انتخاب شعبه" FlowDirection="RightToLeft">
+
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Center" PositionOut="Center"
@@ -15,26 +16,21 @@
     </pages:PopupPage.Animation>
 
     <ContentPage.Content>
-        <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="30,0,30,30" VerticalOptions="Center" >
+        <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center" >
             <StackLayout Padding="5">
-                <Label Text="جست و جوی کالا" StyleClass="tite_medium" />
-                <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="txtSearchObject" Placeholder="جست و جوی کالا" HorizontalOptions="StartAndExpand" TextChanged="txtSearchObject_TextChanged"  />
-                    <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" HorizontalOptions="End" />
-                </StackLayout>
+                <Label Text="انتخاب شعبه" StyleClass="tite_medium" />
+
                 <StackLayout>
                     <!--<=============================================================================================================>-->
-                    <ListView x:Name="lstObjectsList">
+                    <ListView x:Name="lstList" >
                         <ListView.Header>
-                            <Label Text="" />
+                            <Label Text="ListView.Header" />
                         </ListView.Header>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{StaticResource ObjectIcon}" StyleClass="LabelIcon" HorizontalOptions="Start" />
-                                        <Label x:Name="txtSharh" Text="{Binding Sharh}" StyleClass="LabelIcon" HorizontalOptions="StartAndExpand" />
-                                        <Label x:Name="txtCode" Text="{Binding Code}" StyleClass="LabelIcon" HorizontalOptions="End" />
+                                        <Label Text="{Binding Sharh}" BackgroundColor="Yellow" />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
@@ -43,7 +39,7 @@
                     <!--<=============================================================================================================>-->
                 </StackLayout>
                 <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
-                    <Button Text="انتخاب" StyleClass="select_button" x:Name="btnSelectItem" Clicked="btnSelectItem_Clicked"  />
+                    <Button Text="انتخاب" StyleClass="select_button" x:Name="btnSelectItem" />
                     <Button Text="بستن" StyleClass="select_button" x:Name="btnCloseMe" Clicked="btnCloseMe_Clicked"  />
                 </StackLayout>
             </StackLayout>

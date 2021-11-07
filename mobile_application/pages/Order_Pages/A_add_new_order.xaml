@@ -6,6 +6,7 @@
 
 
     <ContentPage.Resources>
+        
         <Style Class="label" TargetType="Label">
             <Setter Property="Margin" Value="0,10,10,0" />
             <Setter Property="FontFamily" Value="CalibriB" />
@@ -25,6 +26,14 @@
             <Setter Property="Margin" Value="20,20,0,0" />
             <Setter Property="Text" Value="{StaticResource ObjectIcon}" />
             <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="FAS" />
+        </Style>
+
+        <Style Class="SelectButton" TargetType="Button">
+            <Setter Property="Text" Value="..." />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="WidthRequest" Value="50" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
         </Style>
 
     </ContentPage.Resources>
@@ -51,7 +60,7 @@
                                 <Label Grid.Column="0" Text="شعبه:" StyleClass="label" />
                                 <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
                                 <Label Grid.Column="2" Text="عنوان شعبه انتخاب شده" StyleClass="labelData" />
-                                <Label Grid.Column="3" StyleClass="LabelIcon" />
+                                <Button Grid.Column="3" x:Name="btnSelectShobe" Clicked="btnSelectShobe_Clicked" StyleClass="SelectButton" />
                             </Grid>
                             
                         </StackLayout>
@@ -91,7 +100,7 @@
                                 <Label Grid.Column="0" Text="مشتری:" StyleClass="label" />
                                 <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
                                 <Label Grid.Column="2" Text="عنوان مشتری انتخاب شده" StyleClass="labelData" />
-                                <Button Grid.Column="3" x:Name="btnSelectCustomer" Text="..." TextColor="Black" WidthRequest="50" BackgroundColor="Transparent" Clicked="btnSelectCustomer_Clicked" />
+                                <Button Grid.Column="3" x:Name="btnSelectCustomer" Clicked="btnSelectCustomer_Clicked" StyleClass="SelectButton" />
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -111,7 +120,7 @@
                                 <Label Grid.Column="0" Text="فروشنده:" StyleClass="label" />
                                 <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
                                 <Label Grid.Column="2" Text="عنوان فروشنده انتخاب شده" StyleClass="labelData" />
-                                <Button Grid.Column="3" x:Name="btnSelectSaler" Text="..." TextColor="Black" WidthRequest="50" BackgroundColor="Transparent" Clicked="btnSelectCustomer_Clicked" />
+                                <Button Grid.Column="3" x:Name="btnSelectSeller" Clicked="btnSelectSeller_Clicked" StyleClass="SelectButton" />
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -131,7 +140,7 @@
                                 <Label Grid.Column="0" Text="سوپروایزر:" StyleClass="label" />
                                 <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
                                 <Label Grid.Column="2" Text="عنوان سوپروایزر انتخاب شده" StyleClass="labelData" />
-                                <Button Grid.Column="3" x:Name="btnSelectSoupervizer" Text="..." TextColor="Black" WidthRequest="50" BackgroundColor="Transparent" Clicked="btnSelectCustomer_Clicked" />
+                                <Button Grid.Column="3" x:Name="btnSelectSoupervizer" Clicked="btnSelectCustomer_Clicked" StyleClass="SelectButton" />
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -157,7 +166,7 @@
                                     </Picker.Items>
                                 </Picker>
 
-                                <Label Grid.Column="3" StyleClass="LabelIcon" />
+                                <Label Grid.Column="3" StyleClass="LabelIcon"  Text="{StaticResource ObjectIcon}" />
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -177,7 +186,7 @@
                                 <Label Grid.Column="0" Margin="0,10,10,0" Text="مدت اعتبار:" FontFamily="CalibriB" FontSize="20" />
                                 <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
                                 <Label Grid.Column="2" Text="عنوان مدت اعتبار انتخاب شده" StyleClass="labelData" />
-                                <Label Grid.Column="3" StyleClass="LabelIcon" />
+                                <Label Grid.Column="3" StyleClass="LabelIcon" Text="{StaticResource ObjectIcon}" />
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -197,7 +206,7 @@
                                 <Label Grid.Column="0" Margin="0,10,10,0" Text="مصوبه:" FontFamily="CalibriB" FontSize="20" />
                                 <Entry Grid.Column="1" FontFamily="CalibriB" FontSize="Large" />
                                 <Label Grid.Column="2" Text="عنوان مصوبه انتخاب شده" StyleClass="labelData" />
-                                <Label Grid.Column="3" StyleClass="LabelIcon" />
+                                <Label Grid.Column="3" StyleClass="LabelIcon" Text="{StaticResource ObjectIcon}" />
                             </Grid>
                         </StackLayout>
                     </Frame>
