@@ -189,5 +189,63 @@ namespace mobile_application.Services
             }
             return customers;
         }
+
+        public enum exec
+        {
+            sp_pishe_list,
+            sp_ostan_list,
+            sp_shahr_list,
+            sp_mantaghe_list,
+            sp_masir_list
+        }
+
+        public static List<vw_code_sharh> Code_Sharh_List(exec exec)
+        {
+            string constring = Client.connection_string;
+            List<vw_code_sharh> objects = new List<vw_code_sharh>();
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                string query ;
+                switch (exec)
+                {
+                    case exec.sp_pishe_list:
+                        query = "exec sp_pishe_list";
+                        break;
+                    case exec.sp_ostan_list:
+                        query = "exec sp_ostan_list";
+                        break;
+                    case exec.sp_shahr_list:
+                        query = "exec sp_shahr_list";
+                        break;
+                    case exec.sp_mantaghe_list:
+                        query = "exec sp_mantaghe_list";
+                        break;
+                    case exec.sp_masir_list:
+                        query = "exec sp_masir_list";
+                        break;
+                    default:
+                        query = "";
+                        break;
+                }
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            objects.Add(new vw_code_sharh
+                            {
+                                Code = Convert.ToInt32(sdr["code"]),
+                                Sharh = sdr["Sharh"].ToString(),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return objects;
+        }
     }
 }

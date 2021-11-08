@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.pages.Customers.customer_add_new_page"
+             BackgroundColor="#EEEEEE" 
+             FlowDirection="RightToLeft">
+
+    <ContentPage.Resources>
+
+        <Style Class="label" TargetType="Label">
+            <Setter Property="Margin" Value="0,15,10,0" />
+            <Setter Property="FontFamily" Value="CalibriB" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+        <Style Class="labelData" TargetType="Label">
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="FontFamily" Value="bNazanin" />
+            <Setter Property="FontSize" Value="Medium" />
+        </Style>
+
+        <Style Class="labelIcon" TargetType="Label">
+            <Setter Property="Margin" Value="20,20,0,0" />
+            <Setter Property="Text" Value="{StaticResource ObjectIcon}" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="FAS" />
+        </Style>
+
+        <Style Class="SelectButton" TargetType="Button">
+            <Setter Property="Text" Value="..." />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="WidthRequest" Value="50" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+
+        <Style Class="txt" TargetType="Entry">
+            <Setter Property="FontFamily" Value="bTitrB" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+        <Style Class="btn" TargetType="Button">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="#533F95" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="BorderColor" Value="White" />
+            <Setter Property="BorderWidth" Value="0.5" />
+            <Setter Property="BorderRadius" Value="10" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="FontFamily" Value="bTerafficB" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10,30,10,0">
+                <Label Text="ایجاد مشتری جدید" TextColor="#533F95" FontSize="25" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontFamily="bTitrB" />
+                <StackLayout Spacing="15" VerticalOptions="CenterAndExpand">
+
+                    <Frame HasShadow="True">
+                        <StackLayout>
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="50" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="شعبه:" StyleClass="label" />
+                                        <Entry x:Name="txtShobeCode" Grid.Column="1" StyleClass="txt" />
+                                        <Label x:Name="txtShobeName" Grid.Column="2" Text="عنوان شعبه انتخاب شده" StyleClass="labelData" />
+                                        <Button Grid.Column="3" x:Name="btnSelectShobe" StyleClass="SelectButton" />
+                                    </Grid>
+
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="عنوان:" StyleClass="label" />
+                                        <Entry Grid.Column="1" StyleClass="txt" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" />
+                                    </Grid>
+
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame HasShadow="True">
+                        <StackLayout>
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="50" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="پیشه:" StyleClass="label" />
+                                        <Entry Grid.Column="1" StyleClass="txt" x:Name="txt1" />
+                                        <Label Grid.Column="2" Text="پیشه انتخاب شده" StyleClass="labelData" x:Name="lbl1" />
+                                        <Button Grid.Column="3" StyleClass="SelectButton" x:Name="btnSelectItem1" Clicked="SelectItem1_Clicked" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame>
+                        <StackLayout>
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="50" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="استان:" StyleClass="label" />
+                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txt2" />
+                                        <Label Grid.Column="2" Text="استان انتخاب شده" StyleClass="labelData" x:Name="lbl2" />
+                                        <Button Grid.Column="3" StyleClass="SelectButton" x:Name="btnSelectItem2" Clicked="SelectItem2_Clicked" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="50" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="شهر:" StyleClass="label" />
+                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txt3" />
+                                        <Label Grid.Column="2" Text="شهر انتخاب شده" StyleClass="labelData" x:Name="lbl3" />
+                                        <Button Grid.Column="3" StyleClass="SelectButton" x:Name="btnSelectItem3" Clicked="SelectItem3_Clicked" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="50" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="منطقه:" StyleClass="label" />
+                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txt4" />
+                                        <Label Grid.Column="2" Text="منطقه انتخاب شده" StyleClass="labelData" x:Name="lbl4" />
+                                        <Button Grid.Column="3" StyleClass="SelectButton" x:Name="btnSelectItem4" Clicked="SelectItem4_Clicked" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="50" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="مسیر:" StyleClass="label" />
+                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txt5" />
+                                        <Label Grid.Column="2" Text="مسیر انتخاب شده" StyleClass="labelData" x:Name="lbl5" />
+                                        <Button Grid.Column="3" StyleClass="SelectButton" x:Name="btnSelectItem5" Clicked="SelectItem5_Clicked" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="آدرس:" StyleClass="label" />
+                                        <Entry Grid.Column="1" StyleClass="txt" Keyboard="Text" HorizontalTextAlignment="End" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+
+                    <Frame HasShadow="True">
+                        <StackLayout>
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="*" />
+                                        
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="تلفن:" StyleClass="label" />
+                                        <Entry Grid.Column="1" StyleClass="txt" HorizontalTextAlignment="End" Keyboard="Telephone" />
+                                        
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="عمراه:" StyleClass="label" />
+                                        <Entry Grid.Column="1" StyleClass="txt" HorizontalTextAlignment="End" Keyboard="Telephone" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Padding="0" BorderColor="Gray">
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="*" />
+                                            
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="توضیحات:" StyleClass="label" />
+                                        <Entry Grid.Column="1" StyleClass="txt" />
+                                        
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+
+
+                    <Frame>
+                        <StackLayout>
+                            <Button x:Name="btnSaveCustomer" 
+                                    Text="ثبت اطلاعات" 
+                                    TextColor="White" 
+                                    BackgroundColor="#533F95" 
+                                    FontAttributes="Bold" 
+                                    BorderColor="White" 
+                                    BorderWidth="0.5" 
+                                    BorderRadius="10" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    FontFamily="bNazaninB" 
+                                    Clicked="btnSaveCustomer_Clicked" />        
+                        </StackLayout>
+                    </Frame>
+                    
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+
+</ContentPage>

@@ -57,8 +57,6 @@
     </ContentPage.Resources>
     
     <ContentPage.Content Title="سربرگ سفارش">
-        
-        
         <ScrollView>
             <StackLayout Padding="30,30,30,0">
                 <Label Text="ثبت سفارش جدید" TextColor="#533F95" FontSize="30" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontFamily="lalezar" FontAttributes="Bold" />

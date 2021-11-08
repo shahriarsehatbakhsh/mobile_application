@@ -1,16 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mobile_application.pages.Customers.customers_list_page">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:expandable="clr-namespace:Expandable;assembly=ExpandableView"
+             x:Class="mobile_application.pages.Customers.customers_list_page"
+             FlowDirection="RightToLeft"
+             Visual="Material">
     <Grid BackgroundColor="#f3f5f9" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
-            <RowDefinition Height="180" />
+            <RowDefinition Height="60" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
         <Grid BackgroundColor="#455399" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout Margin="0,-40,0,0" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label TextColor="White" FontSize="40" HorizontalTextAlignment="Center">
+                <!--<Label TextColor="White" FontSize="40" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
@@ -19,56 +24,124 @@
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>
-                <Label Text="foucing on the list" TextColor="White" FontSize="15" HorizontalTextAlignment="Center" />
+                </Label>-->
+                <!--<Label Text="foucing on the list" TextColor="White" FontSize="15" HorizontalTextAlignment="Center" />-->
             </StackLayout>
         </Grid>
-        <Frame HasShadow="True"  Grid.Row="1" HeightRequest="80" Margin="0,-40,0,0" VerticalOptions="FillAndExpand">
-            <StackLayout>
-                <CollectionView SelectionMode="None" ItemsSource="{Binding application_main_menu_items}">
 
-                    <CollectionView.Header>
-                        <Label Text="لیست منوی برنامه" TextColor="Black" FontSize="18" FontAttributes="Bold" FontFamily="bTeraffic" />
-                    </CollectionView.Header>
+        <pv:PancakeView Grid.Row="1" HeightRequest="80" Margin="0,-40,0,0" HorizontalOptions="Center" >
+            <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand">
+                <BoxView CornerRadius="10" BackgroundColor="#00C6AE" />
+                <StackLayout VerticalOptions="Center"  >
+                    <SearchBar />
+                </StackLayout>
+            </Grid>
+        </pv:PancakeView>
 
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="2" />
-                    </CollectionView.ItemsLayout>
+        <CollectionView x:Name="CustomersList" 
+                        Grid.Row="2" 
+                        Margin="25" 
+                        VerticalOptions="FillAndExpand" 
+                        HorizontalOptions="FillAndExpand" 
+                        SelectionMode="None" >
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame Margin="5" BackgroundColor="#f2f2f2">
-                                <Grid>
+            <CollectionView.Header>
+                <Button Text="ایجاد مشتری جدید" 
+                        FontFamily="CalibriB" 
+                        BackgroundColor="#455399" 
+                        TextColor="White" x:Name="btnCreateCustomer" Clicked="btnCreateCustomer_Clicked" />
+            </CollectionView.Header>
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame HasShadow="True" 
+                           Padding="5" 
+                           VerticalOptions="StartAndExpand" 
+                           HorizontalOptions="FillAndExpand">
+
+                        <expandable:ExpandableView Grid.Column="1">
+                            <expandable:ExpandableView.PrimaryView>
+                                <Grid VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <BoxView BackgroundColor="{Binding Color}" WidthRequest="3" HorizontalOptions="Start" 
-                                         VerticalOptions="FillAndExpand" />
 
+                                    <BoxView Grid.Column="0" BackgroundColor="{Binding menu_color}" 
+                                                    WidthRequest="4" 
+                                                    HorizontalOptions="Start" 
+                                                    VerticalOptions="FillAndExpand" />
 
-                                    <StackLayout Padding="0" Grid.Column="0">
-                                        <Frame Margin="10" VerticalOptions="CenterAndExpand" BackgroundColor="White" Padding="0" HeightRequest="90" WidthRequest="110">
-                                            <Image Source="@drawable/login_header.jpg" Aspect="AspectFill"/>
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout Margin="10" Grid.Column="1">
-                                        <Label Text="{Binding title}" TextColor="White" FontSize="15" FontAttributes="Bold" />
-                                        <Label Text="{Binding Description}" TextColor="White" FontSize="Small" />
-                                        <Button x:Name="btnOpenForm" 
-                                            Text="{Binding title}"
-                                            BackgroundColor="Gray" 
-                                            FontSize="Small" 
-                                            FontFamily="bTeraffic"
-                                            HeightRequest="40"/>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="WhiteSmoke">
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                                <Label Text="{StaticResource ObjectIcon}" 
+                                                       FontFamily="FAS" 
+                                                       VerticalTextAlignment="Center"
+                                                       Margin="10"/>
+                                                <Label Text="{Binding Sharh}" 
+                                                       TextColor="Black" 
+                                                       FontFamily="CalibriB" 
+                                                       FontSize="20" 
+                                                       VerticalTextAlignment="Center" />
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="End">
+                                                <Label Text="{Binding Code}" 
+                                                       TextColor="Black" 
+                                                       FontFamily="bTerafficB" 
+                                                       FontSize="20" 
+                                                       Margin="10,0,0,0" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                        
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Address}" 
+                                                       FontSize="15" 
+                                                       HorizontalOptions="StartAndExpand" 
+                                                       FontFamily="bTerafficB" 
+                                                       FontAttributes="Bold" 
+                                                       Margin="0,0,10,0" />
+                                                <Label Text="{Binding Tel}" FontSize="15" 
+                                                       HorizontalOptions="End" 
+                                                       FontFamily="bTerafficB" 
+                                                       FontAttributes="Bold" 
+                                                       Margin="10,0,0,0" />
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout>
+                                            <Label Text="{StaticResource ObjectIcon}" 
+                                                       FontFamily="FAS" 
+                                                       VerticalTextAlignment="Center"
+                                                       Margin="10"/>
+                                        </StackLayout>
                                     </StackLayout>
                                 </Grid>
+                            </expandable:ExpandableView.PrimaryView>
 
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-        </Frame>
+
+
+                            <expandable:ExpandableView.SecondaryViewTemplate>
+                                <DataTemplate>
+                                    <StackLayout Spacing="10" Orientation="Horizontal" HeightRequest="38">
+                                        <Button Text="ویرایش" FontFamily="bTerafficB" />
+                                        <Button Text="حذف" FontFamily="bTerafficB" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </expandable:ExpandableView.SecondaryViewTemplate>
+
+                        </expandable:ExpandableView>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
     </Grid>
 </ContentPage>

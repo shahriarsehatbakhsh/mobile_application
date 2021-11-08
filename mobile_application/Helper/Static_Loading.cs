@@ -21,5 +21,9 @@ namespace mobile_application.Helper
 
         public static string error_message;
         public static string done_message = "انجام عملیات موفقیت آمیز بود" ;
+
+
+        public static bool connection_internet;
+        public static bool connection_service;
     }
 }

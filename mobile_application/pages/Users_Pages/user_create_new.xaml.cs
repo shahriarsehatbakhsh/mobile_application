@@ -28,7 +28,7 @@ namespace mobile_application.pages.Users_Pages
 
                 _ = UsersSyntax.Insert(username, password, is_admin);
 
-                ToastNotification.TostMessage("ثبت موفقیت آمیز بود");
+                ToastNotification.TostMessage(mobile_application.Helper.Static_Loading.done_message);
             }
             else
             {

@@ -53,7 +53,7 @@ namespace mobile_application.pages.Users_Pages
             
 
 
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(500);
             
             if (r == 0 || Static_Loading.current_user == null)
             {
