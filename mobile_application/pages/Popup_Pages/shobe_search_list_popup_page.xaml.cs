@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.Services.Models;
 using mobile_application.Services;
+using Rg.Plugins.Popup.Extensions;
 
 namespace mobile_application.pages.Popup_Pages
 {
@@ -26,7 +27,7 @@ namespace mobile_application.pages.Popup_Pages
 
         private async void btnCloseMe_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopPopupAsync();
         }
 
         public delegate void SearchDelegate(object sender, List<vw_shobe_list> e);
@@ -44,7 +45,7 @@ namespace mobile_application.pages.Popup_Pages
                     }
                 );
             Search(sender, item);
-            await Navigation.PopAsync();
+            await Navigation.PopPopupAsync();
         }
 
         private void lstShobeList_ItemSelected(object sender, SelectedItemChangedEventArgs e)

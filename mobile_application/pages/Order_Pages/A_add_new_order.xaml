@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:order_page="clr-namespace:mobile_application.pages.Order_Pages"
-            x:Class="mobile_application.pages.Order_Pages.A_add_new_order" Visual="Material" FlowDirection="RightToLeft">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:order_page="clr-namespace:mobile_application.pages.Order_Pages"
+             x:Class="mobile_application.pages.Order_Pages.A_add_new_order" 
+             FlowDirection="RightToLeft">
 
 
     <ContentPage.Resources>
@@ -11,12 +12,13 @@
             <Setter Property="Margin" Value="0,15,10,0" />
             <Setter Property="FontFamily" Value="CalibriB" />
             <Setter Property="FontSize" Value="20" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
         </Style>
 
         <Style Class="labelData" TargetType="Label">
             <Setter Property="VerticalTextAlignment" Value="Center" />
             <Setter Property="HorizontalTextAlignment" Value="Center" />
-            <Setter Property="BackgroundColor" Value="AliceBlue" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
             <Setter Property="HorizontalOptions" Value="FillAndExpand" />
             <Setter Property="FontFamily" Value="bNazanin" />
             <Setter Property="FontSize" Value="Medium" />
@@ -56,10 +58,16 @@
                  
     </ContentPage.Resources>
     
-    <ContentPage.Content Title="سربرگ سفارش">
+    <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="30,30,30,0">
-                <Label Text="ثبت سفارش جدید" TextColor="#533F95" FontSize="30" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontFamily="lalezar" FontAttributes="Bold" />
+            <StackLayout Padding="10,30,10,0">
+                <Label Text="ثبت سفارش جدید" 
+                       TextColor="#533F95" 
+                       FontSize="25" 
+                       HorizontalOptions="CenterAndExpand" 
+                       HorizontalTextAlignment="Center" 
+                       FontFamily="lalezar" 
+                       FontAttributes="Bold" />
                 <StackLayout Spacing="10" VerticalOptions="StartAndExpand">
                     
                     <Frame Padding="0" BorderColor="Gray">
@@ -75,7 +83,7 @@
                                     <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="شعبه:" StyleClass="label" />
-                                <Entry x:Name="txtShobeCode" Grid.Column="1" Focused="txtShobeCode_Focused" StyleClass="txt" />
+                                <Entry x:Name="txtShobeCode" Grid.Column="1" Focused="txtShobeCode_Focused" Unfocused="txtShobeCode_Unfocused" StyleClass="txt" />
                                 <Label x:Name="txtShobeName" Grid.Column="2" Text="عنوان شعبه انتخاب شده" StyleClass="labelData" />
                                 <Button Grid.Column="3" x:Name="btnSelectShobe" Clicked="btnSelectShobe_Clicked" StyleClass="SelectButton" />
                             </Grid>

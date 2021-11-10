@@ -19,9 +19,9 @@ namespace ElegantLandingPage
         {
             return new List<Onboarding>
             {
-                new Onboarding{Heading = "",Caption = ""},
-                new Onboarding{Heading = "",Caption = ""},
-                new Onboarding{Heading = "",Caption = ""}
+                new Onboarding{Heading = "الگوریتم پویا",Caption = "توضیحات مربوط به سیستم های پایا به شرح زیر میباشد همراه با متن"},
+                new Onboarding{Heading = "سیستم فروش پایا",Caption = "توضیحات مربوط به سیستم های پایا به شرح زیر میباشد همراه با متن"},
+                new Onboarding{Heading = "سیستم های الگوریتم پویا",Caption = "توضیحات مربوط به سیستم های پایا به شرح زیر میباشد همراه با متن"}
             };
         }
     }

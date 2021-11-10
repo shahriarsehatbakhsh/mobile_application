@@ -10,6 +10,7 @@ using mobile_application.Services;
 using mobile_application.Services.Models;
 using System.Diagnostics;
 using mobile_application.pages.Order_Pages;
+using Rg.Plugins.Popup.Extensions;
 
 namespace mobile_application.pages.Popup_Pages
 {
@@ -27,7 +28,7 @@ namespace mobile_application.pages.Popup_Pages
 
         private async void btnCloseMe_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopPopupAsync();
         }
 
 
@@ -46,7 +47,7 @@ namespace mobile_application.pages.Popup_Pages
                     }
                 );
             Search(sender, item);
-            await Navigation.PopAsync();
+            await Navigation.PopPopupAsync();
         }
 
 

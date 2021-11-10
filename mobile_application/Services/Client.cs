@@ -29,7 +29,7 @@ namespace mobile_application.Services
         public static string con_password = "";
         public static string con_database = "";
 
-
+        public static bool Is_Set_ConnectionString;
         public static string connection_string = "";
 
 
@@ -58,7 +58,7 @@ namespace mobile_application.Services
 
         public static void Set_Connection_String()
         {
-            connection_string = "Data Source=" + con_server + ";Initial Catalog=" + con_database + ";Persist Security Info=True;User ID=" + con_login + ";Password=" + con_password + "";
+            connection_string = "Data Source=" + con_server + ";Initial Catalog=" + con_database + ";Persist Security Info=True;User ID=" + con_login + ";Password=" + con_password + ";Connect Timeout=5";
             con.Close();
             con.ConnectionString = connection_string;
         }

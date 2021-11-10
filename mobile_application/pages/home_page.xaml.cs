@@ -23,7 +23,7 @@ namespace mobile_application.pages
 
             if (Static_Loading.current_user == null)
             {
-                Navigation.PushAsync(new mobile_application.pages.start_page());
+                Navigation.PushAsync(new MainPage());
                 return;
             }
 
@@ -31,7 +31,7 @@ namespace mobile_application.pages
 
             mnusqlCommand = new Command(connection_setting_page_click);
 
-            Navigation.RemovePage(new start_page());
+            Navigation.RemovePage(new MainPage());
             Navigation.RemovePage(new Users_Pages.user_login_page());
         }
 

@@ -97,7 +97,7 @@
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="صفحه اصلی برنامه" Icon="@drawable/menu01.png" ContentTemplate="{DataTemplate pages:home_page}" />
         <ShellContent Title="ایجاد کاربری جدید" Icon="@drawable/menu01.png" ContentTemplate="{DataTemplate pages:home_page}" />
-        <ShellContent Title="تغییر گذرواژه" Icon="@drawable/menu01.png" ContentTemplate="{DataTemplate pages:start_page}" />
+        <ShellContent Title="تغییر گذرواژه" Icon="@drawable/menu01.png" ContentTemplate="{DataTemplate pages:home_page}" />
         <ShellContent Title="تنظیمات اطلاعات سرور" Icon="@drawable/menu01.png" ContentTemplate="{DataTemplate App_Setting_Server_Page:server_connection_setting_page}" />
     </FlyoutItem>
     <MenuItem Text="خروج از سیستم"  />

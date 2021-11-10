@@ -53,7 +53,7 @@ namespace mobile_application.pages.Users_Pages
             
 
 
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(1000);
             
             if (r == 0 || Static_Loading.current_user == null)
             {
@@ -78,16 +78,12 @@ namespace mobile_application.pages.Users_Pages
 
 
                 mobile_application.Helper.Static_Loading.user_id = r;
-                //App.Current.MainPage = new AppShell();
-                 Navigation.PopAsync();
-                 Navigation.PopAsync();
+                Navigation.PopAsync();
+                await Navigation.PopAsync();
                 this.IsBusy = false;
                 return;
             }                
 
-
-            //App.Current.MainPage = new AppShell();
-            //App.Current.MainPage = new NavigationPage(new home_page());
         }
 
         private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)

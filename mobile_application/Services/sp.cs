@@ -4,54 +4,62 @@ using System.Collections.Generic;
 using mobile_application.Services.Models;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace mobile_application.Services
 {
     public static class sp
     {
+
+
         public static List<vw_customers_list_get_code_shobe> Customers_list(int shobe_code)
         {
-            string constring = Client.connection_string;
-            List<vw_customers_list_get_code_shobe> customers = new List<vw_customers_list_get_code_shobe>();
-            using (SqlConnection con = new SqlConnection(constring))
+            try
             {
-                using (SqlCommand cmd = new SqlCommand("exec sp_customers_list_get_code_shobe @code_shobe", con))
+                string constring = Client.connection_string;
+                List<vw_customers_list_get_code_shobe> result = new List<vw_customers_list_get_code_shobe>();
+                using (SqlConnection con = new SqlConnection(constring))
                 {
-                    cmd.Parameters.Add("@code_shobe", SqlDbType.Int);
-                    cmd.Parameters["@code_shobe"].Value = shobe_code;
-                    
-                    cmd.CommandType = CommandType.Text;
-                    con.Open();
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    using (SqlCommand cmd = new SqlCommand("exec sp_customers_list_get_code_shobe @code_shobe", con))
                     {
-                        while (sdr.Read())
+                        cmd.Parameters.Add("@code_shobe", SqlDbType.Int);
+                        cmd.Parameters["@code_shobe"].Value = shobe_code;
+
+                        cmd.CommandType = CommandType.Text;
+                        con.Open();
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
-                            customers.Add(new vw_customers_list_get_code_shobe
+                            while (sdr.Read())
                             {
-                                Code = Convert.ToInt32(sdr["code"]),
-                                Sharh = sdr["Sharh"].ToString(),
-                                Job = sdr["Job"].ToString(),
-                                Address = sdr["Address"].ToString(),
-                                Tel = sdr["Tel"].ToString(),
-                                Branch = Convert.ToInt16(sdr["Branch"])
-                            });
+                                result.Add(new vw_customers_list_get_code_shobe
+                                {
+                                    Code = Convert.ToInt32(sdr["code"]),
+                                    Sharh = sdr["Sharh"].ToString(),
+                                    Job = sdr["Job"].ToString(),
+                                    Address = sdr["Address"].ToString(),
+                                    Tel = sdr["Tel"].ToString(),
+                                    Branch = Convert.ToInt16(sdr["Branch"])
+                                });
+                            }
                         }
+                        con.Close();
                     }
-                    con.Close();
                 }
+                return result;
             }
-            return customers;
+            catch (Exception ex)
+            {
+                Helper.Static_Loading.error_message = ex.Message;
+                return null;
+                throw;
+            }
         }
-
-
-
-
 
 
         public static List<vw_objects_list_get_object_name> Objects_List_Get_Object_Names(string objName)
         {
             string constring = Client.connection_string;
-            List<vw_objects_list_get_object_name> objects = new List<vw_objects_list_get_object_name>();
+            List<vw_objects_list_get_object_name> result = new List<vw_objects_list_get_object_name>();
             using (SqlConnection con = new SqlConnection(constring))
             {
                 using (SqlCommand cmd = new SqlCommand("exec sp_objects_list_get_object_name @object_name", con))
@@ -65,7 +73,7 @@ namespace mobile_application.Services
                     {
                         while (sdr.Read())
                         {
-                            objects.Add(new vw_objects_list_get_object_name
+                            result.Add(new vw_objects_list_get_object_name
                             {
                                 Code = Convert.ToInt32(sdr["code"]),
                                 Sharh = sdr["Sharh"].ToString(),
@@ -75,15 +83,14 @@ namespace mobile_application.Services
                     con.Close();
                 }
             }
-            return objects;
+            return result;
         }
-
 
 
         public static List<vw_shobe_list> Shobe_List(int code_karbar,int code_karbar_per)
         {
             string constring = Client.connection_string;
-            List<vw_shobe_list> objects = new List<vw_shobe_list>();
+            List<vw_shobe_list> result = new List<vw_shobe_list>();
             using (SqlConnection con = new SqlConnection(constring))
             {
                 using (SqlCommand cmd = new SqlCommand("exec sp_shobe_list @code_karbar,@code_karbar_per", con))
@@ -100,7 +107,7 @@ namespace mobile_application.Services
                     {
                         while (sdr.Read())
                         {
-                            objects.Add(new vw_shobe_list
+                            result.Add(new vw_shobe_list
                             {
                                 Code = Convert.ToInt32(sdr["code"]),
                                 Sharh = sdr["Sharh"].ToString(),
@@ -110,15 +117,14 @@ namespace mobile_application.Services
                     con.Close();
                 }
             }
-            return objects;
+            return result;
         }
-
 
 
         public static List<vw_seller_list> Seller_List(int shobe_code,int code_karbar)
         {
             string constring = Client.connection_string;
-            List<vw_seller_list> customers = new List<vw_seller_list>();
+            List<vw_seller_list> result = new List<vw_seller_list>();
             using (SqlConnection con = new SqlConnection(constring))
             {
                 using (SqlCommand cmd = new SqlCommand("exec sp_seller_list @code_karbar,@code_shobe", con))
@@ -135,7 +141,7 @@ namespace mobile_application.Services
                     {
                         while (sdr.Read())
                         {
-                            customers.Add(new vw_seller_list
+                            result.Add(new vw_seller_list
                             {
                                 Code = Convert.ToInt32(sdr["code"]),
                                 Sharh = sdr["Sharh"].ToString(),
@@ -149,14 +155,14 @@ namespace mobile_application.Services
                     con.Close();
                 }
             }
-            return customers;
+            return result;
         }
 
 
         public static List<vw_supervizer_list> Supervizer_List(int shobe_code, int code_karbar)
         {
             string constring = Client.connection_string;
-            List<vw_supervizer_list> customers = new List<vw_supervizer_list>();
+            List<vw_supervizer_list> result = new List<vw_supervizer_list>();
             using (SqlConnection con = new SqlConnection(constring))
             {
                 using (SqlCommand cmd = new SqlCommand("exec sp_supervizer_list @code_karbar,@code_shobe", con))
@@ -173,7 +179,7 @@ namespace mobile_application.Services
                     {
                         while (sdr.Read())
                         {
-                            customers.Add(new vw_supervizer_list
+                            result.Add(new vw_supervizer_list
                             {
                                 Code = Convert.ToInt32(sdr["code"]),
                                 Sharh = sdr["Sharh"].ToString(),
@@ -187,8 +193,119 @@ namespace mobile_application.Services
                     con.Close();
                 }
             }
-            return customers;
+            return result;
         }
+
+
+        public static List<vw_customer_code_serial> Customer_Get_Code_Serial(int shobe_code)
+        {
+            string constring = Client.connection_string;
+            List<vw_customer_code_serial> result = new List<vw_customer_code_serial>();
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                using (SqlCommand cmd = new SqlCommand("exec sp_GetLatestAvailableCustomerCode @BranchCode", con))
+                {
+                    cmd.Parameters.Add("@BranchCode", SqlDbType.Int);
+                    cmd.Parameters["@BranchCode"].Value = shobe_code;
+
+                    cmd.CommandType = CommandType.Text;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            result.Add(new vw_customer_code_serial
+                            {
+                                CustomerCode = Convert.ToInt32(sdr["CustomerCode"]),
+                                CustomerSerial = Convert.ToInt32(sdr["CustomerSerial"])
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return result;
+        }
+
+        public static async Task<bool> Customer_Insert(int CodeShobe, int sp_GetLatestAvailableCustomerCode_code,string Sharh,int sp_GetLatestAvailableCustomerCode_serial,
+                                           int CodeKarbareVaredShodeBeSystem,
+                                           string TairkheRooz,int CodePishe,int CodeOstan,int CodeShahr,int CodeMantaghe,int CodeMasir,
+                                           string Tel,string Mobile,string Address)
+        {
+            string constring = Client.connection_string;
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                using (SqlCommand cmd = new SqlCommand("exec sp_customer_insert @CodeShobe," +
+                                                                            "@sp_GetLatestAvailableCustomerCode_code," +
+                                                                            "@Sharh," +
+                                                                            "@sp_GetLatestAvailableCustomerCode_serial," +
+                                                                            "@CodeKarbareVaredShodeBeSystem," +
+                                                                            "@TairkheRooz," +
+                                                                            "@CodePishe," +
+                                                                            "@CodeOstan," +
+                                                                            "@CodeShahr," +
+                                                                            "@CodeMantaghe," +
+                                                                            "@CodeMasir," +
+                                                                            "@Tel," +
+                                                                            "@Mobile," +
+                                                                            "@Address", con))
+                {
+                    try
+                    {
+                        //var Factoryparam = !string.IsNullOrEmpty(Factory) ? new SqlParameter("factory", Factory) : new SqlParameter("factory", DBNull.Value);
+                        var CodeShobe_param = new SqlParameter("@CodeShobe", CodeShobe);
+                        var sp_GetLatestAvailableCustomerCode_code_param = new SqlParameter("@sp_GetLatestAvailableCustomerCode_code", sp_GetLatestAvailableCustomerCode_code);
+                        var Sharh_param = new SqlParameter("@Sharh", Sharh);
+                        var sp_GetLatestAvailableCustomerCode_serial_param = new SqlParameter("@sp_GetLatestAvailableCustomerCode_serial", sp_GetLatestAvailableCustomerCode_serial);
+                        var CodeKarbareVaredShodeBeSystem_param = new SqlParameter("@CodeKarbareVaredShodeBeSystem", CodeKarbareVaredShodeBeSystem);
+                        var TairkheRooz_param = new SqlParameter("@TairkheRooz", TairkheRooz);
+                        var CodePishe_param = new SqlParameter("@CodePishe", CodePishe);
+                        var CodeOstan_param = new SqlParameter("@CodeOstan", CodeOstan);
+                        var CodeShahr_param = new SqlParameter("@CodeShahr", CodeShahr);
+                        var CodeMantaghe_param = new SqlParameter("@CodeMantaghe", CodeMantaghe);
+                        var CodeMasir_param = new SqlParameter("@CodeMasir", CodeMasir);
+                        var Tel_param = new SqlParameter("@Tel", Tel);
+                        var Mobile_param = new SqlParameter("@Mobile", Mobile);
+                        var Address_param = new SqlParameter("@Address", Address);
+
+                        cmd.Parameters.Add(CodeShobe_param);
+                        cmd.Parameters.Add(sp_GetLatestAvailableCustomerCode_code_param);
+                        cmd.Parameters.Add(Sharh_param);
+                        cmd.Parameters.Add(sp_GetLatestAvailableCustomerCode_serial_param);
+                        cmd.Parameters.Add(CodeKarbareVaredShodeBeSystem_param);
+                        cmd.Parameters.Add(TairkheRooz_param);
+                        cmd.Parameters.Add(CodePishe_param);
+                        cmd.Parameters.Add(CodeOstan_param);
+                        cmd.Parameters.Add(CodeShahr_param);
+                        cmd.Parameters.Add(CodeMantaghe_param);
+                        cmd.Parameters.Add(CodeMasir_param);
+                        cmd.Parameters.Add(Tel_param);
+                        cmd.Parameters.Add(Mobile_param);
+                        cmd.Parameters.Add(Address_param);
+
+
+                        cmd.CommandType = CommandType.Text;
+                        con.Open();
+                        var R = cmd.ExecuteNonQueryAsync();
+                        con.Close();
+
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                        throw;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+        #region [Code_Sharh_List].
 
         public enum exec
         {
@@ -205,7 +322,7 @@ namespace mobile_application.Services
             List<vw_code_sharh> objects = new List<vw_code_sharh>();
             using (SqlConnection con = new SqlConnection(constring))
             {
-                string query ;
+                string query;
                 switch (exec)
                 {
                     case exec.sp_pishe_list:
@@ -247,5 +364,8 @@ namespace mobile_application.Services
             }
             return objects;
         }
+
+        #endregion
+
     }
 }

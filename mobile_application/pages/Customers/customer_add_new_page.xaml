@@ -40,6 +40,7 @@
             <Setter Property="FontFamily" Value="bTitrB" />
             <Setter Property="HorizontalTextAlignment" Value="Center" />
             <Setter Property="FontSize" Value="20" />
+            <Setter Property="Keyboard" Value="Numeric" />
         </Style>
 
         <Style Class="btn" TargetType="Button">
@@ -59,7 +60,13 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,30,10,0">
-                <Label Text="ایجاد مشتری جدید" TextColor="#533F95" FontSize="25" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontFamily="bTitrB" />
+                <Label Text="ایجاد مشتری جدید" 
+                       TextColor="#533F95" 
+                       FontSize="25" 
+                       HorizontalOptions="CenterAndExpand" 
+                       HorizontalTextAlignment="Center" 
+                       FontFamily="lalezar" 
+                       FontAttributes="Bold" />
                 <StackLayout Spacing="15" VerticalOptions="CenterAndExpand">
 
                     <Frame HasShadow="True">
@@ -79,7 +86,7 @@
                                         <Label Grid.Column="0" Text="شعبه:" StyleClass="label" />
                                         <Entry x:Name="txtShobeCode" Grid.Column="1" StyleClass="txt" />
                                         <Label x:Name="txtShobeName" Grid.Column="2" Text="عنوان شعبه انتخاب شده" StyleClass="labelData" />
-                                        <Button Grid.Column="3" x:Name="btnSelectShobe" StyleClass="SelectButton" />
+                                        <Button Grid.Column="3" x:Name="btnSelectShobe" StyleClass="SelectButton" Clicked="btnSelectShobe_Clicked" />
                                     </Grid>
 
                                 </StackLayout>
@@ -96,7 +103,7 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="عنوان:" StyleClass="label" />
-                                        <Entry Grid.Column="1" StyleClass="txt" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" />
+                                        <Entry Grid.Column="1" StyleClass="txt" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" x:Name="txtSharh" Keyboard="Text" />
                                     </Grid>
 
                                 </StackLayout>
@@ -119,7 +126,7 @@
                                             <ColumnDefinition Width="50" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="پیشه:" StyleClass="label" />
-                                        <Entry Grid.Column="1" StyleClass="txt" x:Name="txt1" />
+                                        <Entry Grid.Column="1" StyleClass="txt" x:Name="txtCodePishe" />
                                         <Label Grid.Column="2" Text="پیشه انتخاب شده" StyleClass="labelData" x:Name="lbl1" />
                                         <Button Grid.Column="3" StyleClass="SelectButton" x:Name="btnSelectItem1" Clicked="SelectItem1_Clicked" />
                                     </Grid>
@@ -143,7 +150,7 @@
                                             <ColumnDefinition Width="50" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="استان:" StyleClass="label" />
-                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txt2" />
+                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txtCodeOstan" />
                                         <Label Grid.Column="2" Text="استان انتخاب شده" StyleClass="labelData" x:Name="lbl2" />
                                         <Button Grid.Column="3" StyleClass="SelectButton" x:Name="btnSelectItem2" Clicked="SelectItem2_Clicked" />
                                     </Grid>
@@ -163,7 +170,7 @@
                                             <ColumnDefinition Width="50" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="شهر:" StyleClass="label" />
-                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txt3" />
+                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txtCodeShahr" />
                                         <Label Grid.Column="2" Text="شهر انتخاب شده" StyleClass="labelData" x:Name="lbl3" />
                                         <Button Grid.Column="3" StyleClass="SelectButton" x:Name="btnSelectItem3" Clicked="SelectItem3_Clicked" />
                                     </Grid>
@@ -183,7 +190,7 @@
                                             <ColumnDefinition Width="50" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="منطقه:" StyleClass="label" />
-                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txt4" />
+                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txtCodeMantaghe" />
                                         <Label Grid.Column="2" Text="منطقه انتخاب شده" StyleClass="labelData" x:Name="lbl4" />
                                         <Button Grid.Column="3" StyleClass="SelectButton" x:Name="btnSelectItem4" Clicked="SelectItem4_Clicked" />
                                     </Grid>
@@ -203,7 +210,7 @@
                                             <ColumnDefinition Width="50" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="مسیر:" StyleClass="label" />
-                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txt5" />
+                                        <Entry Grid.Column="1" StyleClass="txt"  x:Name="txtCodeMasir" />
                                         <Label Grid.Column="2" Text="مسیر انتخاب شده" StyleClass="labelData" x:Name="lbl5" />
                                         <Button Grid.Column="3" StyleClass="SelectButton" x:Name="btnSelectItem5" Clicked="SelectItem5_Clicked" />
                                     </Grid>
@@ -221,7 +228,7 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="آدرس:" StyleClass="label" />
-                                        <Entry Grid.Column="1" StyleClass="txt" Keyboard="Text" HorizontalTextAlignment="End" />
+                                        <Entry Grid.Column="1" StyleClass="txt" Keyboard="Text" HorizontalTextAlignment="End" x:Name="txtAddress" />
                                     </Grid>
                                 </StackLayout>
                             </Frame>
@@ -243,7 +250,7 @@
                                         
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="تلفن:" StyleClass="label" />
-                                        <Entry Grid.Column="1" StyleClass="txt" HorizontalTextAlignment="End" Keyboard="Telephone" />
+                                        <Entry Grid.Column="1" StyleClass="txt" HorizontalTextAlignment="End" Keyboard="Telephone" x:Name="txtTel" />
                                         
                                     </Grid>
                                 </StackLayout>
@@ -260,7 +267,7 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Text="عمراه:" StyleClass="label" />
-                                        <Entry Grid.Column="1" StyleClass="txt" HorizontalTextAlignment="End" Keyboard="Telephone" />
+                                        <Entry Grid.Column="1" StyleClass="txt" HorizontalTextAlignment="End" Keyboard="Telephone" x:Name="txtMobile" />
                                     </Grid>
                                 </StackLayout>
                             </Frame>

@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using mobile_application.pages.Popup_Pages;
 using Rg.Plugins.Popup.Exceptions;
 using System.ComponentModel;
+using Rg.Plugins.Popup.Extensions;
 using mobile_application.Services.Models;
 using mobile_application.Services;
 using mobile_application.Helper;
@@ -39,7 +40,7 @@ namespace mobile_application.pages.Order_Pages
         {
             frm_customer_list = new customers_search_list_popup_page();
             frm_customer_list.Search += Customer_Search_Result;
-            await Navigation.PushAsync(frm_customer_list, true);
+            await Navigation.PushPopupAsync(frm_customer_list, true);
         }
         private void Customer_Search_Result(object sender, List<vw_customers_list_get_code_shobe> e)
         {
@@ -53,7 +54,7 @@ namespace mobile_application.pages.Order_Pages
         {
             frm_seller_list = new seller_list_search_popup_page();
             frm_seller_list.Search += Seller_Search_Result;
-            await Navigation.PushAsync(frm_seller_list, true);
+            await Navigation.PushPopupAsync(frm_seller_list, true);
         }
         private void Seller_Search_Result(object sender, List<vw_seller_list> e)
         {
@@ -67,7 +68,7 @@ namespace mobile_application.pages.Order_Pages
         {
             frm_supervizer_list = new supervizer_list_search_popup_page();
             frm_supervizer_list.Search += Supervizer_Search_Result;
-            await Navigation.PushAsync(frm_supervizer_list, true);
+            await Navigation.PushPopupAsync(frm_supervizer_list, true);
         }
         private void Supervizer_Search_Result(object sender, List<vw_supervizer_list> e)
         {
@@ -83,7 +84,7 @@ namespace mobile_application.pages.Order_Pages
 
             frm_shobe_list = new shobe_search_list_popup_page(views.show_list);
             frm_shobe_list.Search += Shobe_Search_Result;
-            await Navigation.PushAsync(frm_shobe_list, true);
+            await Navigation.PushPopupAsync(frm_shobe_list, true);
         }
         private void Shobe_Search_Result(object sender, List<vw_shobe_list> e)
         {
@@ -102,7 +103,12 @@ namespace mobile_application.pages.Order_Pages
             
         }
 
-        private void btnNextObject_Clicked(object sender, EventArgs e)
+        private async void btnNextObject_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new B_add_new_object_and_menu(), true);
+        }
+
+        private void txtShobeCode_Unfocused(object sender, FocusEventArgs e)
         {
 
         }
