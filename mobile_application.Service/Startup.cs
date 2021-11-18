@@ -37,6 +37,9 @@ namespace mobile_application.Service
 
             services.AddDbContext<MaliDBContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("MaliDBContext")));
+
+            services.AddDbContext<CentralDBContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("CentralDBContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

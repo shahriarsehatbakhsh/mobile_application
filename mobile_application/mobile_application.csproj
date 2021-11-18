@@ -184,6 +184,7 @@
     <Compile Include="..\mobile_application.Service\Models\vw_code_sharh.cs" Link="Client\Models\vw_code_sharh.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_customers_list.cs" Link="Client\Models\vw_customers_list.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_customer_code_serial.cs" Link="Client\Models\vw_customer_code_serial.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_Resault.cs" Link="Client\Models\vw_Resault.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_seller_list.cs" Link="Client\Models\vw_seller_list.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_supervizer_list.cs" Link="Client\Models\vw_supervizer_list.cs" />
   </ItemGroup>

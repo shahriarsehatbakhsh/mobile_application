@@ -6,6 +6,11 @@ using System.Diagnostics;
 using mobile_application.Helper;
 using Xamarin.Essentials;
 using mobile_application.SQLite.Models.Users;
+using Newtonsoft;
+using Newtonsoft.Json;
+using System.Net.Http;
+using mobile_application.Service.Models;
+using System.Collections.Generic;
 
 namespace mobile_application.pages.Users_Pages
 {
@@ -44,6 +49,9 @@ namespace mobile_application.pages.Users_Pages
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
+
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url() + "Users/CentralLogin Username=" + this.txtUsername.Text + ",Password=" + this.txtPassword.Text);
+            List<vw_Resault> result = JsonConvert.DeserializeObject<List<vw_Resault>>(json);
 
             var r = UsersSyntax.Get_Id(username, password);
             Static_Loading.current_user = UsersSyntax.Get(r);

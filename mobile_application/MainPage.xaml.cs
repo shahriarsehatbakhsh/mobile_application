@@ -73,14 +73,14 @@ namespace mobile_application
             //System.Threading.Thread.Sleep(2000);
             //this.IsBusy = false;
 
-            var count = UsersSyntax.Count();
+
+            //var count = UsersSyntax.Count();
+            var count = server_list.count(); //load count of service api list
 
             if (count == 0)
-                //App.Current.MainPage = new user_create_new();
-                await Navigation.PushAsync(new user_create_new(), true);
+                await Navigation.PushAsync(new server_connection_setting_page(), true);
 
             else
-                //App.Current.MainPage = new user_login_page();
                 await Navigation.PushAsync(new user_login_page(), true);
 
             //string a = string.Format("Found '{0}' stock items.", count);
