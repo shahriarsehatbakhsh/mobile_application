@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.Services.Models;
-using mobile_application.Services;
+using mobile_application.Service.Models;
 using Rg.Plugins.Popup.Extensions;
+using Newtonsoft;
+using Newtonsoft.Json;
+using System.Net.Http;
+using mobile_application.Helper;
 
 namespace mobile_application.pages.Popup_Pages
 {
@@ -19,8 +22,14 @@ namespace mobile_application.pages.Popup_Pages
         {
             InitializeComponent();
             this.CloseWhenBackgroundIsClicked = true;
+            Loadin_Form();
+        }
 
-            List<vw_supervizer_list> Items = sp.Supervizer_List(1, 2);
+        private async void Loadin_Form()
+        {
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "List/supervizer code_karbar=" + Static_Loading.central_user_id + ",code_shobe=" + Static_Loading.central_shobe_id);
+            List<vw_supervizer_list> result = JsonConvert.DeserializeObject<List<vw_supervizer_list>>(json);
+            List<vw_supervizer_list> Items = result;
             this.lstSupervizerList.ItemsSource = Items;
         }
 

@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.modules;
 using System.Windows.Input;
 using Expandable;
-using mobile_application.Services.Models;
-using mobile_application.Services;
+using mobile_application.Helper;
+using mobile_application.Service.Models;
 using Rg.Plugins.Popup.Extensions;
+using Newtonsoft;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace mobile_application.pages.Customers
 {
@@ -22,11 +24,19 @@ namespace mobile_application.pages.Customers
         {
             InitializeComponent();
             this.BindingContext = new main_menu_list();
-            List<vw_customers_list_get_code_shobe> Items = sp.Customers_list(Helper.Static_Loading.central_shobe_id);
+
+            Loadin_Form();
+        }
+
+        private async void Loadin_Form()
+        {
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "Customers/List code_shobe=" + Static_Loading.central_shobe_id);
+            List<vw_customers_list> result = JsonConvert.DeserializeObject<List<vw_customers_list>>(json);
+            List<vw_customers_list> Items = result;
             if (Items == null)
             {
                 var pop = new mobile_application.controls.AppMessageBox("ارتباط با سرور", "در ارتباط با سرور مشکلی بوجود آمده است");
-                App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
+                await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
             }
             CustomersList.ItemsSource = Items;
         }

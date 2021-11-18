@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.Services.Models;
-using mobile_application.Services;
+using mobile_application.Service.Models;
 using Rg.Plugins.Popup.Extensions;
 
 namespace mobile_application.pages.Popup_Pages
@@ -15,8 +14,8 @@ namespace mobile_application.pages.Popup_Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class shobe_search_list_popup_page : Rg.Plugins.Popup.Pages.PopupPage
     {
-        List<vw_shobe_list> _Items;
-        public shobe_search_list_popup_page(List<vw_shobe_list> Items)
+        List<vw_code_sharh> _Items;
+        public shobe_search_list_popup_page(List<vw_code_sharh> Items)
         {
             InitializeComponent();
             this.CloseWhenBackgroundIsClicked = true;
@@ -30,15 +29,15 @@ namespace mobile_application.pages.Popup_Pages
             await Navigation.PopPopupAsync();
         }
 
-        public delegate void SearchDelegate(object sender, List<vw_shobe_list> e);
+        public delegate void SearchDelegate(object sender, List<vw_code_sharh> e);
         public event SearchDelegate Search;
         private async void btnSelectItem_Clicked(object sender, EventArgs e)
         {
-            var select_item = (vw_shobe_list)lstShobeList.SelectedItem;
-            List<vw_shobe_list> item = new List<vw_shobe_list>();
+            var select_item = (vw_code_sharh)lstShobeList.SelectedItem;
+            List<vw_code_sharh> item = new List<vw_code_sharh>();
             item.Add
                 (
-                    new vw_shobe_list
+                    new vw_code_sharh
                     {
                         Code = select_item.Code,
                         Sharh = select_item.Sharh

@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.Services;
-using mobile_application.Services.Models;
+using mobile_application.Service.Models;
 using System.Diagnostics;
 using mobile_application.pages.Order_Pages;
 using Rg.Plugins.Popup.Extensions;
+using Newtonsoft;
+using Newtonsoft.Json;
+using System.Net.Http;
+using mobile_application.Helper;
 
 namespace mobile_application.pages.Popup_Pages
 {
@@ -22,7 +25,14 @@ namespace mobile_application.pages.Popup_Pages
             InitializeComponent();
             this.CloseWhenBackgroundIsClicked = true;
 
-            List<vw_objects_list_get_object_name> Items = sp.Objects_List_Get_Object_Names("");
+            Loadin_Form();
+        }
+
+        private async void Loadin_Form()
+        {
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "List/ObjectCodeName object_name=" + "");
+            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+            List<vw_code_sharh> Items = result;
             this.lstObjectsList.ItemsSource = Items;
         }
 
@@ -32,15 +42,15 @@ namespace mobile_application.pages.Popup_Pages
         }
 
 
-        public delegate void SearchDelegate(object sender, List<vw_objects_list_get_object_name> e);
+        public delegate void SearchDelegate(object sender, List<vw_code_sharh> e);
         public event SearchDelegate Search;
         private async void btnSelectItem_Clicked(object sender, EventArgs e)
         {
-            var select_item = (vw_objects_list_get_object_name)this.lstObjectsList.SelectedItem;
-            List<vw_objects_list_get_object_name> item = new List<vw_objects_list_get_object_name>();
+            var select_item = (vw_code_sharh)this.lstObjectsList.SelectedItem;
+            List<vw_code_sharh> item = new List<vw_code_sharh>();
             item.Add
                 (
-                    new vw_objects_list_get_object_name
+                    new vw_code_sharh
                     {
                         Code = select_item.Code,
                         Sharh = select_item.Sharh
@@ -52,12 +62,14 @@ namespace mobile_application.pages.Popup_Pages
 
 
 
-        private void txtSearchObject_TextChanged(object sender, TextChangedEventArgs e)
+        private async void txtSearchObject_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
                 string objName = this.txtSearchObject.Text;
-                List<vw_objects_list_get_object_name> Items = sp.Objects_List_Get_Object_Names(objName);
+                var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "List/ObjectCodeName object_name=" + objName);
+                List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+                List<vw_code_sharh> Items = result;
                 this.lstObjectsList.ItemsSource = Items;
             }
             catch (Exception)

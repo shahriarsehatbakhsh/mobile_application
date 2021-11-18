@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.pages.Popup_Pages;
-using mobile_application.Services.Models;
+using mobile_application.Service.Models;
 
 namespace mobile_application.pages.Order_Pages
 {
@@ -30,7 +30,7 @@ namespace mobile_application.pages.Order_Pages
             await Navigation.PushAsync(frm, true);
         }
 
-        private void Frm_Search(object sender, List<vw_objects_list_get_object_name> e)
+        private void Frm_Search(object sender, List<vw_code_sharh> e)
         {
             this.txtObjCode.Text = e[0].Code.ToString();
             this.txtObjName.Text = e[0].Sharh.ToString();

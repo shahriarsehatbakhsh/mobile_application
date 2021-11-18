@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.Models;
-using mobile_application.Models.Connection;
-using mobile_application.Services;
-using mobile_application.Services.Models;
+using mobile_application.Client;
+using mobile_application.SQLite.Models.Connection;
 
 namespace mobile_application.pages.App_Setting_Pages
 {
@@ -57,7 +55,7 @@ namespace mobile_application.pages.App_Setting_Pages
                 ConnectionSyntax.Set_DeActive_All();
                 ConnectionSyntax.Set_Active_Connection(select_item.Id);
 
-                Client.Set_Connection_String(select_item.Id);
+                //Client.Set_Connection_String(select_item.Id);
 
                 ToastNotification.TostMessage(mobile_application.Helper.Static_Loading.done_message);
 

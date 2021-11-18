@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.Services.Models;
-using mobile_application.Services;
+using mobile_application.Service.Models;
 using Rg.Plugins.Popup.Extensions;
+using Newtonsoft;
+using Newtonsoft.Json;
+using System.Net.Http;
+using mobile_application.Helper;
 
 namespace mobile_application.pages.Popup_Pages
 {
@@ -20,7 +23,14 @@ namespace mobile_application.pages.Popup_Pages
             InitializeComponent();
             this.CloseWhenBackgroundIsClicked = true;
 
-            List<vw_customers_list_get_code_shobe> Items = sp.Customers_list(1);
+            Loadin_Form();
+        }
+
+        private async void Loadin_Form()
+        {
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "Customers/List code_shobe=" + Static_Loading.central_shobe_id);
+            List<vw_customers_list> result = JsonConvert.DeserializeObject<List<vw_customers_list>>(json);
+            List<vw_customers_list> Items = result;
             this.lstCustomersList.ItemsSource = Items;
         }
 
@@ -29,15 +39,15 @@ namespace mobile_application.pages.Popup_Pages
             await Navigation.PopPopupAsync();
         }
 
-        public delegate void SearchDelegate(object sender, List<vw_customers_list_get_code_shobe> e);
+        public delegate void SearchDelegate(object sender, List<vw_code_sharh> e);
         public event SearchDelegate Search;
         private async void btnSelectItem_Clicked(object sender, EventArgs e)
         {
-            var select_item = (vw_customers_list_get_code_shobe)this.lstCustomersList.SelectedItem;
-            List<vw_customers_list_get_code_shobe> item = new List<vw_customers_list_get_code_shobe>();
+            var select_item = (vw_code_sharh)this.lstCustomersList.SelectedItem;
+            List<vw_code_sharh> item = new List<vw_code_sharh>();
             item.Add
                 (
-                    new vw_customers_list_get_code_shobe
+                    new vw_code_sharh
                     {
                         Code = select_item.Code,
                         Sharh = select_item.Sharh

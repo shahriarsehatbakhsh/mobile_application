@@ -3,11 +3,9 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Diagnostics;
-using mobile_application.Services;
 using mobile_application.Helper;
-using mobile_application.Models;
-using System.IO;
 using Xamarin.Essentials;
+using mobile_application.SQLite.Models.Users;
 
 namespace mobile_application.pages.Users_Pages
 {
@@ -77,7 +75,7 @@ namespace mobile_application.pages.Users_Pages
                 }
 
 
-                mobile_application.Helper.Static_Loading.user_id = r;
+                Static_Loading.user_id = r;
                 Navigation.PopAsync();
                 await Navigation.PopAsync();
                 this.IsBusy = false;

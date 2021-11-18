@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.Services.Models;
+using mobile_application.Service.Models;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Extensions;
 

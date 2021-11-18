@@ -9,8 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using Xamarin.Essentials;
-using mobile_application.Models;
-using mobile_application.Services;
+using mobile_application.SQLite.Models;
 using mobile_application.pages.Users_Pages;
 
 namespace mobile_application

@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Data.SqlClient;
-using mobile_application.Services;
-using mobile_application.Models;
-using mobile_application.Models.Connection;
+using mobile_application.SQLite.Models;
 
 namespace mobile_application.pages.App_Setting_Pages
 {

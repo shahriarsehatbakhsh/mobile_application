@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 
 using System.IO;
-using mobile_application.Models.Users;
+using mobile_application.SQLite.Models.Users;
+using System.Net.Http;
 
 namespace mobile_application.Helper
 {
@@ -15,7 +16,8 @@ namespace mobile_application.Helper
 
         public static int user_id;
         public static tb_Users current_user;
-        public static int central_user_id = 1;
+        public static int central_user_id = 2;
+        public static int central_user_per = 2;
         public static int central_shobe_id = 1;
         public static string today_date = "1400/08/14";
 
@@ -29,5 +31,15 @@ namespace mobile_application.Helper
 
         public static bool connection_internet;
         public static bool connection_service;
+
+
+
+
+        /// api variable .
+        /// http://192.168.30.165:80/api/vw_code_sharh
+        public static string url = "http://192.168.30.165";
+        public static string port = ":80/";
+        public static string api_url = url + port ;
+        public static HttpClient client = new HttpClient();
     }
 }

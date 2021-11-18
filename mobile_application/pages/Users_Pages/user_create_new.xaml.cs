@@ -2,7 +2,8 @@
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.Models;
+using mobile_application.SQLite.Models;
+using mobile_application.SQLite.Models.Users;
 
 namespace mobile_application.pages.Users_Pages
 {

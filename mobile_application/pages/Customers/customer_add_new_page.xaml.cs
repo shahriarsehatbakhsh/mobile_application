@@ -9,9 +9,11 @@ using Xamarin.Forms.Xaml;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Extensions;
 using mobile_application.pages.Popup_Pages;
-using mobile_application.Services;
-using mobile_application.Services.Models;
 using mobile_application.Helper;
+using Newtonsoft;
+using Newtonsoft.Json;
+using System.Net.Http;
+using mobile_application.Service.Models;
 
 namespace mobile_application.pages.Customers
 {
@@ -69,35 +71,51 @@ namespace mobile_application.pages.Customers
 
         private async void SelectItem5_Clicked(object sender, EventArgs e)
         {
-            Items = sp.Code_Sharh_List(sp.exec.sp_masir_list);
+            //Items = sp.Code_Sharh_List(sp.exec.sp_masir_list);
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "Lists/Masir");
+            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+            Items = result;
             _which_button = "btnSelectItem5";
             await Choose_Form();
         }
 
         private async void SelectItem4_Clicked(object sender, EventArgs e)
         {
-            Items = sp.Code_Sharh_List(sp.exec.sp_mantaghe_list);
+            //Items = sp.Code_Sharh_List(sp.exec.sp_mantaghe_list);
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "Lists/Mantaghe");
+            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+            Items = result;
             _which_button = "btnSelectItem4";
             await Choose_Form();
         }
 
         private async void SelectItem3_Clicked(object sender, EventArgs e)
         {
-            Items = sp.Code_Sharh_List(sp.exec.sp_shahr_list);
+            //Items = sp.Code_Sharh_List(sp.exec.sp_shahr_list);
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "Lists/Shahr");
+            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+            Items = result;
             _which_button = "btnSelectItem3";
             await Choose_Form();
         }
 
         private async void SelectItem2_Clicked(object sender, EventArgs e)
         {
-            Items = sp.Code_Sharh_List(sp.exec.sp_ostan_list);
+            //Items = sp.Code_Sharh_List(sp.exec.sp_ostan_list);
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "Lists/Ostan");
+            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+            Items = result;
+
             _which_button = "btnSelectItem2";
             await Choose_Form();
         }
 
         private async void SelectItem1_Clicked(object sender, EventArgs e)
         {
-            Items = sp.Code_Sharh_List(sp.exec.sp_pishe_list);
+            //Items = sp.Code_Sharh_List(sp.exec.sp_pishe_list);
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "Lists/Pishe");
+            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+
             _which_button = "btnSelectItem1";
             await Choose_Form();
         }
@@ -105,13 +123,16 @@ namespace mobile_application.pages.Customers
         shobe_search_list_popup_page frm_shobe_list;
         private async void btnSelectShobe_Clicked(object sender, EventArgs e)
         {
-            views.show_list = sp.Shobe_List(2, 2);
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "List/Shobe code_karbar=" + Static_Loading.central_user_id + ",code_karbar_per=" + Static_Loading.central_user_per);
+            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+
+            views.show_list = result;
 
             frm_shobe_list = new shobe_search_list_popup_page(views.show_list);
             frm_shobe_list.Search += Shobe_Search_Result;
             await Navigation.PushPopupAsync(frm_shobe_list, true);
         }
-        private void Shobe_Search_Result(object sender, List<vw_shobe_list> e)
+        private void Shobe_Search_Result(object sender, List<vw_code_sharh> e)
         {
             this.txtShobeCode.Text = e[0].Code.ToString();
             this.txtShobeName.Text = e[0].Sharh.ToString();
@@ -122,10 +143,13 @@ namespace mobile_application.pages.Customers
         {
             ///save new customers syntax .....
             IsBusy = true;
-            
 
+
+            //Customers / GetLatestAvailableCustomerCode BranchCode = 1
             int CodeShobe = Convert.ToInt32(this.txtShobeCode.Text);
-            vw_customer_code_serial ccs = sp.Customer_Get_Code_Serial(CodeShobe)[0];
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "Customers/GetLatestAvailableCustomerCode BranchCode=" + CodeShobe);
+            List<vw_customer_code_serial> result = JsonConvert.DeserializeObject<List<vw_customer_code_serial>>(json);
+            vw_customer_code_serial ccs = result[0];
 
             int sp_GetLatestAvailableCustomerCode_code = ccs.CustomerCode;
             string Sharh = this.txtSharh.Text;
@@ -144,25 +168,33 @@ namespace mobile_application.pages.Customers
             string Mobile = this.txtMobile.Text;
             string Address = this.txtAddress.Text;
 
-            await sp.Customer_Insert(CodeShobe, 
-                                     sp_GetLatestAvailableCustomerCode_code, 
-                                     Sharh, 
-                                     sp_GetLatestAvailableCustomerCode_serial,
-                                     CodeKarbareVaredShodeBeSystem,
-                                     TairkheRooz, 
-                                     CodePishe, 
-                                     CodeOstan, 
-                                     CodeShahr, 
-                                     CodeMantaghe, 
-                                     CodeMasir,
-                                     Tel, 
-                                     Mobile, 
-                                     Address);
 
+            //Customers/Insert code_shobe=1,sp_GetLatestAvailableCustomerCode_code=967,Sharh=%D9%85%D8%B4%D8%AA%D8%B1%DB%8C%20%D8%B9%D9%84%DB%8C%20%D8%AD%D8%B3%DB%8C%D9%86%DB%8C%20%D8%AC%D8%AF%DB%8C%D8%AF,sp_GetLatestAvailableCustomerCode_serial=13,CodeKarbareVaredShodeBeSystem=1,TairkheRooz=1400%2F08%2F08,CodePishe=1,CodeOstan=1,CodeShahr=1,CodeMantaghe=1,CodeMasir=1,Tel=1,Mobile=1,Address=1?CodeShobe=1
+            var json_insert = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "Customers/Insert code_shobe=" + CodeShobe + ",sp_GetLatestAvailableCustomerCode_code=" + sp_GetLatestAvailableCustomerCode_code + ",Sharh=" + Sharh + "," +
+                "sp_GetLatestAvailableCustomerCode_serial=" + sp_GetLatestAvailableCustomerCode_serial + "," +
+                "CodeKarbareVaredShodeBeSystem=" + CodeKarbareVaredShodeBeSystem + "," +
+                "TairkheRooz=" + TairkheRooz + "," +
+                "CodePishe=" + CodePishe + "," +
+                "CodeOstan=" + CodeOstan + "," +
+                "CodeShahr=" + CodeShahr + "," +
+                "CodeMantaghe=" + CodeMantaghe + "," +
+                "CodeMasir=" + CodeMasir + "," +
+                "Tel=" + Tel + "," +
+                "Mobile=" + Mobile + ",Address=" + Address + "?CodeShobe=1");
+            List<ErrorResult> result_insert = JsonConvert.DeserializeObject<List<ErrorResult>>(json_insert);
 
-            ToastNotification.TostMessage(mobile_application.Helper.Static_Loading.done_message);
-            this.ReLoad_Form();
-            IsBusy = false;
+            if (result_insert == null)
+            {
+                ToastNotification.TostMessage(mobile_application.Helper.Static_Loading.done_message);
+                this.ReLoad_Form();
+                IsBusy = false;
+            }
+            else 
+            { 
+                //something wrong
+            }
+
+            
         }
 
         private void ReLoad_Form()
