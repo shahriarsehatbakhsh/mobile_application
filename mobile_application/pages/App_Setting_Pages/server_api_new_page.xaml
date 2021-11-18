@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.pages.App_Setting_Pages.server_api_new_page"
+             BackgroundColor="#EEEEEE" 
+             FlowDirection="RightToLeft">
+
+    <ContentPage.Content>
+        <StackLayout Padding="30,80,30,0">
+            <Label Text="ثبت سرور" TextColor="#533F95" FontSize="25" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontFamily="bTitrB" />
+            <StackLayout Spacing="15" VerticalOptions="CenterAndExpand">
+                <Entry x:Name="txtApiName" Placeholder="api server name" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                <Entry x:Name="txtApiIP" Placeholder="api ip number" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                <Entry x:Name="txtApiPort" Placeholder="api Port number" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <Label Text="Set as defaul" VerticalTextAlignment="Center" />
+                    <CheckBox x:Name="chkDefaul" IsChecked="True" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                </StackLayout>
+                <Button x:Name="btnSave" Text="ثبت اطلاعات" TextColor="White" BackgroundColor="#533F95" FontAttributes="Bold" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HorizontalOptions="FillAndExpand" FontFamily="bNazaninB" Clicked="btnSaveUser_Clicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

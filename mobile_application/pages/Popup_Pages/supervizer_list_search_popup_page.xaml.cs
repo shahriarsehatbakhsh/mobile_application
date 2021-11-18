@@ -27,7 +27,7 @@ namespace mobile_application.pages.Popup_Pages
 
         private async void Loadin_Form()
         {
-            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "List/supervizer code_karbar=" + Static_Loading.central_user_id + ",code_shobe=" + Static_Loading.central_shobe_id);
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url() + "List/supervizer code_karbar=" + Static_Loading.central_user_id + ",code_shobe=" + Static_Loading.central_shobe_id);
             List<vw_supervizer_list> result = JsonConvert.DeserializeObject<List<vw_supervizer_list>>(json);
             List<vw_supervizer_list> Items = result;
             this.lstSupervizerList.ItemsSource = Items;

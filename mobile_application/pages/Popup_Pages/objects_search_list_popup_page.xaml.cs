@@ -30,7 +30,7 @@ namespace mobile_application.pages.Popup_Pages
 
         private async void Loadin_Form()
         {
-            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "List/ObjectCodeName object_name=" + "");
+            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url() + "List/ObjectCodeName object_name=" + "");
             List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
             List<vw_code_sharh> Items = result;
             this.lstObjectsList.ItemsSource = Items;
@@ -67,7 +67,7 @@ namespace mobile_application.pages.Popup_Pages
             try
             {
                 string objName = this.txtSearchObject.Text;
-                var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url + "List/ObjectCodeName object_name=" + objName);
+                var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url() + "List/ObjectCodeName object_name=" + objName);
                 List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
                 List<vw_code_sharh> Items = result;
                 this.lstObjectsList.ItemsSource = Items;

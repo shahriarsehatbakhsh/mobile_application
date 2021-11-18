@@ -49,19 +49,19 @@
                         </StackLayout>
 
                         <StackLayout Grid.Row="1">
-                            <Entry x:Name="txtServer" Placeholder="Server IP"  />
+                            <Entry x:Name="txtApi_Ip" Placeholder="192.168.30.165"  />
                         </StackLayout>
 
                         <StackLayout Grid.Row="2">
-                            <Entry x:Name="txtLogin" Placeholder="Username"  />
+                            <Entry x:Name="txtApi_Port" Placeholder=":80" />
                         </StackLayout>
 
                         <StackLayout Grid.Row="3">
-                            <Entry x:Name="txtPassword" Placeholder="Password" IsPassword="True" />
+                            <Entry x:Name="txtApi_Username" Placeholder="Username" />
                         </StackLayout>
 
                         <StackLayout Grid.Row="4">
-                            <Entry x:Name="txtDatabase" Placeholder="Database name"  />
+                            <Entry x:Name="txtApi_Password" Placeholder="Password"  />
                         </StackLayout>
 
                         <StackLayout Grid.Row="5" HorizontalOptions="Start">

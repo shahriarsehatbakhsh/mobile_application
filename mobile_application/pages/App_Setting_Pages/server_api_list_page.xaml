@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.pages.App_Setting_Pages.server_api_list_page">
+
+    <ContentPage.Content>
+        <StackLayout Padding="0,10,0,10">
+            <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center" >
+                <StackLayout Padding="5">
+                    <ListView x:Name="lstApiServerList">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Padding="5">
+                                        <Label Text="{Binding id}" />
+                                        <Label Text="{Binding Name}" />
+                                        <Label Text="{Binding Ip}" />
+                                        <Label Text="{Binding Port}" />
+                                        <CheckBox x:Name="chkIsDefault" IsChecked="{Binding is_default}" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                        <Button Text="پیش فرض" StyleClass="select_button" x:Name="btnDefault" Clicked="btnDefault_Clicked" />
+                        <Button Text="حذف" StyleClass="select_button" x:Name="btnDelete" Clicked="btnDelete_Clicked"  />
+                        <Button Text="بستن" StyleClass="select_button" x:Name="btnCloseMe" Clicked="btnCloseMe_Clicked"  />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

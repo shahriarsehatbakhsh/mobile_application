@@ -78,7 +78,7 @@
                             Clicked="btnLogin_Clicked"
                             FontFamily="bTerafficB"/>
                     <Button x:Name="btnSingout" 
-                            Text="وب سایت" 
+                            Text="تنظیمات سرور" 
                             HeightRequest="50" 
                             WidthRequest="145"
                             BackgroundColor="White"

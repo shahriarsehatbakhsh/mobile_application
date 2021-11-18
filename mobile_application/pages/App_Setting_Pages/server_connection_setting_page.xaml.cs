@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Data.SqlClient;
-using mobile_application.SQLite.Models;
+using mobile_application.SQLite.Models.Connection;
+using mobile_application.Helper;
 
 namespace mobile_application.pages.App_Setting_Pages
 {
@@ -20,11 +20,11 @@ namespace mobile_application.pages.App_Setting_Pages
 
             try
             {
-                this.txtName.Text = Client.con_name;
-                this.txtServer.Text = Client.con_server;
-                this.txtLogin.Text = Client.con_login;
-                this.txtPassword.Text = Client.con_password;
-                this.txtDatabase.Text = Client.con_database;
+                this.txtName.Text = Static_Loading.server_name;
+                this.txtApi_Ip.Text = Static_Loading.api_ip;
+                this.txtApi_Port.Text = Static_Loading.api_port;
+                this.txtApi_Username.Text = Static_Loading.api_username;
+                this.txtApi_Password.Text = Static_Loading.api_password;
             }
             catch (Exception)
             {
@@ -42,31 +42,31 @@ namespace mobile_application.pages.App_Setting_Pages
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.txtServer.Text))
+            if (string.IsNullOrEmpty(this.txtApi_Ip.Text))
             {
                 DisplayAlert("ثبت", "آدرس آی پی سرور را وارد کنید", "خطا");
-                this.txtServer.Focus();
+                this.txtApi_Ip.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.txtDatabase.Text))
+            if (string.IsNullOrEmpty(this.txtApi_Port.Text))
             {
-                DisplayAlert("ثبت", "نام دوره با بانک را وارد کنید", "خطا");
-                this.txtDatabase.Focus();
+                DisplayAlert("ثبت", "شماره پورت برای اتصال به سرور را وارد کنید", "خطا");
+                this.txtApi_Port.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.txtLogin.Text))
+            if (string.IsNullOrEmpty(this.txtApi_Username.Text))
             {
                 DisplayAlert("ثبت", "نام کاربری را وارد کنید", "خطا");
-                this.txtLogin.Focus();
+                this.txtApi_Username.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.txtPassword.Text))
+            if (string.IsNullOrEmpty(this.txtApi_Password.Text))
             {
                 DisplayAlert("ثبت", "گذرواژه را وارد کنید", "خطا");
-                this.txtPassword.Focus();
+                this.txtApi_Password.Focus();
                 return;
             }
 
@@ -84,9 +84,9 @@ namespace mobile_application.pages.App_Setting_Pages
             }
 
 
-            Client.Set_Connection_String(this.txtServer.Text, this.txtLogin.Text, this.txtPassword.Text, this.txtDatabase.Text);
+            Static_Loading.api_url(this.txtApi_Ip.Text, this.txtApi_Port.Text);
             //_ = ConnectionSyntax.Delete();
-            _ = ConnectionSyntax.Insert(this.txtName.Text,this.txtServer.Text, Client.con_login, Client.con_password, Client.con_database, is_admin);
+            _ = ConnectionSyntax.Insert(this.txtName.Text,this.txtApi_Ip.Text, this.txtApi_Username.Text, this.txtApi_Password.Text, this.txtApi_Port.Text, is_admin);
 
 
             ToastNotification.TostMessage(mobile_application.Helper.Static_Loading.done_message);
@@ -94,8 +94,10 @@ namespace mobile_application.pages.App_Setting_Pages
 
         private void btnTextConnection_Clicked(object sender, EventArgs e)
         {
-            Client.Set_Connection_String(this.txtServer.Text, this.txtLogin.Text, this.txtPassword.Text, this.txtDatabase.Text);
-            var r = Client.Server_Connection();
+            //Client.Set_Connection_String(this.txtServer.Text, this.txtLogin.Text, this.txtPassword.Text, this.txtDatabase.Text);
+            Static_Loading.api_url(this.txtApi_Ip.Text, this.txtApi_Port.Text);
+
+            var r = true;
             if (r)
             {
                 this.lblConnectionState.TextColor = Color.Green;

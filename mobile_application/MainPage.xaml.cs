@@ -9,8 +9,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using Xamarin.Essentials;
-using mobile_application.SQLite.Models;
+using mobile_application.SQLite.Models.Connection;
+using mobile_application.SQLite.Models.Users;
 using mobile_application.pages.Users_Pages;
+using mobile_application.Helper;
+using mobile_application.pages.App_Setting_Pages;
 
 namespace mobile_application
 {
@@ -27,13 +30,13 @@ namespace mobile_application
             if (r == 0)
             {
                 //this.lblConnection.IsVisible = true;
-                Client.Is_Set_ConnectionString = false;
+                Static_Loading.Is_Set_ConnectionString = false;
             }
             else
             {
                 var a = ConnectionSyntax.Get_Active_Database_Connection_Id();
-                Client.Set_Connection_String(a);
-                Client.Is_Set_ConnectionString = true;
+                //Client.Set_Connection_String(a);
+                Static_Loading.Is_Set_ConnectionString = true;
             }
         }
 
@@ -87,14 +90,16 @@ namespace mobile_application
 
         private async void btnSingout_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-                await Browser.OpenAsync("https://www.paya.ws/", BrowserLaunchMode.SystemPreferred);
-            }
-            catch (Exception ex)
-            {
-                // An unexpected error occured. No browser may be installed on the device.
-            }
+            //try
+            //{
+            //    await Browser.OpenAsync("https://www.paya.ws/", BrowserLaunchMode.SystemPreferred);
+            //}
+            //catch (Exception ex)
+            //{
+            //    // An unexpected error occured. No browser may be installed on the device.
+            //}
+            await Navigation.PushAsync(new server_api_new_page(), true);
+
         }
     }
 }

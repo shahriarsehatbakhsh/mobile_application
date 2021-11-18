@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using mobile_application.SQLite.Models.Users;
 using System.Net.Http;
+using System.Data;
 
 namespace mobile_application.Helper
 {
@@ -12,7 +13,8 @@ namespace mobile_application.Helper
     {
         public static string db_path => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "com.Paya.DB");
 
-        
+
+
 
         public static int user_id;
         public static tb_Users current_user;
@@ -20,6 +22,9 @@ namespace mobile_application.Helper
         public static int central_user_per = 2;
         public static int central_shobe_id = 1;
         public static string today_date = "1400/08/14";
+
+
+        public static bool Is_Set_ConnectionString;
 
 
         public static int app_state = 0;
@@ -35,11 +40,29 @@ namespace mobile_application.Helper
 
 
 
-        /// api variable .
-        /// http://192.168.30.165:80/api/vw_code_sharh
-        public static string url = "http://192.168.30.165";
-        public static string port = ":80/";
-        public static string api_url = url + port ;
         public static HttpClient client = new HttpClient();
+        /// http://192.168.30.165:80/api/vw_code_sharh
+        public static string server_name = "MaliDB00_11";
+        public static string api_ip = "http://192.168.30.165";
+        public static string api_port = ":80/";
+        public static string api_username = "admin";
+        public static string api_password = "123";
+
+
+        public static string api_url()
+        { 
+            return api_ip + api_port;
+        }
+
+        public static string api_url(string ip,string port)
+        {
+            api_ip = ip;
+            api_port = ":" + port + "/";
+            return api_ip + api_port;
+        }
+
+        
+
+
     }
 }
