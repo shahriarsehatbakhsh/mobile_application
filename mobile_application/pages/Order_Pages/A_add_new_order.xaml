@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:order_page="clr-namespace:mobile_application.pages.Order_Pages"
              x:Class="mobile_application.pages.Order_Pages.A_add_new_order" 
-             FlowDirection="RightToLeft">
+             FlowDirection="RightToLeft"
+             xmlns:D="clr-namespace:ShamsiDatePicker;assembly=ShamsiDatePicker">
 
 
     <ContentPage.Resources>
@@ -57,6 +58,8 @@
         </Style>
                  
     </ContentPage.Resources>
+
+   
     
     <ContentPage.Content>
         <ScrollView>
@@ -104,7 +107,14 @@
                                     <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="تاریخ:" StyleClass="label" />
-                                <DatePicker Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand"  FontFamily="bNazanin" FontSize="Medium" />
+
+                                <D:ShamsiDatePicker Grid.Column="1" 
+                                            Grid.ColumnSpan="2" 
+                                            BackgroundColor="Transparent" 
+                                            HorizontalOptions="FillAndExpand"  
+                                            FontFamily="bNazanin" 
+                                            FontSize="Medium" />
+
                                 <Label Grid.Column="3" StyleClass="LabelIcon" />
                             </Grid>
                         </StackLayout>

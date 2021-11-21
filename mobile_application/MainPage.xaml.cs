@@ -26,17 +26,24 @@ namespace mobile_application
             AnimateCarousel();
 
 
-            var r = ConnectionSyntax.Count();
-            if (r == 0)
+            //var r = ConnectionSyntax.Count();
+            server_list.Init();
+            if (server_list.defaul_server == null)
             {
                 //this.lblConnection.IsVisible = true;
                 Static_Loading.Is_Set_ConnectionString = false;
+                this.btnSingout.BackgroundColor = Color.Red;
             }
             else
             {
-                var a = ConnectionSyntax.Get_Active_Database_Connection_Id();
+                //var a = ConnectionSyntax.Get_Active_Database_Connection_Id();
                 //Client.Set_Connection_String(a);
+                //Static_Loading.api_ip = server_list.defaul_server.IP;
+                //Static_Loading.api_port = server_list.defaul_server.Port;
+                Static_Loading.api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
+
                 Static_Loading.Is_Set_ConnectionString = true;
+                this.btnSingout.BackgroundColor = Color.White;
             }
         }
 

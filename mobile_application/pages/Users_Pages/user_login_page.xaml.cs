@@ -5,12 +5,8 @@ using Xamarin.Forms.Xaml;
 using System.Diagnostics;
 using mobile_application.Helper;
 using Xamarin.Essentials;
-using mobile_application.SQLite.Models.Users;
-using Newtonsoft;
-using Newtonsoft.Json;
-using System.Net.Http;
-using mobile_application.Service.Models;
-using System.Collections.Generic;
+using mobile_application.ServiceResponse;
+using Rg.Plugins.Popup.Extensions;
 
 namespace mobile_application.pages.Users_Pages
 {
@@ -41,6 +37,7 @@ namespace mobile_application.pages.Users_Pages
         }
 
 
+
         private async void btnLogin_Clicked(object sender, EventArgs e)
         {
             this.IsBusy = true;
@@ -49,24 +46,12 @@ namespace mobile_application.pages.Users_Pages
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
+            var Data = await Client.Check_User_Name_Password(this.txtUsername.Text, this.txtPassword.Text);
 
-            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url() + "Users/CentralLogin Username=" + this.txtUsername.Text + ",Password=" + this.txtPassword.Text);
-            List<vw_Resault> result = JsonConvert.DeserializeObject<List<vw_Resault>>(json);
-
-            var r = UsersSyntax.Get_Id(username, password);
-            Static_Loading.current_user = UsersSyntax.Get(r);
-
-            
-
-
-            System.Threading.Thread.Sleep(1000);
-            
-            if (r == 0 || Static_Loading.current_user == null)
+            if (Data == null || Data[0].Resault == "E")
             {
-                await DisplayAlert("Error", "username or password is incorrect !!!", "again");
-                this.Focus();
-                this.IsBusy = false;
-                return;
+                var pop = new mobile_application.controls.AppMessageBox("خطا", "نام کاربری یا رمز ورود به سیستم اشتباه میباشید");
+                await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
             }
             else
             {
@@ -83,12 +68,49 @@ namespace mobile_application.pages.Users_Pages
                 }
 
 
-                Static_Loading.user_id = r;
+                Static_Loading.user_id = Data[0].id;
                 Navigation.PopAsync();
                 await Navigation.PopAsync();
                 this.IsBusy = false;
                 return;
-            }                
+            }
+
+            //var r = UsersSyntax.Get_Id(username, password);
+            //Static_Loading.current_user = UsersSyntax.Get(r);
+
+
+
+
+            //System.Threading.Thread.Sleep(1000);
+
+            //if (r == 0 || Static_Loading.current_user == null)
+            //{
+            //    await DisplayAlert("Error", "username or password is incorrect !!!", "again");
+            //    this.Focus();
+            //    this.IsBusy = false;
+            //    return;
+            //}
+            //else
+            //{
+            //    bool savePassword = this.chkSavePassword.IsChecked;
+            //    if (savePassword)
+            //    {
+            //        Preferences.Set("username", this.txtUsername.Text);
+            //        Preferences.Set("password", this.txtPassword.Text);
+            //    }
+            //    else
+            //    {
+            //        Preferences.Set("username", "");
+            //        Preferences.Set("password", "");
+            //    }
+
+
+            //    Static_Loading.user_id = r;
+            //    Navigation.PopAsync();
+            //    await Navigation.PopAsync();
+            //    this.IsBusy = false;
+            //    return;
+            //}                
 
         }
 

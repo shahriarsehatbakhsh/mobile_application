@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using mobile_application.Helper;
 
 namespace mobile_application.pages.App_Setting_Pages
 {
@@ -15,7 +16,7 @@ namespace mobile_application.pages.App_Setting_Pages
         public server_api_list_page()
         {
             InitializeComponent();
-            //lstApiServerList.ItemsSource = 
+            lstApiServerList.ItemsSource = server_list.servers_list;
         }
 
         private void btnDefault_Clicked(object sender, EventArgs e)

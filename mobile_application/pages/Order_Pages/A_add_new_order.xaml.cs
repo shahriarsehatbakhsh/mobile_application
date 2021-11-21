@@ -45,7 +45,7 @@ namespace mobile_application.pages.Order_Pages
             frm_customer_list.Search += Customer_Search_Result;
             await Navigation.PushPopupAsync(frm_customer_list, true);
         }
-        private void Customer_Search_Result(object sender, List<vw_code_sharh> e)
+        private void Customer_Search_Result(object sender, List<vw_customers_list> e)
         {
             this.txtCustomerCode.Text = e[0].Code.ToString();
             this.txtCustomerName.Text = e[0].Sharh.ToString();
@@ -83,7 +83,8 @@ namespace mobile_application.pages.Order_Pages
         shobe_search_list_popup_page frm_shobe_list ;
         private async void btnSelectShobe_Clicked(object sender, EventArgs e)
         {
-            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url() + "List/Shobe code_karbar=" + Static_Loading.central_user_id + ",code_karbar_per=" + Static_Loading.central_user_per);
+            HttpClient client = new HttpClient();
+            var json = await client.GetStringAsync(Static_Loading.api_url() + "List/Shobe code_karbar=" + Static_Loading.central_user_id + ",code_karbar_per=" + Static_Loading.central_user_per);
             List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
             views.show_list = result;
 
@@ -94,6 +95,7 @@ namespace mobile_application.pages.Order_Pages
         private void Shobe_Search_Result(object sender, List<vw_code_sharh> e)
         {
             this.txtShobeCode.Text = e[0].Code.ToString();
+            Static_Loading.central_shobe_id = Convert.ToInt32(this.txtShobeCode.Text);
             this.txtShobeName.Text = e[0].Sharh.ToString();
         }
 

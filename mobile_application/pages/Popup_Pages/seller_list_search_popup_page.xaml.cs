@@ -28,7 +28,8 @@ namespace mobile_application.pages.Popup_Pages
 
         private async void Loadin_Form()
         {
-            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url() + "List/seller code_karbar=" + Static_Loading.central_user_id + ",code_shobe=" + Static_Loading.central_shobe_id);
+            HttpClient client = new HttpClient();
+            var json = await client.GetStringAsync(Static_Loading.api_url() + "List/seller code_karbar=" + Static_Loading.central_user_id + ",code_shobe=" + Static_Loading.central_shobe_id);
             List<vw_seller_list> result = JsonConvert.DeserializeObject<List<vw_seller_list>>(json);
             List<vw_seller_list> Items = result;
             this.lstSellerList.ItemsSource = Items;

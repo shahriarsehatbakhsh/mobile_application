@@ -18,17 +18,20 @@ namespace mobile_application.pages.Popup_Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class customers_search_list_popup_page : Rg.Plugins.Popup.Pages.PopupPage
     {
+        
         public customers_search_list_popup_page()
         {
             InitializeComponent();
             this.CloseWhenBackgroundIsClicked = true;
 
+            
             Loadin_Form();
         }
 
         private async void Loadin_Form()
         {
-            var json = await Static_Loading.client.GetStringAsync(Static_Loading.api_url() + "Customers/List code_shobe=" + Static_Loading.central_shobe_id);
+            HttpClient client = new HttpClient();
+            var json = await client.GetStringAsync(Static_Loading.api_url() + "Customers/List code_shobe=" + Static_Loading.central_shobe_id);
             List<vw_customers_list> result = JsonConvert.DeserializeObject<List<vw_customers_list>>(json);
             List<vw_customers_list> Items = result;
             this.lstCustomersList.ItemsSource = Items;
@@ -39,15 +42,15 @@ namespace mobile_application.pages.Popup_Pages
             await Navigation.PopPopupAsync();
         }
 
-        public delegate void SearchDelegate(object sender, List<vw_code_sharh> e);
+        public delegate void SearchDelegate(object sender, List<vw_customers_list> e);
         public event SearchDelegate Search;
         private async void btnSelectItem_Clicked(object sender, EventArgs e)
         {
-            var select_item = (vw_code_sharh)this.lstCustomersList.SelectedItem;
-            List<vw_code_sharh> item = new List<vw_code_sharh>();
+            var select_item = (vw_customers_list)this.lstCustomersList.SelectedItem;
+            List<vw_customers_list> item = new List<vw_customers_list>();
             item.Add
                 (
-                    new vw_code_sharh
+                    new vw_customers_list
                     {
                         Code = select_item.Code,
                         Sharh = select_item.Sharh

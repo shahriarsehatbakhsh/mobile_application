@@ -17,6 +17,7 @@
                     <CheckBox x:Name="chkDefaul" IsChecked="True" HorizontalOptions="FillAndExpand" HeightRequest="40" />
                 </StackLayout>
                 <Button x:Name="btnSave" Text="ثبت اطلاعات" TextColor="White" BackgroundColor="#533F95" FontAttributes="Bold" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HorizontalOptions="FillAndExpand" FontFamily="bNazaninB" Clicked="btnSaveUser_Clicked" />
+                <Button x:Name="btnList" Text="لیست سرور" TextColor="White" BackgroundColor="#533F95" FontAttributes="Bold" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HorizontalOptions="FillAndExpand" FontFamily="bNazaninB" Clicked="btnListServer_Clicked" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

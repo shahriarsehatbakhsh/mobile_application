@@ -10,76 +10,156 @@ namespace mobile_application.Helper
     public static class server_list
     {
 
-        public static string ds_path => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "list.xml");
 
-        public static DataSet api_server_list;
+        public static string ds_path => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "list.xml");
+        public static DataSet ds_api_server_list;
 
 
         static string table_name = "api";
+
+
+        static bool _Init;
         public static void Init()
         {
-            api_server_list = new DataSet();
-            api_server_list.Tables.Add(table_name);
+            //File.Delete(ds_path);
+            create();
 
-            api_server_list.Tables[table_name].Columns.Add("id");
-            api_server_list.Tables[table_name].Columns.Add("Name");
-            api_server_list.Tables[table_name].Columns.Add("IP");
-            api_server_list.Tables[table_name].Columns.Add("Port");
-            api_server_list.Tables[table_name].Columns.Add("Default");
-
-            Read();
-        }
-
-        public static bool Write()
-        {
-            api_server_list.Tables[table_name].WriteXml(ds_path);
-            return true;
-        }
-
-        public static bool Read()
-        {
             if (File.Exists(ds_path))
             {
-                api_server_list.Tables[table_name].ReadXml(ds_path);
-                return true;
+                Read_xml();
+                servers_list = fill_list();
+                set_default_server();
             }
             else
             {
-                Write();
-                Read();
+                Write_xml();
+            }
+        }
+
+        public static void create()
+        {
+            ds_api_server_list = new DataSet();
+            ds_api_server_list.Tables.Add(table_name);
+
+            ds_api_server_list.Tables[table_name].Columns.Add("id");
+            ds_api_server_list.Tables[table_name].Columns.Add("Name");
+            ds_api_server_list.Tables[table_name].Columns.Add("IP");
+            ds_api_server_list.Tables[table_name].Columns.Add("Port");
+            ds_api_server_list.Tables[table_name].Columns.Add("Default");
+
+            servers_list = new List<api_table>();
+        }
+
+        public static List<api_table> fill_list()
+        {
+            List<api_table> result = new List<api_table>();
+            for (int i = 0; i < ds_api_server_list.Tables[table_name].Rows.Count; i++)
+            {
+                var id = ds_api_server_list.Tables[table_name].Rows[i][0];
+                var Name = ds_api_server_list.Tables[table_name].Rows[i][1];
+                var IP = ds_api_server_list.Tables[table_name].Rows[i][2];
+                var Port = ds_api_server_list.Tables[table_name].Rows[i][3];
+                var Default = ds_api_server_list.Tables[table_name].Rows[i][4];
+
+                result.Add(
+                        new api_table
+                        {
+                            id = Convert.ToInt32(id),
+                            Name = Name.ToString(),
+                            IP = IP.ToString(),
+                            Port = Port.ToString(),
+                            Default = Convert.ToBoolean(Default)
+                        }
+                    ) ;
+            }
+            return result;
+        }
+
+        public static bool Write_xml()
+        {
+            try
+            {
+                ds_api_server_list.Clear();
+                int r = 0;
+                foreach (var item in servers_list)
+                {
+                    ds_api_server_list.Tables[table_name].Rows.Add();
+
+                    ds_api_server_list.Tables[table_name].Rows[r]["id"] = r+1;
+                    ds_api_server_list.Tables[table_name].Rows[r]["Name"] = item.Name;
+                    ds_api_server_list.Tables[table_name].Rows[r]["IP"] = item.IP;
+                    ds_api_server_list.Tables[table_name].Rows[r]["Port"] = item.Port;
+                    ds_api_server_list.Tables[table_name].Rows[r]["Default"] = item.Default;
+
+                    r += 1;
+                }
+                ds_api_server_list.WriteXml(ds_path);
                 return true;
+            }
+            catch (Exception ex)
+            {
+                Static_Loading.error_message = ex.Message;
+                return false;
+                throw;
+            }
+        }
+
+        public static bool Read_xml()
+        {
+            try
+            {
+                ds_api_server_list.ReadXml(ds_path);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Static_Loading.error_message = ex.Message;
+                return false;
+                throw;
             }
         }
 
         public static int count()
         {
-            return api_server_list.Tables[table_name].Rows.Count;
+            try
+            {
+                return ds_api_server_list.Tables[table_name].Rows.Count;
+            }
+            catch (Exception ex)
+            {
+                Static_Loading.error_message = ex.Message;
+                return 0;
+                throw;
+            }
+        }
+
+        public static api_table defaul_server;
+        public static List<api_table> servers_list = new List<api_table>();
+        public static void set_default_server()
+        {
+            defaul_server = servers_list.Find(o => o.Default == true);
         }
 
 
-        public static bool Add(string name,string ip,string port,bool defaul)
+        public static bool Add(string name, string ip, string port, bool defaul)
         {
             try
             {
-                var r = api_server_list.Tables[table_name].Rows.Count - 1;
+                servers_list.Add(new api_table
+                {
+                    id = servers_list.Count - 1,
+                    Name = name,
+                    IP = ip,
+                    Port = port,
+                    Default = defaul
+                });
 
-
-                api_server_list.Tables[table_name].Rows.Add
-                    (
-                    new api_table 
-                    { 
-                        id = r, 
-                        Name = name,
-                        IP = ip, 
-                        Port = port ,
-                        Default = defaul
-                    });
-
-                Write();
+                Write_xml();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Static_Loading.error_message = ex.Message;
                 return false;
                 throw;
             }

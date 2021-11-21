@@ -67,7 +67,9 @@
     <PackageReference Include="Microsoft.Identity.Client" Version="4.37.0" />
     <PackageReference Include="Microsoft.QualityTools.Testing.Fakes" Version="16.11.230815" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="PersianDateShamsi" Version="1.0.2" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.14" />
+    <PackageReference Include="ShamsiDatePicker" Version="2.1.239" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.1.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
@@ -180,13 +182,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\mobile_application.Service\Models\ErrorResult.cs" Link="Client\Models\ErrorResult.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_code_sharh.cs" Link="Client\Models\vw_code_sharh.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_customers_list.cs" Link="Client\Models\vw_customers_list.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_customer_code_serial.cs" Link="Client\Models\vw_customer_code_serial.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_Resault.cs" Link="Client\Models\vw_Resault.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_seller_list.cs" Link="Client\Models\vw_seller_list.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_supervizer_list.cs" Link="Client\Models\vw_supervizer_list.cs" />
+    <Compile Include="..\mobile_application.Service\Models\ErrorResult.cs" Link="ServiceResponse\Models\ErrorResult.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_code_sharh.cs" Link="ServiceResponse\Models\vw_code_sharh.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_customers_list.cs" Link="ServiceResponse\Models\vw_customers_list.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_customer_code_serial.cs" Link="ServiceResponse\Models\vw_customer_code_serial.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_Resault.cs" Link="ServiceResponse\Models\vw_Resault.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_seller_list.cs" Link="ServiceResponse\Models\vw_seller_list.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_supervizer_list.cs" Link="ServiceResponse\Models\vw_supervizer_list.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -198,7 +200,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Client\Models\" />
+    <Folder Include="ServiceResponse\Models\" />
     <Folder Include="Fakes\" />
   </ItemGroup>
 </Project>

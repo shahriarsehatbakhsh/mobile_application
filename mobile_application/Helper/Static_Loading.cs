@@ -16,7 +16,7 @@ namespace mobile_application.Helper
 
 
 
-        public static int user_id;
+        public static long user_id;
         public static tb_Users current_user;
         public static int central_user_id = 2;
         public static int central_user_per = 2;
@@ -40,7 +40,7 @@ namespace mobile_application.Helper
 
 
 
-        public static HttpClient client = new HttpClient();
+        
         /// http://192.168.30.165:80/api/vw_code_sharh
         public static string server_name = "MaliDB00_11";
         public static string api_ip = "http://192.168.30.165";
@@ -51,13 +51,13 @@ namespace mobile_application.Helper
 
         public static string api_url()
         { 
-            return api_ip + api_port;
+            return "http://" + api_ip + ":" + api_port + "/";
         }
 
         public static string api_url(string ip,string port)
         {
             api_ip = ip;
-            api_port = ":" + port + "/";
+            api_port = port;
             return api_ip + api_port;
         }
 

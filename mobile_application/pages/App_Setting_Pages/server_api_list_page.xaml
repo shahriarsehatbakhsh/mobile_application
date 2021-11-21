@@ -12,11 +12,11 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" Padding="5">
-                                        <Label Text="{Binding id}" />
-                                        <Label Text="{Binding Name}" />
-                                        <Label Text="{Binding Ip}" />
-                                        <Label Text="{Binding Port}" />
-                                        <CheckBox x:Name="chkIsDefault" IsChecked="{Binding is_default}" />
+                                        <Label Text="{Binding id}" VerticalTextAlignment="Center" />
+                                        <Label Text="{Binding Name}" VerticalTextAlignment="Center"  />
+                                        <Label Text="{Binding IP}" VerticalTextAlignment="Center"  />
+                                        <Label Text="{Binding Port}" VerticalTextAlignment="Center" />
+                                        <CheckBox x:Name="chkIsDefault" IsChecked="{Binding Default}" />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

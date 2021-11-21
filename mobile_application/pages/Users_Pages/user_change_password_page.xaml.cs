@@ -38,9 +38,9 @@ namespace mobile_application.pages.Users_Pages
             }
 
 
-            UsersSyntax.Delete(Static_Loading.user_id);
-            _ = UsersSyntax.Insert(Static_Loading.current_user.username, this.txtConfirmPassword.Text, Static_Loading.current_user.is_admin);
-            UsersSyntax.Get(Static_Loading.user_id);
+            //UsersSyntax.Delete(Static_Loading.user_id);
+            //_ = UsersSyntax.Insert(Static_Loading.current_user.username, this.txtConfirmPassword.Text, Static_Loading.current_user.is_admin);
+            //UsersSyntax.Get(Static_Loading.user_id);
             ToastNotification.TostMessage(" ثبت موفقیت آمیز بود");
         }
     }
