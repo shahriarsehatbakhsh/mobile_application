@@ -9,6 +9,12 @@
         <StyleSheet Source="../../Resources/Styles/main-style.css" />
     </ContentPage.Resources>
 
+    <ContentPage.Content>
+        <ActivityIndicator 
+            IsVisible="{Binding IsBusy}" 
+            IsRunning="{Binding IsBusy}" />
+    </ContentPage.Content>
+
     <Grid BackgroundColor="#f3f5f9" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FlowDirection="RightToLeft">
         <Grid.RowDefinitions>
             <RowDefinition Height="180" />

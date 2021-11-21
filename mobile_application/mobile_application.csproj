@@ -143,6 +143,9 @@
     <EmbeddedResource Update="pages\Popup_Pages\customers_search_list_popup_page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="pages\Popup_Pages\mosavabe_search_list_popup_page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="pages\Popup_Pages\objects_search_list_popup_page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -185,10 +188,13 @@
     <Compile Include="..\mobile_application.Service\Models\ErrorResult.cs" Link="ServiceResponse\Models\ErrorResult.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_code_sharh.cs" Link="ServiceResponse\Models\vw_code_sharh.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_customers_list.cs" Link="ServiceResponse\Models\vw_customers_list.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_customer_cart_result.cs" Link="ServiceResponse\Models\vw_customer_cart_result.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_customer_code_serial.cs" Link="ServiceResponse\Models\vw_customer_code_serial.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_GetLatestAvailableCustomerCode.cs" Link="ServiceResponse\Models\vw_GetLatestAvailableCustomerCode.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_Resault.cs" Link="ServiceResponse\Models\vw_Resault.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_seller_list.cs" Link="ServiceResponse\Models\vw_seller_list.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_supervizer_list.cs" Link="ServiceResponse\Models\vw_supervizer_list.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_Users.cs" Link="ServiceResponse\Models\vw_Users.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,29 +7,38 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.Service.Models;
-using System.Diagnostics;
-using mobile_application.pages.Order_Pages;
 using Rg.Plugins.Popup.Extensions;
 using Newtonsoft;
 using Newtonsoft.Json;
 using System.Net.Http;
 using mobile_application.Helper;
-using mobile_application.ServiceResponse;
 
 namespace mobile_application.pages.Popup_Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class objects_search_list_popup_page : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class mosavabe_search_list_popup_page : Rg.Plugins.Popup.Pages.PopupPage
     {
-        public objects_search_list_popup_page()
+        public mosavabe_search_list_popup_page(List<vw_code_sharh> Items)
         {
             InitializeComponent();
             this.CloseWhenBackgroundIsClicked = true;
+            this.lstMosavabeList.ItemsSource = Items;
         }
 
         private async void Loadin_Form()
         {
-            this.lstObjectsList.ItemsSource = Client.ObjectCodeName_Search(this.txtSearchObject.Text).GetAwaiter().GetResult(); 
+            try
+            {
+                
+                
+                
+            }
+            catch (Exception ex)
+            {
+                var pop = new mobile_application.controls.AppMessageBox("خطا", ex.Message );
+                await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
+                throw;
+            }
         }
 
         private async void btnCloseMe_Clicked(object sender, EventArgs e)
@@ -37,12 +46,11 @@ namespace mobile_application.pages.Popup_Pages
             await Navigation.PopPopupAsync();
         }
 
-
         public delegate void SearchDelegate(object sender, List<vw_code_sharh> e);
         public event SearchDelegate Search;
         private async void btnSelectItem_Clicked(object sender, EventArgs e)
         {
-            var select_item = (vw_code_sharh)this.lstObjectsList.SelectedItem;
+            var select_item = (vw_code_sharh)this.lstMosavabeList.SelectedItem;
             List<vw_code_sharh> item = new List<vw_code_sharh>();
             item.Add
                 (
@@ -54,26 +62,6 @@ namespace mobile_application.pages.Popup_Pages
                 );
             Search(sender, item);
             await Navigation.PopPopupAsync();
-        }
-
-
-
-        private async void txtSearchObject_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                string objName = this.txtSearchObject.Text;
-                HttpClient client = new HttpClient();
-                var json = await client.GetStringAsync(Static_Loading.api_url() + "List/ObjectCodeName object_name=" + objName);
-                List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
-                List<vw_code_sharh> Items = result;
-                this.lstObjectsList.ItemsSource = Items;
-            }
-            catch (Exception)
-            {
-
-                Debug.WriteLine("Failed to Load Item");
-            }
         }
     }
 }

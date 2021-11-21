@@ -40,78 +40,47 @@ namespace mobile_application.pages.Users_Pages
 
         private async void btnLogin_Clicked(object sender, EventArgs e)
         {
-            this.IsBusy = true;
-
-
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
-
-            var Data = await Client.Check_User_Name_Password(this.txtUsername.Text, this.txtPassword.Text);
-
-            if (Data == null || Data[0].Resault == "E")
+            try
             {
-                var pop = new mobile_application.controls.AppMessageBox("خطا", "نام کاربری یا رمز ورود به سیستم اشتباه میباشید");
-                await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
-            }
-            else
-            {
-                bool savePassword = this.chkSavePassword.IsChecked;
-                if (savePassword)
+                IsBusy = true;
+                string username = txtUsername.Text;
+                string password = txtPassword.Text;
+
+                var Data = await Client.Check_User_Name_Password(this.txtUsername.Text, this.txtPassword.Text);
+
+                if (Data == null || Data[0].Resault == "E")
                 {
-                    Preferences.Set("username", this.txtUsername.Text);
-                    Preferences.Set("password", this.txtPassword.Text);
+                    var pop = new mobile_application.controls.AppMessageBox("خطا", "نام کاربری یا رمز ورود به سیستم اشتباه میباشید");
+                    await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
                 }
                 else
                 {
-                    Preferences.Set("username", "");
-                    Preferences.Set("password", "");
+                    bool savePassword = this.chkSavePassword.IsChecked;
+                    if (savePassword)
+                    {
+                        Preferences.Set("username", this.txtUsername.Text);
+                        Preferences.Set("password", this.txtPassword.Text);
+                    }
+                    else
+                    {
+                        Preferences.Set("username", "");
+                        Preferences.Set("password", "");
+                    }
+
+
+                    Static_Loading.user_id = Data[0].id;
+                    Navigation.PopAsync();
+                    await Navigation.PopAsync();
+                    IsBusy = false;
+                    return;
                 }
-
-
-                Static_Loading.user_id = Data[0].id;
-                Navigation.PopAsync();
-                await Navigation.PopAsync();
-                this.IsBusy = false;
-                return;
             }
-
-            //var r = UsersSyntax.Get_Id(username, password);
-            //Static_Loading.current_user = UsersSyntax.Get(r);
-
-
-
-
-            //System.Threading.Thread.Sleep(1000);
-
-            //if (r == 0 || Static_Loading.current_user == null)
-            //{
-            //    await DisplayAlert("Error", "username or password is incorrect !!!", "again");
-            //    this.Focus();
-            //    this.IsBusy = false;
-            //    return;
-            //}
-            //else
-            //{
-            //    bool savePassword = this.chkSavePassword.IsChecked;
-            //    if (savePassword)
-            //    {
-            //        Preferences.Set("username", this.txtUsername.Text);
-            //        Preferences.Set("password", this.txtPassword.Text);
-            //    }
-            //    else
-            //    {
-            //        Preferences.Set("username", "");
-            //        Preferences.Set("password", "");
-            //    }
-
-
-            //    Static_Loading.user_id = r;
-            //    Navigation.PopAsync();
-            //    await Navigation.PopAsync();
-            //    this.IsBusy = false;
-            //    return;
-            //}                
-
+            catch (Exception)
+            {
+                var pop = new mobile_application.controls.AppMessageBox("Error", Static_Loading.error_message);
+                await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
+                throw;
+            }
         }
 
         private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)

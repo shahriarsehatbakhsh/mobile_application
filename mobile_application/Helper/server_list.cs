@@ -138,6 +138,45 @@ namespace mobile_application.Helper
         public static void set_default_server()
         {
             defaul_server = servers_list.Find(o => o.Default == true);
+
+            Static_Loading.api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
+        }
+
+
+        public static bool Delete(api_table item)
+        {
+            try
+            {
+                //servers_list.Find(o => o.id == id)
+                servers_list.Remove(item);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Static_Loading.error_message = ex.Message;
+                Write_xml();
+                return false;
+                throw;
+            }
+        }
+
+        public static bool Change_Default(api_table default_item)
+        {
+            try
+            {
+                foreach (var item in servers_list)
+                {
+                    item.Default = false;
+                }
+                servers_list.Find(o => o.id == default_item.id).Default = true;
+                Write_xml();
+                return true;
+            }
+            catch (Exception)
+            {
+                return true;
+                throw;
+            }
         }
 
 

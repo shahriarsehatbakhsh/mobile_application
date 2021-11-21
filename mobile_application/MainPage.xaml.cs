@@ -40,8 +40,8 @@ namespace mobile_application
                 //Client.Set_Connection_String(a);
                 //Static_Loading.api_ip = server_list.defaul_server.IP;
                 //Static_Loading.api_port = server_list.defaul_server.Port;
-                Static_Loading.api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
 
+                Static_Loading.api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
                 Static_Loading.Is_Set_ConnectionString = true;
                 this.btnSingout.BackgroundColor = Color.White;
             }

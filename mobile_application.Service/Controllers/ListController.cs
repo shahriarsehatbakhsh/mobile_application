@@ -90,7 +90,6 @@ namespace mobile_application.Service.Controllers
         public async Task<ActionResult<IEnumerable<vw_seller_list>>> GetSupervizer(int code_karbar, int code_shobe)
         {
             string StoredProc = "exec sp_supervizer_list @code_karbar=" + code_karbar + ",@code_shobe=" + code_shobe;
-
             return await _context.vw_seller_list.FromSqlRaw(StoredProc).ToListAsync();
         }
 
@@ -99,7 +98,6 @@ namespace mobile_application.Service.Controllers
         public async Task<ActionResult<IEnumerable<vw_customers_list>>> GetCustomers(int code_shobe)
         {
             string StoredProc = "exec sp_customers_list_get_code_shobe @code_shobe=" + code_shobe;
-
             return await _context.vw_customers_list.FromSqlRaw(StoredProc).ToListAsync();
         }
 
@@ -108,6 +106,20 @@ namespace mobile_application.Service.Controllers
         public async Task<ActionResult<IEnumerable<vw_code_sharh>>> GetObjectCodeName(string object_name)
         {
             string StoredProc = "exec sp_objects_list_get_object_name @object_name=" + object_name;
+            return await _context.vw_code_sharh.FromSqlRaw(StoredProc).ToListAsync();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tarikh barge"></param>
+        /// <param name="code shobe"></param>
+        /// <returns></returns>
+        [HttpGet("mosavabe_list Fhmo05={Fhmo05},Fdmb02={Fdmb02}")]
+        public async Task<ActionResult<IEnumerable<vw_code_sharh>>> GetObjectCodeName(string Fhmo05,short Fdmb02)
+        {
+            string StoredProc = "exec sp_mosavabe_list @Fhmo05='" + Fhmo05 + "',@Fdmb02=" + Fdmb02;
 
             return await _context.vw_code_sharh.FromSqlRaw(StoredProc).ToListAsync();
         }

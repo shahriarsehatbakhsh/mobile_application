@@ -21,17 +21,20 @@ namespace mobile_application.pages.App_Setting_Pages
 
         private void btnDefault_Clicked(object sender, EventArgs e)
         {
-
+            var item = (api_table)lstApiServerList.SelectedItem;
+            server_list.Change_Default(item);
         }
 
         private void btnDelete_Clicked(object sender, EventArgs e)
         {
-
+            var item = (api_table)lstApiServerList.SelectedItem;
+            server_list.Delete(item);
         }
 
-        private void btnCloseMe_Clicked(object sender, EventArgs e)
+        private async void btnCloseMe_Clicked(object sender, EventArgs e)
         {
-
+            Static_Loading.api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
+            await Navigation.PopAsync(true);
         }
     }
 }

@@ -27,5 +27,8 @@ namespace mobile_application.Service.Data
         public DbSet<mobile_application.Service.Models.ErrorResult> ErrorResult { get; set; }
 
         public DbSet<mobile_application.Service.Models.vw_GetLatestAvailableCustomerCode> vw_GetLatestAvailableCustomerCode { get; set; }
+
+        public DbSet<mobile_application.Service.Models.vw_customer_cart_result> vw_customer_cart_result { get; set; }
+        public DbSet<mobile_application.Service.Models.vw_Resault> vw_Resault { get; set; }
     }
 }

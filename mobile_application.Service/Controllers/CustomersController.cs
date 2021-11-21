@@ -27,7 +27,6 @@ namespace mobile_application.Service.Controllers
         public async Task<ActionResult<IEnumerable<vw_customers_list>>> GetCustomersList(int code_shobe)
         {
             string StoredProc = "exec sp_customers_list_get_code_shobe @code_shobe=" + code_shobe;
-
             return await _context.vw_customers_list.FromSqlRaw(StoredProc).ToListAsync();
         }
 
@@ -36,8 +35,23 @@ namespace mobile_application.Service.Controllers
         public async Task<ActionResult<IEnumerable<vw_customer_code_serial>>> GetLatestAvailableCustomerCode(int BranchCode)
         {
             string StoredProc = "exec GetLatestAvailableCustomerCode @BranchCode=" + BranchCode;
-
             return await _context.vw_customer_code_serial.FromSqlRaw(StoredProc).ToListAsync();
+        }
+
+
+        [HttpGet("Customer_Cart_New BranchCode={BranchCode},CustomerCode={CustomerCode},UserCode={UserCode}")]
+        public async Task<ActionResult<IEnumerable<vw_customer_cart_result>>> Customer_Cart_New(int BranchCode,int CustomerCode, int UserCode)
+        {
+            string StoredProc = "exec sp_CustomerCart_New @BranchCode=" + BranchCode + ",@CustomerCode=" + CustomerCode + ",@UserCode=" + UserCode;
+            return await _context.vw_customer_cart_result.FromSqlRaw(StoredProc).ToListAsync();
+        }
+
+
+        [HttpGet("customer_state BranchCode={BranchCode},CustomerCode={CustomerCode},BargeDate={BargeDate}")]
+        public async Task<ActionResult<IEnumerable<vw_Resault>>> Customer_State(int BranchCode, int CustomerCode, string BargeDate)
+        {
+            string StoredProc = "exec sp_customer_state @BranchCode=" + BranchCode + ",@CustomerCode=" + CustomerCode + ",@BargeDate=" + BargeDate;
+            return await _context.vw_Resault.FromSqlRaw(StoredProc).ToListAsync();
         }
 
 
@@ -58,7 +72,6 @@ namespace mobile_application.Service.Controllers
                                                                             "@Tel=" + Tel + "," +
                                                                             "@Mobile=" + Mobile + "," +
                                                                             "@Address=" + Address;
-
             return await _context.ErrorResult.FromSqlRaw(StoredProc).ToListAsync();
         }
 
