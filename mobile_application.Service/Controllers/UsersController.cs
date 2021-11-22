@@ -24,7 +24,7 @@ namespace mobile_application.Service.Controllers
         [HttpGet("CentralLogin Username={Username},Password={Password}")]
         public async Task<ActionResult<IEnumerable<vw_result>>> GetCentralLogin(string Username,string Password)
         {
-            string StoredProc = "exec sp_login @Username=" + Username + ",@Password=" + Password;
+            string StoredProc = "exec sp_login @Username='" + Username + "',@Password='" + Password + "'";
 
             return await _context.vw_result.FromSqlRaw(StoredProc).ToListAsync();
         }

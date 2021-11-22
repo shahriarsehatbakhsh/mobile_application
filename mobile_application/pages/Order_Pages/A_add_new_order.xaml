@@ -138,7 +138,7 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="مشتری:" StyleClass="label" />
-                                <Entry x:Name="txtCustomerCode" Grid.Column="1" StyleClass="txt" Unfocused="txtCustomerCode_Unfocused" Keyboard="Numeric" />
+                                <Entry x:Name="txtCustomerCode" Grid.Column="1" StyleClass="txt" TextChanged="txtCustomerCode_TextChanged" Unfocused="txtCustomerCode_Unfocused" Keyboard="Numeric" />
                                 <Label x:Name="txtCustomerName" Grid.Column="2" Text="عنوان مشتری انتخاب شده" StyleClass="labelData" />
                                 <Button Grid.Column="3" x:Name="btnSelectCustomer" Clicked="btnSelectCustomer_Clicked" StyleClass="SelectButton" />
                             </Grid>

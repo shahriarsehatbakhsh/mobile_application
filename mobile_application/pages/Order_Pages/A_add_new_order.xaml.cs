@@ -183,6 +183,8 @@ namespace mobile_application.pages.Order_Pages
                 this.ColorCustCardState.BackgroundColor = Color.Red;
             }
 
+            this.lblCastCartPrice.Text = BalancePrice.ToString("###,###");
+            this.lblCastCartText.Text = "ریال";
             var R = Client.Customer_Cart_Pishe_State(BranchCode, CustCode, this.txtDate.Text).GetAwaiter().GetResult();
             if (R == null)
                 pishe.result = "1";
@@ -226,6 +228,9 @@ namespace mobile_application.pages.Order_Pages
             await Navigation.PushAsync(new B_add_new_object_and_menu(), true);
         }
 
-
+        private void txtCustomerCode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Customer_Cart_New();
+        }
     }
 }
