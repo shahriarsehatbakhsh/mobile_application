@@ -265,7 +265,7 @@
                                              Margin="5,5,5,5">
                                     <Button x:Name="btnRefreshCustCart" Clicked="btnRefreshCustCart_Clicked" Text="به روزرسانی" />
                                     <Label x:Name="lblCastCartPrice" TextColor="black" Text="1,780,700" VerticalTextAlignment="Center" />
-                                    <Label Text="ریال" TextColor="black" VerticalTextAlignment="Center" />
+                                    <Label x:Name="lblCastCartText" Text="ریال" TextColor="black" VerticalTextAlignment="Center" />
                                     <Label x:Name="lblCustCartState" TextColor="black" Text="بستانکار" VerticalTextAlignment="Center" />
                                 </StackLayout>
                             </Grid>

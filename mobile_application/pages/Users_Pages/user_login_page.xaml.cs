@@ -48,7 +48,7 @@ namespace mobile_application.pages.Users_Pages
 
                 var Data = await Client.Check_User_Name_Password(this.txtUsername.Text, this.txtPassword.Text);
 
-                if (Data == null || Data[0].Resault == "E")
+                if (Data == null || Data[0].result == "E")
                 {
                     var pop = new mobile_application.controls.AppMessageBox("خطا", "نام کاربری یا رمز ورود به سیستم اشتباه میباشید");
                     await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);

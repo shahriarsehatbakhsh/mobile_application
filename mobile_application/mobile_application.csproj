@@ -191,7 +191,8 @@
     <Compile Include="..\mobile_application.Service\Models\vw_customer_cart_result.cs" Link="ServiceResponse\Models\vw_customer_cart_result.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_customer_code_serial.cs" Link="ServiceResponse\Models\vw_customer_code_serial.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_GetLatestAvailableCustomerCode.cs" Link="ServiceResponse\Models\vw_GetLatestAvailableCustomerCode.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_Resault.cs" Link="ServiceResponse\Models\vw_Resault.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_result.cs" Link="ServiceResponse\Models\vw_result.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_result_long.cs" Link="ServiceResponse\Models\vw_result_long.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_seller_list.cs" Link="ServiceResponse\Models\vw_seller_list.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_supervizer_list.cs" Link="ServiceResponse\Models\vw_supervizer_list.cs" />
     <Compile Include="..\mobile_application.Service\Models\vw_Users.cs" Link="ServiceResponse\Models\vw_Users.cs" />

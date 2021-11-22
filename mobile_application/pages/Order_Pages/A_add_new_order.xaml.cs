@@ -16,6 +16,7 @@ using Newtonsoft;
 using Newtonsoft.Json;
 using System.Net.Http;
 using mobile_application.ServiceResponse;
+using mobile_application.controls;
 
 namespace mobile_application.pages.Order_Pages
 {
@@ -25,6 +26,7 @@ namespace mobile_application.pages.Order_Pages
         public A_add_new_order()
         {
             InitializeComponent();
+            Customer_Cart_New();
         }
 
         private async void btnMain_Clicked(object sender, EventArgs e)
@@ -110,11 +112,6 @@ namespace mobile_application.pages.Order_Pages
 
         }
 
-        private async void btnNextObject_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new B_add_new_object_and_menu(), true);
-        }
-
         private void txtShobeCode_Unfocused(object sender, FocusEventArgs e)
         {
 
@@ -141,14 +138,31 @@ namespace mobile_application.pages.Order_Pages
 
         private void btnRefreshCustCart_Clicked(object sender, EventArgs e)
         {
-            CustomerCart_New();
+            Customer_Cart_New();
         }
 
-        private void CustomerCart_New()
+        private void txtCustomerCode_Unfocused(object sender, FocusEventArgs e)
         {
+            Customer_Cart_New();
+        }
+
+        //1 = OK
+        //2 = Message
+        //3 = Error
+        private vw_result pishe;
+        private void Customer_Cart_New()
+        {
+            if (string.IsNullOrEmpty(this.txtCustomerCode.Text))
+            {
+                this.lblCastCartPrice.Text = "0";
+                this.lblCastCartText.Text = "";
+                this.lblCustCartState.Text = "";
+                return;
+            }
+
             IsBusy = true;
-            var BranchCode = Static_Loading.central_shobe_id;
             var CustCode = Convert.ToInt32(this.txtCustomerCode.Text);
+            var BranchCode = Static_Loading.central_shobe_id;
             var UserCode = Static_Loading.central_user_id;
             var resut = Client.Customer_Cart_New(BranchCode, CustCode, UserCode);
 
@@ -169,6 +183,12 @@ namespace mobile_application.pages.Order_Pages
                 this.ColorCustCardState.BackgroundColor = Color.Red;
             }
 
+            var R = Client.Customer_Cart_Pishe_State(BranchCode, CustCode, this.txtDate.Text).GetAwaiter().GetResult();
+            if (R == null)
+                pishe.result = "1";
+            else
+                pishe = R[0];
+
             IsBusy = false;
         }
 
@@ -183,10 +203,29 @@ namespace mobile_application.pages.Order_Pages
             }
         }
 
-        private void txtCustomerCode_Unfocused(object sender, FocusEventArgs e)
+        private async void btnNextObject_Clicked(object sender, EventArgs e)
         {
-            if (this.txtCustomerCode.Text != null)
-                CustomerCart_New();
+            //1 = OK
+            //2 = Message
+            //3 = Error
+            if (pishe.result == "3")
+            {
+                var pop = new mobile_application.controls.AppMessageBox("توجه", "پیشه شماره 3");
+                await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
+                return;
+            }
+            else if (pishe.result == "2")
+            {
+                var pop = new mobile_application.controls.AppMessageBox("توجه", "پیشه شماره 2");
+                await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
+            }
+            else if (pishe.result == "1")
+            { 
+
+            }
+            await Navigation.PushAsync(new B_add_new_object_and_menu(), true);
         }
+
+
     }
 }

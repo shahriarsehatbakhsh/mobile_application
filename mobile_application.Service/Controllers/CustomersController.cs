@@ -48,10 +48,10 @@ namespace mobile_application.Service.Controllers
 
 
         [HttpGet("customer_state BranchCode={BranchCode},CustomerCode={CustomerCode},BargeDate={BargeDate}")]
-        public async Task<ActionResult<IEnumerable<vw_Resault>>> Customer_State(int BranchCode, int CustomerCode, string BargeDate)
+        public async Task<ActionResult<IEnumerable<vw_result>>> Customer_State(int BranchCode, int CustomerCode, string BargeDate)
         {
-            string StoredProc = "exec sp_customer_state @BranchCode=" + BranchCode + ",@CustomerCode=" + CustomerCode + ",@BargeDate=" + BargeDate;
-            return await _context.vw_Resault.FromSqlRaw(StoredProc).ToListAsync();
+            string StoredProc = "exec sp_customer_state @BranchCode=" + BranchCode + ",@CustomerCode=" + CustomerCode + ",@BargeDate='" + BargeDate + "'";
+            return await _context.vw_result.FromSqlRaw(StoredProc).ToListAsync();
         }
 
 

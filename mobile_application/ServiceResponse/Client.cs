@@ -12,11 +12,11 @@ namespace mobile_application.ServiceResponse
 {
     public static class Client
     {
-        public static async Task<IList<vw_Resault>> Check_User_Name_Password(string Username, string Password)
+        public static async Task<IList<vw_result>> Check_User_Name_Password(string Username, string Password)
         {
             try
             {
-                IList<vw_Resault> Result = null;
+                IList<vw_result> Result = null;
                 HttpClient client_users = new HttpClient();
                 string url = Static_Loading.api_url() + "Users/CentralLogin Username=" + Username + ",Password=" + Password;
                 var Response = client_users.GetAsync(url);
@@ -25,7 +25,7 @@ namespace mobile_application.ServiceResponse
                 using (HttpContent content = Mystring.Content)
                 {
                     var Json = content.ReadAsStringAsync();
-                    Result = JsonConvert.DeserializeObject<List<vw_Resault>>(Json.Result);
+                    Result = JsonConvert.DeserializeObject<List<vw_result>>(Json.Result);
                 }
                 return Result;
             }
@@ -57,6 +57,38 @@ namespace mobile_application.ServiceResponse
                 {
                     var Json = content.ReadAsStringAsync();
                     Result = JsonConvert.DeserializeObject<List<vw_customer_cart_result>>(Json.Result);
+                }
+                return Result;
+            }
+            catch (System.Exception ex)
+            {
+                Static_Loading.error_message = ex.Message;
+                throw;
+            }
+        }
+
+        public static async Task<IList<vw_result>> Customer_Cart_Pishe_State(int BranchCode, int CustomerCode, string BargeDate)
+        {
+            try
+            {
+                //HttpClient client = new HttpClient();
+                //var url = Static_Loading.api_url() + "Customers/Customer_Cart_New BranchCode=" + BranchCode + ",CustomerCode=" + CustomerCode + ",UserCode=" + UserCode;
+                //var json = await client.GetStringAsync(url);
+                //List<vw_customer_cart_result> result = JsonConvert.DeserializeObject<List<vw_customer_cart_result>>(json);
+                //return result;
+
+
+                IList<vw_result> Result = null;
+                HttpClient client_users = new HttpClient();
+                BargeDate = BargeDate.Replace("/", "D");
+                var url = Static_Loading.api_url() + "Customers/customer_state BranchCode=" + BranchCode + ",CustomerCode=" + CustomerCode + ",BargeDate=" + BargeDate;
+                var Response = client_users.GetAsync(url);
+                var Mystring = Response.GetAwaiter().GetResult();
+                Response.Wait();
+                using (HttpContent content = Mystring.Content)
+                {
+                    var Json = content.ReadAsStringAsync();
+                    Result = JsonConvert.DeserializeObject<List<vw_result>>(Json.Result);
                 }
                 return Result;
             }

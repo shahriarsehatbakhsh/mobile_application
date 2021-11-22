@@ -14,6 +14,6 @@ namespace mobile_application.Service.Data
         {
         }
 
-        public DbSet<mobile_application.Service.Models.vw_Resault> vw_Resault { get; set; }
+        public DbSet<mobile_application.Service.Models.vw_result> vw_result { get; set; }
     }
 }
