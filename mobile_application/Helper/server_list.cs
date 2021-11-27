@@ -18,7 +18,6 @@ namespace mobile_application.Helper
         static string table_name = "api";
 
 
-        static bool _Init;
         public static void Init()
         {
             //File.Delete(ds_path);
