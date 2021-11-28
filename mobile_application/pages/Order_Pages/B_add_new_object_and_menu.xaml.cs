@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.pages.Popup_Pages;
 using mobile_application.Service.Models;
+using mobile_application.ServiceResponse;
 
 namespace mobile_application.pages.Order_Pages
 {
@@ -17,6 +18,9 @@ namespace mobile_application.pages.Order_Pages
         public B_add_new_object_and_menu()
         {
             InitializeComponent();
+            
+            var objList = Client.Objects_List();
+            this.collView.ItemsSource = objList.GetAwaiter().GetResult();
         }
 
 
@@ -32,9 +36,13 @@ namespace mobile_application.pages.Order_Pages
 
         private void Frm_Search(object sender, List<vw_code_sharh> e)
         {
-            this.txtObjCode.Text = e[0].Code.ToString();
-            this.txtObjName.Text = e[0].Sharh.ToString();
+            //this.txtObjCode.Text = e[0].Code.ToString();
+            //this.txtObjName.Text = e[0].Sharh.ToString();
         }
 
+        private void lblAddObject_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
