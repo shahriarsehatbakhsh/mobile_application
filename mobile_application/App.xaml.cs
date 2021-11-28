@@ -16,18 +16,17 @@ namespace mobile_application
             InitializeComponent();
             //MainPage = new NavigationPage(new mobile_application.pages.home_page());
             Device.SetFlags(new[] {"MediaElement_Experimential","Brush_Experimential"});
-
-            //var rootPage = new NavigationPage(new mobile_application.pages.home_page());
-            //GlobalNavigation = rootPage.Navigation;
-            //MainPage = rootPage;
-
             Device.SetFlags(new string[] { "Markup_Experimental" });
-            //MainPage = new Page1();
 
-            var rootPage = new NavigationPage(new LoginMode());
+
+            //var rootPage = new NavigationPage(new mobile_application.pages.home_page()); //old main page
+            var rootPage = new NavigationPage(new HomeMode());
             GlobalNavigation = rootPage.Navigation;
             MainPage = rootPage;
 
+
+            //MainPage = new Page1();
+            //MainPage = new LoginMode();
         }
 
         protected override void OnStart()

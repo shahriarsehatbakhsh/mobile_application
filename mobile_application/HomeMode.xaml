@@ -100,7 +100,11 @@
                                     HorizontalTextAlignment="Center"
                                     Text="ثبت سفارش جدید"
                                     TextColor="Black"
-                                    VerticalOptions="CenterAndExpand" />
+                                    VerticalOptions="CenterAndExpand" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="lblNewOrder_Click" />
+                                    </Label.GestureRecognizers>
+                                </Label>
                             </StackLayout>
                         </yummy:PancakeView>
                         <yummy:PancakeView
