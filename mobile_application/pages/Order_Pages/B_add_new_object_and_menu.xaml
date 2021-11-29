@@ -127,7 +127,7 @@
         </ContentPage.Content>
     </ContentPage>
 
-    <NavigationPage Title="لیست کالاهای سفارش">
+    <!--<NavigationPage Title="لیست کالاهای سفارش">
         <x:Arguments>
             <ContentPage>
                 <order_page:C_order_objects_list/>
@@ -141,6 +141,6 @@
                 <order_page:D_order_detail_and_save/>
             </ContentPage>
         </x:Arguments>
-    </NavigationPage>
+    </NavigationPage>-->
 
 </TabbedPage>

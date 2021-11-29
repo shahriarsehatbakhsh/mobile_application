@@ -36,7 +36,7 @@ namespace mobile_application.pages.Order_Pages
 
         private async void btnNext_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new B_add_new_object_and_menu(), true);
+            await Navigation.PushAsync(new B_Order_Menu_TabbedPage(), true);
         }
 
 
@@ -225,7 +225,12 @@ namespace mobile_application.pages.Order_Pages
             { 
 
             }
-            await Navigation.PushAsync(new B_add_new_object_and_menu(), true);
+            //await Navigation.PushAsync(new B_Order_Menu_TabbedPage(), true);
+            
+            
+            App.Current.MainPage = new B_Order_Menu_TabbedPage();
+
+                
         }
 
         private void txtCustomerCode_TextChanged(object sender, TextChangedEventArgs e)

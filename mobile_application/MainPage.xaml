@@ -11,10 +11,11 @@
         <vm:MainViewModel />
     </ContentPage.BindingContext>
 
+    <!--Source="ms-appx:////event.mp4"-->
+    
     <ContentPage.Content>
         <Grid Padding="0" Margin="0,-100,0,0">
             <xct:MediaElement x:Name="BgVideo"
-                          Source="ms-appx:////event.mp4"
                           ShowsPlaybackControls="False"
                           IsLooping="True"
                           HorizontalOptions="FillAndExpand"
