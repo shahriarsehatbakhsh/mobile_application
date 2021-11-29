@@ -9,9 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mobile_application.iOS", "m
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mobile_application", "mobile_application\mobile_application.csproj", "{E16A3067-11CE-41C8-B1EA-3A2B376DDF35}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{32B7CED7-3C35-4DB8-A404-7BC1A378BB53}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Service", "1.Service", "{32B7CED7-3C35-4DB8-A404-7BC1A378BB53}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mobile_application.Service", "mobile_application.Service\mobile_application.Service.csproj", "{30C2BB04-2EF2-4A26-BAA5-569AFBBE8F3D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Client", "2.Client", "{3B8D10DC-8990-4917-AAC7-101AB77E9020}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,6 +96,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{08457FA0-0BAB-4D94-813E-77DB0C6DF16D} = {3B8D10DC-8990-4917-AAC7-101AB77E9020}
+		{3E20BF8E-A63B-40DC-92CC-5A8244403896} = {3B8D10DC-8990-4917-AAC7-101AB77E9020}
+		{E16A3067-11CE-41C8-B1EA-3A2B376DDF35} = {3B8D10DC-8990-4917-AAC7-101AB77E9020}
 		{30C2BB04-2EF2-4A26-BAA5-569AFBBE8F3D} = {32B7CED7-3C35-4DB8-A404-7BC1A378BB53}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
