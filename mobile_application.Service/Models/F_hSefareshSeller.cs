@@ -21,7 +21,7 @@ namespace mobile_application.Service.Models
         public int Supervisor { get; set; }
         public int CodeSupervisor { get; set; }
         public int CodeKarbar { get; set; }
-        public int TarikheRooz { get; set; }
+        public string TarikheRooz { get; set; }
 
     }
 }

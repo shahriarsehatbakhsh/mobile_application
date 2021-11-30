@@ -50,5 +50,24 @@ namespace mobile_application.pages.Popup_Pages
         {
             await Navigation.PopPopupAsync(true);
         }
+
+        private async void lstShobeList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (this.lstShobeList.SelectedItem == null)
+                return;
+
+            var select_item = (vw_code_sharh)lstShobeList.SelectedItem;
+            List<vw_code_sharh> item = new List<vw_code_sharh>();
+            item.Add
+                (
+                    new vw_code_sharh
+                    {
+                        Code = select_item.Code,
+                        Sharh = select_item.Sharh
+                    }
+                );
+            Search(sender, item);
+            await Navigation.PopPopupAsync(true);
+        }
     }
 }

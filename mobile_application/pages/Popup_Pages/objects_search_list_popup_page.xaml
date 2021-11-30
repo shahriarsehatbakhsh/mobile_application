@@ -24,7 +24,7 @@
                 </StackLayout>
                 <StackLayout>
                     <!--<=============================================================================================================>-->
-                    <ListView x:Name="lstObjectsList">
+                    <ListView x:Name="lstObjectsList" ItemSelected="lstObjectsList_ItemSelected">
                         <ListView.Header>
                             <Label Text="" />
                         </ListView.Header>

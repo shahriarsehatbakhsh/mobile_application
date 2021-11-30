@@ -24,7 +24,7 @@
                 </StackLayout>
                 <StackLayout>
                     <!--<=============================================================================================================>-->
-                    <ListView x:Name="lstMosavabeList">
+                    <ListView x:Name="lstMosavabeList" ItemSelected="lstMosavabeList_ItemSelected">
                         <ListView.Header>
                             <Label Text="" />
                         </ListView.Header>

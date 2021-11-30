@@ -20,9 +20,9 @@ namespace mobile_application.Service.Controllers
         {
             _context = context;
         }
-                
 
-        
+
+
         [HttpGet("List code_shobe={code_shobe}")]
         public async Task<ActionResult<IEnumerable<vw_customers_list>>> GetCustomersList(int code_shobe)
         {
@@ -36,6 +36,14 @@ namespace mobile_application.Service.Controllers
         {
             string StoredProc = "exec GetLatestAvailableCustomerCode @BranchCode=" + BranchCode;
             return await _context.vw_customer_code_serial.FromSqlRaw(StoredProc).ToListAsync();
+        }
+
+
+        [HttpGet("GetAvailableCustomerJob BranchCode={BranchCode},CustomerCode={CustomerCode},SefareshDate={SefareshDate}")]
+        public async Task<ActionResult<IEnumerable<vw_JobNo>>> GetGetAvailableCustomerJob(int BranchCode, int CustomerCode,string SefareshDate)
+        {
+            string StoredProc = "exec sp_GetAvailableCustomerJob @BranchCode=" + BranchCode + ",@CustomerCode=" + CustomerCode + ",@SefareshDate='" + SefareshDate + "'";
+            return await _context.vw_JobNo.FromSqlRaw(StoredProc).ToListAsync();
         }
 
 

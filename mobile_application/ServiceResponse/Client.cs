@@ -150,6 +150,82 @@ namespace mobile_application.ServiceResponse
             }
         }
 
+        public static async Task<IList<vw_code_sharh>> Object_Nerkh(int BranchCode, int MosavabeCode, int ObjectCode)
+        {
+            try
+            {
+                IList<vw_code_sharh> Result = null;
+                HttpClient client_users = new HttpClient();
+                string url = Static_Loading.api_url() + "Objects/ObjectNerkh BranchCode=" + BranchCode + ",MosavabeCode=" + MosavabeCode + ",ObjectCode=" + ObjectCode;
+                var Response = client_users.GetAsync(url);
+                var Mystring = Response.GetAwaiter().GetResult();
+                Response.Wait();
+                using (HttpContent content = Mystring.Content)
+                {
+                    var Json = content.ReadAsStringAsync();
+                    Result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(Json.Result);
+                }
+
+                return Result;
+            }
+            catch (System.Exception ex)
+            {
+                Static_Loading.error_message = ex.Message;
+                throw;
+            }
+        }
+
+        public static async Task<IList<vw_header_CodeSerial>> Header_Code_Serial(int BranchCode)
+        {
+            try
+            {
+                IList<vw_header_CodeSerial> Result = null;
+                HttpClient client_users = new HttpClient();
+                string url = Static_Loading.api_url() + "SefareshSeller/HeaderCodeSerial BranchCode=" + BranchCode ;
+                var Response = client_users.GetAsync(url);
+                var Mystring = Response.GetAwaiter().GetResult();
+                Response.Wait();
+                using (HttpContent content = Mystring.Content)
+                {
+                    var Json = content.ReadAsStringAsync();
+                    Result = JsonConvert.DeserializeObject<List<vw_header_CodeSerial>>(Json.Result);
+                }
+                return Result;
+            }
+            catch (System.Exception ex)
+            {
+                Static_Loading.error_message = ex.Message;
+                throw;
+            }
+        }
+
+
+        
+        public static async Task<IList<vw_JobNo>> Customer_Job_No(int BranchCode, int CustomerCode, string SefareshDate)
+        {
+            try
+            {
+                IList<vw_JobNo> Result = null;
+                HttpClient client_users = new HttpClient();
+                SefareshDate = SefareshDate.Replace("/", "D");
+                string url = Static_Loading.api_url() + "Customers/GetAvailableCustomerJob BranchCode=" + BranchCode + ",CustomerCode=" + CustomerCode + ",SefareshDate=" + SefareshDate;
+                var Response = client_users.GetAsync(url);
+                var Mystring = Response.GetAwaiter().GetResult();
+                Response.Wait();
+                using (HttpContent content = Mystring.Content)
+                {
+                    var Json = content.ReadAsStringAsync();
+                    Result = JsonConvert.DeserializeObject<List<vw_JobNo>>(Json.Result);
+                }
+                return Result;
+            }
+            catch (System.Exception ex)
+            {
+                Static_Loading.error_message = ex.Message;
+                throw;
+            }
+        }
+
 
     }
 }

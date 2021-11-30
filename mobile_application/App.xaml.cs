@@ -8,7 +8,6 @@ namespace mobile_application
 {
     public partial class App : Application
     {
-        public static object GlobalNavigation { get; internal set; }
         public static Context Context { get; internal set; }
 
         public App()
@@ -21,7 +20,6 @@ namespace mobile_application
 
             //var rootPage = new NavigationPage(new mobile_application.pages.home_page()); //old main page
             var rootPage = new NavigationPage(new HomeMode());
-            GlobalNavigation = rootPage.Navigation;
             MainPage = rootPage;
 
 

@@ -24,7 +24,7 @@
                 </StackLayout>
                 <StackLayout>
                     <!--<=============================================================================================================>-->
-                    <ListView x:Name="lstSupervizerList">
+                    <ListView x:Name="lstSupervizerList" ItemSelected="lstSupervizerList_ItemSelected">
                         <ListView.Header>
                             <Label Text="" />
                         </ListView.Header>

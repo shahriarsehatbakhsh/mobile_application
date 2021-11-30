@@ -207,9 +207,6 @@
     <AndroidResource Include="Resources\drawable\main04.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\raw\event.mp4" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\bgImage.png" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +274,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\villager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\paya_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\raw\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>

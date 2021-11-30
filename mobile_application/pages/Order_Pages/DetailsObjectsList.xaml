@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.pages.Order_Pages.DetailsObjectsList">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="lstDetails" 
+                      Margin="25" 
+                      HorizontalOptions="FillAndExpand" 
+                      VerticalOptions="FillAndExpand"
+                      SelectionMode="None" 
+                      ItemSelected="collObjectList_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell x:Name="SelectObject">
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="حذف" Clicked="MenuItem_Delete" CommandParameter="{Binding .}">
+                                </MenuItem>
+                            </ViewCell.ContextActions>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding CodeShobe}" StyleClass="LabelIcon"  />
+                                <Label Text="{Binding ShomareBarge_Header}" StyleClass="LabelIcon" />
+
+                                <Label Text="{Binding ShomareRadif}" StyleClass="LabelIcon"  />
+                                <Label Text="{Binding CodeAnbaar}" StyleClass="LabelIcon" />
+                                <Label Text="{Binding CodeKala}" StyleClass="LabelIcon"  />
+                                <Label Text="{Binding Meghdar}" StyleClass="LabelIcon" />
+                                <Label Text="{Binding Nerkh}" StyleClass="LabelIcon"  />
+                                <Label Text="{Binding Mablagh}" StyleClass="LabelIcon" />
+                                <Label Text="{Binding NoeBaste}" StyleClass="LabelIcon"  />
+                                <Label Text="{Binding TedadBaste}" StyleClass="LabelIcon" />
+                                <Label Text="{Binding TedadDarHarBaste}" StyleClass="LabelIcon"  />
+                                <Label Text="{Binding CodeKarbar}" StyleClass="LabelIcon" />
+                                <Label Text="{Binding TarikhRooz}" StyleClass="LabelIcon"  />
+                                <Label Text="{Binding BranchCode}" StyleClass="LabelIcon" />
+                                <Label Text="{Binding MoshtariCode}" StyleClass="LabelIcon" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

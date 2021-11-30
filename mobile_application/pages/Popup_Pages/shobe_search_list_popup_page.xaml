@@ -18,7 +18,7 @@
     <ContentPage.Content>
         <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center" >
             <StackLayout Padding="5">
-                <ListView x:Name="lstShobeList">
+                <ListView x:Name="lstShobeList" ItemSelected="lstShobeList_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

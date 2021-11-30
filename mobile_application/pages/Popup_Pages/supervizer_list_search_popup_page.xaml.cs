@@ -28,7 +28,7 @@ namespace mobile_application.pages.Popup_Pages
         private async void Loadin_Form()
         {
             HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(Static_Loading.api_url() + "List/supervizer code_karbar=" + Static_Loading.central_user_id + ",code_shobe=" + Static_Loading.central_shobe_id);
+            var json = await client.GetStringAsync(Static_Loading.api_url() + "List/supervizer code_karbar=" + Static_Loading.central_user_id + ",code_shobe=" + Static_Loading.central_BranchCode);
             List<vw_supervizer_list> result = JsonConvert.DeserializeObject<List<vw_supervizer_list>>(json);
             List<vw_supervizer_list> Items = result;
             this.lstSupervizerList.ItemsSource = Items;
@@ -43,6 +43,25 @@ namespace mobile_application.pages.Popup_Pages
         public event SearchDelegate Search;
         private async void btnSelectItem_Clicked(object sender, EventArgs e)
         {
+            var select_item = (vw_supervizer_list)this.lstSupervizerList.SelectedItem;
+            List<vw_supervizer_list> item = new List<vw_supervizer_list>();
+            item.Add
+                (
+                    new vw_supervizer_list
+                    {
+                        Code = select_item.Code,
+                        Sharh = select_item.Sharh
+                    }
+                );
+            Search(sender, item);
+            await Navigation.PopPopupAsync();
+        }
+
+        private async void lstSupervizerList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (this.lstSupervizerList.SelectedItem == null)
+                return;
+
             var select_item = (vw_supervizer_list)this.lstSupervizerList.SelectedItem;
             List<vw_supervizer_list> item = new List<vw_supervizer_list>();
             item.Add

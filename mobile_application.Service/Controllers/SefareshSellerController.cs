@@ -63,5 +63,13 @@ namespace mobile_application.Service.Controllers
 
             return await _context.vw_result.FromSqlRaw(StoredProc).ToListAsync();
         }
+
+        [HttpGet("HeaderCodeSerial BranchCode={BranchCode}")]
+        public async Task<ActionResult<IEnumerable<vw_header_CodeSerial>>> GetHeaderCodeSerial(int BranchCode)
+        {
+            string StoredProc = "exec sp_insert_F_hSefareshHeaderCodeSerial @BranchCode=" + BranchCode;
+            return await _context.vw_header_CodeSerial.FromSqlRaw(StoredProc).ToListAsync();
+        }
+
     }
 }

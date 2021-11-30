@@ -135,16 +135,19 @@
     <EmbeddedResource Update="pages\Order_Pages\A_add_new_order.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="pages\Order_Pages\B_Order_Menu_TabbedPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="pages\Order_Pages\C_ObjectsAdd.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="pages\Order_Pages\D_ObjectsList.xaml">
+    <EmbeddedResource Update="pages\Order_Pages\DetailsObjectsList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="pages\Order_Pages\E_ObjectsOrder_Send.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="pages\Order_Pages\ObjectListToAdd.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="pages\Order_Pages\OrderMenuTabbedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="pages\Popup_Pages\add_object_popup_page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="pages\Popup_Pages\code_sharh_search_list_popup_page.xaml">
@@ -226,7 +229,6 @@
 
   <ItemGroup>
     <Folder Include="ServiceResponse\Models\" />
-    <Folder Include="Fakes\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>

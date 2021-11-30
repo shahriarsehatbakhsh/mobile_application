@@ -31,7 +31,7 @@ namespace mobile_application.pages.Customers
         private async void Loadin_Form()
         {
             HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(Static_Loading.api_url() + "Customers/List code_shobe=" + Static_Loading.central_shobe_id);
+            var json = await client.GetStringAsync(Static_Loading.api_url() + "Customers/List code_shobe=" + Static_Loading.central_BranchCode);
             List<vw_customers_list> result = JsonConvert.DeserializeObject<List<vw_customers_list>>(json);
             List<vw_customers_list> Items = result;
             if (Items == null)

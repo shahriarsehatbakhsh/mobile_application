@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.pages.Popup_Pages;
-using Rg.Plugins.Popup.Exceptions;
-using System.ComponentModel;
 using Rg.Plugins.Popup.Extensions;
+using mobile_application.ServiceResponse;
 using mobile_application.Service.Models;
 using mobile_application.Helper;
-using Newtonsoft;
 using Newtonsoft.Json;
 using System.Net.Http;
-using mobile_application.ServiceResponse;
-using mobile_application.controls;
+using mobile_application.Fakes;
 
 namespace mobile_application.pages.Order_Pages
 {
@@ -26,7 +23,6 @@ namespace mobile_application.pages.Order_Pages
         public A_add_new_order()
         {
             InitializeComponent();
-            Customer_Cart_New();
         }
 
         private async void btnMain_Clicked(object sender, EventArgs e)
@@ -36,7 +32,7 @@ namespace mobile_application.pages.Order_Pages
 
         private async void btnNext_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new B_Order_Menu_TabbedPage(), true);
+            await Navigation.PushAsync(new OrderMenuTabbedPage(), true);
         }
 
 
@@ -97,7 +93,7 @@ namespace mobile_application.pages.Order_Pages
         private void Shobe_Search_Result(object sender, List<vw_code_sharh> e)
         {
             this.txtShobeCode.Text = e[0].Code.ToString();
-            Static_Loading.central_shobe_id = Convert.ToInt32(this.txtShobeCode.Text);
+            Static_Loading.central_BranchCode = Convert.ToInt32(this.txtShobeCode.Text);
             this.txtShobeName.Text = e[0].Sharh.ToString();
         }
 
@@ -106,7 +102,6 @@ namespace mobile_application.pages.Order_Pages
         {
 
         }
-
         private void btnNewOrder_Clicked(object sender, EventArgs e)
         {
 
@@ -122,7 +117,7 @@ namespace mobile_application.pages.Order_Pages
         {
             HttpClient client = new HttpClient();
             var strDate = this.txtDate.ShamsiDateString.Replace("/", "D");
-            var url = Static_Loading.api_url() + "List/mosavabe_list Fhmo05=" + strDate + ",Fdmb02=" + Static_Loading.central_shobe_id;
+            var url = Static_Loading.api_url() + "List/mosavabe_list Fhmo05=" + strDate + ",Fdmb02=" + Static_Loading.central_BranchCode;
             var json = await client.GetStringAsync(url);
             List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
 
@@ -162,7 +157,7 @@ namespace mobile_application.pages.Order_Pages
 
             IsBusy = true;
             var CustCode = Convert.ToInt32(this.txtCustomerCode.Text);
-            var BranchCode = Static_Loading.central_shobe_id;
+            var BranchCode = Static_Loading.central_BranchCode;
             var UserCode = Static_Loading.central_user_id;
             var resut = Client.Customer_Cart_New(BranchCode, CustCode, UserCode);
 
@@ -226,12 +221,33 @@ namespace mobile_application.pages.Order_Pages
 
             }
             //await Navigation.PushAsync(new B_Order_Menu_TabbedPage(), true);
-            
-            
-            App.Current.MainPage = new B_Order_Menu_TabbedPage();
 
-                
+            var HeaderCodeSerial = Client.Header_Code_Serial(Convert.ToInt32(this.txtShobeCode.Text)).GetAwaiter().GetResult()[0];
+            var Customer_JobNo = Client.Customer_Job_No(Convert.ToInt32(this.txtShobeCode.Text), Convert.ToInt32(this.txtCustomerCode.Text), this.txtDate.Text).GetAwaiter().GetResult()[0];
+
+            Static_Loading.Header.Clear();
+            Static_Loading.Header.Add(new F_hSefareshSeller
+            {   
+                CodeForooshande = Convert.ToInt32(this.txtSellerCode.Text) ,
+                CodeKarbar = Static_Loading.central_user_id , 
+                CodeMosavabe = Convert.ToInt32(this.txtMosavabeCode.Text) ,
+                CodeMoshtari = Convert.ToInt32(this.txtCustomerCode.Text) ,
+                CodeShobe = Convert.ToInt16(this.txtShobeCode.Text) ,
+                CodeSupervisor = Convert.ToInt32(this.txtSupervizerCode.Text) ,
+                ModdateTasvie = Convert.ToInt32(this.txtEtebar.Text) , 
+                NoeTasvie = Convert.ToInt32(this.txtNoeTasvie.SelectedIndex) ,
+                Supervisor = 5 , 
+                TarikhBarge = this.txtDate.ShamsiDateString , 
+                TarikheRooz = Static_Loading.today_date , 
+                sp_GetAvailableCustomerJob = Customer_JobNo.JobNo ,
+                sp_GetLatestAvailableSefareshHeaderCode_HeaderCode = HeaderCodeSerial.HeaderCode ,
+                sp_GetLatestAvailableSefareshHeaderCode_HeaderSerial = HeaderCodeSerial.HeaderSerial
+            });
+
+
+            App.Current.MainPage = new OrderMenuTabbedPage();
         }
+        
 
         private void txtCustomerCode_TextChanged(object sender, TextChangedEventArgs e)
         {

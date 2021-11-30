@@ -7,6 +7,7 @@ using mobile_application.Helper;
 using Xamarin.Essentials;
 using mobile_application.ServiceResponse;
 using Rg.Plugins.Popup.Extensions;
+using System.Threading.Tasks;
 
 namespace mobile_application.pages.Users_Pages
 {
@@ -16,7 +17,6 @@ namespace mobile_application.pages.Users_Pages
         public user_login_page()
         {
             InitializeComponent();
-
 
             bool s = Preferences.Get("save-password", false);
             string username = Preferences.Get("username", "");
@@ -36,13 +36,11 @@ namespace mobile_application.pages.Users_Pages
             }
         }
 
-
-
         private async void btnLogin_Clicked(object sender, EventArgs e)
         {
             try
             {
-                IsBusy = true;
+                this.IsBusy = true;
                 string username = txtUsername.Text;
                 string password = txtPassword.Text;
 
@@ -71,7 +69,7 @@ namespace mobile_application.pages.Users_Pages
                     Static_Loading.user_id = Data[0].id;
                     Navigation.PopAsync();
                     await Navigation.PopAsync();
-                    IsBusy = false;
+                    this.IsBusy = false;
                     return;
                 }
             }
@@ -106,6 +104,11 @@ namespace mobile_application.pages.Users_Pages
                 Preferences.Set("username", "");
                 Preferences.Set("password", "");
             }
+        }
+
+        private void txtSetting_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

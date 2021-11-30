@@ -75,5 +75,24 @@ namespace mobile_application.pages.Popup_Pages
                 Debug.WriteLine("Failed to Load Item");
             }
         }
+
+        private async void lstObjectsList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (this.lstObjectsList.SelectedItem == null)
+                return;
+
+            var select_item = (vw_code_sharh)this.lstObjectsList.SelectedItem;
+            List<vw_code_sharh> item = new List<vw_code_sharh>();
+            item.Add
+                (
+                    new vw_code_sharh
+                    {
+                        Code = select_item.Code,
+                        Sharh = select_item.Sharh
+                    }
+                );
+            Search(sender, item);
+            await Navigation.PopPopupAsync();
+        }
     }
 }

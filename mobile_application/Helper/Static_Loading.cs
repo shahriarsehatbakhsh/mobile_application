@@ -6,6 +6,8 @@ using System.IO;
 using mobile_application.SQLite.Models.Users;
 using System.Net.Http;
 using System.Data;
+using mobile_application.Service.Models;
+using mobile_application.Fakes;
 
 namespace mobile_application.Helper
 {
@@ -15,12 +17,17 @@ namespace mobile_application.Helper
 
 
 
+        public static List<F_hSefareshSeller> Header = new List<F_hSefareshSeller>();
+        public static List<F_dSefareshSeller> Details = new List<F_dSefareshSeller>();
+
+
+
 
         public static long user_id;
         public static tb_Users current_user;
         public static int central_user_id = 2;
         public static int central_user_per = 2;
-        public static int central_shobe_id = 1;
+        public static int central_BranchCode = 1;
         public static string today_date = "1400/08/14";
 
 

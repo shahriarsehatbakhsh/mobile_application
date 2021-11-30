@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:order_page="clr-namespace:mobile_application.pages.Order_Pages"
              x:Class="mobile_application.pages.Order_Pages.A_add_new_order" 
              FlowDirection="RightToLeft"
-             xmlns:D="clr-namespace:ShamsiDatePicker;assembly=ShamsiDatePicker">
-
-
+             xmlns:D="clr-namespace:ShamsiDatePicker;assembly=ShamsiDatePicker" 
+             IsBusy="True">
     <ContentPage.Resources>
         
         <Style Class="label" TargetType="Label">
@@ -58,15 +56,7 @@
         </Style>
                  
     </ContentPage.Resources>
-
-
-    <!--<ActivityIndicator 
-            IsVisible="{Binding IsBusy}" 
-            IsRunning="{Binding IsBusy}" />-->
-    
-    <ContentPage.Content>
-        
-        <ScrollView BackgroundColor="Gray">
+    <ScrollView BackgroundColor="Gray">
             <StackLayout Padding="10,30,10,0">
                 <Label Text="ثبت سفارش جدید" 
                        TextColor="#533F95" 
@@ -198,7 +188,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="نحوه تسویه:" StyleClass="label" />
 
-                                <Picker Grid.Column="1" x:Name="picker" HeightRequest="50" FontSize="Small" FontFamily="CalibriB" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                                <Picker Grid.Column="1" x:Name="txtNoeTasvie" HeightRequest="50" FontSize="Small" FontFamily="CalibriB" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
                                     <Picker.Items>
                                             <x:String>نقد</x:String>
                                             <x:String>اعتباری</x:String>
@@ -224,7 +214,7 @@
                                     <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Margin="0,10,10,0" Text="مدت اعتبار:" FontFamily="CalibriB" FontSize="20" />
-                                <Entry Grid.Column="1" StyleClass="txt" />
+                                <Entry Grid.Column="1" StyleClass="txt" x:Name="txtEtebar" />
                                 <Label Grid.Column="2" Text="عنوان مدت اعتبار انتخاب شده" StyleClass="labelData" />
                                 <Label Grid.Column="3" StyleClass="LabelIcon" Text="{StaticResource ObjectIcon}" />
                             </Grid>
@@ -280,7 +270,4 @@
                 </StackLayout>
             </StackLayout>
         </ScrollView>
-        
-    </ContentPage.Content>
-
 </ContentPage>

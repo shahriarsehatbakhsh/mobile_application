@@ -3,84 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobile_application.pages.Users_Pages.user_login_page" 
              NavigationPage.HasNavigationBar="False"
-             FlowDirection="RightToLeft">
-    
-    <ContentPage.Resources>
-        <StyleSheet Source="../../Resources/Styles/main-style.css" />
-    </ContentPage.Resources>
+             FlowDirection="RightToLeft"
+             BackgroundColor="#112B47">
 
     <ContentPage.Content>
-        <ActivityIndicator 
-            IsVisible="{Binding IsBusy}" 
-            IsRunning="{Binding IsBusy}" />
+
+        <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" x:Name="indicadorCargando" Color="Blue" />
+            <Image Source="paya_logo.png" WidthRequest="180" HeightRequest="180" />
+
+            <Entry x:Name="txtUsername" Placeholder="Username" TextColor="White" PlaceholderColor="Gray" />
+            <Entry x:Name="txtPassword" Placeholder="Password" IsPassword="True" TextColor="White" PlaceholderColor="Gray" />
+
+            <Button x:Name="btnLogin" 
+                    VerticalOptions="Center"
+                    Text="ورود به سیستم"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    BorderColor="ForestGreen"
+                    BorderWidth="1.5"
+                    CornerRadius="20" Clicked="btnLogin_Clicked" />
+
+            <Label x:Name="txtSetting" HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Set connection link ?" TextColor="Gray"/>
+                        <Span Text="setting" TextColor="Gray" FontAttributes="Bold" TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="txtSetting_Click" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label FontFamily="bTerafficB" 
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       VerticalTextAlignment="Center" 
+                       Text="ذخیره نام کاربری و گذرواژه" />
+                <CheckBox x:Name="chkSavePassword" Color="ForestGreen" HorizontalOptions="End" />
+
+            </StackLayout>
+        </StackLayout>
+
     </ContentPage.Content>
 
-    <Grid BackgroundColor="#f3f5f9" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FlowDirection="RightToLeft">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="180" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <Grid BackgroundColor="#455399" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout Margin="0,-40,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Image Source="@drawable/login_header.jpg" Aspect="AspectFill" Margin="0" />
-            </StackLayout>
-        </Grid>
-
-        <Frame HasShadow="True" Grid.Row="1" HeightRequest="40" Margin="0,-70,0,0" HorizontalOptions="CenterAndExpand" CornerRadius="10">
-            <Grid HorizontalOptions="FillAndExpand">
-                <BoxView  WidthRequest="300" BackgroundColor="White" HorizontalOptions="CenterAndExpand" />
-                <Label Text="ورود به سیستم" HorizontalTextAlignment="Center" Margin="0,-10,0,0" HorizontalOptions="CenterAndExpand" TextColor="#455399" FontSize="30" FontFamily="bTerafficB" />
-            </Grid>
-        </Frame>
-
-        <Frame Grid.Row="2" Margin="25,10,25,50" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" CornerRadius="10">
-
-            <ScrollView>
-                <StackLayout>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-
-                        
-
-                        <StackLayout Grid.Row="0">
-                            <Entry x:Name="txtUsername" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" Margin="10,0,10,0" Placeholder="نام کاربری"/>
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="1">
-                            <Entry x:Name="txtPassword" HorizontalTextAlignment="Start" IsPassword="True" HorizontalOptions="FillAndExpand" Margin="10,0,10,0" Placeholder="گذرواژه"/>
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="2" Orientation="Horizontal">
-                            <CheckBox x:Name="chkSavePassword" IsChecked="False" Color="{StaticResource Primary}" CheckedChanged="chkSavePassword_CheckedChanged" VerticalOptions="Start" />
-                            <Label Text="ذخیره نام کاربری و گذرواژه" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"  HorizontalOptions="StartAndExpand" FontFamily="bYekanb" FontSize="Medium" />
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="3" Orientation="Horizontal">
-                            
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="4">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                <Button x:Name="btnLogin" Clicked="btnLogin_Clicked" Text="ورود به برنامه"  StyleClass="button" HorizontalOptions="FillAndExpand" />
-                            </StackLayout>
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="6" Orientation="Horizontal" HorizontalOptions="Start">
-                            <Label IsVisible="false" Text="still not connect" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                            <Label x:Name="lblLoginFaild" IsVisible="false" Text="نام کاربری یا گذرواژه وارد شده اشتباه میباشد" HorizontalTextAlignment="Start" TextColor="Red" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium" FontFamily="bYekanb" VerticalTextAlignment="Center" />
-                        </StackLayout>
-
-                    </Grid>
-                </StackLayout>
-            </ScrollView>
-
-        </Frame>
-
-    </Grid>
-
- 
 </ContentPage>

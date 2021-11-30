@@ -224,7 +224,4 @@
   <ItemGroup>
     <BundleResource Include="Resources\Visa.png" />
   </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\event.mp4" />
-  </ItemGroup>
 </Project>
