@@ -22,7 +22,7 @@
                     BackgroundColor="Transparent"
                     BorderColor="ForestGreen"
                     BorderWidth="1.5"
-                    CornerRadius="20" Clicked="btnLogin_Clicked" />
+                    CornerRadius="10" Clicked="btnLogin_Clicked" />
 
             <Label x:Name="txtSetting" HorizontalOptions="Center">
                 <Label.FormattedText>

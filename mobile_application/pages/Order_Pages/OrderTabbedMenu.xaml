@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="mobile_application.pages.Order_Pages.OrderTabbedMenu"
+            xmlns:page="clr-namespace:mobile_application.pages.Order_Pages"
+            FlowDirection="RightToLeft"
+            NavigationPage.HasNavigationBar="False"
+            NavigationPage.HasBackButton="False"
+            CurrentPageChanged="TabbedPage_CurrentPageChanged">
+
+
+
+    
+    
+    <!--<TabbedPage.Children>
+        <order_page:OrderObjectList Title="لیست کالا" />
+        <order_page:OrderDetailObjects Title="کالاهای انتخاب شده" />
+        <order_page:OrderDetail Title="ثبت سفارش" />
+    </TabbedPage.Children>-->
+    
+</TabbedPage>

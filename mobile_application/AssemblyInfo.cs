@@ -31,3 +31,18 @@ using Xamarin.Forms.Xaml;
 [assembly: ExportFont("MontserratAlternates-Bold.ttf")]
 [assembly: ExportFont("Arcon-Regular.otf")]
 [assembly: ExportFont("Arcon-Rounded-Regular.otf")]
+
+
+
+
+[assembly: ExportFont("AMehdiHeydari.ttf", Alias = "aa")]
+[assembly: ExportFont("Far_Dinar_Two_Medium.ttf", Alias = "ab")]
+[assembly: ExportFont("Far_Mitra.TTF", Alias = "ac")]
+[assembly: ExportFont("Far_Roya.TTF", Alias = "ad")]
+[assembly: ExportFont("Far_RoyaBd.TTF", Alias = "ae")]
+[assembly: ExportFont("Far_Yagut.TTF", Alias = "af")]
+[assembly: ExportFont("Far_YagutBd.TTF", Alias = "ag")]
+[assembly: ExportFont("Far_Yas.TTF", Alias = "ah")]
+[assembly: ExportFont("SGKara_Light.ttf", Alias = "ao")]
+[assembly: ExportFont("SGKara_Regular.ttf", Alias = "am")]
+[assembly: ExportFont("SGKara_SemiBold.ttf", Alias = "an")]

@@ -42,7 +42,8 @@ namespace mobile_application
 
         private async void lblNewOrder_Click(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new A_add_new_order());
+            //await Navigation.PushAsync(new OrderTabbedMenu());
+            await Navigation.PushAsync(new OrderHeader());
         }
     }
 }

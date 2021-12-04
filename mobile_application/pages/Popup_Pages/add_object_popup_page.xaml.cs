@@ -41,17 +41,17 @@ namespace mobile_application.pages.Popup_Pages
 			await Navigation.PopPopupAsync(true);
 		}
 
-        private async void btnSubmit_Clicked(object sender, EventArgs e)
+		private async void btnSubmit_Clicked(object sender, EventArgs e)
         {
 			if (Static_Loading.Header[0] == null)
 				return;
 
-			
 			Static_Loading.Details.Add(new Fakes.F_dSefareshSeller
 			{
 				BranchCode = Static_Loading.Header[0].CodeShobe ,
 				CodeAnbaar = Static_Loading.central_BranchCode ,
 				CodeKala = this.lblobjCode.Text ,
+				NameKala = this.lblobjName.Text ,
 				CodeKarbar = Static_Loading.central_user_id ,
 				CodeShobe = Static_Loading.Header[0].CodeShobe ,
 				Mablagh = Convert.ToDecimal(this.txtMablagh.Text) ,
@@ -66,8 +66,8 @@ namespace mobile_application.pages.Popup_Pages
 				TedadDarHarBaste = 1 
 			});
 
-
 			ToastNotification.TostMessage("کالای مربوطه به برگه سفارش اضافه شد");
+			await Navigation.PopPopupAsync(true);
 		}
     }
 }

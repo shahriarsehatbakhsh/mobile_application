@@ -46,7 +46,7 @@ namespace mobile_application.pages
                 case "ثبت سفارشات":
                     {
                         //await Navigation.PushAsync(new mobile_application.pages.Order_Pages.A_add_new_order(), true);
-                        App.Current.MainPage = new mobile_application.pages.Order_Pages.A_add_new_order();
+                        App.Current.MainPage = new mobile_application.pages.Order_Pages.OrderTabbedMenu();
                         break;
                     }
                 case "لیست مشتری ها":
@@ -85,7 +85,7 @@ namespace mobile_application.pages
         private async void btnMenu01_Clicked(object sender, EventArgs e)
         {
             //App.Current.MainPage = new mobile_application.pages.Order_Pages.A_add_new_order();
-            await Navigation.PushAsync(new mobile_application.pages.Order_Pages.A_add_new_order());
+            await Navigation.PushAsync(new mobile_application.pages.Order_Pages.OrderTabbedMenu());
         }
 
         private async void mnusql_Clicked(object sender, EventArgs e)

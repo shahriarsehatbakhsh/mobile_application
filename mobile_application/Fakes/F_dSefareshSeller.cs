@@ -8,6 +8,7 @@ namespace mobile_application.Fakes
         public int ShomareRadif { get; set; }
         public int CodeAnbaar { get; set; }
         public string CodeKala { get; set; }
+        public string NameKala { get; set; }
         public decimal Meghdar { get; set; }
         public float Nerkh { get; set; }
         public decimal Mablagh { get; set; }

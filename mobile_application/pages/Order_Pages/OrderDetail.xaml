@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.pages.Order_Pages.OrderDetail">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="شعبه:" />
+                <Label x:Name="lblShobeName" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="شماره سفارش:" />
+                <Label x:Name="lblShomareBarge" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="وضعیت مشتری:" />
+                <Label Text="قبول" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="پیام مشتری:" />
+                <Label Text="پیام مشتری به شرح ذیل میباشد" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="شماره تلفن" />
+                <Label Text="05138758989" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="شماره همراه:" />
+                <Label Text="09152149858" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="آدرس:" />
+                <Label Text="بلوار وکیل آباد" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="ثبت سفارش" />
+                <Button Text="سفارش جدید" />
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
