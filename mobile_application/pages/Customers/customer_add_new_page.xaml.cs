@@ -13,7 +13,7 @@ using mobile_application.Helper;
 using Newtonsoft;
 using Newtonsoft.Json;
 using System.Net.Http;
-using mobile_application.Service.Models;
+using mobile_application.Models;
 
 namespace mobile_application.pages.Customers
 {
@@ -162,7 +162,7 @@ namespace mobile_application.pages.Customers
             string Sharh = this.txtSharh.Text;
             int sp_GetLatestAvailableCustomerCode_serial = ccs.CustomerSerial;
 
-            int CodeKarbareVaredShodeBeSystem = Helper.Static_Loading.central_user_id;
+            long CodeKarbareVaredShodeBeSystem = Helper.Static_Loading.central_user_id;
             string TairkheRooz = Helper.Static_Loading.today_date;
             int CodePishe = Convert.ToInt32(this.txtCodePishe.Text);
 

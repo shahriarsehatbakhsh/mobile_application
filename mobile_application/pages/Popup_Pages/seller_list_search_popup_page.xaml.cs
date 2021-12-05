@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.Service.Models;
+using mobile_application.Models;
 using Rg.Plugins.Popup.Extensions;
 using Newtonsoft;
 using Newtonsoft.Json;
 using System.Net.Http;
 using mobile_application.Helper;
+using mobile_application.ServiceResponse;
 
 namespace mobile_application.pages.Popup_Pages
 {
@@ -28,11 +29,8 @@ namespace mobile_application.pages.Popup_Pages
 
         private async void Loadin_Form()
         {
-            HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(Static_Loading.api_url() + "List/seller code_karbar=" + Static_Loading.central_user_id + ",code_shobe=" + Static_Loading.central_BranchCode);
-            List<vw_seller_list> result = JsonConvert.DeserializeObject<List<vw_seller_list>>(json);
-            List<vw_seller_list> Items = result;
-            this.lstSellerList.ItemsSource = Items;
+            var result = Client.Seller_List(Static_Loading.central_user_id,Static_Loading.central_BranchCode).GetAwaiter().GetResult() ;
+            this.lstSellerList.ItemsSource = result;
         }
 
         private async void btnCloseMe_Clicked(object sender, EventArgs e)

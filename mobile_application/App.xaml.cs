@@ -19,8 +19,7 @@ namespace mobile_application
 
 
             //var rootPage = new NavigationPage(new mobile_application.pages.home_page()); //old main page
-            var rootPage = new NavigationPage(new HomeMode());
-            MainPage = rootPage;
+            MainPage = new Login();
 
 
             //MainPage = new Page1();

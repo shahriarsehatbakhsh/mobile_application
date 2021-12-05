@@ -1,6 +1,6 @@
 ﻿
 using System.Collections.Generic;
-using mobile_application.Service.Models;
+using mobile_application.Models;
 
 namespace mobile_application.Helper
 {

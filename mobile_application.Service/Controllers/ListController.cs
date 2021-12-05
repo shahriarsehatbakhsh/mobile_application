@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mobile_application.Service.Data;
-using mobile_application.Service.Models;
+using mobile_application.Models;
 
 namespace mobile_application.Service.Controllers
 {

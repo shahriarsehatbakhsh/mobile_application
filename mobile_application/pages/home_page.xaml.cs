@@ -21,18 +21,7 @@ namespace mobile_application.pages
         {
             InitializeComponent();
 
-            if (Static_Loading.current_user == null)
-            {
-                Navigation.PushAsync(new MainPage());
-                return;
-            }
-
-            //this.BindingContext = new main_menu_list();
-
             mnusqlCommand = new Command(connection_setting_page_click);
-
-            Navigation.RemovePage(new MainPage());
-            Navigation.RemovePage(new Users_Pages.user_login_page());
         }
 
         private void btnOpenForm_Clicked(object sender, EventArgs e)
@@ -77,20 +66,17 @@ namespace mobile_application.pages
 
         public ICommand mnusqlCommand { private set; get; }
 
-        private async void connection_setting_page_click()
+        private  void connection_setting_page_click()
         {
-            await Navigation.PushAsync(new mobile_application.pages.App_Setting_Pages.server_connection_setting_page());
         }
 
         private async void btnMenu01_Clicked(object sender, EventArgs e)
         {
-            //App.Current.MainPage = new mobile_application.pages.Order_Pages.A_add_new_order();
-            await Navigation.PushAsync(new mobile_application.pages.Order_Pages.OrderTabbedMenu());
+            await Navigation.PushAsync(new mobile_application.pages.Order_Pages.OrderHeader());
         }
 
-        private async void mnusql_Clicked(object sender, EventArgs e)
+        private  void mnusql_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new mobile_application.pages.App_Setting_Pages.server_connection_setting_page());
         }
 
         private async void profile_Clicked(object sender, EventArgs e)
@@ -98,9 +84,8 @@ namespace mobile_application.pages
             await Navigation.PushAsync(new mobile_application.pages.Users_Pages.user_change_password_page());
         }
 
-        private async void create_profile_Clicked(object sender, EventArgs e)
+        private  void create_profile_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new mobile_application.pages.Users_Pages.user_create_new());
         }
 
         private async void btnMenu02_Clicked(object sender, EventArgs e)

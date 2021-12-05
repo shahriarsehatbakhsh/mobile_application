@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.Service.Models;
+using mobile_application.Models;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Extensions;
 using mobile_application.ServiceResponse;
@@ -46,7 +46,7 @@ namespace mobile_application.pages.Popup_Pages
 			if (Static_Loading.Header[0] == null)
 				return;
 
-			Static_Loading.Details.Add(new Fakes.F_dSefareshSeller
+			Static_Loading.Details.Add(new F_dSefareshSeller
 			{
 				BranchCode = Static_Loading.Header[0].CodeShobe ,
 				CodeAnbaar = Static_Loading.central_BranchCode ,
@@ -57,7 +57,7 @@ namespace mobile_application.pages.Popup_Pages
 				Mablagh = Convert.ToDecimal(this.txtMablagh.Text) ,
 				Meghdar = Convert.ToDecimal(this.txtMeghdar.Text) ,
 				MoshtariCode = Static_Loading.Header[0].CodeMoshtari.ToString() ,
-				Nerkh = 200 ,
+				Nerkh = Convert.ToSingle(this.lblNerkh.Text) ,
 				ShomareRadif = Static_Loading.Details.Count + 1 ,
 				NoeBaste = 1 ,
 				TarikhRooz = Static_Loading.today_date ,

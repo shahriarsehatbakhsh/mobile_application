@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace mobile_application.Service.Models
+namespace mobile_application.Models
 {
     public class vw_customer_cart_result
     {

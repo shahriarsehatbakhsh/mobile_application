@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.ServiceResponse;
 using Rg.Plugins.Popup.Extensions;
-using mobile_application.Service.Models;
+using mobile_application.Models;
 using mobile_application.pages.Popup_Pages;
 
 namespace mobile_application.pages.Order_Pages

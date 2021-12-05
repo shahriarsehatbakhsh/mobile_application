@@ -66,7 +66,7 @@ namespace mobile_application.pages.Users_Pages
                     }
 
 
-                    Static_Loading.user_id = Data[0].id;
+                    Static_Loading.central_user_id = Data[0].id;
                     Navigation.PopAsync();
                     await Navigation.PopAsync();
                     this.IsBusy = false;

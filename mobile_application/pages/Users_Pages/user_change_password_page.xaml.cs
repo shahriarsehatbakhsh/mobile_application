@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.Helper;
-using mobile_application.SQLite.Models.Users;
 
 namespace mobile_application.pages.Users_Pages
 {
@@ -18,24 +17,23 @@ namespace mobile_application.pages.Users_Pages
         {
             InitializeComponent();
 
-            this.txtUsername.Text = Static_Loading.current_user.username;
         }
 
         private void btnChangePassword_Clicked(object sender, EventArgs e)
         {
-            if (this.txtOldPassword.Text != Static_Loading.current_user.password)
-            {
-                DisplayAlert("", "خطا در گذرواژه قدیم", "تایید");
-                this.txtOldPassword.Text = "";
-                return;
-            }
+            //if (this.txtOldPassword.Text != Static_Loading.current_user.password)
+            //{
+            //    DisplayAlert("", "خطا در گذرواژه قدیم", "تایید");
+            //    this.txtOldPassword.Text = "";
+            //    return;
+            //}
 
-            if (this.txtNewPassword.Text != this.txtConfirmPassword.Text || this.txtNewPassword.Text == "")
-            {
-                DisplayAlert("", "خطا در انتخاب گذرواژه جدید", "تایید");
-                this.txtNewPassword.Text = this.txtConfirmPassword.Text = "";
-                return;
-            }
+            //if (this.txtNewPassword.Text != this.txtConfirmPassword.Text || this.txtNewPassword.Text == "")
+            //{
+            //    DisplayAlert("", "خطا در انتخاب گذرواژه جدید", "تایید");
+            //    this.txtNewPassword.Text = this.txtConfirmPassword.Text = "";
+            //    return;
+            //}
 
 
             //UsersSyntax.Delete(Static_Loading.user_id);

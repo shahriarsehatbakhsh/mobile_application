@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 using System.Windows.Input;
 using Expandable;
 using mobile_application.Helper;
-using mobile_application.Service.Models;
+using mobile_application.Models;
 using Rg.Plugins.Popup.Extensions;
 using Newtonsoft;
 using Newtonsoft.Json;

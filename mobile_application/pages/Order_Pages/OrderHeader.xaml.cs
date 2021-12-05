@@ -10,11 +10,10 @@ using Xamarin.Forms.Xaml;
 using mobile_application.pages.Popup_Pages;
 using Rg.Plugins.Popup.Extensions;
 using mobile_application.ServiceResponse;
-using mobile_application.Service.Models;
+using mobile_application.Models;
 using mobile_application.Helper;
 using Newtonsoft.Json;
 using System.Net.Http;
-using mobile_application.Fakes;
 
 namespace mobile_application.pages.Order_Pages
 {
@@ -222,8 +221,8 @@ namespace mobile_application.pages.Order_Pages
             }
             //await Navigation.PushAsync(new B_Order_Menu_TabbedPage(), true);
 
-            var HeaderCodeSerial = Client.Header_Code_Serial(Convert.ToInt32(this.txtShobeCode.Text)).GetAwaiter().GetResult()[0];
-            var Customer_JobNo = Client.Customer_Job_No(Convert.ToInt32(this.txtShobeCode.Text), Convert.ToInt32(this.txtCustomerCode.Text), this.txtDate.Text).GetAwaiter().GetResult()[0];
+            var HeaderCodeSerial = Client.Header_Code_Serial(Convert.ToInt32(this.txtShobeCode.Text)).GetAwaiter().GetResult();
+            var Customer_JobNo = Client.Customer_Job_No(Convert.ToInt32(this.txtShobeCode.Text), Convert.ToInt32(this.txtCustomerCode.Text), this.txtDate.Text).GetAwaiter().GetResult();
 
             Static_Loading.Header.Clear();
             Static_Loading.Header.Add(new F_hSefareshSeller
@@ -235,13 +234,13 @@ namespace mobile_application.pages.Order_Pages
                 CodeShobe = Convert.ToInt16(this.txtShobeCode.Text),
                 CodeSupervisor = Convert.ToInt32(this.txtSupervizerCode.Text),
                 ModdateTasvie = Convert.ToInt32(this.txtEtebar.Text),
-                NoeTasvie = Convert.ToInt32(this.txtNoeTasvie.SelectedIndex),
+                NoeTasvie = Convert.ToInt32(this.txtNoeTasvie.SelectedIndex + 1),
                 Supervisor = 5,
                 TarikhBarge = this.txtDate.ShamsiDateString,
                 TarikheRooz = Static_Loading.today_date,
-                sp_GetAvailableCustomerJob = Customer_JobNo.JobNo,
-                sp_GetLatestAvailableSefareshHeaderCode_HeaderCode = HeaderCodeSerial.HeaderCode,
-                sp_GetLatestAvailableSefareshHeaderCode_HeaderSerial = HeaderCodeSerial.HeaderSerial
+                sp_GetAvailableCustomerJob = Customer_JobNo[0].JobNo,
+                sp_GetLatestAvailableSefareshHeaderCode_HeaderCode = HeaderCodeSerial[0].HeaderCode,
+                sp_GetLatestAvailableSefareshHeaderCode_HeaderSerial = HeaderCodeSerial[0].HeaderSerial
             });
 
             
