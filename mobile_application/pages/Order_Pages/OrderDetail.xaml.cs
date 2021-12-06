@@ -86,5 +86,10 @@ namespace mobile_application.pages.Order_Pages
         {
 
         }
+
+        private void btnNext_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

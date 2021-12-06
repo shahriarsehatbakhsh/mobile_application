@@ -6,58 +6,6 @@
                  xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
                  Title="" FlowDirection="RightToLeft">
 
-    <ContentPage.Resources>
-
-        <Style Class="label" TargetType="Label">
-            <Setter Property="Margin" Value="0,15,10,0" />
-            <Setter Property="FontFamily" Value="CalibriB" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="BackgroundColor" Value="Transparent" />
-        </Style>
-
-        <Style Class="labelData" TargetType="Label">
-            <Setter Property="VerticalTextAlignment" Value="Center" />
-            <Setter Property="HorizontalTextAlignment" Value="Center" />
-            <Setter Property="BackgroundColor" Value="Transparent" />
-            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-            <Setter Property="FontFamily" Value="bNazanin" />
-            <Setter Property="FontSize" Value="Medium" />
-        </Style>
-
-        <Style Class="labelIcon" TargetType="Label">
-            <Setter Property="Margin" Value="20,20,0,0" />
-            <Setter Property="Text" Value="{StaticResource ObjectIcon}" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="FAS" />
-        </Style>
-
-        <Style Class="SelectButton" TargetType="Button">
-            <Setter Property="Text" Value="..." />
-            <Setter Property="TextColor" Value="Black" />
-            <Setter Property="WidthRequest" Value="50" />
-            <Setter Property="BackgroundColor" Value="Transparent" />
-        </Style>
-
-        <Style Class="txt" TargetType="Entry">
-            <Setter Property="FontFamily" Value="bTitrB" />
-            <Setter Property="HorizontalTextAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="20" />
-        </Style>
-
-        <Style Class="btn" TargetType="Button">
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="#533F95" />
-            <Setter Property="FontAttributes" Value="Bold" />
-            <Setter Property="BorderColor" Value="White" />
-            <Setter Property="BorderWidth" Value="0.5" />
-            <Setter Property="BorderRadius" Value="10" />
-            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-            <Setter Property="FontFamily" Value="bTerafficB" />
-            <Setter Property="FontSize" Value="20" />
-        </Style>
-
-    </ContentPage.Resources>
-    
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Center" PositionOut="Center"
@@ -71,30 +19,11 @@
         <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center" >
             <StackLayout Padding="5">
                 <StackLayout Orientation="Vertical">
+                    
                     <Frame Padding="0" BorderColor="Gray">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <Grid HorizontalOptions="FillAndExpand">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label x:Name="lblobjName" 
-                                       Grid.Row="0" 
-                                       HorizontalOptions="FillAndExpand" 
-                                       HorizontalTextAlignment="Center" 
-                                       Padding="1" 
-                                       FontSize="10"
-                                       FontFamily="bTerafficB" />
-                                <Label x:Name="lblobjCode" 
-                                       Grid.Row="1" 
-                                       HorizontalOptions="FillAndExpand" 
-                                       HorizontalTextAlignment="Center" 
-                                       Padding="5" 
-                                       FontFamily="bTerafficB" />
-                            </Grid>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Label x:Name="lblobjName" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="bTerafficB" FontSize="15" />
+                            <Label x:Name="lblobjCode" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="bTerafficB" FontSize="15" />
                         </StackLayout>
                     </Frame>
 
@@ -108,8 +37,8 @@
                                     <ColumnDefinition Width="100" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="مقدار:" StyleClass="label" />
-                                <Entry x:Name="txtMeghdar" Grid.Column="1" StyleClass="txt" Keyboard="Numeric" />
+                                <Label Grid.Column="0" Text="مقدار:" VerticalTextAlignment="Center" FontFamily="bTerafficB" />
+                                <Entry Grid.Column="1" x:Name="txtMeghdar" Keyboard="Numeric" HorizontalTextAlignment="Center" FontFamily="bTerafficB" />
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -124,8 +53,8 @@
                                     <ColumnDefinition Width="100" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="مقدار بسته:" StyleClass="label" />
-                                <Entry x:Name="txtBaste" Grid.Column="1" StyleClass="txt"  Keyboard="Numeric" />
+                                <Label Grid.Column="0" Text="مقدار بسته:" />
+                                <Entry Grid.Column="1" x:Name="txtBaste" Keyboard="Numeric" />
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -140,8 +69,8 @@
                                     <ColumnDefinition Width="100" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" x:Name="lblNerkh" Text="نرخ:" StyleClass="label" />
-                                <Entry Grid.Column="1" StyleClass="txt" IsEnabled="True" />
+                                <Label Grid.Column="0" x:Name="lblNerkh" Text="نرخ:" />
+                                <Entry Grid.Column="1" IsEnabled="True" />
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -156,8 +85,8 @@
                                     <ColumnDefinition Width="100" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="مبلغ:" StyleClass="label" />
-                                <Entry x:Name="txtMablagh" Text="0" Grid.Column="1" StyleClass="txt" IsEnabled="False" />
+                                <Label Grid.Column="0" Text="مبلغ:" />
+                                <Entry Grid.Column="1" x:Name="txtMablagh" Text="0" IsEnabled="False" />
                             </Grid>
                         </StackLayout>
                     </Frame>

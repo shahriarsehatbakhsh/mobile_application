@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_application.Interfaces.Master"
+             FlowDirection="RightToLeft"
+             BackgroundColor="{StaticResource Search}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+
+        <!-- Form Title StackLayout -->
+        <StackLayout StyleClass="Title" >
+            <Image 
+                x:Name="imgTitle"
+                Source="click01"
+                Margin="0,0,10,0" />
+            <Label x:Name="lblTitle" StyleClass="Title_Label"/>
+        </StackLayout>
+
+        
+        <!--Header search-->
+        <StackLayout BackgroundColor="{StaticResource Search}" Grid.Row="1">
+            <SearchBar />
+        </StackLayout>
+
+        
+        <!--Form body-->
+        <StackLayout Grid.Row="2" BackgroundColor="{StaticResource Body}">
+            <ScrollView>
+                
+            </ScrollView>
+        </StackLayout>
+
+        
+        <!--End form button-->
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal" Grid.Row="3" Margin="10,0,10,0">
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btnNew"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="d3" />
+
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btnSave"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="ab" />
+
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btn3"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="ab" />
+
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btn4"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="ab" />
+
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btnPreview"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="ab" />
+
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btnNext"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="d5" />
+
+        </StackLayout>
+    </Grid>
+</ContentPage>

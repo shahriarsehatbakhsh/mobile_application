@@ -1,81 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
-             x:Class="mobile_application.pages.Order_Pages.OrderObjectList">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="mobile_application.pages.Order_Pages.OrderObjectList"
+             BackgroundColor="{StaticResource Search}">
 
-    <Grid BackgroundColor="LightGray" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
         </Grid.RowDefinitions>
-        <Grid Padding="30">
-            <Frame>
-                <SearchBar BackgroundColor="LightCyan" />
-            </Frame>
-        </Grid>
-        <CollectionView x:Name="collObjectList" 
+
+        <!-- Form Title StackLayout -->
+        <StackLayout StyleClass="Title" >
+            <Image 
+                x:Name="imgTitle"
+                Source="click01"
+                Margin="0,0,10,0" />
+            <Label x:Name="lblTitle" StyleClass="Title_Label"/>
+        </StackLayout>
+
+
+        <!--Header search-->
+        <StackLayout BackgroundColor="{StaticResource Search}" Grid.Row="1">
+            <SearchBar />
+        </StackLayout>
+
+
+        <!--Form body-->
+        <StackLayout Grid.Row="2" BackgroundColor="{StaticResource Body}">
+            <ScrollView>
+                <CollectionView x:Name="collObjectList" 
                         Grid.Row="1" 
                         Margin="30,5,30,30" 
                         HorizontalOptions="FillAndExpand" 
                         VerticalOptions="FillAndExpand"
                         SelectionMode="None" >
-            <CollectionView.Header>
-                <Label Text="لیست کالاهای موجود در انبار" 
+                    <CollectionView.Header>
+                        <Label Text="لیست کالاهای موجود در انبار" 
                        TextColor="Black" 
                        FontSize="15" 
                        FontAttributes="Bold"
                        FontFamily="bTerafficB">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="لیست کالاهای موجود در انبار " TextColor="Black" />
-                            <Span Text="شماره یک" TextColor="Red" TextDecorations="Underline" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </CollectionView.Header>
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame HasShadow="True" 
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="لیست کالاهای موجود در انبار " TextColor="Black" />
+                                    <Span Text="شماره یک" TextColor="Red" TextDecorations="Underline" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </CollectionView.Header>
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame HasShadow="True" 
                            BackgroundColor="Transparent" 
                            VerticalOptions="StartAndExpand" 
                            HorizontalOptions="FillAndExpand" 
                            Padding="0">
-                        
-                        <Grid 
+
+                                <Grid 
                             VerticalOptions="StartAndExpand" 
                             HorizontalOptions="FillAndExpand">
-                            <extensions:Expander x:Name="MainExpander" 
+                                    <extensions:Expander x:Name="MainExpander" 
                                                  Tapped="MainExpander_Tapped" 
                                                  CollapseAnimationLength="500">
-                                <extensions:Expander.Header>
-                                    <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" >
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="80"/>
-                                            <ColumnDefinition Width="3*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="80" />
-                                        </Grid.RowDefinitions>
-                                        <BoxView BackgroundColor="#A0A4C9" Opacity="0.2"/>
-                                        <StackLayout HorizontalOptions="FillAndExpand" 
+                                        <extensions:Expander.Header>
+                                            <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="80"/>
+                                                    <ColumnDefinition Width="3*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="80" />
+                                                </Grid.RowDefinitions>
+                                                <BoxView BackgroundColor="#A0A4C9" Opacity="0.2"/>
+                                                <StackLayout HorizontalOptions="FillAndExpand" 
                                                      VerticalOptions="FillAndExpand">
-                                            <ImageButton 
+                                                    <ImageButton 
                                                 x:Name="btnSelectObject" 
                                                 CommandParameter="{Binding Source={x:Reference lblObjCode}, Path=Text}" 
                                                 Source="main02" 
                                                 Clicked="btnSelectObject_Clicked" 
                                                 Aspect="AspectFill" />
-                                        </StackLayout>
-                                        <StackLayout Grid.Column="1" 
+                                                </StackLayout>
+                                                <StackLayout Grid.Column="1" 
                                                      HorizontalOptions="Start" 
                                                      VerticalOptions="Center" 
                                                      Margin="0" 
                                                      Padding="0,0,0,0">
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label 
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label 
                                                     x:Name="lblObjName" 
                                                     Text="{Binding Sharh, StringFormat='نام کالا : {0}'}" 
                                                     FontFamily="lalezar" 
@@ -83,60 +102,117 @@
                                                     TextColor="Black" 
                                                     FontSize="20"
                                                     Margin="0,-15,0,0"/>
-                                            </StackLayout>
-                                            <StackLayout 
+                                                    </StackLayout>
+                                                    <StackLayout 
                                                 Orientation="Horizontal" 
                                                 Padding="0,-10,0,0">
-                                                <Label 
+                                                        <Label 
                                                     Text="کد کالا :" 
                                                     FontFamily="bTerafficB" 
                                                     VerticalTextAlignment="Center" 
                                                     TextColor="Black" 
                                                     FontSize="15"/>
-                                                <Label 
+                                                        <Label 
                                                     x:Name="lblObjCode" 
                                                     Text="{Binding Code}" 
                                                     FontFamily="bTerafficB" 
                                                     VerticalTextAlignment="Center" 
                                                     TextColor="Black" 
                                                     FontSize="15"/>
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </Grid>
-                                </extensions:Expander.Header>
-                                
-                                <Grid RowSpacing="0" 
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Grid>
+                                        </extensions:Expander.Header>
+
+                                        <Grid RowSpacing="0" 
                                       HorizontalOptions="FillAndExpand" 
                                       HeightRequest="100">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid x:Name="ImageView" IsVisible="False">
-                                        <BoxView Color="LightPink" />
-                                    </Grid>
-                                    <Grid x:Name="DetailsView" Grid.Row="1" BackgroundColor="White" Padding="10" IsVisible="False">
-                                        <StackLayout>
-                                            <Label Text="توضیحات بیشتر :" TextColor="Black" FontSize="12" FontAttributes="Bold" Opacity="0.85"/>
-                                            <Grid>
-                                                <StackLayout Orientation="Horizontal" Grid.Column="0">
-                                                    <Label Text="موجودی لحظه ای :" FontFamily="bNazaninB" VerticalTextAlignment="Center" TextColor="Black" FontSize="10"/>
-                                                    <Label Text="300" FontFamily="bNazaninB" VerticalTextAlignment="Center" TextColor="Red" FontSize="10"/>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid x:Name="ImageView" IsVisible="False">
+                                                <BoxView Color="LightPink" />
+                                            </Grid>
+                                            <Grid x:Name="DetailsView" Grid.Row="1" BackgroundColor="White" Padding="10" IsVisible="False">
+                                                <StackLayout>
+                                                    <Label Text="توضیحات بیشتر :" TextColor="Black" FontSize="12" FontAttributes="Bold" Opacity="0.85"/>
+                                                    <Grid>
+                                                        <StackLayout Orientation="Horizontal" Grid.Column="0">
+                                                            <Label Text="موجودی لحظه ای :" FontFamily="bNazaninB" VerticalTextAlignment="Center" TextColor="Black" FontSize="10"/>
+                                                            <Label Text="300" FontFamily="bNazaninB" VerticalTextAlignment="Center" TextColor="Red" FontSize="10"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal" Grid.Column="1">
+                                                            <Label Text="موجودی لحظه ای :" FontFamily="bNazaninB" VerticalTextAlignment="Center" TextColor="Black" FontSize="10"/>
+                                                            <Label Text="300" FontFamily="bNazaninB" VerticalTextAlignment="Center" TextColor="Red" FontSize="10"/>
+                                                        </StackLayout>
+                                                    </Grid>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Horizontal" Grid.Column="1">
-                                                    <Label Text="موجودی لحظه ای :" FontFamily="bNazaninB" VerticalTextAlignment="Center" TextColor="Black" FontSize="10"/>
-                                                    <Label Text="300" FontFamily="bNazaninB" VerticalTextAlignment="Center" TextColor="Red" FontSize="10"/>
-                                                </StackLayout>
-                                            </Grid>                                            
-                                        </StackLayout>
-                                    </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </extensions:Expander>
                                 </Grid>
-                            </extensions:Expander>
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </StackLayout>
+
+
+        <!--End form button-->
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal" Grid.Row="3" Margin="10,0,10,0">
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btnNew"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="d3" />
+
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btnSave"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="ab" />
+
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btn3"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="ab" />
+
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btn4"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="ab" />
+
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btnPreview"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="ab" />
+
+            <ImageButton 
+                CornerRadius="5"
+                x:Name="btnNext"
+                HeightRequest="70"
+                WidthRequest="70"
+                Aspect="Fill"
+                Source="d5" />
+
+        </StackLayout>
     </Grid>
+    
+    
 
 </ContentPage>

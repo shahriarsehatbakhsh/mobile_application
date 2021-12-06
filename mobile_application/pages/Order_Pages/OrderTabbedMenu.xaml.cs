@@ -22,14 +22,17 @@ namespace mobile_application.pages.Order_Pages
 
             var frmOrderObjectList = new OrderObjectList();
             frmOrderObjectList.Title = "لیست کالاها";
+            frmOrderObjectList.IconImageSource = "title01.png";
             this.Children.Add(frmOrderObjectList);
 
             var frmOrderDetailObjects = new OrderDetailObjects();
             frmOrderDetailObjects.Title = "کالاهای انتخاب شده";
+            frmOrderDetailObjects.IconImageSource = "title02.png";
             this.Children.Add(frmOrderDetailObjects);
 
             var frmOrderDetail = new OrderDetail();
             frmOrderDetail.Title = "ثبت سفارش";
+            frmOrderDetail.IconImageSource = "title03.png";
             this.Children.Add(frmOrderDetail);
 
             ToolbarItem tbi = new ToolbarItem();

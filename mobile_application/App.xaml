@@ -7,7 +7,14 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#455399</Color>
+            <Color x:Key="Title">#3F51B5</Color>
+            <Color x:Key="Main">#112b47</Color>
             <Color x:Key="BorderColor">black</Color>
+
+            
+            <Color x:Key="Header">#112b47</Color>
+            <Color x:Key="Search">#112b47</Color>
+            <Color x:Key="Body">#112b47</Color>
 
             <x:String x:Key="ExitIcon">&#xf52b;</x:String>
             <x:String x:Key="CoffeeIcon">&#xf0f4;</x:String>
@@ -27,6 +34,25 @@
         <Style Class="Sbtn" TargetType="Button">
             <Setter Property="Text" Value="..." />
             <Setter Property="WidthRequest" Value="50" />
+        </Style>
+
+        <!-- Form Title StackLayout -->
+        <Style Class="Title" TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="{StaticResource Title}" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
+
+        <!-- Form Label Title -->
+        <Style Class="Title_Label" TargetType="Label">
+            <Setter Property="Text" Value="Title" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="Title" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="FontFamily" Value="bTerafficB" />
         </Style>
 
         <Style Class="lbl" TargetType="Label">

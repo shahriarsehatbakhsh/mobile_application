@@ -4,7 +4,7 @@
              x:Class="mobile_application.Login"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
              xmlns:renderers="clr-namespace:ChasedHomeUIDesign.Renderers"
-             BackgroundColor="#112b47"
+             BackgroundColor="{StaticResource Main}"
              FlowDirection="RightToLeft">
 
     <ContentPage.Content>

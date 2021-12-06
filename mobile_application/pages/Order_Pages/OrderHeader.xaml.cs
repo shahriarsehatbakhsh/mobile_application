@@ -24,16 +24,13 @@ namespace mobile_application.pages.Order_Pages
         {
             InitializeComponent();
             cmbTasvie.SelectedIndex = 0;
+            this.lblTitle.Text = "ثبت سفارش جدید";
+            this.SearchStack.IsVisible = false;
         }
 
         private async void btnMain_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync(true);
-        }
-
-        private async void btnNext_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new OrderTabbedMenu(), true);
         }
 
         customers_search_list_popup_page frm_customer_list;
@@ -97,20 +94,6 @@ namespace mobile_application.pages.Order_Pages
             this.txtShobeName.Text = e[0].Sharh.ToString();
         }
 
-
-        private void txtShobeCode_Focused(object sender, FocusEventArgs e)
-        {
-
-        }
-        private void btnNewOrder_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtShobeCode_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
 
         mosavabe_search_list_popup_page frmMosavabe;
         private async void btnSelectMosavabe_Clicked(object sender, EventArgs e)
@@ -200,7 +183,32 @@ namespace mobile_application.pages.Order_Pages
             }
         }
 
-        private async void btnNextObject_Clicked(object sender, EventArgs e)
+        private void txtCustomerCode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Customer_Cart_New();
+        }
+
+        private void cmbTasvie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var index = this.cmbTasvie.SelectedIndex;
+            if (index == 0)
+            {
+                this.frm7.BackgroundColor = Color.Gray;
+                this.frm7.IsEnabled = false;
+            }
+            else
+            {
+                this.frm7.BackgroundColor = Color.White;
+                this.frm7.IsEnabled = true;
+            }
+        }
+
+        private void btnNew_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void btnNext_Clicked(object sender, EventArgs e)
         {
             //1 = OK
             //2 = Message
@@ -244,28 +252,27 @@ namespace mobile_application.pages.Order_Pages
                 sp_GetLatestAvailableSefareshHeaderCode_HeaderSerial = HeaderCodeSerial[0].HeaderSerial
             });
 
-            
+
             App.Current.MainPage = new OrderTabbedMenu();
         }
 
-        private void txtCustomerCode_TextChanged(object sender, TextChangedEventArgs e)
+        private void frm1_Focused(object sender, FocusEventArgs e)
         {
-            Customer_Cart_New();
+
         }
 
-        private void cmbTasvie_SelectedIndexChanged(object sender, EventArgs e)
+        private void Focused_Color(object sender, FocusEventArgs e)
         {
-            var index = this.cmbTasvie.SelectedIndex;
-            if (index == 0)
+            if (sender == txtShobeCode)
             {
-                this.frmModatTasviye.BackgroundColor = Color.Gray;
-                this.frmModatTasviye.IsEnabled = false;
+                frm1.BorderColor = Color.Gold;
+                frm1.BackgroundColor = Color.Transparent;
             }
-            else
-            {
-                this.frmModatTasviye.BackgroundColor = Color.White;
-                this.frmModatTasviye.IsEnabled = true;
-            }
+        }
+
+        private void Unfocused_Color(object sender, FocusEventArgs e)
+        {
+            
         }
     }
 }

@@ -18,8 +18,8 @@ namespace mobile_application
             Device.SetFlags(new string[] { "Markup_Experimental" });
 
 
-            //var rootPage = new NavigationPage(new mobile_application.pages.home_page()); //old main page
             MainPage = new Login();
+            //MainPage = new mobile_application.Interfaces.Master();
 
 
             //MainPage = new Page1();
