@@ -3,166 +3,82 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobile_application.Login"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-             xmlns:renderers="clr-namespace:ChasedHomeUIDesign.Renderers">
+             xmlns:renderers="clr-namespace:ChasedHomeUIDesign.Renderers"
+             BackgroundColor="#112b47"
+             FlowDirection="RightToLeft">
 
-    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <StackLayout >
-            <StackLayout  Margin="0,0,0,0"  Orientation="Horizontal">
-                <StackLayout Margin="20,10,20,0" Spacing="20">
-                    <Image
-                    HeightRequest="30"
-                    HorizontalOptions="Start"
-                    Source="close"
-                    VerticalOptions="Start"
-                    WidthRequest="30" />
-                    <Label
-                    FontAttributes="Bold"
-                    FontSize="30"
-                    Text="Create your account"
+    <ContentPage.Content>
+
+        <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" x:Name="indicadorCargando" Color="Blue" />
+            <Label x:Name="lblSetting" />
+            <Image 
+                Source="paya_logo.png" 
+                WidthRequest="180" 
+                HeightRequest="180"
+                Margin="0,-20,0,0"/>
+
+            <Entry 
+                x:Name="txtUsername" 
+                Placeholder="نام کاربری" 
+                TextColor="White" 
+                PlaceholderColor="Gray"
+                HorizontalTextAlignment="Start"/>
+            <Entry 
+                x:Name="txtPassword" 
+                Placeholder="رمز ورود به برنامه" 
+                HorizontalTextAlignment="End" 
+                IsPassword="True" 
+                TextColor="White" 
+                PlaceholderColor="Gray" />
+
+            <Button x:Name="btnLogin" 
+                    VerticalOptions="Center"
+                    Text="ورود به سیستم"
                     TextColor="White"
-                    VerticalOptions="CenterAndExpand" />
-                </StackLayout>
-                <Image Source="bgImage1" WidthRequest="200" />
+                    BackgroundColor="Transparent"
+                    BorderColor="ForestGreen"
+                    BorderWidth="1.5"
+                    CornerRadius="10" Clicked="LoginClick" />
+
+            <Label 
+                x:Name="txtSetting" 
+                HorizontalOptions="Center"
+                FontFamily="bTerafficB">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span 
+                            Text="جهت تنظیم ارتباط با سرور کلیک کنید   " 
+                            TextColor="Gray" 
+                            FontFamily="bTerafficB" />
+                        <Span 
+                            Text="تنظیمات سرور" 
+                            TextColor="Gray" 
+                            FontAttributes="Bold" 
+                            TextDecorations="Underline" 
+                            FontFamily="bTerafficB" />
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="txtSetting_Click" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label 
+                    FontFamily="bTerafficB" 
+                    HorizontalOptions="StartAndExpand"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" 
+                    Text="ذخیره نام کاربری و گذرواژه" />
+                <CheckBox 
+                    x:Name="chkSavePassword" 
+                    Color="ForestGreen" 
+                    HorizontalOptions="End" />
+
             </StackLayout>
-            <yummy:PancakeView
-            Margin="0,20,0,0"
-            Padding="30,50,30,30"
-            BackgroundColor="White"
-            CornerRadius="40,40,0,0"
-            VerticalOptions="FillAndExpand">
-                <StackLayout Spacing="30">
-                    <StackLayout Spacing="20">
-                        <Label Margin="20,0,0,0"
-                               FontSize="20"
-                               Text="نام کاربری"
-                               FontFamily="bTerafficB"
-                               TextColor="#99A1B3" />
-                              <yummy:PancakeView
-                        Padding="10,0,0,0"
-                        BackgroundColor="White"
-                        CornerRadius="15"
-                        HeightRequest="50">
-                            <renderers:BorderlessEntry x:Name="txtUsername"
-                            FontSize="20"
-                            ClearButtonVisibility="WhileEditing"
-                            Keyboard="Email"
-                            TextColor="#484848" />
-                        </yummy:PancakeView>
-                    </StackLayout>
-                    
-                    <StackLayout Spacing="20">
-                        <Label
-                        Margin="20,0,0,0"
-                        FontSize="20"
-                            FontFamily="bTerafficB"
-                        Text="رمز ورود به برنامه"
-                        TextColor="#99A1B3" />
-                        <yummy:PancakeView
-                        Padding="10,0,0,0"
-                        BackgroundColor="White"
-                        CornerRadius="15"
-                        HeightRequest="50">
-                            <renderers:BorderlessEntry x:Name="txtPassword"
-                            FontSize="25"
-                             ClearButtonVisibility="WhileEditing"
-                            IsPassword="True"
-                            TextColor="#484848" />
-                        </yummy:PancakeView>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label FontAttributes="None"
-                               FontSize="15"
-                               HorizontalOptions="EndAndExpand"
-                               Text="ذخیره نام کاربری و رمز ورود به برنامه"
-                               FontFamily="bTerafficB"
-                               TextColor="#99A1B3" VerticalTextAlignment="Center" />
-                        <CheckBox x:Name="chkSavePassword" />
-                    </StackLayout>
-                    <yummy:PancakeView
-                    BackgroundColor="#455399"
-                    CornerRadius="25"
-                    HeightRequest="50"
-                    HorizontalOptions="CenterAndExpand"
-                    WidthRequest="150">
-                        <Label
-                            FontFamily="bTerafficB"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="ورود به برنامه"
-                        TextColor="White"
-                        VerticalOptions="CenterAndExpand" >
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="LoginClick" ></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </yummy:PancakeView>
-                    <Label
-                    FontAttributes="None"
-                    FontSize="20"
-                    HorizontalOptions="CenterAndExpand"
-                    Text="Or"
-                    TextColor="#99A1B3" />
-                    <StackLayout Spacing="10" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                        <yummy:PancakeView
-                        BackgroundColor="#FF5A00"
-                        CornerRadius="20"
-                        HeightRequest="60"
-                        HorizontalOptions="Center"
-                        WidthRequest="60">
-                            <Image
-                            Margin="15"
-                            Aspect="AspectFit"
-                            HeightRequest="20"
-                            Source="google"
-                            WidthRequest="20" />
-                        </yummy:PancakeView>
-                        <yummy:PancakeView
-                        BackgroundColor="#4359AC"
-                        CornerRadius="20"
-                        HeightRequest="60"
-                        HorizontalOptions="Center"
-                        WidthRequest="60">
-                            <Image
-                            Margin="15"
-                            Aspect="AspectFit"
-                            HeightRequest="20"
-                            Source="facebook"
-                            WidthRequest="20" />
-                        </yummy:PancakeView>
-                        <yummy:PancakeView
-                        BackgroundColor="#1DA1F2"
-                        CornerRadius="20"
-                        HeightRequest="60"
-                        HorizontalOptions="Center"
-                        WidthRequest="60">
-                            <Image
-                            Margin="15"
-                            Aspect="AspectFit"
-                            HeightRequest="20"
-                            Source="twitter"
-                            WidthRequest="20" />
-                        </yummy:PancakeView>
-                    </StackLayout>
-                    <Label x:Name="lblSetting"
-                        FontAttributes="None"
-                        FontSize="18"
-                        HorizontalOptions="CenterAndExpand"
-                        TextColor="#99A1B3"
-                        VerticalOptions="CenterAndExpand" >
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="برای برقراری ارتباط با سرور کلیک کنید "
-                                      FontFamily="bTerafficB"></Span>
-                                <Span TextColor="#791AE5" 
-                                      Text="تنظیمات" 
-                                      FontFamily="bTerafficB" ></Span>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </StackLayout>
-            </yummy:PancakeView>
         </StackLayout>
-    </ScrollView>
+
+    </ContentPage.Content>
     
 </ContentPage>

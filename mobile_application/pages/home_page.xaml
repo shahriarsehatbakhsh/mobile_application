@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mobile_application.pages.home_page" FlowDirection="RightToLeft">
+             x:Class="mobile_application.pages.home_page" 
+             FlowDirection="RightToLeft"
+             BackgroundColor="#112b47">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="create_profile" IconImageSource="@drawable/ChangePasswordIcon.png" Clicked="create_profile_Clicked" />
@@ -21,7 +23,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid BackgroundColor="#455399" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid BackgroundColor="#112b47" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout Margin="0,-40,0,0" HorizontalOptions="Center" VerticalOptions="Center">
                 <Label TextColor="White" FontSize="40" HorizontalOptions="Center">
                     <Label.FormattedText>
@@ -36,6 +38,7 @@
                 <Label Text="سیستم فروش" TextColor="White" FontSize="15" HorizontalTextAlignment="Center" />
             </StackLayout>
         </Grid>
+            
         <Frame HasShadow="True"  Grid.Row="1" HeightRequest="80" Margin="0,-40,0,0" HorizontalOptions="Center">
             <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand">
                 <Grid.ColumnDefinitions>

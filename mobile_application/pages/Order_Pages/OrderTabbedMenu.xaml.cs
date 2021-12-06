@@ -20,11 +20,17 @@ namespace mobile_application.pages.Order_Pages
         {
             InitializeComponent();
 
+            var frmOrderObjectList = new OrderObjectList();
+            frmOrderObjectList.Title = "لیست کالاها";
+            this.Children.Add(frmOrderObjectList);
 
-            this.Children.Add(new OrderObjectList());
-            frm = new OrderDetailObjects();
-            this.Children.Add(frm);
-            this.Children.Add(new OrderDetail());
+            var frmOrderDetailObjects = new OrderDetailObjects();
+            frmOrderDetailObjects.Title = "کالاهای انتخاب شده";
+            this.Children.Add(frmOrderDetailObjects);
+
+            var frmOrderDetail = new OrderDetail();
+            frmOrderDetail.Title = "ثبت سفارش";
+            this.Children.Add(frmOrderDetail);
 
             ToolbarItem tbi = new ToolbarItem();
             tbi.Text = "صفحه ثبت سفارش";

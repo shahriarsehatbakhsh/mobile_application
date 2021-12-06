@@ -23,6 +23,7 @@ namespace mobile_application.pages.Order_Pages
         public OrderHeader()
         {
             InitializeComponent();
+            cmbTasvie.SelectedIndex = 0;
         }
 
         private async void btnMain_Clicked(object sender, EventArgs e)
@@ -234,7 +235,7 @@ namespace mobile_application.pages.Order_Pages
                 CodeShobe = Convert.ToInt16(this.txtShobeCode.Text),
                 CodeSupervisor = Convert.ToInt32(this.txtSupervizerCode.Text),
                 ModdateTasvie = Convert.ToInt32(this.txtEtebar.Text),
-                NoeTasvie = Convert.ToInt32(this.txtNoeTasvie.SelectedIndex + 1),
+                NoeTasvie = Convert.ToInt32(this.cmbTasvie.SelectedIndex + 1),
                 Supervisor = 5,
                 TarikhBarge = this.txtDate.ShamsiDateString,
                 TarikheRooz = Static_Loading.today_date,
@@ -250,6 +251,21 @@ namespace mobile_application.pages.Order_Pages
         private void txtCustomerCode_TextChanged(object sender, TextChangedEventArgs e)
         {
             Customer_Cart_New();
+        }
+
+        private void cmbTasvie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var index = this.cmbTasvie.SelectedIndex;
+            if (index == 0)
+            {
+                this.frmModatTasviye.BackgroundColor = Color.Gray;
+                this.frmModatTasviye.IsEnabled = false;
+            }
+            else
+            {
+                this.frmModatTasviye.BackgroundColor = Color.White;
+                this.frmModatTasviye.IsEnabled = true;
+            }
         }
     }
 }

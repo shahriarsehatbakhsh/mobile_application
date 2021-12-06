@@ -71,7 +71,6 @@
         <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center" >
             <StackLayout Padding="5">
                 <StackLayout Orientation="Vertical">
-                    
                     <Frame Padding="0" BorderColor="Gray">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                             <Grid HorizontalOptions="FillAndExpand">
@@ -82,8 +81,19 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label x:Name="lblobjName" Grid.Row="0" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" />
-                                <Label x:Name="lblobjCode" Grid.Row="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" />
+                                <Label x:Name="lblobjName" 
+                                       Grid.Row="0" 
+                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalTextAlignment="Center" 
+                                       Padding="1" 
+                                       FontSize="10"
+                                       FontFamily="bTerafficB" />
+                                <Label x:Name="lblobjCode" 
+                                       Grid.Row="1" 
+                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalTextAlignment="Center" 
+                                       Padding="5" 
+                                       FontFamily="bTerafficB" />
                             </Grid>
                         </StackLayout>
                     </Frame>

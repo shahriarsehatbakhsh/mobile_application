@@ -105,5 +105,11 @@ namespace mobile_application
                 Preferences.Set("password", "");
             }
         }
+
+        private void txtSetting_Click(object sender, EventArgs e)
+        {
+            var frmSetting = new mobile_application.pages.App_Setting_Pages.server_api_new_page();
+            App.Current.MainPage = frmSetting;
+        }
     }
 }

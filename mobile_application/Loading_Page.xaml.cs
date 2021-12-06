@@ -82,10 +82,10 @@ namespace mobile_application
             //var count = UsersSyntax.Count();
             var count = server_list.count(); //load count of service api list
 
-            if (count == 0)
-            { }
-            else
-                await Navigation.PushAsync(new user_login_page(), true);
+            //if (count == 0)
+            //{ }
+            //else
+            //    await Navigation.PushAsync(new user_login_page(), true);
 
             //string a = string.Format("Found '{0}' stock items.", count);
             //App.Current.MainPage = new NavigationPage(new user_login_page());

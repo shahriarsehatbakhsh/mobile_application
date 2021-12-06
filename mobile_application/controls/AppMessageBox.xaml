@@ -40,7 +40,7 @@
         <Button x:Name="btnConfirm" Grid.Row="1" 
                 Text="تایید"
                 TextColor="White"
-                HeightRequest="45"
+                HeightRequest="55"
                 BackgroundColor="#E10555"
                 FontFamily="bTerafficB"
                 Clicked="btnConfirm_Clicked" />
