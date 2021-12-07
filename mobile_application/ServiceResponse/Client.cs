@@ -276,6 +276,7 @@ namespace mobile_application.ServiceResponse
             {
                 IList<vw_result> Result = null;
                 HttpClient client_users = new HttpClient();
+
                 TarikhBarge = TarikhBarge.Replace("/", "D");
                 TarikheRooz = TarikheRooz.Replace("/", "D");
 

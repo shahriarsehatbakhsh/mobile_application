@@ -15,12 +15,6 @@ namespace mobile_application.Helper
 
 
 
-        public static List<F_hSefareshSeller> Header = new List<F_hSefareshSeller>();
-        public static List<F_dSefareshSeller> Details = new List<F_dSefareshSeller>();
-
-
-
-
         public static long central_user_id = 0;
         public static int central_user_per = 2;
         public static int central_BranchCode = 1;

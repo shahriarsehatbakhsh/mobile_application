@@ -42,7 +42,7 @@ namespace mobile_application.pages.Order_Pages
         }
         private void Customer_Search_Result(object sender, List<vw_customers_list> e)
         {
-            this.txtCustomerCode.Text = e[0].Code.ToString();
+            this.txtCodeMoshtari.Text = e[0].Code.ToString();
             this.txtCustomerName.Text = e[0].Sharh.ToString();
         }
 
@@ -56,7 +56,7 @@ namespace mobile_application.pages.Order_Pages
         }
         private void Seller_Search_Result(object sender, List<vw_seller_list> e)
         {
-            this.txtSellerCode.Text = e[0].Code.ToString();
+            this.txtCodeForooshande.Text = e[0].Code.ToString();
             this.txtSellerName.Text = e[0].Sharh.ToString();
         }
 
@@ -70,7 +70,7 @@ namespace mobile_application.pages.Order_Pages
         }
         private void Supervizer_Search_Result(object sender, List<vw_supervizer_list> e)
         {
-            this.txtSupervizerCode.Text = e[0].Code.ToString();
+            this.txtCodeSupervizer.Text = e[0].Code.ToString();
             this.txtSupervizerName.Text = e[0].Sharh.ToString();
         }
 
@@ -89,8 +89,8 @@ namespace mobile_application.pages.Order_Pages
         }
         private void Shobe_Search_Result(object sender, List<vw_code_sharh> e)
         {
-            this.txtShobeCode.Text = e[0].Code.ToString();
-            Static_Loading.central_BranchCode = Convert.ToInt32(this.txtShobeCode.Text);
+            this.txtCodeShobe.Text = e[0].Code.ToString();
+            Static_Loading.central_BranchCode = Convert.ToInt32(this.txtCodeShobe.Text);
             this.txtShobeName.Text = e[0].Sharh.ToString();
         }
 
@@ -110,7 +110,7 @@ namespace mobile_application.pages.Order_Pages
         }
         private void Mosavabe_Search_Result(object sender, List<vw_code_sharh> e)
         {
-            this.txtMosavabeCode.Text = e[0].Code.ToString();
+            this.txtCodeMosavabe.Text = e[0].Code.ToString();
             this.txtMosavabeName.Text = e[0].Sharh.ToString();
         }
 
@@ -130,7 +130,7 @@ namespace mobile_application.pages.Order_Pages
         private vw_result pishe;
         private void Customer_Cart_New()
         {
-            if (string.IsNullOrEmpty(this.txtCustomerCode.Text))
+            if (string.IsNullOrEmpty(this.txtCodeMoshtari.Text))
             {
                 this.lblCastCartPrice.Text = "0";
                 this.lblCastCartText.Text = "";
@@ -139,7 +139,7 @@ namespace mobile_application.pages.Order_Pages
             }
 
             IsBusy = true;
-            var CustCode = Convert.ToInt32(this.txtCustomerCode.Text);
+            var CustCode = Convert.ToInt32(this.txtCodeMoshtari.Text);
             var BranchCode = Static_Loading.central_BranchCode;
             var UserCode = Static_Loading.central_user_id;
             var resut = Client.Customer_Cart_New(BranchCode, CustCode, UserCode);
@@ -210,6 +210,60 @@ namespace mobile_application.pages.Order_Pages
 
         private async void btnNext_Clicked(object sender, EventArgs e)
         {
+            if (!Validation())
+                return;
+
+            await Pishe_State();
+
+            int CodeSupervizer = 0;
+            if (!string.IsNullOrEmpty(this.txtCodeSupervizer.Text))
+                CodeSupervizer = Convert.ToInt32(this.txtCodeSupervizer.Text);
+            Header_Function.Add_Header_Temp(Convert.ToInt32(this.txtCodeForooshande.Text),Convert.ToInt32(this.txtCodeMosavabe.Text),Convert.ToInt32(this.txtCodeMoshtari.Text),Convert.ToInt16(this.txtCodeShobe.Text),CodeSupervizer,Convert.ToInt32(this.txtModdateTasvie.Text),Convert.ToInt32(this.cmbTasvie.SelectedIndex + 1),this.txtDate.ShamsiDateString,Static_Loading.today_date);
+            App.Current.MainPage = new OrderTabbedMenu();
+        }
+
+        private bool Validation()
+        {
+            bool result = true;
+
+            this.txtCodeMosavabe.BackgroundColor = this.txtCodeShobe.BackgroundColor = this.txtCodeMoshtari.BackgroundColor = this.txtCodeForooshande.BackgroundColor = this.txtModdateTasvie.BackgroundColor = Color.Transparent;
+
+            if (string.IsNullOrEmpty(this.txtCodeShobe.Text))
+            {
+                this.txtCodeShobe.BackgroundColor = Color.Red;
+                result = false;
+            }
+
+
+            if (string.IsNullOrEmpty(this.txtCodeMoshtari.Text))
+            {
+                this.txtCodeMoshtari.BackgroundColor = Color.Red;
+                result = false;
+            }
+
+            if (string.IsNullOrEmpty(this.txtCodeForooshande.Text))
+            {
+                this.txtCodeForooshande.BackgroundColor = Color.Red;
+                result = false;
+            }
+
+            if (string.IsNullOrEmpty(this.txtCodeMosavabe.Text))
+            {
+                this.txtCodeMosavabe.BackgroundColor = Color.Red;
+                result = false;
+            }
+
+            if (this.cmbTasvie.SelectedIndex != 0 && string.IsNullOrEmpty(this.txtModdateTasvie.Text))
+            {
+                this.txtModdateTasvie.BackgroundColor = Color.Red;
+                result = false;
+            }
+
+            return result;
+        }
+
+        private async Task Pishe_State()
+        {
             //1 = OK
             //2 = Message
             //3 = Error
@@ -228,32 +282,6 @@ namespace mobile_application.pages.Order_Pages
             {
 
             }
-            //await Navigation.PushAsync(new B_Order_Menu_TabbedPage(), true);
-
-            var HeaderCodeSerial = Client.Header_Code_Serial(Convert.ToInt32(this.txtShobeCode.Text)).GetAwaiter().GetResult();
-            var Customer_JobNo = Client.Customer_Job_No(Convert.ToInt32(this.txtShobeCode.Text), Convert.ToInt32(this.txtCustomerCode.Text), this.txtDate.Text).GetAwaiter().GetResult();
-
-            Static_Loading.Header.Clear();
-            Static_Loading.Header.Add(new F_hSefareshSeller
-            {
-                CodeForooshande = Convert.ToInt32(this.txtSellerCode.Text),
-                CodeKarbar = Static_Loading.central_user_id,
-                CodeMosavabe = Convert.ToInt32(this.txtMosavabeCode.Text),
-                CodeMoshtari = Convert.ToInt32(this.txtCustomerCode.Text),
-                CodeShobe = Convert.ToInt16(this.txtShobeCode.Text),
-                CodeSupervisor = Convert.ToInt32(this.txtSupervizerCode.Text),
-                ModdateTasvie = Convert.ToInt32(this.txtEtebar.Text),
-                NoeTasvie = Convert.ToInt32(this.cmbTasvie.SelectedIndex + 1),
-                Supervisor = 5,
-                TarikhBarge = this.txtDate.ShamsiDateString,
-                TarikheRooz = Static_Loading.today_date,
-                sp_GetAvailableCustomerJob = Customer_JobNo[0].JobNo,
-                sp_GetLatestAvailableSefareshHeaderCode_HeaderCode = HeaderCodeSerial[0].HeaderCode,
-                sp_GetLatestAvailableSefareshHeaderCode_HeaderSerial = HeaderCodeSerial[0].HeaderSerial
-            });
-
-
-            App.Current.MainPage = new OrderTabbedMenu();
         }
 
         private void frm1_Focused(object sender, FocusEventArgs e)
@@ -263,10 +291,16 @@ namespace mobile_application.pages.Order_Pages
 
         private void Focused_Color(object sender, FocusEventArgs e)
         {
-            if (sender == txtShobeCode)
+            frm1.BackgroundColor = frm2.BackgroundColor = frm3.BackgroundColor = frm4.BackgroundColor = frm5.BackgroundColor = frm6.BackgroundColor = frm7.BackgroundColor = frm8.BackgroundColor = Color.White;
+            if (sender == txtCodeShobe)
             {
                 frm1.BorderColor = Color.Gold;
                 frm1.BackgroundColor = Color.Transparent;
+            }
+            else if (sender == txtCodeMoshtari)
+            {
+                frm3.BorderColor = Color.Gold;
+                frm3.BackgroundColor = Color.Transparent;
             }
         }
 

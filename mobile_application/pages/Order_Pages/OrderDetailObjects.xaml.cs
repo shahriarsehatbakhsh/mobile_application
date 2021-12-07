@@ -30,10 +30,10 @@ namespace mobile_application.pages.Order_Pages
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            if (Static_Loading.Details == null)
+            if (Header_Function.temp_details == null)
                 return;
 
-            this.lstDetails.ItemsSource = Static_Loading.Details;
+            this.lstDetails.ItemsSource = Header_Function.temp_details;
         }
     }
 }

@@ -32,7 +32,7 @@ namespace mobile_application.pages.Popup_Pages
 			this.lblobjCode.Text = obj.Code.ToString();
 			this.lblobjName.Text = obj.Sharh.ToString();
 
-			var Nerkh = await Client.Object_Nerkh(Static_Loading.central_BranchCode, Static_Loading.Header[0].CodeMosavabe, obj.Code);
+			var Nerkh = await Client.Object_Nerkh(Static_Loading.central_BranchCode, Header_Function.temp_header[0].CodeMosavabe, obj.Code);
 			this.lblNerkh.Text = Nerkh[0].Sharh.ToString();
 		}
 
@@ -43,26 +43,26 @@ namespace mobile_application.pages.Popup_Pages
 
 		private async void btnSubmit_Clicked(object sender, EventArgs e)
         {
-			if (Static_Loading.Header[0] == null)
+			if (Header_Function.temp_header[0] == null)
 				return;
 
-			Static_Loading.Details.Add(new F_dSefareshSeller
+			Header_Function.temp_details.Add(new F_dSefareshSeller
 			{
-				BranchCode = Static_Loading.Header[0].CodeShobe ,
+				BranchCode = Header_Function.temp_header[0].CodeShobe ,
 				CodeAnbaar = Static_Loading.central_BranchCode ,
 				CodeKala = this.lblobjCode.Text ,
 				NameKala = this.lblobjName.Text ,
 				CodeKarbar = Static_Loading.central_user_id ,
-				CodeShobe = Static_Loading.Header[0].CodeShobe ,
+				CodeShobe = Header_Function.temp_header[0].CodeShobe ,
 				Mablagh = Convert.ToDecimal(this.txtMablagh.Text) ,
 				Meghdar = Convert.ToDecimal(this.txtMeghdar.Text) ,
-				MoshtariCode = Static_Loading.Header[0].CodeMoshtari.ToString() ,
+				MoshtariCode = Header_Function.temp_header[0].CodeMoshtari.ToString() ,
 				Nerkh = Convert.ToSingle(this.lblNerkh.Text) ,
-				ShomareRadif = Static_Loading.Details.Count + 1 ,
+				ShomareRadif = Header_Function.temp_details.Count + 1 ,
 				NoeBaste = 1 ,
 				TarikhRooz = Static_Loading.today_date ,
 				TedadBaste = 1 ,
-				ShomareBarge_Header = Static_Loading.Header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode ,
+				ShomareBarge_Header = Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode ,
 				TedadDarHarBaste = 1 
 			});
 

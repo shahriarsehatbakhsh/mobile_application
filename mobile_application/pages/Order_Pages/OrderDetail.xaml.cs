@@ -23,23 +23,23 @@ namespace mobile_application.pages.Order_Pages
 
         private async void btnInsertOrder_Clicked(object sender, EventArgs e)
         {
-            if (Static_Loading.Header.Count == 0)
+            if (Header_Function.temp_header.Count == 0)
                 return;
 
-            var rHeader = Client.Insert_Order_Header(Static_Loading.central_BranchCode, 
-                                       Static_Loading.Header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode, 
-                                       Static_Loading.Header[0].TarikhBarge, 
-                                       Static_Loading.Header[0].CodeMoshtari, 
-                                       Static_Loading.Header[0].CodeForooshande, 
-                                       Static_Loading.Header[0].CodeMosavabe, 
-                                       Static_Loading.Header[0].NoeTasvie, 
-                                       Static_Loading.Header[0].ModdateTasvie, 
-                                       Static_Loading.Header[0].sp_GetAvailableCustomerJob, 
-                                       Static_Loading.Header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderSerial, 
-                                       5, 
-                                       Static_Loading.Header[0].CodeSupervisor, 
-                                       Static_Loading.central_user_id, 
-                                       Static_Loading.Header[0].TarikheRooz).GetAwaiter().GetResult();
+            var rHeader = Client.Insert_Order_Header(Static_Loading.central_BranchCode,
+                                       Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode,
+                                       Header_Function.temp_header[0].TarikhBarge,
+                                       Header_Function.temp_header[0].CodeMoshtari,
+                                       Header_Function.temp_header[0].CodeForooshande,
+                                       Header_Function.temp_header[0].CodeMosavabe,
+                                       Header_Function.temp_header[0].NoeTasvie,
+                                       Header_Function.temp_header[0].ModdateTasvie,
+                                       Header_Function.temp_header[0].sp_GetAvailableCustomerJob,
+                                       Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderSerial, 
+                                       5,
+                                       Header_Function.temp_header[0].CodeSupervisor, 
+                                       Static_Loading.central_user_id,
+                                       Header_Function.temp_header[0].TarikheRooz).GetAwaiter().GetResult();
 
             if (rHeader[0].result != "DONE")
             {
@@ -49,24 +49,24 @@ namespace mobile_application.pages.Order_Pages
                 return;
             }
             else
-                Static_Loading.Header.Clear();
+                Header_Function.temp_header.Clear();
 
-            for (int i = 0; i < Static_Loading.Details.Count; i++)
+            for (int i = 0; i < Header_Function.temp_details.Count; i++)
             {
-                Static_Loading.Details[i].CodeKala = function_static.Create_Kala_Code(Static_Loading.Details[i].CodeKala);
-                var rDetail = Client.Insert_Order_Detail(Static_Loading.central_BranchCode, 
-                                           Static_Loading.Details[i].ShomareBarge_Header, i + 1, 
-                                           Static_Loading.Details[i].CodeAnbaar, 
-                                           Static_Loading.Details[i].CodeKala, 
-                                           Static_Loading.Details[i].Meghdar, 
-                                           Static_Loading.Details[i].Nerkh, 
-                                           Static_Loading.Details[i].Mablagh, 
-                                           Static_Loading.Details[i].NoeBaste, 
-                                           Static_Loading.Details[i].TedadBaste, 
-                                           Static_Loading.Details[i].TedadDarHarBaste, 
-                                           Static_Loading.central_user_id, 
-                                           Static_Loading.Details[i].TarikhRooz, 
-                                           Static_Loading.Details[i].MoshtariCode).GetAwaiter().GetResult();
+                Header_Function.temp_details[i].CodeKala = function_static.Create_Kala_Code(Header_Function.temp_details[i].CodeKala);
+                var rDetail = Client.Insert_Order_Detail(Static_Loading.central_BranchCode,
+                                           Header_Function.temp_details[i].ShomareBarge_Header, i + 1,
+                                           Header_Function.temp_details[i].CodeAnbaar,
+                                           Header_Function.temp_details[i].CodeKala,
+                                           Header_Function.temp_details[i].Meghdar,
+                                           Header_Function.temp_details[i].Nerkh,
+                                           Header_Function.temp_details[i].Mablagh,
+                                           Header_Function.temp_details[i].NoeBaste,
+                                           Header_Function.temp_details[i].TedadBaste,
+                                           Header_Function.temp_details[i].TedadDarHarBaste, 
+                                           Static_Loading.central_user_id,
+                                           Header_Function.temp_details[i].TarikhRooz,
+                                           Header_Function.temp_details[i].MoshtariCode).GetAwaiter().GetResult();
 
                 if (rDetail[0].result != "DONE")
                 {
@@ -76,7 +76,7 @@ namespace mobile_application.pages.Order_Pages
                     return;
                 }
             }
-            Static_Loading.Details.Clear();
+            Header_Function.temp_details.Clear();
 
 
 

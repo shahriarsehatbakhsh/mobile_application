@@ -142,7 +142,7 @@
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="شعبه :" StyleClass="TitleLabel" />
-                                    <Entry x:Name="txtShobeCode" Grid.Column="1" Keyboard="Numeric" StyleClass="InputTextbox" Focused="Focused_Color" Unfocused="Unfocused_Color" />
+                                    <Entry x:Name="txtCodeShobe" Grid.Column="1" Keyboard="Numeric" StyleClass="InputTextbox" Focused="Focused_Color" Unfocused="Unfocused_Color" />
                                     <Label x:Name="txtShobeName" Grid.Column="2" Text=" شعبه انتخاب شده" StyleClass="labelData" />
                                     <ImageButton 
                                         Grid.Column="3" 
@@ -186,7 +186,7 @@
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="مشتری:" StyleClass="TitleLabel" />
-                                    <Entry x:Name="txtCustomerCode" Grid.Column="1" StyleClass="InputTextbox"  Focused="Focused_Color" Unfocused="Unfocused_Color" />
+                                    <Entry x:Name="txtCodeMoshtari" Grid.Column="1" StyleClass="InputTextbox"  Focused="Focused_Color" Unfocused="Unfocused_Color" />
                                     <Label x:Name="txtCustomerName" Grid.Column="2" Text=" مشتری انتخاب شده" StyleClass="labelData" />
                                     <ImageButton 
                                         x:Name="btnSelectCustomer" 
@@ -210,7 +210,7 @@
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="فروشنده:" StyleClass="TitleLabel" />
-                                    <Entry x:Name="txtSellerCode" Grid.Column="1" StyleClass="InputTextbox" Focused="Focused_Color" Unfocused="Unfocused_Color" />
+                                    <Entry x:Name="txtCodeForooshande" Grid.Column="1" StyleClass="InputTextbox" Focused="Focused_Color" Unfocused="Unfocused_Color" />
                                     <Label x:Name="txtSellerName" Grid.Column="2" Text="عنوان فروشنده انتخاب شده" StyleClass="labelData" />
                                     <ImageButton 
                                         x:Name="btnSelectSeller" 
@@ -235,7 +235,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="سوپروایزر:" StyleClass="TitleLabel" />
                                     <!--elzami nist-->
-                                    <Entry x:Name="txtSupervizerCode" Grid.Column="1" StyleClass="InputTextbox"  Focused="Focused_Color" Unfocused="Unfocused_Color" />
+                                    <Entry x:Name="txtCodeSupervizer" Grid.Column="1" StyleClass="InputTextbox"  Focused="Focused_Color" Unfocused="Unfocused_Color" />
                                     <Label x:Name="txtSupervizerName" Grid.Column="2" Text="عنوان سوپروایزر انتخاب شده" StyleClass="labelData" />
                                     <ImageButton 
                                         Grid.Column="3" 
@@ -297,7 +297,7 @@
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="مدت اعتبار:" StyleClass="TitleLabel" />
-                                    <Entry Grid.Column="1" x:Name="txtEtebar" StyleClass="InputTextbox"  Focused="Focused_Color" Unfocused="Unfocused_Color" />
+                                    <Entry Grid.Column="1" x:Name="txtModdateTasvie" StyleClass="InputTextbox"  Focused="Focused_Color" Unfocused="Unfocused_Color" />
                                     <Label Grid.Column="2" Text=" مدت اعتبار انتخاب شده" StyleClass="labelData" />
                                     <Label Grid.Column="3" StyleClass="LabelIcon" Text="{StaticResource ObjectIcon}" />
                                 </Grid>
@@ -317,7 +317,7 @@
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="مصوبه:" StyleClass="TitleLabel" />
-                                    <Entry x:Name="txtMosavabeCode" Grid.Column="1" StyleClass="InputTextbox"  Focused="Focused_Color" Unfocused="Unfocused_Color" />
+                                    <Entry x:Name="txtCodeMosavabe" Grid.Column="1" StyleClass="InputTextbox"  Focused="Focused_Color" Unfocused="Unfocused_Color" />
                                     <Label x:Name="txtMosavabeName" Grid.Column="2" Text="مصوبه انتخاب شده" StyleClass="labelData" />
                                     <ImageButton 
                                         Grid.Column="3" 

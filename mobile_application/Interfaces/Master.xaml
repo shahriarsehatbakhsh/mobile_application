@@ -25,7 +25,24 @@
         
         <!--Header search-->
         <StackLayout BackgroundColor="{StaticResource Search}" Grid.Row="1">
-            <SearchBar />
+            <Frame
+                Margin="10,10,10,0"
+                Padding="0"
+                BackgroundColor="White"
+                CornerRadius="5"
+                HorizontalOptions="FillAndExpand">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <SearchBar
+                        BackgroundColor="White"
+                        Placeholder="Search Countries..."
+                        SearchCommand="{Binding SearchButtonPressedCommand}" Text="" >
+                    </SearchBar>
+                </Grid>
+            </Frame>
         </StackLayout>
 
         
