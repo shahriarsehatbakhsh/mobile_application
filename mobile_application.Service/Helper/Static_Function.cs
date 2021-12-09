@@ -10,7 +10,7 @@
             string temp = "";
             for (int i = 0; i < len; i++)
             {
-                temp += "0";
+                temp += " ";
             }
 
             return temp + code;

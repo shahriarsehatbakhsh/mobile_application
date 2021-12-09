@@ -31,6 +31,16 @@ namespace mobile_application.Service.Controllers
         }
 
 
+        [HttpGet("Get_KalaPackage BranchCode={BranchCode},KalaCode={KalaCode}")]
+        public async Task<ActionResult<IEnumerable<vw_KalaPackage>>> Get_KalaPackage(short BranchCode,string KalaCode)
+        {
+            KalaCode = Helper.Static_Function.Create_Kala_Code(KalaCode);
+            string StoredProc = "exec sp_Get_KalaPackage @BranchCode=" + BranchCode + ", @KalaCode='" + KalaCode + "'";
+
+            return await _context.vw_KalaPackage.FromSqlRaw(StoredProc).ToListAsync();
+        }
+
+
         [HttpGet("ObjectsSearchList objName={objName}")]
         public async Task<ActionResult<IEnumerable<vw_code_sharh>>> GetObjectsSearchList(string objName)
         {

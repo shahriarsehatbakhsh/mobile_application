@@ -23,7 +23,7 @@ namespace mobile_application.pages.Order_Pages
             items = Client.Objects_List().GetAwaiter().GetResult();
             //this.collView.ItemsSource = items;
             this.collObjectList.ItemsSource = items;
-            this.lblTitle.Text = "لیست کالاهای موجود";
+            //this.lblTitle.Text = "لیست کالاهای موجود";
         }
 
         vw_code_sharh _select_item;
