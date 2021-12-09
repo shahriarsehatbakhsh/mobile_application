@@ -6,14 +6,12 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
-            <RowDefinition Height="70" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="70" />
+            <RowDefinition Height="80" />
         </Grid.RowDefinitions>
 
         <!-- Form Title StackLayout -->
-        <StackLayout StyleClass="Title" >
+        <!--<StackLayout StyleClass="Title" >
             <Image 
                 x:Name="imgTitle"
                 Source="click01"
@@ -22,17 +20,17 @@
         </StackLayout>
 
 
-        <!--Header search-->
+        --><!--Header search--><!--
         <StackLayout 
             BackgroundColor="{StaticResource Search}"
             Grid.Row="1">
             <SearchBar />
-        </StackLayout>
+        </StackLayout>-->
 
 
         <!--Form body-->
         <StackLayout
-            Grid.Row="2"
+            Grid.Row="0"
             BackgroundColor="{StaticResource Body}">
             <ScrollView>
                 <StackLayout Orientation="Vertical">
@@ -74,13 +72,12 @@
             </ScrollView>
         </StackLayout>
 
-
         <!--End form button-->
         <StackLayout 
             HorizontalOptions="Center"
             VerticalOptions="Center"
             Orientation="Horizontal"
-            Grid.Row="3"
+            Grid.Row="1"
             Margin="10,0,10,0">
 
             <ImageButton 
@@ -90,7 +87,6 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="d3" />
-
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btnSave"
@@ -98,7 +94,6 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="ab" />
-
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btn3"
@@ -106,7 +101,6 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="ab" />
-
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btn4"
@@ -114,7 +108,6 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="ab" />
-
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btnPreview"
@@ -122,7 +115,6 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="ab" />
-
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btnNext"
@@ -131,8 +123,6 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="d5" />
-
-
         </StackLayout>
     </Grid>
 </ContentPage>

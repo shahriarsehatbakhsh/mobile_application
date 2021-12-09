@@ -12,73 +12,75 @@
         <ToolbarItem x:Name="exit" IconImageSource="@drawable/MainPage01.png" Command="{Binding mnusqlCommand}" />
     </ContentPage.ToolbarItems>
 
-
     <ContentPage.Content>
-        
-
-
         <Grid BackgroundColor="#f3f5f9" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="180" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-            <Grid BackgroundColor="#112b47" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout Margin="0,-40,0,0" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label TextColor="White" FontSize="40" HorizontalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="acc" FontAttributes="Bold" />
-                                <Span Text="PAYA" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label Text="سیستم فروش" TextColor="White" FontSize="15" HorizontalTextAlignment="Center" />
-            </StackLayout>
-        </Grid>
-            
-        <Frame HasShadow="True"  Grid.Row="1" HeightRequest="80" Margin="0,-40,0,0" HorizontalOptions="Center">
-            <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <BoxView Grid.RowSpan="2" WidthRequest="80" BackgroundColor="#00C6AE" />
-                <BoxView Grid.Column="1" Grid.RowSpan="2" WidthRequest="80" BackgroundColor="White" />
-                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                    <Label Text="23" TextColor="White" FontSize="36" HorizontalOptions="Center" />
-                    <Label Text="march" TextColor="White" FontSize="12" HorizontalOptions="Center" Margin="0,-10,0,0" />
-                </StackLayout>
-                <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Label Text="23" TextColor="#455399" FontSize="36" HorizontalOptions="Center" />
-                    <Label Text="فروردین" TextColor="#455399" FontSize="12" HorizontalOptions="Center" Margin="0,-10,0,0" />
-                </StackLayout>
-                <BoxView Grid.Row="1" Grid.ColumnSpan="2" WidthRequest="73" HeightRequest="1" BackgroundColor="#f1f3f9" />
-            </Grid>
-        </Frame>
-
-        <Grid Grid.Row="2" Margin="10,20,10,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="250" />
-                <RowDefinition Height="250" />
+                <RowDefinition Height="180" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <Grid BackgroundColor="#112b47" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Margin="0,-40,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label TextColor="White" FontSize="40" HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="acc" FontAttributes="Bold" />
+                                    <Span Text="PAYA" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Text="سیستم فروش" TextColor="White" FontSize="15" HorizontalTextAlignment="Center" />
+                </StackLayout>
+            </Grid>
 
-            <Frame BackgroundColor="AliceBlue"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   CornerRadius="20"
-                   Opacity=".8"
-                   Margin="0,0,0,0" 
-                   HorizontalOptions="FillAndExpand" 
-                   VerticalOptions="FillAndExpand">
-                <StackLayout>
-                    <ImageButton x:Name="btnMenu01" 
+            <Frame HasShadow="True"  Grid.Row="1" HeightRequest="80" Margin="0,-40,0,0" HorizontalOptions="Center">
+                <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <BoxView Grid.RowSpan="2" WidthRequest="80" BackgroundColor="#00C6AE" />
+                    <BoxView Grid.Column="1" Grid.RowSpan="2" WidthRequest="80" BackgroundColor="White" />
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="23" TextColor="White" FontSize="36" HorizontalOptions="Center" />
+                        <Label Text="march" TextColor="White" FontSize="12" HorizontalOptions="Center" Margin="0,-10,0,0" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="23" TextColor="#455399" FontSize="36" HorizontalOptions="Center" />
+                        <Label Text="فروردین" TextColor="#455399" FontSize="12" HorizontalOptions="Center" Margin="0,-10,0,0" />
+                    </StackLayout>
+                    <BoxView Grid.Row="1" Grid.ColumnSpan="2" WidthRequest="73" HeightRequest="1" BackgroundColor="#f1f3f9" />
+                </Grid>
+            </Frame>
+
+            <ScrollView Grid.Row="2" Margin="10,20,10,0">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250" />
+                        <RowDefinition Height="250" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Frame 
+                        BackgroundColor="AliceBlue"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        CornerRadius="20"
+                        Opacity=".8"
+                        Margin="0,0,0,0" 
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <ImageButton x:Name="btnMenu01" 
                                  HorizontalOptions="FillAndExpand" 
                                  Source="@/drawable/main02" 
                                  Aspect="AspectFit" 
@@ -87,20 +89,21 @@
                                  BorderColor="AliceBlue" 
                                  CornerRadius="10" 
                                  Clicked="btnMenu01_Clicked"  />
-                    <Label Text="ثبت سفارش جدید" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
-                </StackLayout>
-            </Frame>
+                            <Label Text="ثبت سفارش جدید" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
+                        </StackLayout>
+                    </Frame>
 
-            <Frame BackgroundColor="AliceBlue"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   CornerRadius="20"
-                   Opacity=".8"
-                   Margin="0,0,0,0" 
-                   HorizontalOptions="FillAndExpand" 
-                   VerticalOptions="FillAndExpand">
-                <StackLayout>
-                    <ImageButton x:Name="btnMenu02" 
+                    <Frame 
+                        BackgroundColor="AliceBlue"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        CornerRadius="20"
+                        Opacity=".8"
+                        Margin="0,0,0,0" 
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <ImageButton x:Name="btnMenu02" 
                                  HorizontalOptions="FillAndExpand" 
                                  Source="@/drawable/main01" 
                                  Aspect="AspectFit" 
@@ -109,18 +112,20 @@
                                  BorderColor="AliceBlue" 
                                  CornerRadius="10"  
                                  Clicked="btnMenu02_Clicked" />
-                    <Label Text="گزارشات" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
-                </StackLayout>
-            </Frame>
+                            <Label Text="گزارشات" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
+                        </StackLayout>
+                    </Frame>
 
-            <Frame BackgroundColor="AliceBlue"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   CornerRadius="20"
-                   Opacity=".8"
-                   Margin="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout>
-                    <ImageButton x:Name="btnMenu03" 
+                    <Frame 
+                        BackgroundColor="AliceBlue"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        CornerRadius="20"
+                        Opacity=".8"
+                        Margin="0,0,0,0" 
+                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <ImageButton x:Name="btnMenu03" 
                                  HorizontalOptions="FillAndExpand" 
                                  Source="@/drawable/main04" 
                                  Aspect="AspectFit" 
@@ -129,18 +134,19 @@
                                  BorderColor="AliceBlue" 
                                  CornerRadius="10"  
                                  Clicked="btnMenu03_Clicked" />
-                    <Label Text="لیست مشتریان" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
-                </StackLayout>
-            </Frame>
+                            <Label Text="لیست مشتریان" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
+                        </StackLayout>
+                    </Frame>
 
-            <Frame BackgroundColor="AliceBlue"
-                   Grid.Row="1"
-                   Grid.Column="1"
-                   CornerRadius="20"
-                   Opacity=".8"
-                   Margin="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout>
-                    <ImageButton x:Name="btnMenu04" 
+                    <Frame 
+                        BackgroundColor="AliceBlue"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        CornerRadius="20"
+                        Opacity=".8"
+                        Margin="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <ImageButton x:Name="btnMenu04" 
                                  HorizontalOptions="FillAndExpand" 
                                  Source="@/drawable/main03" 
                                  Aspect="AspectFit" 
@@ -149,11 +155,12 @@
                                  BorderColor="AliceBlue" 
                                  CornerRadius="10"  
                                  Clicked="btnMenu04_Clicked" />
-                    <Label Text="لیست کالاها" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
-                </StackLayout>
-            </Frame>
+                            <Label Text="لیست کالاها" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
         </Grid>
-    </Grid>
     </ContentPage.Content>
-    
+
 </ContentPage>

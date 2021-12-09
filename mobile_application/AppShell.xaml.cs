@@ -16,7 +16,7 @@ namespace mobile_application
         {
             InitializeComponent();
             //this.BindingContext = App.Container
-            Shell.Current.GoToAsync("pages//start_page", true);
+//            Shell.Current.GoToAsync("pages//start_page", true);
             
         }
     }

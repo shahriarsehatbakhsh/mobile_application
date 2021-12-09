@@ -24,8 +24,6 @@ namespace mobile_application.pages.Order_Pages
         {
             InitializeComponent();
             cmbTasvie.SelectedIndex = 0;
-            this.lblTitle.Text = "ثبت سفارش جدید";
-            this.SearchStack.IsVisible = false;
         }
 
         private async void btnMain_Clicked(object sender, EventArgs e)

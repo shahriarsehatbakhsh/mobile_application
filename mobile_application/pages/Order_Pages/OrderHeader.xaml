@@ -97,33 +97,34 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
-            <RowDefinition Height="70" />
+            <!--<RowDefinition Height="70" />
+            <RowDefinition Height="70" />-->
             <RowDefinition Height="*" />
-            <RowDefinition Height="70" />
+            <RowDefinition Height="80" />
         </Grid.RowDefinitions>
 
         <!-- Form Title StackLayout -->
-        <StackLayout StyleClass="Title" >
+        <!--<StackLayout StyleClass="Title" IsVisible="False" >
             <Image 
                 x:Name="imgTitle"
                 Source="click01"
                 Margin="0,0,10,0" />
             <Label x:Name="lblTitle" StyleClass="Title_Label"/>
-        </StackLayout>
+        </StackLayout>-->
 
 
         <!--Header search-->
-        <StackLayout x:Name="SearchStack" BackgroundColor="{StaticResource Search}" Grid.Row="1">
+        <!--<StackLayout x:Name="SearchStack" IsVisible="False" BackgroundColor="{StaticResource Search}" Grid.Row="1">
             <SearchBar />
-        </StackLayout>
+        </StackLayout>-->
 
 
         <!--Form body-->
         <StackLayout
-            Grid.Row="2"
+            Grid.Row="0"
             BackgroundColor="{StaticResource Body}">
-            <ScrollView BackgroundColor="{StaticResource Body}">
+            <ScrollView 
+                BackgroundColor="{StaticResource Body}">
                 <StackLayout Padding="10,30,10,0">
                     <StackLayout 
                         Spacing="10" 
@@ -362,7 +363,7 @@
             HorizontalOptions="Center"
             VerticalOptions="Center"
             Orientation="Horizontal"
-            Grid.Row="3"
+            Grid.Row="1"
             Margin="10,0,10,0">
 
             <ImageButton 

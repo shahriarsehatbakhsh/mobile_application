@@ -78,12 +78,9 @@ namespace mobile_application
                         Preferences.Set("password", "");
                     }
 
-
                     Static_Loading.central_user_id = Convert.ToInt64(Data[0].result);
-                    
-                    var rootPage = new NavigationPage(new mobile_application.pages.home_page());
-                    //App.Current.MainPage = new mobile_application.pages.home_page();
-                    App.Current.MainPage = rootPage;
+                    //var rootPage = new NavigationPage(new mobile_application.AppShell());
+                    App.Current.MainPage = new mobile_application.AppShell();
                     this.IsBusy = false;
                     return;
                 }
