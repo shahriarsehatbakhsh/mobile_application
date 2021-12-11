@@ -62,5 +62,17 @@ namespace mobile_application.pages.Popup_Pages
 			ToastNotification.TostMessage("کالای مربوطه به برگه سفارش اضافه شد");
 			await Navigation.PopPopupAsync(true);
 		}
+
+        private void txtMeghdar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+			if (!string.IsNullOrEmpty(this.txtMeghdar.Text))
+			{
+				this.txtMablagh.Text = (Convert.ToInt64(this.txtMeghdar.Text) * Convert.ToInt64(this.lblNerkh.Text)).ToString();
+			}
+			else
+			{
+				this.txtMeghdar.Text = "0";
+			}
+        }
     }
 }

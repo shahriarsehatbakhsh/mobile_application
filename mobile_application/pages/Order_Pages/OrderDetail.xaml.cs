@@ -37,10 +37,10 @@ namespace mobile_application.pages.Order_Pages
                 return;
 
 
-            var result = Header_Function.Save_Header();
-            if (result != "DONE")
+            var hResult = Header_Function.Save_Header();
+            if (hResult != "DONE")
             {
-                Static_Loading.error_message = "Header Insert Error :" + result;
+                Static_Loading.error_message = "Header Insert Error :" + hResult;
                 var pop = new mobile_application.controls.AppMessageBox("Header Insert Error", Static_Loading.error_message);
                 await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
                 return;
@@ -48,8 +48,25 @@ namespace mobile_application.pages.Order_Pages
             else
                 Header_Function.temp_header.Clear();
 
-            
-            Header_Function.Save_Details();
+
+            for (int i = 0; i < Header_Function.temp_details.Count; i++)
+            {
+                Header_Function.temp_details[i].CodeKala = function_static.Create_Kala_Code(Header_Function.temp_details[i].CodeKala);
+
+                var dResult = Client.Insert_Order_Detail(Static_Loading.central_BranchCode,
+                                           Header_Function.temp_details[i].ShomareBarge_Header, i + 1,
+                                           Header_Function.temp_details[i].CodeAnbaar,
+                                           Header_Function.temp_details[i].CodeKala,
+                                           Header_Function.temp_details[i].Meghdar,
+                                           Header_Function.temp_details[i].Nerkh,
+                                           Header_Function.temp_details[i].Mablagh,
+                                           Header_Function.temp_details[i].NoeBaste,
+                                           Header_Function.temp_details[i].TedadBaste,
+                                           Header_Function.temp_details[i].TedadDarHarBaste,
+                                           Static_Loading.central_user_id,
+                                           Header_Function.temp_details[i].TarikhRooz,
+                                           Header_Function.temp_details[i].MoshtariCode);
+            }
         }
     }
 }

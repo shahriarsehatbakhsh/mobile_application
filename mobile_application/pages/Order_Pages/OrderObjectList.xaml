@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
              x:Class="mobile_application.pages.Order_Pages.OrderObjectList"
-             BackgroundColor="{StaticResource Search}">
+             BackgroundColor="{StaticResource Search}" 
+             FlowDirection="RightToLeft" >
 
     <ContentPage.Resources>
         <Style Class="InputTextbox" TargetType="Entry">
@@ -35,7 +36,6 @@
             <!--<RowDefinition Height="70" /> >-->
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="80" />
         </Grid.RowDefinitions>
 
         <!-- Form Title StackLayout -->

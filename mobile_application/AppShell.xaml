@@ -11,11 +11,11 @@
        xmlns:pages="clr-namespace:mobile_application.pages">
 
     <TabBar>
-        <ShellContent Title="صفحه اصلی" ContentTemplate="{DataTemplate pages:home_page}" />
-        <ShellContent Title="ثبت سفارش" ContentTemplate="{DataTemplate pages:home_page}" />
-        <ShellContent Title="مشتریان" ContentTemplate="{DataTemplate pages:home_page}" />
-        <ShellContent Title="کالاها" ContentTemplate="{DataTemplate pages:home_page}" />
-        <ShellContent Title="گزارشات" ContentTemplate="{DataTemplate pages:home_page}" />
+        <ShellContent Title="صفحه اصلی" Icon="click01.png" ContentTemplate="{DataTemplate pages:home_page}" />
+        <ShellContent Title="ثبت سفارش" Icon="click01.png" ContentTemplate="{DataTemplate pages:home_page}" />
+        <ShellContent Title="مشتریان" Icon="click01.png" ContentTemplate="{DataTemplate pages:home_page}" />
+        <ShellContent Title="کالاها" Icon="click01.png" ContentTemplate="{DataTemplate pages:home_page}" />
+        <ShellContent Title="گزارشات" Icon="click01.png" ContentTemplate="{DataTemplate pages:home_page}" />
     </TabBar>
 
 </Shell>

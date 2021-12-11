@@ -77,5 +77,10 @@ namespace mobile_application.pages.Popup_Pages
             Search(sender, item);
             await Navigation.PopPopupAsync();
         }
+
+        private void txtSearchObject_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

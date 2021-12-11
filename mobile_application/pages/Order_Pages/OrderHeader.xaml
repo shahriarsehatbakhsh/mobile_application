@@ -373,7 +373,8 @@
                 HeightRequest="70"
                 WidthRequest="70"
                 Aspect="Fill"
-                Source="d3" />
+                Source="d3"
+                IsVisible="True" IsEnabled="True" />
 
             <ImageButton 
                 CornerRadius="5"
@@ -381,7 +382,8 @@
                 HeightRequest="70"
                 WidthRequest="70"
                 Aspect="Fill"
-                Source="ab" IsVisible="False" />
+                Source="ab" 
+                IsVisible="True" IsEnabled="False" />
 
             <ImageButton 
                 CornerRadius="5"
@@ -390,7 +392,7 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="ab" 
-                IsVisible="False" />
+                IsVisible="True" IsEnabled="False" />
 
             <ImageButton 
                 CornerRadius="5"
@@ -399,7 +401,7 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="ab" 
-                IsVisible="False" />
+                IsVisible="True" IsEnabled="False" />
 
             <ImageButton 
                 CornerRadius="5"
@@ -408,7 +410,7 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="ab" 
-                IsVisible="False" />
+                IsVisible="True" IsEnabled="False" />
 
             <ImageButton 
                 CornerRadius="5"

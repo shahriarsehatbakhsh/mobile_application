@@ -109,32 +109,6 @@ namespace mobile_application
             }
         }
 
-        public static void Save_Details()
-        {
-            try
-            {
-                for (int i = 0; i < Header_Function.temp_details.Count; i++)
-                {
-                    Header_Function.temp_details[i].CodeKala = function_static.Create_Kala_Code(Header_Function.temp_details[i].CodeKala);
-                    _ = Client.Insert_Order_Detail(Static_Loading.central_BranchCode,
-                                               Header_Function.temp_details[i].ShomareBarge_Header, i + 1,
-                                               Header_Function.temp_details[i].CodeAnbaar,
-                                               Header_Function.temp_details[i].CodeKala,
-                                               Header_Function.temp_details[i].Meghdar,
-                                               Header_Function.temp_details[i].Nerkh,
-                                               Header_Function.temp_details[i].Mablagh,
-                                               Header_Function.temp_details[i].NoeBaste,
-                                               Header_Function.temp_details[i].TedadBaste,
-                                               Header_Function.temp_details[i].TedadDarHarBaste,
-                                               Static_Loading.central_user_id,
-                                               Header_Function.temp_details[i].TarikhRooz,
-                                               Header_Function.temp_details[i].MoshtariCode);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
+        
     }
 }

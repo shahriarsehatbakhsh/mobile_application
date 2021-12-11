@@ -316,9 +316,7 @@ namespace mobile_application.ServiceResponse
         }
 
 
-        public static async Task<IList<vw_result>> Insert_Order_Detail(int BranchCode, long ShomareBarge_Header, int ShomareRadif, 
-            int CodeAnbaar, string CodeKala, decimal Meghdar, float Nerkh, decimal Mablagh, int NoeBaste, decimal TedadBaste, 
-            decimal TedadDarHarBaste, long CodeKarbar, string TarikhRooz,string MoshtariCode)
+        public static async Task<IList<vw_result>> Insert_Order_Detail(int BranchCode, long ShomareBarge_Header, int ShomareRadif, int CodeAnbaar, string CodeKala, decimal Meghdar, float Nerkh, decimal Mablagh, int NoeBaste, decimal TedadBaste, decimal TedadDarHarBaste, long CodeKarbar, string TarikhRooz,string MoshtariCode)
         {
             try
             {
