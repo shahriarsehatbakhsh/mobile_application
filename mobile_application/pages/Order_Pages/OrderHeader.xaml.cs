@@ -218,7 +218,7 @@ namespace mobile_application.pages.Order_Pages
             if (!string.IsNullOrEmpty(this.txtCodeSupervizer.Text))
                 CodeSupervizer = Convert.ToInt32(this.txtCodeSupervizer.Text);
             Header_Function.Add_Header_Temp(Convert.ToInt32(this.txtCodeForooshande.Text),Convert.ToInt32(this.txtCodeMosavabe.Text),Convert.ToInt32(this.txtCodeMoshtari.Text),Convert.ToInt16(this.txtCodeShobe.Text),CodeSupervizer,Convert.ToInt32(this.txtModdateTasvie.Text),Convert.ToInt32(this.cmbTasvie.SelectedIndex + 1),this.txtDate.ShamsiDateString,Static_Loading.today_date);
-            App.Current.MainPage = new OrderTabbedMenu();
+            App.Current.MainPage = new OrderObjectList();
         }
 
         private bool Validation()

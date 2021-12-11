@@ -46,25 +46,18 @@ namespace mobile_application.pages.Popup_Pages
 			if (Header_Function.temp_header[0] == null)
 				return;
 
-			Header_Function.temp_details.Add(new F_dSefareshSeller
-			{
-				BranchCode = Header_Function.temp_header[0].CodeShobe ,
-				CodeAnbaar = Static_Loading.central_BranchCode ,
-				CodeKala = this.lblobjCode.Text ,
-				NameKala = this.lblobjName.Text ,
-				CodeKarbar = Static_Loading.central_user_id ,
-				CodeShobe = Header_Function.temp_header[0].CodeShobe ,
-				Mablagh = Convert.ToDecimal(this.txtMablagh.Text) ,
-				Meghdar = Convert.ToDecimal(this.txtMeghdar.Text) ,
-				MoshtariCode = Header_Function.temp_header[0].CodeMoshtari.ToString() ,
-				Nerkh = Convert.ToSingle(this.lblNerkh.Text) ,
-				ShomareRadif = Header_Function.temp_details.Count + 1 ,
-				NoeBaste = 1 ,
-				TarikhRooz = Static_Loading.today_date ,
-				TedadBaste = 1 ,
-				ShomareBarge_Header = Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode ,
-				TedadDarHarBaste = 1 
-			});
+			Header_Function.Add_Detail_Temp(
+				Header_Function.temp_header[0].CodeShobe,
+				Static_Loading.central_BranchCode,
+				this.lblobjCode.Text,
+				this.lblobjName.Text,
+				Static_Loading.central_user_id,
+				Header_Function.temp_header[0].CodeShobe,
+				Convert.ToDecimal(this.txtMablagh.Text),
+				Convert.ToDecimal(this.txtMeghdar.Text),
+				Header_Function.temp_header[0].CodeMoshtari.ToString(),
+				Convert.ToSingle(this.lblNerkh.Text)
+				);
 
 			ToastNotification.TostMessage("کالای مربوطه به برگه سفارش اضافه شد");
 			await Navigation.PopPopupAsync(true);

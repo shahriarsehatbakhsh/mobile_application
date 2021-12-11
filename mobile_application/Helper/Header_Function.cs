@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using mobile_application.Helper;
 using mobile_application.Models;
 using mobile_application.ServiceResponse;
@@ -47,12 +48,32 @@ namespace mobile_application
             }
         }
 
-        public static bool Save_Header()
+        public static bool Add_Detail_Temp(int BranchCode, int CodeAnbaar, string CodeKala, string NameKala, long CodeKarbar, short CodeShobe, 
+            decimal Mablagh, decimal Meghdar, string MoshtariCode, float Nerkh)
         {
             try
             {
-
+                temp_details.Add(new F_dSefareshSeller
+                {
+                    BranchCode = BranchCode,
+                    CodeAnbaar = CodeAnbaar,
+                    CodeKala = CodeKala,
+                    NameKala = NameKala,
+                    CodeKarbar = CodeKarbar,
+                    CodeShobe = CodeShobe,
+                    Mablagh = Mablagh,
+                    Meghdar = Meghdar,
+                    MoshtariCode = MoshtariCode,
+                    Nerkh = Nerkh,
+                    ShomareRadif = Header_Function.temp_details.Count + 1,
+                    NoeBaste = 1,
+                    TarikhRooz = Static_Loading.today_date,
+                    TedadBaste = 1,
+                    ShomareBarge_Header = Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode,
+                    TedadDarHarBaste = 1
+                });
                 return true;
+                
             }
             catch (Exception)
             {
@@ -61,16 +82,57 @@ namespace mobile_application
             }
         }
 
-        public static bool Save_Details()
+        public static string Save_Header()
         {
             try
             {
-
-                return true;
+                var rHeader = Client.Insert_Order_Header(Static_Loading.central_BranchCode,
+                                    Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode,
+                                    Header_Function.temp_header[0].TarikhBarge,
+                                    Header_Function.temp_header[0].CodeMoshtari,
+                                    Header_Function.temp_header[0].CodeForooshande,
+                                    Header_Function.temp_header[0].CodeMosavabe,
+                                    Header_Function.temp_header[0].NoeTasvie,
+                                    Header_Function.temp_header[0].ModdateTasvie,
+                                    Header_Function.temp_header[0].sp_GetAvailableCustomerJob,
+                                    Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderSerial,
+                                    5,
+                                    Header_Function.temp_header[0].CodeSupervisor,
+                                    Static_Loading.central_user_id,
+                                    Header_Function.temp_header[0].TarikheRooz).GetAwaiter().GetResult();
+                return rHeader[0].result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                return "Error" + ex.Message;
+                throw;
+            }
+        }
+
+        public static void Save_Details()
+        {
+            try
+            {
+                for (int i = 0; i < Header_Function.temp_details.Count; i++)
+                {
+                    Header_Function.temp_details[i].CodeKala = function_static.Create_Kala_Code(Header_Function.temp_details[i].CodeKala);
+                    _ = Client.Insert_Order_Detail(Static_Loading.central_BranchCode,
+                                               Header_Function.temp_details[i].ShomareBarge_Header, i + 1,
+                                               Header_Function.temp_details[i].CodeAnbaar,
+                                               Header_Function.temp_details[i].CodeKala,
+                                               Header_Function.temp_details[i].Meghdar,
+                                               Header_Function.temp_details[i].Nerkh,
+                                               Header_Function.temp_details[i].Mablagh,
+                                               Header_Function.temp_details[i].NoeBaste,
+                                               Header_Function.temp_details[i].TedadBaste,
+                                               Header_Function.temp_details[i].TedadDarHarBaste,
+                                               Static_Loading.central_user_id,
+                                               Header_Function.temp_details[i].TarikhRooz,
+                                               Header_Function.temp_details[i].MoshtariCode);
+                }
+            }
+            catch (Exception ex)
+            {
                 throw;
             }
         }

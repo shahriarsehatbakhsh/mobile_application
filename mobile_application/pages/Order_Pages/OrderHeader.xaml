@@ -381,7 +381,7 @@
                 HeightRequest="70"
                 WidthRequest="70"
                 Aspect="Fill"
-                Source="ab" />
+                Source="ab" IsVisible="False" />
 
             <ImageButton 
                 CornerRadius="5"
@@ -389,7 +389,8 @@
                 HeightRequest="70"
                 WidthRequest="70"
                 Aspect="Fill"
-                Source="ab" />
+                Source="ab" 
+                IsVisible="False" />
 
             <ImageButton 
                 CornerRadius="5"
@@ -397,7 +398,8 @@
                 HeightRequest="70"
                 WidthRequest="70"
                 Aspect="Fill"
-                Source="ab" />
+                Source="ab" 
+                IsVisible="False" />
 
             <ImageButton 
                 CornerRadius="5"
@@ -405,7 +407,8 @@
                 HeightRequest="70"
                 WidthRequest="70"
                 Aspect="Fill"
-                Source="ab" />
+                Source="ab" 
+                IsVisible="False" />
 
             <ImageButton 
                 CornerRadius="5"
@@ -414,7 +417,8 @@
                 HeightRequest="70"
                 WidthRequest="70"
                 Aspect="Fill"
-                Source="d5" />
+                Source="d5" 
+                IsVisible="True" />
 
 
         </StackLayout>

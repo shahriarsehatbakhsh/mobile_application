@@ -29,6 +29,7 @@
             <Setter Property="FontSize" Value="Medium" />
         </Style>
     </ContentPage.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <!--<RowDefinition Height="70" /> >-->
@@ -218,58 +219,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
-
-
-        <!--End form button-->
-        <StackLayout 
-            HorizontalOptions="Center" 
-            VerticalOptions="Center" 
-            Orientation="Horizontal" 
-            Grid.Row="2" 
-            Margin="10,0,10,0">
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btnNew"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="d3" />
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btnSave"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" />
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btn3"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" />
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btn4"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" />
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btnPreview"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" />
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btnNext"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="d5" />
-        </StackLayout>
     </Grid>
 
 </ContentPage>

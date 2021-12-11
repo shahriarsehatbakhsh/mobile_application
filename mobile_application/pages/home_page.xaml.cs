@@ -35,7 +35,7 @@ namespace mobile_application.pages
                 case "ثبت سفارشات":
                     {
                         //await Navigation.PushAsync(new mobile_application.pages.Order_Pages.A_add_new_order(), true);
-                        App.Current.MainPage = new mobile_application.pages.Order_Pages.OrderTabbedMenu();
+                        //App.Current.MainPage = new mobile_application.pages.Order_Pages.OrderTabbedMenu();
                         break;
                     }
                 case "لیست مشتری ها":

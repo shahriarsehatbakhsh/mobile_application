@@ -316,11 +316,13 @@ namespace mobile_application.ServiceResponse
         }
 
 
-        public static async Task<IList<vw_result>> Insert_Order_Detail(int BranchCode, long ShomareBarge_Header, int ShomareRadif, int CodeAnbaar, string CodeKala, decimal Meghdar, float Nerkh, decimal Mablagh, int NoeBaste, decimal TedadBaste, decimal TedadDarHarBaste, long CodeKarbar, string TarikhRooz,string MoshtariCode)
+        public static async Task<IList<vw_result>> Insert_Order_Detail(int BranchCode, long ShomareBarge_Header, int ShomareRadif, 
+            int CodeAnbaar, string CodeKala, decimal Meghdar, float Nerkh, decimal Mablagh, int NoeBaste, decimal TedadBaste, 
+            decimal TedadDarHarBaste, long CodeKarbar, string TarikhRooz,string MoshtariCode)
         {
             try
             {
-                IList<vw_result> Result = null;
+                List<vw_result> Result = null;
                 HttpClient client_users = new HttpClient();
                 TarikhRooz = TarikhRooz.Replace("/", "D");
                 string url = Static_Loading.api_url() + "SefareshSeller/InsertDetail CodeShobe=" + BranchCode + "," +
@@ -346,6 +348,7 @@ namespace mobile_application.ServiceResponse
                     var Json = content.ReadAsStringAsync();
                     Result = JsonConvert.DeserializeObject<List<vw_result>>(Json.Result);
                 }
+
                 return Result;
             }
             catch (System.Exception ex)

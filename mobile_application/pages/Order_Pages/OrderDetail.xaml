@@ -2,16 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobile_application.pages.Order_Pages.OrderDetail"
-             BackgroundColor="{StaticResource Main}">
+             FlowDirection="RightToLeft"
+             BackgroundColor="{StaticResource Search}">
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="80" />
+            <RowDefinition Height="70" />
         </Grid.RowDefinitions>
 
         <!-- Form Title StackLayout -->
-        <!--<StackLayout StyleClass="Title" >
+        <StackLayout StyleClass="Title" >
             <Image 
                 x:Name="imgTitle"
                 Source="click01"
@@ -20,66 +23,69 @@
         </StackLayout>
 
 
-        --><!--Header search--><!--
-        <StackLayout 
-            BackgroundColor="{StaticResource Search}"
-            Grid.Row="1">
-            <SearchBar />
-        </StackLayout>-->
+        <!--Header search-->
+        <StackLayout BackgroundColor="{StaticResource Search}" Grid.Row="1">
+            <Frame
+                Margin="10,10,10,0"
+                Padding="0"
+                BackgroundColor="White"
+                CornerRadius="5"
+                HorizontalOptions="FillAndExpand">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <SearchBar
+                        BackgroundColor="White"
+                        Placeholder="Search Countries..."
+                        SearchCommand="{Binding SearchButtonPressedCommand}" Text="" >
+                    </SearchBar>
+                </Grid>
+            </Frame>
+        </StackLayout>
 
 
         <!--Form body-->
-        <StackLayout
-            Grid.Row="0"
-            BackgroundColor="{StaticResource Body}">
+        <StackLayout Grid.Row="2" BackgroundColor="{StaticResource Body}">
             <ScrollView>
-                <StackLayout Orientation="Vertical">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="شعبه:" />
-                        <Label x:Name="lblShobeName" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="شماره سفارش:" />
-                        <Label x:Name="lblShomareBarge" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="وضعیت مشتری:" />
-                        <Label Text="قبول" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="پیام مشتری:" />
-                        <Label Text="پیام مشتری به شرح ذیل میباشد" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="شماره تلفن" />
-                        <Label Text="05138758989" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="شماره همراه:" />
-                        <Label Text="09152149858" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="آدرس:" />
-                        <Label Text="بلوار وکیل آباد" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Button x:Name="btnInsertOrder" Clicked="btnInsertOrder_Clicked" Text="ثبت سفارش" />
-                        <Button x:Name="btnNewOrder" Clicked="btnNewOrder_Clicked" Text="سفارش جدید" />
-                    </StackLayout>
-
-                </StackLayout>
-
+                <ListView x:Name="lstDetails">
+                    <ListView.Header>
+                        <StackLayout Orientation="Vertical">
+                            <Label x:Name="lblBranchName" Text="" />
+                            <Label x:Name="lblShomareSefaresh" Text="" />
+                            <Label x:Name="lblTarikhBarge" Text="" />
+                            <Label x:Name="lblCustomerInfo" Text="مشتری : " />
+                            <Label x:Name="lblCustomerState" Text="وضعیت مشتری : قبول" />
+                            <Label x:Name="lblCustomerDes" Text="پیام مشتری : مشتری چک برگشتی دارد" />
+                            <Label x:Name="lblCustomerTellMobile" Text="شماره تماس با مشتری : " />
+                            <Label x:Name="lblCustomerAddress" Text="آدرس : " />
+                        </StackLayout>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical">
+                                    <Label x:Name="lblObjectName" Text="{Binding NameKala, StringFormat='نام کالا : {0}'}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="lblMeghdar" Text="{Binding Meghdar, StringFormat='مقدار {0}'}" />
+                                        <Label x:Name="lblTedadBaste" Text="{Binding TedadBaste, StringFormat='تعداد بسته {0}'}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="lblNerkh" Text="{Binding Nerkh, StringFormat='نرخ {0}'}" />
+                                        <Label x:Name="lblMablagh" Text="{Binding Mablagh, StringFormat='مبلغ {0}'}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </ScrollView>
         </StackLayout>
 
-        <!--End form button-->
-        <StackLayout 
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            Orientation="Horizontal"
-            Grid.Row="1"
-            Margin="10,0,10,0">
 
+        <!--End form button-->
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal" Grid.Row="3" Margin="10,0,10,0">
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btnNew"
@@ -87,13 +93,15 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="d3" />
+
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btnSave"
                 HeightRequest="70"
                 WidthRequest="70"
                 Aspect="Fill"
-                Source="ab" />
+                Source="ab" Clicked="btnSave_Clicked" />
+
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btn3"
@@ -101,6 +109,7 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="ab" />
+
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btn4"
@@ -108,6 +117,7 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="ab" />
+
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btnPreview"
@@ -115,14 +125,15 @@
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="ab" />
+
             <ImageButton 
                 CornerRadius="5"
                 x:Name="btnNext"
-                Clicked="btnInsertOrder_Clicked"
                 HeightRequest="70"
                 WidthRequest="70"
                 Aspect="Fill"
                 Source="d5" />
+
         </StackLayout>
     </Grid>
 </ContentPage>

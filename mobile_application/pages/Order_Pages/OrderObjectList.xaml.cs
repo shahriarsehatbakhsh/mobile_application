@@ -97,7 +97,8 @@ namespace mobile_application.pages.Order_Pages
             this.txtCodeAnbar.Text = e[0].Code.ToString();
             this.txtNameAnbar.Text = e[0].Sharh.ToString();
 
-            items = Client.Objects_List(1).GetAwaiter().GetResult();
+            items = new List<vw_code_sharh>();
+            items = Client.Objects_List(Convert.ToInt32(this.txtCodeAnbar.Text)).GetAwaiter().GetResult();
             this.collObjectList.ItemsSource = items;
 
             this.lblAnbarName.Text += this.txtNameAnbar.Text;
