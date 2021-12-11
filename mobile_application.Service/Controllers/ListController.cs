@@ -125,6 +125,13 @@ namespace mobile_application.Service.Controllers
         }
 
 
+        [HttpGet("anbar_list BranchCode={BranchCode}")]
+        public async Task<ActionResult<IEnumerable<vw_code_sharh>>> GetAnbar_list(int BranchCode)
+        {
+            string StoredProc = "exec sp_anbar_list @BranchCode=" + BranchCode ;
+
+            return await _context.vw_code_sharh.FromSqlRaw(StoredProc).ToListAsync();
+        }
 
     }
 }

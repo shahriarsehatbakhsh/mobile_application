@@ -10,6 +10,9 @@ using mobile_application.ServiceResponse;
 using Rg.Plugins.Popup.Extensions;
 using mobile_application.Models;
 using mobile_application.pages.Popup_Pages;
+using mobile_application.Helper;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace mobile_application.pages.Order_Pages
 {
@@ -20,10 +23,6 @@ namespace mobile_application.pages.Order_Pages
         public OrderObjectList()
         {
             InitializeComponent();
-            items = Client.Objects_List().GetAwaiter().GetResult();
-            //this.collView.ItemsSource = items;
-            this.collObjectList.ItemsSource = items;
-            //this.lblTitle.Text = "لیست کالاهای موجود";
         }
 
         vw_code_sharh _select_item;
@@ -79,6 +78,29 @@ namespace mobile_application.pages.Order_Pages
             var code = btn.CommandParameter;
             var name = items.Where(o => o.Code == Convert.ToInt16(code)).FirstOrDefault();
             await Navigation.PushPopupAsync(new add_object_popup_page(name), true);
+        }
+
+        anbar_search_list_popup_page frm_anbar_list;
+        private async void btnSelectAnbar_Clicked(object sender, EventArgs e)
+        {
+            HttpClient client = new HttpClient();
+            var json = await client.GetStringAsync(Static_Loading.api_url() + "List/anbar_list BranchCode=" + Static_Loading.central_BranchCode) ;
+            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+            views.show_list = result;
+
+            frm_anbar_list = new anbar_search_list_popup_page(views.show_list);
+            frm_anbar_list.Search += Anbar_Search_Result;
+            await Navigation.PushPopupAsync(frm_anbar_list, true);
+        }
+        private void Anbar_Search_Result(object sender, List<vw_code_sharh> e)
+        {
+            this.txtCodeAnbar.Text = e[0].Code.ToString();
+            this.txtNameAnbar.Text = e[0].Sharh.ToString();
+
+            items = Client.Objects_List(1, "").GetAwaiter().GetResult();
+            this.collObjectList.ItemsSource = items;
+
+            this.lblAnbarName.Text += this.txtNameAnbar.Text;
         }
     }
 }

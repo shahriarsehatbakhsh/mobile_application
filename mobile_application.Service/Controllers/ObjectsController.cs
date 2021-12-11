@@ -22,10 +22,18 @@ namespace mobile_application.Service.Controllers
             _context = context;
         }
 
-        [HttpGet("ObjectsList")]
-        public async Task<ActionResult<IEnumerable<vw_code_sharh>>> GetObjectsList()
+        [HttpGet("ObjectsList BranchCode={BranchCode},ObjectName={ObjectName}")]
+        public async Task<ActionResult<IEnumerable<vw_code_sharh>>> GetObjectsList(int BranchCode, string ObjectName)
         {
-            string StoredProc = "exec sp_object_list ";
+            string StoredProc = "exec sp_object_list @BranchCode=" + BranchCode + ", @ObjectName='" + ObjectName + "'";
+
+            return await _context.vw_code_sharh.FromSqlRaw(StoredProc).ToListAsync();
+        }
+
+        [HttpGet("ObjectsList BranchCode={BranchCode}")]
+        public async Task<ActionResult<IEnumerable<vw_code_sharh>>> GetObjectsList(int BranchCode)
+        {
+            string StoredProc = "exec sp_object_list @BranchCode=" + BranchCode + ", @ObjectName=''";
 
             return await _context.vw_code_sharh.FromSqlRaw(StoredProc).ToListAsync();
         }

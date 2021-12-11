@@ -90,6 +90,7 @@ namespace mobile_application.pages.Order_Pages
             this.txtCodeShobe.Text = e[0].Code.ToString();
             Static_Loading.central_BranchCode = Convert.ToInt32(this.txtCodeShobe.Text);
             this.txtShobeName.Text = e[0].Sharh.ToString();
+            Static_Loading.central_BranchName = this.txtShobeName.Text.ToString();
         }
 
 
@@ -300,11 +301,30 @@ namespace mobile_application.pages.Order_Pages
                 frm3.BorderColor = Color.Gold;
                 frm3.BackgroundColor = Color.Transparent;
             }
+            else if (sender == txtCodeForooshande)
+            {
+                frm4.BorderColor = Color.Gold;
+                frm4.BackgroundColor = Color.Transparent;
+            }
+            else if (sender == txtCodeMosavabe)
+            {
+                frm8.BorderColor = Color.Gold;
+                frm8.BackgroundColor = Color.Transparent;
+            }
         }
 
         private void Unfocused_Color(object sender, FocusEventArgs e)
         {
-            
+            if (sender == txtCodeShobe)
+            {
+                Static_Loading.central_BranchCode = Convert.ToInt32(txtCodeShobe.Text);
+                Static_Loading.central_BranchName = this.txtShobeName.Text.ToString();
+            }
+        }
+
+        private void txtCodeMoshtari_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Customer_Cart_New();
         }
     }
 }

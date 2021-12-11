@@ -187,7 +187,7 @@
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="مشتری:" StyleClass="TitleLabel" />
-                                    <Entry x:Name="txtCodeMoshtari" Grid.Column="1" StyleClass="InputTextbox"  Focused="Focused_Color" Unfocused="Unfocused_Color" />
+                                    <Entry x:Name="txtCodeMoshtari" Grid.Column="1" StyleClass="InputTextbox" TextChanged="txtCodeMoshtari_TextChanged"  Focused="Focused_Color" Unfocused="Unfocused_Color" />
                                     <Label x:Name="txtCustomerName" Grid.Column="2" Text=" مشتری انتخاب شده" StyleClass="labelData" />
                                     <ImageButton 
                                         x:Name="btnSelectCustomer" 

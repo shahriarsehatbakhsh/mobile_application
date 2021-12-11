@@ -144,6 +144,9 @@
     <EmbeddedResource Update="pages\Popup_Pages\add_object_popup_page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="pages\Popup_Pages\anbar_search_list_popup_page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="pages\Popup_Pages\code_sharh_search_list_popup_page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

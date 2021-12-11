@@ -125,13 +125,18 @@ namespace mobile_application.ServiceResponse
             }
         }
 
-        public static async Task<IList<vw_code_sharh>> Objects_List()
+        public static async Task<IList<vw_code_sharh>> Objects_List(int BranchCode,string ObjectName = null)
         {
             try
             {
                 IList<vw_code_sharh> Result = null;
                 HttpClient client_users = new HttpClient();
-                string url = Static_Loading.api_url() + "Objects/ObjectsList";
+                string url = "";
+                if (ObjectName == null)
+                    url = Static_Loading.api_url() + "Objects/ObjectsList BranchCode=" + BranchCode ;
+                else
+                    url = Static_Loading.api_url() + "Objects/ObjectsList BranchCode=" + BranchCode + " ObjectName='" + ObjectName + "'";
+
                 var Response = client_users.GetAsync(url);
                 var Mystring = Response.GetAwaiter().GetResult();
                 Response.Wait();
