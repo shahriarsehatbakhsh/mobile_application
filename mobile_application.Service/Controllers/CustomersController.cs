@@ -23,11 +23,19 @@ namespace mobile_application.Service.Controllers
 
 
 
-        [HttpGet("List code_shobe={code_shobe}")]
+        [HttpGet("CustomersList code_shobe={code_shobe}")]
         public async Task<ActionResult<IEnumerable<vw_customers_list>>> GetCustomersList(int code_shobe)
         {
             string StoredProc = "exec sp_customers_list_get_code_shobe @code_shobe=" + code_shobe;
             return await _context.vw_customers_list.FromSqlRaw(StoredProc).ToListAsync();
+        }
+
+
+        [HttpGet("Customer_Information CustomerCode={CustomerCode},BranchCode={BranchCode}")]
+        public async Task<ActionResult<IEnumerable<vw_customer_information>>> GetCustomer_Information(int CustomerCode, int BranchCode)
+        {
+            string StoredProc = "exec sp_customer_information @CustomerCode=" + CustomerCode + ", @BranchCode=" + BranchCode;
+            return await _context.vw_customer_information.FromSqlRaw(StoredProc).ToListAsync();
         }
 
 

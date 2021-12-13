@@ -17,6 +17,7 @@ namespace mobile_application.Service.Data
         public DbSet<mobile_application.Models.vw_code_sharh> vw_code_sharh { get; set; }
         public DbSet<mobile_application.Models.vw_KalaPackage> vw_KalaPackage { get; set; }
         public DbSet<mobile_application.Models.vw_customers_list> vw_customers_list { get; set; }
+        public DbSet<mobile_application.Models.vw_customer_information> vw_customer_information { get; set; }
         public DbSet<mobile_application.Models.vw_seller_list> vw_seller_list { get; set; }
         public DbSet<mobile_application.Models.vw_customer_code_serial> vw_customer_code_serial { get; set; }
         public DbSet<mobile_application.Models.vw_supervizer_list> vw_supervizer_list { get; set; }

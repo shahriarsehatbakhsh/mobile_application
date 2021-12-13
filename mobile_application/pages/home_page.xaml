@@ -34,7 +34,6 @@
                     <Label Text="سیستم فروش" TextColor="White" FontSize="15" HorizontalTextAlignment="Center" />
                 </StackLayout>
             </Grid>
-
             <Frame HasShadow="True"  Grid.Row="1" HeightRequest="80" Margin="0,-40,0,0" HorizontalOptions="Center">
                 <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
@@ -58,7 +57,6 @@
                     <BoxView Grid.Row="1" Grid.ColumnSpan="2" WidthRequest="73" HeightRequest="1" BackgroundColor="#f1f3f9" />
                 </Grid>
             </Frame>
-
             <ScrollView Grid.Row="2" Margin="10,20,10,0">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                     <Grid.RowDefinitions>
@@ -69,7 +67,6 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-
                     <Frame 
                         BackgroundColor="AliceBlue"
                         Grid.Row="0"
@@ -79,7 +76,7 @@
                         Margin="0,0,0,0" 
                         HorizontalOptions="FillAndExpand" 
                         VerticalOptions="FillAndExpand">
-                        <StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand">
                             <ImageButton x:Name="btnMenu01" 
                                  HorizontalOptions="FillAndExpand" 
                                  Source="@/drawable/main02" 
@@ -89,10 +86,15 @@
                                  BorderColor="AliceBlue" 
                                  CornerRadius="10" 
                                  Clicked="btnMenu01_Clicked"  />
-                            <Label Text="ثبت سفارش جدید" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
+                            <Label 
+                                Text="ثبت سفارش جدید" 
+                                HorizontalOptions="FillAndExpand" 
+                                HorizontalTextAlignment="Center" 
+                                FontFamily="CalibriB" 
+                                FontAttributes="Bold" 
+                                FontSize="Medium" />
                         </StackLayout>
                     </Frame>
-
                     <Frame 
                         BackgroundColor="AliceBlue"
                         Grid.Row="0"
@@ -115,7 +117,6 @@
                             <Label Text="گزارشات" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
                         </StackLayout>
                     </Frame>
-
                     <Frame 
                         BackgroundColor="AliceBlue"
                         Grid.Row="1"
@@ -137,7 +138,6 @@
                             <Label Text="لیست مشتریان" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontFamily="CalibriB" FontAttributes="Bold" FontSize="Medium" />
                         </StackLayout>
                     </Frame>
-
                     <Frame 
                         BackgroundColor="AliceBlue"
                         Grid.Row="1"

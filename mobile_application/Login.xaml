@@ -10,7 +10,6 @@
     <ContentPage.Content>
 
         <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" x:Name="indicadorCargando" Color="Blue" />
             <Label x:Name="lblSetting" />
             <Image 
                 Source="paya_logo.png" 

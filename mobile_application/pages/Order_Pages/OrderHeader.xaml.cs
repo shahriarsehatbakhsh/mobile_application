@@ -171,17 +171,6 @@ namespace mobile_application.pages.Order_Pages
             IsBusy = false;
         }
 
-        private bool _isBusy;
-        public bool IsBusy
-        {
-            get { return _isBusy; }
-            set
-            {
-                _isBusy = value;
-                OnPropertyChanged();
-            }
-        }
-
         private void txtCustomerCode_TextChanged(object sender, TextChangedEventArgs e)
         {
             Customer_Cart_New();

@@ -15,6 +15,8 @@ namespace mobile_application
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
+        
+
         public Login()
         {
             InitializeComponent();
@@ -54,7 +56,7 @@ namespace mobile_application
         {
             try
             {
-                this.IsBusy = true;
+                IsBusy = true;
                 string username = txtUsername.Text;
                 string password = txtPassword.Text;
 
@@ -82,7 +84,7 @@ namespace mobile_application
                     Static_Loading.central_user_id = Convert.ToInt64(Data[0].result);
                     //var rootPage = new NavigationPage(new mobile_application.AppShell());
                     App.Current.MainPage = new mobile_application.AppShell();
-                    this.IsBusy = false;
+                    IsBusy = false;
                     return;
                 }
             }

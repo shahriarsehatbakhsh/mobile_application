@@ -144,7 +144,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="شعبه :" StyleClass="TitleLabel" />
                                     <Entry x:Name="txtCodeShobe" Grid.Column="1" Keyboard="Numeric" StyleClass="InputTextbox" Focused="Focused_Color" Unfocused="Unfocused_Color" />
-                                    <Label x:Name="txtShobeName" Grid.Column="2" Text=" شعبه انتخاب شده" StyleClass="labelData" />
+                                    <Label x:Name="txtShobeName" Text="شعبه انتخاب شده" Grid.Column="2" StyleClass="labelData" />
                                     <ImageButton 
                                         Grid.Column="3" 
                                         x:Name="btnSelectShobe" 
