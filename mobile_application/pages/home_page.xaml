@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobile_application.pages.home_page" 
              FlowDirection="RightToLeft"
-             BackgroundColor="#112b47">
+             BackgroundColor="#112b47" >
 
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="create_profile" IconImageSource="@drawable/MainPage04.png" Clicked="create_profile_Clicked" />

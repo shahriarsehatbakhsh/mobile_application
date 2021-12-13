@@ -23,12 +23,20 @@ namespace mobile_application.pages.App_Setting_Pages
         {
             var item = (api_table)lstApiServerList.SelectedItem;
             server_list.Change_Default(item);
+            Refresh_List();
+        }
+
+        void Refresh_List()
+        {
+            lstApiServerList.ItemsSource = new List<string>();
+            lstApiServerList.ItemsSource = server_list.servers_list;
         }
 
         private void btnDelete_Clicked(object sender, EventArgs e)
         {
             var item = (api_table)lstApiServerList.SelectedItem;
             server_list.Delete(item);
+            Refresh_List();
         }
 
         private async void btnCloseMe_Clicked(object sender, EventArgs e)

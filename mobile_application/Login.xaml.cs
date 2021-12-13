@@ -8,6 +8,7 @@ using Xamarin.Essentials;
 using mobile_application.ServiceResponse;
 using Rg.Plugins.Popup.Extensions;
 using System.Threading.Tasks;
+using mobile_application.pages.App_Setting_Pages;
 
 namespace mobile_application
 {
@@ -103,10 +104,9 @@ namespace mobile_application
             }
         }
 
-        private void txtSetting_Click(object sender, EventArgs e)
+        private async void txtSetting_Click(object sender, EventArgs e)
         {
-            var frmSetting = new mobile_application.pages.App_Setting_Pages.server_api_new_page();
-            App.Current.MainPage = frmSetting;
+            await Navigation.PushAsync(new server_api_new_page(), true);
         }
     }
 }

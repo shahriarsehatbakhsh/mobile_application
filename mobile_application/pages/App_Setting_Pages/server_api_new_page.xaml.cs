@@ -37,7 +37,7 @@ namespace mobile_application.pages.App_Setting_Pages
 
         private async void btnListServer_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new mobile_application.pages.App_Setting_Pages.server_api_list_page());
+            await Navigation.PushAsync(new server_api_list_page(),true);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace mobile_application.Droid
 
             //installing my plugin .
             //Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
-            Rg.Plugins.Popup.Popup.Init(this);
+            
             //------------------------------------------------------
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
@@ -27,7 +27,7 @@ namespace mobile_application.Droid
             //installing my plugin .
             global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
             //-----------------------------------------------------------------
-
+            Rg.Plugins.Popup.Popup.Init(this);
             LoadApplication(new App());
         }
         

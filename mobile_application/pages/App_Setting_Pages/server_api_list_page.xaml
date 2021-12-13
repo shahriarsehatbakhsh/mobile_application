@@ -1,27 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mobile_application.pages.App_Setting_Pages.server_api_list_page">
+             x:Class="mobile_application.pages.App_Setting_Pages.server_api_list_page" 
+             FlowDirection="RightToLeft" 
+             Title="لیست سرویس های موجود" >
 
     <ContentPage.Content>
         <StackLayout Padding="0,10,0,10">
-            <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center" >
-                <StackLayout Padding="5">
-                    <ListView x:Name="lstApiServerList">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" Padding="5">
-                                        <Label Text="{Binding id}" VerticalTextAlignment="Center" />
-                                        <Label Text="{Binding Name}" VerticalTextAlignment="Center"  />
-                                        <Label Text="{Binding IP}" VerticalTextAlignment="Center"  />
-                                        <Label Text="{Binding Port}" VerticalTextAlignment="Center" />
-                                        <CheckBox x:Name="chkIsDefault" IsChecked="{Binding Default}" />
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+            <Frame 
+                BackgroundColor="White" 
+                HasShadow="True" 
+                CornerRadius="10" 
+                Margin="20,0,20,0" 
+                VerticalOptions="Center" >
+                <StackLayout Padding="5" HorizontalOptions="StartAndExpand">
+                    <StackLayout HorizontalOptions="EndAndExpand">
+                        <ListView x:Name="lstApiServerList" FlowDirection="LeftToRight">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal" Padding="5">
+                                            <Label Text="{Binding id}" VerticalTextAlignment="Center" />
+                                            <Label Text="{Binding Name}" VerticalTextAlignment="Center"  />
+                                            <Label Text="{Binding IP}" VerticalTextAlignment="Center"  />
+                                            <Label Text="{Binding Port}" VerticalTextAlignment="Center" />
+                                            <CheckBox x:Name="chkIsDefault" IsChecked="{Binding Default}" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
                     <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
                         <Button Text="پیش فرض" StyleClass="select_button" x:Name="btnDefault" Clicked="btnDefault_Clicked" />
                         <Button Text="حذف" StyleClass="select_button" x:Name="btnDelete" Clicked="btnDelete_Clicked"  />

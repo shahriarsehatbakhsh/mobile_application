@@ -137,7 +137,11 @@ namespace mobile_application.Helper
         public static void set_default_server()
         {
             defaul_server = servers_list.Find(o => o.Default == true);
-
+            if (defaul_server == null)
+            {
+                servers_list.Add(new api_table { id = 1, Name = "Default", IP = "127.0.0.1", Port = "21", Default = true });
+                defaul_server = servers_list.Find(o => o.Default == true);
+            }
             Static_Loading.api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
         }
 
