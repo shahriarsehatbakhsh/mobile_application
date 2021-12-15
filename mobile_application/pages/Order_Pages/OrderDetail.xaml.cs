@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.ServiceResponse;
+using mobile_application.Services;
 using mobile_application.Helper;
-using mobile_application.Models;
 using Rg.Plugins.Popup.Extensions;
 
 namespace mobile_application.pages.Order_Pages
@@ -20,15 +19,39 @@ namespace mobile_application.pages.Order_Pages
         {
             InitializeComponent();
 
+            this.load_data();
+        }
+
+        async void load_data()
+        {
             if (Header_Function.temp_details == null)
                 return;
 
-            this.lblBranchName.Text = "شعبه : " + Static_Loading.central_BranchName;
-            this.lblShomareSefaresh.Text = "شماره سفارش : " + Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode.ToString();
-            this.lblTarikhBarge.Text = "تاریخ برگه : " + Header_Function.temp_header[0].TarikhBarge.ToString();
-            this.lblCustomerInfo.Text = "مشتری : " + Header_Function.temp_header[0].CodeMoshtari.ToString();
 
-            this.lstDetails.ItemsSource = Header_Function.temp_details;
+            var Customer_Information = await Service.customer_Information(Static_Loading.Customer_Code, Static_Loading.central_BranchCode);
+
+            if (Customer_Information.Count > 0)
+            {
+                this.lblBranchName.Text = "شعبه : " + Customer_Information[0].Shobe;
+                this.lblShomareSefaresh.Text = "شماره سفارش : " + Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode.ToString();
+                this.lblTarikhBarge.Text = "تاریخ برگه : " + Header_Function.temp_header[0].TarikhBarge.ToString();
+
+                this.lblCustomerInfo.Text = "مشتری : " + Static_Loading.Customer_Code + " - کد مشتری : " + Static_Loading.Customer_Name;
+                this.lblCustomerState.Text = "قبول";
+                this.lblCustomerMessage.Text = Customer_Information[0].Message;
+
+                this.lblCustomerTell.Text = Customer_Information[0].Tell;
+                this.lblCustomerMobile.Text= Customer_Information[0].Mobile;
+
+                this.lblCustomerAddress.Text = Customer_Information[0].Address;
+
+                this.lblCustomerOstan.Text = Customer_Information[0].NameOstan;
+                this.lblCustomerCity.Text = Customer_Information[0].NameShahr;
+
+                this.lblCustomerMantaghe.Text = Customer_Information[0].NameMantaghe;
+                this.lblCustomerMasir.Text = Customer_Information[0].NameMasir;
+            }
+            this.lstObjectDetails.ItemsSource = Header_Function.temp_details;
         }
 
         private async void btnSave_Clicked(object sender, EventArgs e)
@@ -53,7 +76,7 @@ namespace mobile_application.pages.Order_Pages
             {
                 Header_Function.temp_details[i].CodeKala = function_static.Create_Kala_Code(Header_Function.temp_details[i].CodeKala);
 
-                var dResult = Client.Insert_Order_Detail(Static_Loading.central_BranchCode,
+                var dResult = Service.Insert_Order_Detail(Static_Loading.central_BranchCode,
                                            Header_Function.temp_details[i].ShomareBarge_Header, i + 1,
                                            Header_Function.temp_details[i].CodeAnbaar,
                                            Header_Function.temp_details[i].CodeKala,

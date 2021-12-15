@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 using System.Diagnostics;
 using mobile_application.Helper;
 using Xamarin.Essentials;
-using mobile_application.ServiceResponse;
+using mobile_application.Services;
 using Rg.Plugins.Popup.Extensions;
 using System.Threading.Tasks;
 using mobile_application.pages.App_Setting_Pages;
@@ -47,7 +47,7 @@ namespace mobile_application
             }
             else
             {
-                Static_Loading.api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
+                Service.set_api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
                 Static_Loading.Is_Set_ConnectionString = true;
             }
         }
@@ -60,9 +60,9 @@ namespace mobile_application
                 string username = txtUsername.Text;
                 string password = txtPassword.Text;
 
-                var Data = await Client.Check_User_Name_Password(this.txtUsername.Text, this.txtPassword.Text);
+                var Result = await Service.Check_User_Name_Password(this.txtUsername.Text, this.txtPassword.Text);
 
-                if (Data == null || Data[0].result == "E")
+                if (Result == null || Result[0].result == "E")
                 {
                     var pop = new mobile_application.controls.AppMessageBox("خطا", "نام کاربری یا رمز ورود به سیستم اشتباه میباشید");
                     await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
@@ -81,7 +81,7 @@ namespace mobile_application
                         Preferences.Set("password", "");
                     }
 
-                    Static_Loading.central_user_id = Convert.ToInt64(Data[0].result);
+                    Static_Loading.central_user_id = Convert.ToInt64(Result[0].result);
                     //var rootPage = new NavigationPage(new mobile_application.AppShell());
                     App.Current.MainPage = new mobile_application.AppShell();
                     IsBusy = false;

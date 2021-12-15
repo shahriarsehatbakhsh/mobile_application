@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace mobile_application.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class LoginView : ContentPage
+    {
+        public LoginView()
+        {
+            InitializeComponent();
+            this.BindingContext = new ViewModels.LoginViewModel();
+        }
+
+        private void txtSetting_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

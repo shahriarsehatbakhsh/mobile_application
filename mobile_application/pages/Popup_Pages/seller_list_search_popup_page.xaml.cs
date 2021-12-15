@@ -12,7 +12,7 @@ using Newtonsoft;
 using Newtonsoft.Json;
 using System.Net.Http;
 using mobile_application.Helper;
-using mobile_application.ServiceResponse;
+using mobile_application.Services;
 
 namespace mobile_application.pages.Popup_Pages
 {
@@ -29,7 +29,7 @@ namespace mobile_application.pages.Popup_Pages
 
         private async void Loadin_Form()
         {
-            var result = Client.Seller_List(Static_Loading.central_user_id,Static_Loading.central_BranchCode).GetAwaiter().GetResult() ;
+            var result = await Service.Seller_List(Static_Loading.central_user_id,Static_Loading.central_BranchCode);
             this.lstSellerList.ItemsSource = result;
         }
 

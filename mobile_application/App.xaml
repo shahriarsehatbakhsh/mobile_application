@@ -6,6 +6,20 @@
     
     <Application.Resources>
         <ResourceDictionary>
+
+            <Style Class="MainButton" TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BorderColor" Value="ForestGreen" />
+                <Setter Property="BorderWidth" Value="1.5" />
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+            
+            
+            
+            
             <Color x:Key="Primary">#112b47</Color>
             <Color x:Key="Title">#112b47</Color>
             <Color x:Key="Main">#112b47</Color>

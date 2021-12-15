@@ -3,45 +3,79 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobile_application.pages.Order_Pages.OrderDetail"
              FlowDirection="RightToLeft"
-             BackgroundColor="{StaticResource Search}">
+             BackgroundColor="{StaticResource Search}" 
+             Title="مشاهده نهایی و ثبت سفارش" >
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70" />
-            <RowDefinition Height="70" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="70" />
+            <RowDefinition Height="80" />
         </Grid.RowDefinitions>
 
         <!-- Form Title StackLayout -->
-        <StackLayout StyleClass="Title" >
-            <Image 
-                x:Name="imgTitle"
-                Source="click01"
-                Margin="0,0,10,0" />
-            <Label x:Name="lblTitle" StyleClass="Title_Label"/>
+        <StackLayout StyleClass="Title" Margin="0,0,10,0" >
+            <Image x:Name="imgTitle" Source="click01" />
+            <Label x:Name="lblTitle" Text="مشاهده و ثبت نهایی سفارش" StyleClass="Title_Label"/>
         </StackLayout>
 
 
         <!--Header search-->
-        <StackLayout BackgroundColor="{StaticResource Search}" Grid.Row="1">
-            <Frame
-                Margin="10,10,10,0"
-                Padding="0"
-                BackgroundColor="White"
-                CornerRadius="5"
-                HorizontalOptions="FillAndExpand">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <SearchBar
-                        BackgroundColor="White"
-                        Placeholder="Search Countries..."
-                        SearchCommand="{Binding SearchButtonPressedCommand}" Text="" >
-                    </SearchBar>
-                </Grid>
+        <StackLayout BackgroundColor="{StaticResource Search}" Grid.Row="1" Margin="10,10,10,0">
+            <Frame Padding="10" BackgroundColor="Transparent" CornerRadius="5" HorizontalOptions="FillAndExpand" BorderColor="White" >
+                <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="شماره برگه سفارش : " TextColor="White" />
+                        <Label x:Name="lblShomareSefaresh" Text="" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="تاریخ برگه : " TextColor="White" />
+                        <Label x:Name="lblTarikhBarge" Text=""  TextColor="White" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="شعبه : " TextColor="White" />
+                        <Label x:Name="lblBranchName" Text="" TextColor="White" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="مشتری : " TextColor="White" />
+                        <Label x:Name="lblCustomerInfo"  TextColor="White" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="وضعیت مشتری : " TextColor="White" />
+                        <Label x:Name="lblCustomerState" Text="قبول" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="پیام مشتری : " TextColor="White" />
+                        <Label x:Name="lblCustomerMessage" Text="" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="شماره های تماس: " TextColor="White" />
+                        <Label x:Name="lblCustomerTell" Text="" />
+                        <Label Text=" - " />
+                        <Label x:Name="lblCustomerMobile" Text="" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="آدرس مشتری : " TextColor="White" />
+                        <Label x:Name="lblCustomerAddress" Text="آدرس : " />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="استان : " TextColor="White" />
+                        <Label x:Name="lblCustomerOstan" Text="" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="شهر : " TextColor="White" />
+                        <Label x:Name="lblCustomerCity" Text="" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="منطقه : " TextColor="White" />
+                        <Label x:Name="lblCustomerMantaghe" Text="" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="مسیر : " TextColor="White" />
+                        <Label x:Name="lblCustomerMasir" Text="" />
+                    </StackLayout>
+                </StackLayout>
             </Frame>
         </StackLayout>
 
@@ -49,33 +83,28 @@
         <!--Form body-->
         <StackLayout Grid.Row="2" BackgroundColor="{StaticResource Body}">
             <ScrollView>
-                <ListView x:Name="lstDetails">
+                <ListView x:Name="lstObjectDetails">
                     <ListView.Header>
                         <StackLayout Orientation="Vertical">
-                            <Label x:Name="lblBranchName" Text="" />
-                            <Label x:Name="lblShomareSefaresh" Text="" />
-                            <Label x:Name="lblTarikhBarge" Text="" />
-                            <Label x:Name="lblCustomerInfo" Text="مشتری : " />
-                            <Label x:Name="lblCustomerState" Text="وضعیت مشتری : قبول" />
-                            <Label x:Name="lblCustomerDes" Text="پیام مشتری : مشتری چک برگشتی دارد" />
-                            <Label x:Name="lblCustomerTellMobile" Text="شماره تماس با مشتری : " />
-                            <Label x:Name="lblCustomerAddress" Text="آدرس : " />
+                            <Label Text="لیست کالاهای انتخاب شده" TextColor="White" />
                         </StackLayout>
                     </ListView.Header>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Vertical">
-                                    <Label x:Name="lblObjectName" Text="{Binding NameKala, StringFormat='نام کالا : {0}'}" />
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label x:Name="lblMeghdar" Text="{Binding Meghdar, StringFormat='مقدار {0}'}" />
-                                        <Label x:Name="lblTedadBaste" Text="{Binding TedadBaste, StringFormat='تعداد بسته {0}'}" />
+                                <Frame BorderColor="White" BackgroundColor="AliceBlue">
+                                    <StackLayout Orientation="Vertical" >
+                                        <Label x:Name="lblObjectName" Text="{Binding NameKala, StringFormat='نام کالا : {0}'}" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label x:Name="lblMeghdar" Text="{Binding Meghdar, StringFormat='مقدار {0}'}" />
+                                            <Label x:Name="lblTedadBaste" Text="{Binding TedadBaste, StringFormat='تعداد بسته {0}'}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label x:Name="lblNerkh" Text="{Binding Nerkh, StringFormat='نرخ {0}'}" />
+                                            <Label x:Name="lblMablagh" Text="{Binding Mablagh, StringFormat='مبلغ {0}'}" />
+                                        </StackLayout>
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label x:Name="lblNerkh" Text="{Binding Nerkh, StringFormat='نرخ {0}'}" />
-                                        <Label x:Name="lblMablagh" Text="{Binding Mablagh, StringFormat='مبلغ {0}'}" />
-                                    </StackLayout>
-                                </StackLayout>
+                                </Frame>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -85,55 +114,18 @@
 
 
         <!--End form button-->
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal" Grid.Row="3" Margin="10,0,10,0">
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btnNew"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="d3" />
+        <StackLayout 
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"
+            Orientation="Horizontal"
+            Grid.Row="3"
+            Margin="10,0,10,0">
 
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btnSave"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" Clicked="btnSave_Clicked" />
-
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btn3"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" />
-
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btn4"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" />
-
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btnPreview"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" />
-
-            <ImageButton 
-                CornerRadius="5"
+            <Button 
+                Text="ثبت نهایی سفارش"
                 x:Name="btnNext"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="d5" />
-
+                Clicked="btnSave_Clicked" 
+                StyleClass="MainButton" />
         </StackLayout>
     </Grid>
 </ContentPage>

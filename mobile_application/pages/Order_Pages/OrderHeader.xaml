@@ -113,12 +113,7 @@
         </StackLayout>-->
 
 
-        <!--Header search-->
-        <!--<StackLayout x:Name="SearchStack" IsVisible="False" BackgroundColor="{StaticResource Search}" Grid.Row="1">
-            <SearchBar />
-        </StackLayout>-->
-
-
+        
         <!--Form body-->
         <StackLayout
             Grid.Row="0"
@@ -126,9 +121,7 @@
             <ScrollView 
                 BackgroundColor="{StaticResource Body}">
                 <StackLayout Padding="10,30,10,0">
-                    <StackLayout 
-                        Spacing="10" 
-                        VerticalOptions="StartAndExpand">
+                    <StackLayout Spacing="10" VerticalOptions="StartAndExpand">
 
                         <Frame x:Name="frm1" Padding="0" BackgroundColor="White" >
                             <StackLayout Orientation="Horizontal">
@@ -163,13 +156,10 @@
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="120" />
-                                        <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="تاریخ:" StyleClass="TitleLabel" />
-                                    <D:ShamsiDatePicker Grid.Column="1" Grid.ColumnSpan="2" x:Name="txtDate" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" FontFamily="bNazanin" FontSize="Medium" />
-                                    <Label Grid.Column="3" StyleClass="LabelIcon" />
+                                    <D:ShamsiDatePicker Grid.Column="1" x:Name="txtDate" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" FontFamily="bNazanin" FontSize="Medium" />
                                 </Grid>
                             </StackLayout>
                         </Frame>
@@ -360,69 +350,17 @@
 
         <!--End form button-->
         <StackLayout 
-            HorizontalOptions="Center"
+            HorizontalOptions="FillAndExpand"
             VerticalOptions="Center"
             Orientation="Horizontal"
             Grid.Row="1"
             Margin="10,0,10,0">
 
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btnNew"
-                Clicked="btnNew_Clicked"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="d3"
-                IsVisible="True" IsEnabled="True" />
-
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btnSave"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" 
-                IsVisible="True" IsEnabled="False" />
-
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btn3"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" 
-                IsVisible="True" IsEnabled="False" />
-
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btn4"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" 
-                IsVisible="True" IsEnabled="False" />
-
-            <ImageButton 
-                CornerRadius="5"
-                x:Name="btnPreview"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="ab" 
-                IsVisible="True" IsEnabled="False" />
-
-            <ImageButton 
-                CornerRadius="5"
+            <Button 
+                Text="انتخاب کالا"
                 x:Name="btnNext"
-                Clicked="btnNext_Clicked"
-                HeightRequest="70"
-                WidthRequest="70"
-                Aspect="Fill"
-                Source="d5" 
-                IsVisible="True" />
-
-
+                Clicked="btnNext_Clicked" 
+                StyleClass="MainButton" />
         </StackLayout>
     </Grid>
 

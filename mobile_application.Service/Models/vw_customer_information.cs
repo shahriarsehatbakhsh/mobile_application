@@ -20,5 +20,9 @@ namespace mobile_application.Models
 		public string NameMantaghe { get; set; }
 		public int? CodeMasir { get; set; }
 		public string NameMasir { get; set; }
+		public string Tell { get; set; }
+		public string Mobile { get; set; }
+		public string Address { get; set; }
+		public string Message { get; set; }
 	}
 }

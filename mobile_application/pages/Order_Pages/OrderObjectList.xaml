@@ -4,7 +4,7 @@
              xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
              x:Class="mobile_application.pages.Order_Pages.OrderObjectList"
              BackgroundColor="{StaticResource Search}" 
-             FlowDirection="RightToLeft" >
+             FlowDirection="RightToLeft" Title="لیست کالاهای موجود در انبار" >
 
     <ContentPage.Resources>
         <Style Class="InputTextbox" TargetType="Entry">
@@ -36,6 +36,7 @@
             <!--<RowDefinition Height="70" /> >-->
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="80" />
         </Grid.RowDefinitions>
 
         <!-- Form Title StackLayout -->
@@ -53,7 +54,7 @@
             BackgroundColor="{StaticResource Search}" 
             Grid.Row="0" Orientation="Vertical" >
             <StackLayout>
-                <SearchBar Text="Search" />
+                <SearchBar Text="جست و جو کالا" FontSize="Default" />
             </StackLayout>
             <StackLayout>
                 <Frame x:Name="frm1" Padding="0" BackgroundColor="White" >
@@ -68,7 +69,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="50" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="انبار :" StyleClass="TitleLabel" />
+                            <Label Grid.Column="0" Text="انبار :" StyleClass="TitleLabel" Margin="0,12,10,0" />
                             <Entry x:Name="txtCodeAnbar" Grid.Column="1" Keyboard="Numeric" StyleClass="InputTextbox" />
                             <Label x:Name="txtNameAnbar" Grid.Column="2" Text=" انبار انتخاب شده" StyleClass="labelData" />
                             <ImageButton 
@@ -94,7 +95,7 @@
                         VerticalOptions="FillAndExpand"
                         SelectionMode="None" >
                 <CollectionView.Header>
-                    <Label x:Name="lblAnbarName" Text="لیست کالاهای موجود در انبار - " />
+                    <Label x:Name="lblAnbarName" Text="لیست کالاهای موجود در انبار - " TextColor="White" />
                 </CollectionView.Header>
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
@@ -147,8 +148,8 @@
                                                     Margin="0,-15,0,0"/>
                                                 </StackLayout>
                                                 <StackLayout 
-                                                Orientation="Horizontal" 
-                                                Padding="0,-10,0,0">
+                                                    Orientation="Horizontal" 
+                                                    Padding="0,-10,0,0">
                                                     <Label 
                                                     Text="کد کالا :" 
                                                     FontFamily="bTerafficB" 
@@ -188,7 +189,7 @@
                                                             TextColor="Black" 
                                                             FontSize="Body"/>
                                                         <Label 
-                                                            Text="300" 
+                                                            Text="{Binding Mojodi1, Mode=TwoWay}" 
                                                             FontFamily="bNazaninB" 
                                                             VerticalTextAlignment="Center" 
                                                             TextColor="Red" 
@@ -196,13 +197,13 @@
                                                     </StackLayout>
                                                     <StackLayout Orientation="Horizontal" Grid.Column="1">
                                                         <Label 
-                                                            Text="موجودی لحظه ای :" 
+                                                            Text="موجودی :" 
                                                             FontFamily="bNazaninB" 
                                                             VerticalTextAlignment="Center" 
                                                             TextColor="Black" 
                                                             FontSize="Body"/>
                                                         <Label 
-                                                            Text="300" 
+                                                            Text="{Binding Mojodi2, Mode=TwoWay}" 
                                                             FontFamily="bNazaninB" 
                                                             VerticalTextAlignment="Center" 
                                                             TextColor="Red" 
@@ -219,6 +220,21 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
+
+
+        <StackLayout 
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"
+            Orientation="Horizontal"
+            Grid.Row="2"
+            Margin="10,0,10,0">
+
+            <Button 
+                Text="تایید لیست کالا"
+                x:Name="btnObjectList"
+                Clicked="btnObjectList_Clicked" 
+                StyleClass="MainButton" />
+        </StackLayout>
     </Grid>
 
 </ContentPage>

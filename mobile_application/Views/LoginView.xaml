@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mobile_application.Login"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-             xmlns:renderers="clr-namespace:ChasedHomeUIDesign.Renderers"
-             BackgroundColor="{StaticResource Main}"
-             FlowDirection="RightToLeft">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="mobile_application.Views.LoginView"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+    xmlns:renderers="clr-namespace:ChasedHomeUIDesign.Renderers"
+    BackgroundColor="{StaticResource Main}"
+    FlowDirection="RightToLeft" >
 
     <ContentPage.Content>
 
@@ -18,13 +19,15 @@
                 Margin="0,-20,0,0"/>
 
             <Entry 
-                x:Name="txtUsername" 
+                x:Name="txtUsername"
+                Text="{Binding Username, Mode=TwoWay}"
                 Placeholder="نام کاربری" 
                 TextColor="White" 
                 PlaceholderColor="Gray"
                 HorizontalTextAlignment="Start"/>
             <Entry 
                 x:Name="txtPassword" 
+                Text="{Binding Password, Mode=TwoWay}"
                 Placeholder="رمز ورود به برنامه" 
                 HorizontalTextAlignment="End" 
                 IsPassword="True" 
@@ -32,9 +35,14 @@
                 PlaceholderColor="Gray" />
 
             <Button x:Name="btnLogin" 
+                    VerticalOptions="Center"
                     Text="ورود به سیستم"
-                    Clicked="LoginClick" 
-                    StyleClass="MainButton" />
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    BorderColor="ForestGreen"
+                    BorderWidth="1.5"
+                    CornerRadius="10" 
+                    Command="{Binding Login_Command}" />
 
             <Label 
                 x:Name="txtSetting" 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.Helper;
+using mobile_application.Services;
 
 namespace mobile_application.pages.App_Setting_Pages
 {
@@ -41,7 +42,7 @@ namespace mobile_application.pages.App_Setting_Pages
 
         private async void btnCloseMe_Clicked(object sender, EventArgs e)
         {
-            Static_Loading.api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
+            Service.set_api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
             await Navigation.PopAsync(true);
         }
     }

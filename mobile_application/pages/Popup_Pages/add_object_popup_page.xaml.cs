@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 using mobile_application.Models;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Extensions;
-using mobile_application.ServiceResponse;
+using mobile_application.Services;
 using mobile_application.Helper;
 
 namespace mobile_application.pages.Popup_Pages
@@ -29,11 +29,29 @@ namespace mobile_application.pages.Popup_Pages
 		
 		private async void Loading()
 		{
-			this.lblobjCode.Text = obj.Code.ToString();
-			this.lblobjName.Text = obj.Sharh.ToString();
+			var Nerkh = await Service.Object_Nerkh(Static_Loading.central_BranchCode, Header_Function.temp_header[0].CodeMosavabe, obj.Code);
+			try
+            {
+				this.lblobjCode.Text = obj.Code.ToString();
+				this.lblobjName.Text = obj.Sharh.ToString();
 
-			var Nerkh = await Client.Object_Nerkh(Static_Loading.central_BranchCode, Header_Function.temp_header[0].CodeMosavabe, obj.Code);
-			this.lblNerkh.Text = Nerkh[0].Sharh.ToString();
+				
+				this.lblNerkh.Text = Nerkh[0].Sharh.ToString();
+			}
+            catch (Exception ex)
+            {
+				if (Nerkh == null)
+				{
+					var pop = new mobile_application.controls.AppMessageBox("خطا", "کالای انتخاب شده دارای نرخ و اطلاعات قیمت نمیباشد.");
+					await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
+				}
+				else
+				{
+					var pop = new mobile_application.controls.AppMessageBox("Loading", ex.Message);
+					await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
+				}
+                throw;
+            }
 		}
 
 		private async void btnCloseMe_Clicked(object sender, EventArgs e)
@@ -67,7 +85,10 @@ namespace mobile_application.pages.Popup_Pages
         {
 			if (!string.IsNullOrEmpty(this.txtMeghdar.Text))
 			{
-				this.txtMablagh.Text = (Convert.ToInt64(this.txtMeghdar.Text) * Convert.ToInt64(this.lblNerkh.Text)).ToString();
+				var meghdar = Convert.ToInt64(this.txtMeghdar.Text);
+				var nerkh = Convert.ToDecimal(this.lblNerkh.Text);
+				var result = meghdar * nerkh;
+				this.txtMablagh.Text = result.ToString("###,###");
 			}
 			else
 			{

@@ -19,6 +19,8 @@ namespace mobile_application.Helper
         public static int central_user_per = 2;
         public static int central_BranchCode ;
         public static String central_BranchName ;
+        public static int Customer_Code;
+        public static string Customer_Name;
         public static string today_date = "1400/08/14";
 
 
@@ -39,26 +41,8 @@ namespace mobile_application.Helper
 
 
         
-        /// http://192.168.30.165:80/api/vw_code_sharh
-        public static string server_name = "MaliDB00_11";
-        public static string api_ip = "http://192.168.30.165";
-        public static string api_port = ":80/";
-        public static string api_username = "admin";
-        public static string api_password = "123";
-
-
-        public static string api_url()
-        { 
-            return "http://" + api_ip + ":" + api_port + "/";
-        }
-
-        public static string api_url(string ip,string port)
-        {
-            api_ip = ip;
-            api_port = port;
-            return api_ip + api_port;
-        }
-
+        
+        
         
 
 

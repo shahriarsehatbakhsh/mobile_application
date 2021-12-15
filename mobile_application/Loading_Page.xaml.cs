@@ -11,6 +11,7 @@ using System.ComponentModel;
 using Xamarin.Essentials;
 using mobile_application.pages.Users_Pages;
 using mobile_application.Helper;
+using mobile_application.Services;
 using mobile_application.pages.App_Setting_Pages;
 
 namespace mobile_application
@@ -28,18 +29,12 @@ namespace mobile_application
             server_list.Init();
             if (server_list.defaul_server == null)
             {
-                //this.lblConnection.IsVisible = true;
                 Static_Loading.Is_Set_ConnectionString = false;
                 this.btnSingout.BackgroundColor = Color.Red;
             }
             else
             {
-                //var a = ConnectionSyntax.Get_Active_Database_Connection_Id();
-                //Client.Set_Connection_String(a);
-                //Static_Loading.api_ip = server_list.defaul_server.IP;
-                //Static_Loading.api_port = server_list.defaul_server.Port;
-
-                Static_Loading.api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
+                Service.set_api_url(server_list.defaul_server.IP, server_list.defaul_server.Port);
                 Static_Loading.Is_Set_ConnectionString = true;
                 this.btnSingout.BackgroundColor = Color.White;
             }

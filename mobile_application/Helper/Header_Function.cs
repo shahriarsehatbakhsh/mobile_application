@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using mobile_application.Helper;
 using mobile_application.Models;
-using mobile_application.ServiceResponse;
+using mobile_application.Services;
 
 namespace mobile_application
 {
@@ -18,8 +18,8 @@ namespace mobile_application
         {
             try
             {
-                var HeaderCodeSerial = Client.Header_Code_Serial(Convert.ToInt32(CodeShobe)).GetAwaiter().GetResult();
-                var Customer_JobNo = Client.Customer_Job_No(Convert.ToInt32(CodeShobe), Convert.ToInt32(CodeMoshtari), TarikhBarge).GetAwaiter().GetResult();
+                var HeaderCodeSerial = Service.Header_Code_Serial(Convert.ToInt32(CodeShobe)).GetAwaiter().GetResult();
+                var Customer_JobNo = Service.Customer_Job_No(Convert.ToInt32(CodeShobe), Convert.ToInt32(CodeMoshtari), TarikhBarge).GetAwaiter().GetResult();
 
                 temp_header.Clear();
                 temp_header.Add(new F_hSefareshSeller
@@ -86,7 +86,7 @@ namespace mobile_application
         {
             try
             {
-                var rHeader = Client.Insert_Order_Header(Static_Loading.central_BranchCode,
+                var rHeader = Service.Insert_Order_Header(Static_Loading.central_BranchCode,
                                     Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode,
                                     Header_Function.temp_header[0].TarikhBarge,
                                     Header_Function.temp_header[0].CodeMoshtari,

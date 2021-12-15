@@ -8,10 +8,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.Models;
 using Rg.Plugins.Popup.Extensions;
-using Newtonsoft;
-using Newtonsoft.Json;
-using System.Net.Http;
 using mobile_application.Helper;
+using mobile_application.Services;
 
 namespace mobile_application.pages.Popup_Pages
 {
@@ -27,9 +25,7 @@ namespace mobile_application.pages.Popup_Pages
 
         private async void Loadin_Form()
         {
-            HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(Static_Loading.api_url() + "List/supervizer code_karbar=" + Static_Loading.central_user_id + ",code_shobe=" + Static_Loading.central_BranchCode);
-            List<vw_supervizer_list> result = JsonConvert.DeserializeObject<List<vw_supervizer_list>>(json);
+            var result = await Service.Supervizer_List(Static_Loading.central_user_id, Static_Loading.central_BranchCode);
             List<vw_supervizer_list> Items = result;
             this.lstSupervizerList.ItemsSource = Items;
         }

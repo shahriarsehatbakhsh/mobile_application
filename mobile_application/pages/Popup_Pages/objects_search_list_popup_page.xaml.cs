@@ -14,7 +14,7 @@ using Newtonsoft;
 using Newtonsoft.Json;
 using System.Net.Http;
 using mobile_application.Helper;
-using mobile_application.ServiceResponse;
+using mobile_application.Services;
 
 namespace mobile_application.pages.Popup_Pages
 {
@@ -29,7 +29,7 @@ namespace mobile_application.pages.Popup_Pages
 
         private async void Loadin_Form()
         {
-            this.lstObjectsList.ItemsSource = Client.ObjectCodeName_Search(this.txtSearchObject.Text).GetAwaiter().GetResult(); 
+            this.lstObjectsList.ItemsSource = Service.ObjectCodeName_Search(this.txtSearchObject.Text).GetAwaiter().GetResult(); 
         }
 
         private async void btnCloseMe_Clicked(object sender, EventArgs e)
@@ -63,11 +63,8 @@ namespace mobile_application.pages.Popup_Pages
             try
             {
                 string objName = this.txtSearchObject.Text;
-                HttpClient client = new HttpClient();
-                var json = await client.GetStringAsync(Static_Loading.api_url() + "List/ObjectCodeName object_name=" + objName);
-                List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
-                List<vw_code_sharh> Items = result;
-                this.lstObjectsList.ItemsSource = Items;
+                var result = await Service.Objects_List(objName);
+                this.lstObjectsList.ItemsSource = result;
             }
             catch (Exception)
             {

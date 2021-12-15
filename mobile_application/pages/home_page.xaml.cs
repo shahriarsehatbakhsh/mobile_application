@@ -24,46 +24,6 @@ namespace mobile_application.pages
             mnusqlCommand = new Command(connection_setting_page_click);
         }
 
-        private void btnOpenForm_Clicked(object sender, EventArgs e)
-        {
-            //await Navigation.PushAsync(new Forms.AddNewOrder());
-            Button btn = sender as Button;
-            string FormTitle = btn.Text;
-
-            switch (FormTitle)
-            {
-                case "ثبت سفارشات":
-                    {
-                        //await Navigation.PushAsync(new mobile_application.pages.Order_Pages.A_add_new_order(), true);
-                        //App.Current.MainPage = new mobile_application.pages.Order_Pages.OrderTabbedMenu();
-                        break;
-                    }
-                case "لیست مشتری ها":
-                    {
-                        //await Navigation.PushAsync(new customers_list(), true);
-                        break;
-                    }
-                case "لیست کالاها":
-                    {
-                        //await Navigation.PushAsync(new objects_list(), true);
-                        break;
-                    }
-                case "گزارشات":
-                    {
-                        //App.Current.MainPage = new Page1();
-                        break;
-                    }
-                case "اعلانات":
-                    {
-                        //App.Current.MainPage = new objects_list();
-                        break;
-                    }
-                default:
-                    break;
-            }
-        }
-
-
         public ICommand mnusqlCommand { private set; get; }
 
         private  void connection_setting_page_click()
@@ -75,22 +35,9 @@ namespace mobile_application.pages
             await Navigation.PushAsync(new mobile_application.pages.Order_Pages.OrderHeader());
         }
 
-        private  void mnusql_Clicked(object sender, EventArgs e)
-        {
-        }
-
         private async void profile_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new mobile_application.pages.Users_Pages.user_change_password_page());
-        }
-
-        private  void create_profile_Clicked(object sender, EventArgs e)
-        {
-        }
-
-        private async void btnMenu02_Clicked(object sender, EventArgs e)
-        {
-            
         }
 
         private async void btnMenu03_Clicked(object sender, EventArgs e)
@@ -102,5 +49,6 @@ namespace mobile_application.pages
         {
             await Navigation.PushAsync(new mobile_application.pages.Objects.objects_list_page());
         }
+
     }
 }

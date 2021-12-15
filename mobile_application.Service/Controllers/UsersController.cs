@@ -21,7 +21,13 @@ namespace mobile_application.Service.Controllers
             _context = context;
         }
 
-        [HttpGet("CentralLogin Username={Username},Password={Password}")]
+        /// <summary>
+        /// 'https://localhost:44331/Users/CentralLogin/2/1'
+        /// </summary>
+        /// <param name="Username"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
+        [HttpGet("CentralLogin/{Username}/{Password}")]
         public async Task<ActionResult<IEnumerable<vw_result>>> GetCentralLogin(string Username,string Password)
         {
             string StoredProc = "exec sp_login @Username='" + Username + "',@Password='" + Password + "'";

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_application.ServiceResponse;
+using mobile_application.Services;
 using Rg.Plugins.Popup.Extensions;
 using mobile_application.Models;
 using mobile_application.pages.Popup_Pages;
@@ -52,6 +52,8 @@ namespace mobile_application.pages.Order_Pages
             view.IsVisible = false;
         }
 
+        public string Mojodi1 = "100";
+        public string Mojodi2 = "100";
         private async void MainExpander_Tapped(object sender, EventArgs e)
         {
             var expander = sender as Xamarin.CommunityToolkit.UI.Views.Expander;
@@ -64,6 +66,9 @@ namespace mobile_application.pages.Order_Pages
             {
                 await OpenAnimation(imgView);
                 await OpenAnimation(detailsView);
+
+                Mojodi1 = "100";
+                Mojodi2 = "200";
             }
             else
             {
@@ -83,9 +88,7 @@ namespace mobile_application.pages.Order_Pages
         anbar_search_list_popup_page frm_anbar_list;
         private async void btnSelectAnbar_Clicked(object sender, EventArgs e)
         {
-            HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(Static_Loading.api_url() + "List/anbar_list BranchCode=" + Static_Loading.central_BranchCode) ;
-            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+            var result = await Service.Anbar_List(Static_Loading.central_BranchCode);
             views.show_list = result;
 
             frm_anbar_list = new anbar_search_list_popup_page(views.show_list);
@@ -98,10 +101,15 @@ namespace mobile_application.pages.Order_Pages
             this.txtNameAnbar.Text = e[0].Sharh.ToString();
 
             items = new List<vw_code_sharh>();
-            items = Client.Objects_List(Convert.ToInt32(this.txtCodeAnbar.Text)).GetAwaiter().GetResult();
+            items = Service.Objects_List(Convert.ToInt32(this.txtCodeAnbar.Text)).GetAwaiter().GetResult();
             this.collObjectList.ItemsSource = items;
 
             this.lblAnbarName.Text += this.txtNameAnbar.Text;
+        }
+
+        async void btnObjectList_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new OrderDetail());
         }
     }
 }

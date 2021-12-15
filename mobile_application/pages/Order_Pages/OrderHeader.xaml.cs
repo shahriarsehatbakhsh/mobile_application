@@ -9,7 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using mobile_application.pages.Popup_Pages;
 using Rg.Plugins.Popup.Extensions;
-using mobile_application.ServiceResponse;
+using mobile_application.Services;
 using mobile_application.Models;
 using mobile_application.Helper;
 using Newtonsoft.Json;
@@ -41,6 +41,7 @@ namespace mobile_application.pages.Order_Pages
         private void Customer_Search_Result(object sender, List<vw_customers_list> e)
         {
             this.txtCodeMoshtari.Text = e[0].Code.ToString();
+            Static_Loading.Customer_Code = e[0].Code;
             this.txtCustomerName.Text = e[0].Sharh.ToString();
         }
 
@@ -76,10 +77,7 @@ namespace mobile_application.pages.Order_Pages
         shobe_search_list_popup_page frm_shobe_list;
         private async void btnSelectShobe_Clicked(object sender, EventArgs e)
         {
-            HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(Static_Loading.api_url() + "List/Shobe code_karbar=" + Static_Loading.central_user_id + ",code_karbar_per=" + Static_Loading.central_user_per);
-            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
-            views.show_list = result;
+            views.show_list = await Service.List_Shobe(Static_Loading.central_user_id, Static_Loading.central_user_per);
 
             frm_shobe_list = new shobe_search_list_popup_page(views.show_list);
             frm_shobe_list.Search += Shobe_Search_Result;
@@ -97,11 +95,7 @@ namespace mobile_application.pages.Order_Pages
         mosavabe_search_list_popup_page frmMosavabe;
         private async void btnSelectMosavabe_Clicked(object sender, EventArgs e)
         {
-            HttpClient client = new HttpClient();
-            var strDate = this.txtDate.ShamsiDateString.Replace("/", "D");
-            var url = Static_Loading.api_url() + "List/mosavabe_list Fhmo05=" + strDate + ",Fdmb02=" + Static_Loading.central_BranchCode;
-            var json = await client.GetStringAsync(url);
-            List<vw_code_sharh> result = JsonConvert.DeserializeObject<List<vw_code_sharh>>(json);
+            List<vw_code_sharh> result = await Service.List_Mosavabe(this.txtDate.ShamsiDateString.ToString(), Static_Loading.central_BranchCode);
 
             frmMosavabe = new mosavabe_search_list_popup_page(result);
             frmMosavabe.Search += Mosavabe_Search_Result;
@@ -141,7 +135,7 @@ namespace mobile_application.pages.Order_Pages
             var CustCode = Convert.ToInt32(this.txtCodeMoshtari.Text);
             var BranchCode = Static_Loading.central_BranchCode;
             var UserCode = Static_Loading.central_user_id;
-            var resut = Client.Customer_Cart_New(BranchCode, CustCode, UserCode);
+            var resut = Service.Customer_Cart_New(BranchCode, CustCode, UserCode);
 
             var BalancePrice = resut.GetAwaiter().GetResult()[0].BalancePrice;
             if (BalancePrice > 0) //bedehkar
@@ -162,7 +156,7 @@ namespace mobile_application.pages.Order_Pages
 
             this.lblCastCartPrice.Text = BalancePrice.ToString("###,###");
             this.lblCastCartText.Text = "ریال";
-            var R = Client.Customer_Cart_Pishe_State(BranchCode, CustCode, this.txtDate.Text).GetAwaiter().GetResult();
+            var R = Service.Customer_Cart_Pishe_State(BranchCode, CustCode, this.txtDate.Text).GetAwaiter().GetResult();
             if (R == null)
                 pishe.result = "1";
             else

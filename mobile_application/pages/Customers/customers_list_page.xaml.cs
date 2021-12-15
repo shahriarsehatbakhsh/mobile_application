@@ -23,16 +23,12 @@ namespace mobile_application.pages.Customers
         public customers_list_page()
         {
             InitializeComponent();
-            this.BindingContext = new main_menu_list();
-
             Loadin_Form();
         }
 
         private async void Loadin_Form()
         {
-            HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(Static_Loading.api_url() + "Customers/List code_shobe=" + Static_Loading.central_BranchCode);
-            List<vw_customers_list> result = JsonConvert.DeserializeObject<List<vw_customers_list>>(json);
+            var result = await Services.Service.Customers_List(Static_Loading.central_BranchCode);
             List<vw_customers_list> Items = result;
             if (Items == null)
             {

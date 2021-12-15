@@ -167,6 +167,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -189,22 +192,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\mobile_application.Service\Models\ErrorResult.cs" Link="ServiceResponse\Models\ErrorResult.cs" />
-    <Compile Include="..\mobile_application.Service\Models\F_dSefareshSeller.cs" Link="ServiceResponse\Models\F_dSefareshSeller.cs" />
-    <Compile Include="..\mobile_application.Service\Models\F_hSefareshSeller.cs" Link="ServiceResponse\Models\F_hSefareshSeller.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_code_sharh.cs" Link="ServiceResponse\Models\vw_code_sharh.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_customers_list.cs" Link="ServiceResponse\Models\vw_customers_list.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_customer_cart_result.cs" Link="ServiceResponse\Models\vw_customer_cart_result.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_customer_code_serial.cs" Link="ServiceResponse\Models\vw_customer_code_serial.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_customer_information.cs" Link="ServiceResponse\Models\vw_customer_information.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_GetLatestAvailableCustomerCode.cs" Link="ServiceResponse\Models\vw_GetLatestAvailableCustomerCode.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_header_CodeSerial.cs" Link="ServiceResponse\Models\vw_header_CodeSerial.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_JobNo.cs" Link="ServiceResponse\Models\vw_JobNo.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_result.cs" Link="ServiceResponse\Models\vw_result.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_result_long.cs" Link="ServiceResponse\Models\vw_result_long.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_seller_list.cs" Link="ServiceResponse\Models\vw_seller_list.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_supervizer_list.cs" Link="ServiceResponse\Models\vw_supervizer_list.cs" />
-    <Compile Include="..\mobile_application.Service\Models\vw_Users.cs" Link="ServiceResponse\Models\vw_Users.cs" />
+    <Compile Include="..\mobile_application.Service\Models\ErrorResult.cs" Link="Models\ErrorResult.cs" />
+    <Compile Include="..\mobile_application.Service\Models\F_dSefareshSeller.cs" Link="Models\F_dSefareshSeller.cs" />
+    <Compile Include="..\mobile_application.Service\Models\F_hSefareshSeller.cs" Link="Models\F_hSefareshSeller.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_code_sharh.cs" Link="Models\vw_code_sharh.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_customers_list.cs" Link="Models\vw_customers_list.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_customer_cart_result.cs" Link="Models\vw_customer_cart_result.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_customer_code_serial.cs" Link="Models\vw_customer_code_serial.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_customer_information.cs" Link="Models\vw_customer_information.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_GetLatestAvailableCustomerCode.cs" Link="Models\vw_GetLatestAvailableCustomerCode.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_header_CodeSerial.cs" Link="Models\vw_header_CodeSerial.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_JobNo.cs" Link="Models\vw_JobNo.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_KalaPackage.cs" Link="Models\vw_KalaPackage.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_result.cs" Link="Models\vw_result.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_result_long.cs" Link="Models\vw_result_long.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_seller_list.cs" Link="Models\vw_seller_list.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_supervizer_list.cs" Link="Models\vw_supervizer_list.cs" />
+    <Compile Include="..\mobile_application.Service\Models\vw_Users.cs" Link="Models\vw_Users.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -219,8 +223,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ServiceResponse\Models\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>
