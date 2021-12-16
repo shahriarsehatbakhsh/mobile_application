@@ -30,7 +30,7 @@
             <Setter Property="FontSize" Value="Medium" />
         </Style>
     </ContentPage.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <!--<RowDefinition Height="70" /> >-->
@@ -88,12 +88,13 @@
         <ScrollView 
             Grid.Row="1" 
             BackgroundColor="{StaticResource Body}">
-            <CollectionView x:Name="collObjectList" 
-                        Grid.Row="1" 
-                        Margin="30,5,30,30" 
-                        HorizontalOptions="FillAndExpand" 
-                        VerticalOptions="FillAndExpand"
-                        SelectionMode="None" >
+            <CollectionView 
+                x:Name="collObjectList" 
+                Grid.Row="1" 
+                Margin="30,5,30,30" 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand"
+                SelectionMode="None" >
                 <CollectionView.Header>
                     <Label x:Name="lblAnbarName" Text="لیست کالاهای موجود در انبار - " TextColor="White" />
                 </CollectionView.Header>
@@ -102,17 +103,13 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame HasShadow="True" 
-                           BackgroundColor="Transparent" 
-                           VerticalOptions="StartAndExpand" 
-                           HorizontalOptions="FillAndExpand" 
-                           Padding="0">
-                            <Grid 
-                            VerticalOptions="StartAndExpand" 
-                            HorizontalOptions="FillAndExpand">
-                                <extensions:Expander x:Name="MainExpander" 
-                                                 Tapped="MainExpander_Tapped" 
-                                                 CollapseAnimationLength="400">
+                        <Frame HasShadow="True" BackgroundColor="Transparent" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="0">
+                            <Grid VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                                <extensions:Expander 
+                                    x:Name="MainExpander" 
+                                    Tapped="MainExpander_Tapped" 
+                                    CommandParameter="{Binding Source={x:Reference lblObjCode}, Path=Text}"
+                                    CollapseAnimationLength="400">
                                     <extensions:Expander.Header>
                                         <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" >
                                             <Grid.ColumnDefinitions>
@@ -123,53 +120,44 @@
                                                 <RowDefinition Height="100" />
                                             </Grid.RowDefinitions>
                                             <BoxView BackgroundColor="#A0A4C9" Opacity="0.2"/>
-                                            <StackLayout HorizontalOptions="FillAndExpand" 
-                                                     VerticalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <ImageButton 
-                                                x:Name="btnSelectObject" 
-                                                CommandParameter="{Binding Source={x:Reference lblObjCode}, Path=Text}" 
-                                                Source="main02" 
-                                                Clicked="btnSelectObject_Clicked" 
-                                                Aspect="AspectFill" />
+                                                    x:Name="btnSelectObject" 
+                                                    CommandParameter="{Binding Source={x:Reference lblObjCode}, Path=Text}" 
+                                                    Source="main02" 
+                                                    Clicked="btnSelectObject_Clicked" 
+                                                    Aspect="AspectFill" />
                                             </StackLayout>
-                                            <StackLayout Grid.Column="1" 
-                                                     HorizontalOptions="Start" 
-                                                     VerticalOptions="Center" 
-                                                     Margin="0" 
-                                                     Padding="0,0,0,0">
+                                            <StackLayout x:Name="stlObjectDetail" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0" Padding="0,0,0,0" >
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label 
-                                                    x:Name="lblObjName" 
-                                                    Text="{Binding Sharh, StringFormat='نام کالا : {0}'}" 
-                                                    FontFamily="lalezar" 
-                                                    VerticalTextAlignment="Center" 
-                                                    TextColor="Black" 
-                                                    FontSize="20"
-                                                    Margin="0,-15,0,0"/>
+                                                        x:Name="lblObjName" 
+                                                        Text="{Binding Sharh, StringFormat='نام کالا : {0}'}" 
+                                                        FontFamily="lalezar" 
+                                                        VerticalTextAlignment="Center" 
+                                                        TextColor="Black" 
+                                                        FontSize="20"
+                                                        Margin="0,-15,0,0" />
                                                 </StackLayout>
-                                                <StackLayout 
-                                                    Orientation="Horizontal" 
-                                                    Padding="0,-10,0,0">
+                                                <StackLayout Orientation="Horizontal" Padding="0,-10,0,0">
                                                     <Label 
-                                                    Text="کد کالا :" 
-                                                    FontFamily="bTerafficB" 
-                                                    VerticalTextAlignment="Center" 
-                                                    TextColor="Black" 
-                                                    FontSize="15"/>
+                                                        Text="کد کالا :" 
+                                                        FontFamily="bTerafficB" 
+                                                        VerticalTextAlignment="Center" 
+                                                        TextColor="Black" 
+                                                        FontSize="15"/>
                                                     <Label 
-                                                    x:Name="lblObjCode" 
-                                                    Text="{Binding Code}" 
-                                                    FontFamily="bTerafficB" 
-                                                    VerticalTextAlignment="Center" 
-                                                    TextColor="Black" 
-                                                    FontSize="15"/>
+                                                        x:Name="lblObjCode" 
+                                                        Text="{Binding Code}" 
+                                                        FontFamily="bTerafficB" 
+                                                        VerticalTextAlignment="Center" 
+                                                        TextColor="Black" 
+                                                        FontSize="15"/>
                                                 </StackLayout>
                                             </StackLayout>
                                         </Grid>
                                     </extensions:Expander.Header>
-                                    <Grid RowSpacing="0" 
-                                      HorizontalOptions="FillAndExpand" 
-                                      HeightRequest="100">
+                                    <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" HeightRequest="100">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="1"/>
                                             <RowDefinition Height="200"/>
@@ -177,9 +165,15 @@
                                         <Grid x:Name="ImageView" IsVisible="False">
                                             <BoxView Color="LightPink" />
                                         </Grid>
-                                        <Grid x:Name="DetailsView" Grid.Row="1" BackgroundColor="White" Padding="10" IsVisible="False">
+                                        <Grid x:Name="DetailGrid" Grid.Row="1" BackgroundColor="White" Padding="10" IsVisible="False">
                                             <StackLayout>
-                                                <Label Text="توضیحات بیشتر :" FontFamily="Calibrib" TextColor="Black" FontSize="Body" FontAttributes="Bold" Opacity="0.85"/>
+                                                <Label 
+                                                    Text="توضیحات بیشتر :" 
+                                                    FontFamily="Calibrib" 
+                                                    TextColor="Black" 
+                                                    FontSize="Body" 
+                                                    FontAttributes="Bold" 
+                                                    Opacity="0.85"/>
                                                 <Grid>
                                                     <StackLayout Orientation="Horizontal" Grid.Column="0">
                                                         <Label 
@@ -188,8 +182,9 @@
                                                             VerticalTextAlignment="Center" 
                                                             TextColor="Black" 
                                                             FontSize="Body"/>
-                                                        <Label 
-                                                            Text="{Binding Mojodi1, Mode=TwoWay}" 
+                                                        <Label
+                                                            x:Name="lblMojoodi"
+                                                            Text="{Binding Mojoodi, Mode=TwoWay}" 
                                                             FontFamily="bNazaninB" 
                                                             VerticalTextAlignment="Center" 
                                                             TextColor="Red" 
@@ -202,8 +197,9 @@
                                                             VerticalTextAlignment="Center" 
                                                             TextColor="Black" 
                                                             FontSize="Body"/>
-                                                        <Label 
-                                                            Text="{Binding Mojodi2, Mode=TwoWay}" 
+                                                        <Label
+                                                            x:Name="lblMojoodi_Date"
+                                                            Text="{Binding Mojoodi_Date, Mode=TwoWay}" 
                                                             FontFamily="bNazaninB" 
                                                             VerticalTextAlignment="Center" 
                                                             TextColor="Red" 

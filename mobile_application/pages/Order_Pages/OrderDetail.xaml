@@ -4,104 +4,87 @@
              x:Class="mobile_application.pages.Order_Pages.OrderDetail"
              FlowDirection="RightToLeft"
              BackgroundColor="{StaticResource Search}" 
-             Title="مشاهده نهایی و ثبت سفارش" >
+             Title="مشاهده نهایی و ثبت سفارش" 
+             IconImageSource="click02.png" >
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="80" />
         </Grid.RowDefinitions>
 
-        <!-- Form Title StackLayout -->
-        <StackLayout StyleClass="Title" Margin="0,0,10,0" >
-            <Image x:Name="imgTitle" Source="click01" />
-            <Label x:Name="lblTitle" Text="مشاهده و ثبت نهایی سفارش" StyleClass="Title_Label"/>
-        </StackLayout>
-
-
-        <!--Header search-->
-        <StackLayout BackgroundColor="{StaticResource Search}" Grid.Row="1" Margin="10,10,10,0">
-            <Frame Padding="10" BackgroundColor="Transparent" CornerRadius="5" HorizontalOptions="FillAndExpand" BorderColor="White" >
-                <StackLayout Orientation="Vertical">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="شماره برگه سفارش : " TextColor="White" />
-                        <Label x:Name="lblShomareSefaresh" Text="" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="تاریخ برگه : " TextColor="White" />
-                        <Label x:Name="lblTarikhBarge" Text=""  TextColor="White" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="شعبه : " TextColor="White" />
-                        <Label x:Name="lblBranchName" Text="" TextColor="White" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="مشتری : " TextColor="White" />
-                        <Label x:Name="lblCustomerInfo"  TextColor="White" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="وضعیت مشتری : " TextColor="White" />
-                        <Label x:Name="lblCustomerState" Text="قبول" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="پیام مشتری : " TextColor="White" />
-                        <Label x:Name="lblCustomerMessage" Text="" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="شماره های تماس: " TextColor="White" />
-                        <Label x:Name="lblCustomerTell" Text="" />
-                        <Label Text=" - " />
-                        <Label x:Name="lblCustomerMobile" Text="" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="آدرس مشتری : " TextColor="White" />
-                        <Label x:Name="lblCustomerAddress" Text="آدرس : " />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="استان : " TextColor="White" />
-                        <Label x:Name="lblCustomerOstan" Text="" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="شهر : " TextColor="White" />
-                        <Label x:Name="lblCustomerCity" Text="" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="منطقه : " TextColor="White" />
-                        <Label x:Name="lblCustomerMantaghe" Text="" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="مسیر : " TextColor="White" />
-                        <Label x:Name="lblCustomerMasir" Text="" />
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </StackLayout>
-
 
         <!--Form body-->
-        <StackLayout Grid.Row="2" BackgroundColor="{StaticResource Body}">
-            <ScrollView>
+        <ScrollView>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource Body}" Margin="10,20,10,0">
                 <ListView x:Name="lstObjectDetails">
                     <ListView.Header>
-                        <StackLayout Orientation="Vertical">
-                            <Label Text="لیست کالاهای انتخاب شده" TextColor="White" />
-                        </StackLayout>
+                        <Frame Padding="10" BackgroundColor="Transparent" CornerRadius="5" BorderColor="White" >
+                            <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="شعبه : " TextColor="White" />
+                                    <Label x:Name="lblBranchName" TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="شماره برگه سفارش : " TextColor="White" />
+                                    <Label x:Name="lblShomareSefaresh" TextColor="White" />
+                                    <Label Text="  -  " TextColor="White" />
+                                    <Label Text="تاریخ برگه : " TextColor="White" />
+                                    <Label x:Name="lblTarikhBarge" TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label x:Name="lblCustomerInfo"  TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="وضعیت مشتری : " TextColor="White" />
+                                    <Label x:Name="lblCustomerState" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="پیام مشتری : " TextColor="White" />
+                                    <Label x:Name="lblCustomerMessage" TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="شماره های تماس   " TextColor="White" />
+                                    <Label Text=" تلفن :" TextColor="White" />
+                                    <Label x:Name="lblCustomerTell" TextColor="White" />
+                                    <Label Text="  -  " TextColor="White" />
+                                    <Label Text=" همراه :" TextColor="White" />
+                                    <Label x:Name="lblCustomerMobile" TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="آدرس مشتری : " TextColor="White" />
+                                    <Label x:Name="lblCustomerAddress" TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="استان : " TextColor="White" />
+                                    <Label x:Name="lblCustomerOstan" TextColor="White" />
+                                    <Label Text="  -  " TextColor="White" />
+                                    <Label Text="شهر : " TextColor="White" />
+                                    <Label x:Name="lblCustomerCity" TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="منطقه : " TextColor="White" />
+                                    <Label x:Name="lblCustomerMantaghe" TextColor="White" />
+                                    <Label Text="  -  " TextColor="White" />
+                                    <Label Text="مسیر : " TextColor="White" />
+                                    <Label x:Name="lblCustomerMasir" TextColor="White" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
                     </ListView.Header>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame BorderColor="White" BackgroundColor="AliceBlue">
-                                    <StackLayout Orientation="Vertical" >
-                                        <Label x:Name="lblObjectName" Text="{Binding NameKala, StringFormat='نام کالا : {0}'}" />
+                                <Frame Padding="10" BackgroundColor="Transparent" CornerRadius="5" BorderColor="White" >
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                                        <Label TextColor="White" x:Name="lblObjectName" Text="{Binding NameKala, StringFormat='نام کالا : {0}'}" />
                                         <StackLayout Orientation="Horizontal">
-                                            <Label x:Name="lblMeghdar" Text="{Binding Meghdar, StringFormat='مقدار {0}'}" />
-                                            <Label x:Name="lblTedadBaste" Text="{Binding TedadBaste, StringFormat='تعداد بسته {0}'}" />
+                                            <Label TextColor="White" x:Name="lblMeghdar" Text="{Binding Meghdar, StringFormat='مقدار {0}'}" />
+                                            <Label TextColor="White" x:Name="lblTedadBaste" Text="{Binding TedadBaste, StringFormat='تعداد بسته {0}'}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label x:Name="lblNerkh" Text="{Binding Nerkh, StringFormat='نرخ {0}'}" />
-                                            <Label x:Name="lblMablagh" Text="{Binding Mablagh, StringFormat='مبلغ {0}'}" />
+                                            <Label TextColor="White" x:Name="lblNerkh" Text="{Binding Nerkh, StringFormat='نرخ {0}'}" />
+                                            <Label TextColor="White" x:Name="lblMablagh" Text="{Binding Mablagh, StringFormat='مبلغ {0}'}" />
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
@@ -109,8 +92,8 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </ScrollView>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
 
 
         <!--End form button-->
@@ -118,7 +101,7 @@
             HorizontalOptions="FillAndExpand"
             VerticalOptions="Center"
             Orientation="Horizontal"
-            Grid.Row="3"
+            Grid.Row="1"
             Margin="10,0,10,0">
 
             <Button 
@@ -128,4 +111,5 @@
                 StyleClass="MainButton" />
         </StackLayout>
     </Grid>
+
 </ContentPage>

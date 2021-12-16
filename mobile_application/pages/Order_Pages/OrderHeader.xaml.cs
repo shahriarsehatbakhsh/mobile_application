@@ -43,6 +43,7 @@ namespace mobile_application.pages.Order_Pages
             this.txtCodeMoshtari.Text = e[0].Code.ToString();
             Static_Loading.Customer_Code = e[0].Code;
             this.txtCustomerName.Text = e[0].Sharh.ToString();
+            Static_Loading.Customer_Name = e[0].Sharh.ToString();
         }
 
 
@@ -200,7 +201,10 @@ namespace mobile_application.pages.Order_Pages
             int CodeSupervizer = 0;
             if (!string.IsNullOrEmpty(this.txtCodeSupervizer.Text))
                 CodeSupervizer = Convert.ToInt32(this.txtCodeSupervizer.Text);
+
             Header_Function.Add_Header_Temp(Convert.ToInt32(this.txtCodeForooshande.Text),Convert.ToInt32(this.txtCodeMosavabe.Text),Convert.ToInt32(this.txtCodeMoshtari.Text),Convert.ToInt16(this.txtCodeShobe.Text),CodeSupervizer,Convert.ToInt32(this.txtModdateTasvie.Text),Convert.ToInt32(this.cmbTasvie.SelectedIndex + 1),this.txtDate.ShamsiDateString,Static_Loading.today_date);
+            Static_Loading.central_BargeDate = this.txtDate.ShamsiDateString;
+
             await Navigation.PushAsync(new OrderObjectList());
         }
 

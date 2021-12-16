@@ -18,8 +18,7 @@ namespace mobile_application.pages.Order_Pages
         public OrderDetail()
         {
             InitializeComponent();
-
-            this.load_data();
+            load_data();
         }
 
         async void load_data()
@@ -30,18 +29,18 @@ namespace mobile_application.pages.Order_Pages
 
             var Customer_Information = await Service.customer_Information(Static_Loading.Customer_Code, Static_Loading.central_BranchCode);
 
-            if (Customer_Information.Count > 0)
+            if (Customer_Information.Count == 1)
             {
-                this.lblBranchName.Text = "شعبه : " + Customer_Information[0].Shobe;
-                this.lblShomareSefaresh.Text = "شماره سفارش : " + Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode.ToString();
-                this.lblTarikhBarge.Text = "تاریخ برگه : " + Header_Function.temp_header[0].TarikhBarge.ToString();
+                this.lblBranchName.Text = Static_Loading.central_BranchName;
+                this.lblShomareSefaresh.Text = Header_Function.temp_header[0].sp_GetLatestAvailableSefareshHeaderCode_HeaderCode.ToString();
+                this.lblTarikhBarge.Text = Header_Function.temp_header[0].TarikhBarge.ToString();
 
-                this.lblCustomerInfo.Text = "مشتری : " + Static_Loading.Customer_Code + " - کد مشتری : " + Static_Loading.Customer_Name;
+                this.lblCustomerInfo.Text = "مشتری : " + Static_Loading.Customer_Name + " - کد مشتری : " + Static_Loading.Customer_Code;
                 this.lblCustomerState.Text = "قبول";
                 this.lblCustomerMessage.Text = Customer_Information[0].Message;
 
                 this.lblCustomerTell.Text = Customer_Information[0].Tell;
-                this.lblCustomerMobile.Text= Customer_Information[0].Mobile;
+                this.lblCustomerMobile.Text = Customer_Information[0].Mobile;
 
                 this.lblCustomerAddress.Text = Customer_Information[0].Address;
 
@@ -51,6 +50,11 @@ namespace mobile_application.pages.Order_Pages
                 this.lblCustomerMantaghe.Text = Customer_Information[0].NameMantaghe;
                 this.lblCustomerMasir.Text = Customer_Information[0].NameMasir;
             }
+            else
+            {
+                this.lblBranchName.Text = this.lblShomareSefaresh.Text = this.lblTarikhBarge.Text = this.lblCustomerInfo.Text = this.lblCustomerState.Text = this.lblCustomerMessage.Text = this.lblCustomerTell.Text = this.lblCustomerMobile.Text = this.lblCustomerAddress.Text = this.lblCustomerOstan.Text = this.lblCustomerCity.Text = this.lblCustomerMantaghe.Text = this.lblCustomerMasir.Text = "";
+            }
+
             this.lstObjectDetails.ItemsSource = Header_Function.temp_details;
         }
 
@@ -64,8 +68,8 @@ namespace mobile_application.pages.Order_Pages
             if (hResult != "DONE")
             {
                 Static_Loading.error_message = "Header Insert Error :" + hResult;
-                var pop = new mobile_application.controls.AppMessageBox("Header Insert Error", Static_Loading.error_message);
-                await App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
+                var error_pop = new mobile_application.controls.AppMessageBox("Header Insert Error", Static_Loading.error_message);
+                await App.Current.MainPage.Navigation.PushPopupAsync(error_pop, true);
                 return;
             }
             else
@@ -90,6 +94,13 @@ namespace mobile_application.pages.Order_Pages
                                            Header_Function.temp_details[i].TarikhRooz,
                                            Header_Function.temp_details[i].MoshtariCode);
             }
+            var save_pop = new mobile_application.controls.AppMessageBox("ثبت سفارش", "ثبت سفارش با موفقیت انجام شد");
+            var R = App.Current.MainPage.Navigation.PushPopupAsync(save_pop, true);
+            Header_Function.temp_header.Clear();
+            Header_Function.temp_details.Clear();
+
+            await Navigation.PushAsync(new OrderHeader());
         }
+
     }
 }

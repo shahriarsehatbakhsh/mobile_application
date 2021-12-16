@@ -13,6 +13,7 @@ using mobile_application.pages.Popup_Pages;
 using mobile_application.Helper;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 
 namespace mobile_application.pages.Order_Pages
 {
@@ -24,6 +25,17 @@ namespace mobile_application.pages.Order_Pages
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// use this command instead of object event .
+        /// </summary>
+        public Command click_command => new Command<string>((url) =>
+        {
+            if (string.IsNullOrEmpty(url))
+                url = "http://www.paya.ws/" ;
+            Device.OpenUri(new Uri(url)) ;
+        });
+
 
         vw_code_sharh _select_item;
         private async void txtObject_Click(object sender, EventArgs e)
@@ -52,27 +64,52 @@ namespace mobile_application.pages.Order_Pages
             view.IsVisible = false;
         }
 
-        public string Mojodi1 = "100";
-        public string Mojodi2 = "100";
+        
         private async void MainExpander_Tapped(object sender, EventArgs e)
         {
             var expander = sender as Xamarin.CommunityToolkit.UI.Views.Expander;
             var imgView = expander.FindByName<Grid>("ImageView");
-            var detailsView = expander.FindByName<Grid>("DetailsView");
 
+            var detailGrid = expander.FindByName<Grid>("DetailGrid");
+
+            var lblMojoodi = detailGrid.FindByName<Label>("lblMojoodi");
+            var lblMojoodi_Date = detailGrid.FindByName<Label>("lblMojoodi_Date");
+
+
+            int anCode = Convert.ToInt32(this.txtCodeAnbar.Text);
+            string objCode = expander.CommandParameter.ToString();
+            var rM = await Service.Mojoodi_Anbar(anCode, objCode);
+            var rMD = await Service.Mojoodi_Anbar_BargeDate(Static_Loading.central_BargeDate, anCode, objCode);
+
+            if (rM.Count == 1 && rMD.Count == 1)
+            {
+                if (rM[0].result == null)
+                    lblMojoodi.Text = "0";
+                else
+                    lblMojoodi.Text = rM[0].result;
+
+                if (rMD[0].result == null)
+                    lblMojoodi_Date.Text = "0";
+                else
+                    lblMojoodi_Date.Text = rMD[0].result;
+            }
+            else
+            {
+                lblMojoodi.Text = "Not found !!!";
+                lblMojoodi_Date.Text = "Not found !!!";
+            }
+            
+             
 
 
             if (expander.IsExpanded)
             {
                 await OpenAnimation(imgView);
-                await OpenAnimation(detailsView);
-
-                Mojodi1 = "100";
-                Mojodi2 = "200";
+                await OpenAnimation(detailGrid);
             }
             else
             {
-                await CloseAnimation(detailsView);
+                await CloseAnimation(detailGrid);
                 await CloseAnimation(imgView);
             }
         }
@@ -107,7 +144,7 @@ namespace mobile_application.pages.Order_Pages
             this.lblAnbarName.Text += this.txtNameAnbar.Text;
         }
 
-        async void btnObjectList_Clicked(object sender, EventArgs e)
+        private async void btnObjectList_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new OrderDetail());
         }

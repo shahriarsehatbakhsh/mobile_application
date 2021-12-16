@@ -19,6 +19,7 @@ namespace mobile_application.Helper
         public static int central_user_per = 2;
         public static int central_BranchCode ;
         public static String central_BranchName ;
+        public static String central_BargeDate;
         public static int Customer_Code;
         public static string Customer_Name;
         public static string today_date = "1400/08/14";

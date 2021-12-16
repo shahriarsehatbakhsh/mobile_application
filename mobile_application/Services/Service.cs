@@ -429,6 +429,8 @@ namespace mobile_application.Services
         {
             try
             {
+                ObjectCode = function_static.Create_Kala_Code(ObjectCode);
+
                 HttpClient client = new HttpClient();
                 string url = api_url + "Anbar/Mojoodi_Anbar/" + AnbarCode + "/" + ObjectCode;
                 var json = await client.GetStringAsync(url) ;
@@ -446,6 +448,9 @@ namespace mobile_application.Services
         {
             try
             {
+                ObjectCode = function_static.Create_Kala_Code(ObjectCode);
+                TarikhBarge = TarikhBarge.Replace("/", "D");
+
                 HttpClient client = new HttpClient();
                 var json = await client.GetStringAsync(api_url + "Anbar/Mojoodi_Anbar_BargeDate/" + TarikhBarge + "/" + AnbarCode + "/" + ObjectCode);
                 List<vw_result> result = JsonConvert.DeserializeObject<List<vw_result>>(json);
